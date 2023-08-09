@@ -1,0 +1,673 @@
+CRITICAL - 2023-01-20 06:27:15 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(26): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:28:10 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(26): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:40:05 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(26): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:40:49 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(26): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:41:36 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:41:41 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:41:59 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:42:05 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:43:00 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:43:22 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:43:31 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:43:33 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:43:35 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:43:36 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:43:58 --> Undefined variable: allRights
+in APPPATH/Views/zayavki.php on line 129.
+ 1 APPPATH/Views/zayavki.php(129): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: allRights', 'APPPATH/Views/zayavki.php', 129, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:44:04 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:44:50 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:44:56 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:44:57 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:44:58 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:46:29 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:46:32 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:47:00 --> Undefined variable: pokazYear
+in APPPATH/Views/zayavki.php on line 244.
+ 1 APPPATH/Views/zayavki.php(244): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: pokazYear', 'APPPATH/Views/zayavki.php', 244, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:47:08 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:47:46 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:48:10 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:48:19 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:48:36 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:49:40 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 06:49:51 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 07:41:27 --> Array to string conversion
+in APPPATH/Views/zayavki.php on line 144.
+ 1 APPPATH/Views/zayavki.php(144): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'APPPATH/Views/zayavki.php', 144, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(107): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 07:41:42 --> Array to string conversion
+in APPPATH/Views/zayavki.php on line 144.
+ 1 APPPATH/Views/zayavki.php(144): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'APPPATH/Views/zayavki.php', 144, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(107): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 07:43:10 --> Array to string conversion
+in APPPATH/Views/zayavki.php on line 144.
+ 1 APPPATH/Views/zayavki.php(144): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'APPPATH/Views/zayavki.php', 144, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(107): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 07:43:27 --> Array to string conversion
+in APPPATH/Views/zayavki.php on line 144.
+ 1 APPPATH/Views/zayavki.php(144): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'APPPATH/Views/zayavki.php', 144, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(107): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 07:44:59 --> Array to string conversion
+in APPPATH/Views/zayavki.php on line 144.
+ 1 APPPATH/Views/zayavki.php(144): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'APPPATH/Views/zayavki.php', 144, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(107): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 07:45:05 --> Array to string conversion
+in APPPATH/Views/zayavki.php on line 144.
+ 1 APPPATH/Views/zayavki.php(144): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'APPPATH/Views/zayavki.php', 144, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(107): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 07:45:29 --> Array to string conversion
+in APPPATH/Views/zayavki.php on line 144.
+ 1 APPPATH/Views/zayavki.php(144): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'APPPATH/Views/zayavki.php', 144, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(107): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 07:45:53 --> Array to string conversion
+in APPPATH/Views/zayavki.php on line 144.
+ 1 APPPATH/Views/zayavki.php(144): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'APPPATH/Views/zayavki.php', 144, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(107): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 07:46:12 --> Array to string conversion
+in APPPATH/Views/zayavki.php on line 144.
+ 1 APPPATH/Views/zayavki.php(144): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'APPPATH/Views/zayavki.php', 144, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(107): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 07:47:48 --> Array to string conversion
+in APPPATH/Views/zayavki.php on line 144.
+ 1 APPPATH/Views/zayavki.php(144): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'APPPATH/Views/zayavki.php', 144, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(107): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 07:48:17 --> Array to string conversion
+in APPPATH/Views/zayavki.php on line 144.
+ 1 APPPATH/Views/zayavki.php(144): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'APPPATH/Views/zayavki.php', 144, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(107): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 07:50:30 --> Array to string conversion
+in APPPATH/Views/zayavki.php on line 144.
+ 1 APPPATH/Views/zayavki.php(144): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'APPPATH/Views/zayavki.php', 144, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(107): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 08:03:00 --> Array to string conversion
+in APPPATH/Views/zayavki.php on line 144.
+ 1 APPPATH/Views/zayavki.php(144): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'APPPATH/Views/zayavki.php', 144, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(107): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 08:05:51 --> Undefined index: id
+in APPPATH/Views/zayavki.php on line 144.
+ 1 APPPATH/Views/zayavki.php(144): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id', 'APPPATH/Views/zayavki.php', 144, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(107): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 08:07:12 --> Undefined index: area
+in APPPATH/Views/zayavki.php on line 144.
+ 1 APPPATH/Views/zayavki.php(144): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: area', 'APPPATH/Views/zayavki.php', 144, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(107): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 08:09:50 --> Only variables should be passed by reference
+in APPPATH/Models/Search.php on line 15.
+ 1 APPPATH/Models/Search.php(15): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Only variables should be passed by reference', 'APPPATH/Models/Search.php', 15, [...])
+ 2 APPPATH/Controllers/Zayavki.php(103): App\Models\Search->getDepartmentByUserId('1')
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 08:12:32 --> Use of undefined constant usDepartment - assumed 'usDepartment' (this will throw an Error in a future version of PHP)
+in APPPATH/Views/zayavki.php on line 144.
+ 1 APPPATH/Views/zayavki.php(144): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefined constant usDepartment - assumed \'usDepartment\' (this will throw an Error in a future version of PHP)', 'APPPATH/Views/zayavki.php', 144, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(107): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 08:12:41 --> Cannot use object of type stdClass as array
+in APPPATH/Views/zayavki.php on line 144.
+ 1 SYSTEMPATH/View/View.php(213): include()
+ 2 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 4 APPPATH/Controllers/Zayavki.php(107): view('zayavki', [...])
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 09:47:15 --> Call to a member function set_template() on null
+in APPPATH/Models/Search.php on line 36.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 09:47:16 --> Call to a member function set_template() on null
+in APPPATH/Models/Search.php on line 36.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 09:47:17 --> Call to a member function set_template() on null
+in APPPATH/Models/Search.php on line 36.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 09:47:19 --> Call to a member function set_template() on null
+in APPPATH/Models/Search.php on line 36.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 09:47:27 --> Call to a member function set_template() on null
+in APPPATH/Models/Search.php on line 36.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 09:48:59 --> Call to a member function generate() on null
+in APPPATH/Models/Search.php on line 48.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 09:48:59 --> Call to a member function generate() on null
+in APPPATH/Models/Search.php on line 48.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 09:49:00 --> Call to a member function generate() on null
+in APPPATH/Models/Search.php on line 48.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 09:49:18 --> Call to a member function set_template() on null
+in APPPATH/Models/Search.php on line 36.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 09:49:22 --> Call to a member function set_template() on null
+in APPPATH/Models/Search.php on line 36.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 09:52:19 --> Call to a member function setTemplate() on null
+in APPPATH/Models/Search.php on line 36.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 09:52:25 --> Call to a member function setTemplate() on null
+in APPPATH/Models/Search.php on line 36.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 09:55:03 --> Call to a member function setTemplate() on null
+in APPPATH/Models/Search.php on line 36.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 09:57:00 --> Call to a member function setTemplate() on null
+in APPPATH/Models/Search.php on line 36.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 09:57:07 --> Call to a member function setTemplate() on null
+in APPPATH/Models/Search.php on line 36.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 09:58:37 --> Call to a member function setTemplate() on null
+in APPPATH/Models/Search.php on line 36.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 09:58:51 --> Call to a member function setHeading() on null
+in APPPATH/Models/Search.php on line 37.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 10:00:54 --> Class 'App\Models\Table' not found
+in APPPATH/Models/Search.php on line 35.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 10:00:58 --> Class 'App\Models\Table' not found
+in APPPATH/Models/Search.php on line 35.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 10:02:04 --> Call to undefined function App\Models\tablShablone()
+in APPPATH/Models/Search.php on line 38.
+ 1 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-20 10:02:31 --> count(): Parameter must be an array or an object that implements Countable
+in APPPATH/Models/Search.php on line 40.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'count(): Parameter must be an array or an object that implements Countable', 'APPPATH/Models/Search.php', 40, [...])
+ 2 APPPATH/Models/Search.php(40): count(Object(CodeIgniter\Database\MySQLi\Result))
+ 3 APPPATH/Controllers/Zayavki.php(123): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

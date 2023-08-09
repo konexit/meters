@@ -1,0 +1,579 @@
+ERROR - 2023-04-03 06:40:50 --> mysqli_sql_exception: Unknown column 'adminMenu' in 'where clause' in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT counter....', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT counter....')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT counter....')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(330): CodeIgniter\Database\BaseConnection->query('SELECT counter....')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/Telegram.php(131): App\Models\Search->findCountersNotFilled('112', 'adminMenu', NULL)
+#5 /ext/WWW/konex.com.ua/zayavki/app/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+#6 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#9 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-04-03 06:40:50 --> Unknown column 'adminMenu' in 'where clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id')
+ 4 APPPATH/Models/Search.php(330): CodeIgniter\Database\BaseConnection->query('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id')
+ 5 APPPATH/Models/Telegram.php(131): App\Models\Search->findCountersNotFilled('112', 'adminMenu', null)
+ 6 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-04-03 06:40:54 --> mysqli_sql_exception: Unknown column 'adminMenu' in 'where clause' in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT counter....', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT counter....')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT counter....')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(330): CodeIgniter\Database\BaseConnection->query('SELECT counter....')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/Telegram.php(131): App\Models\Search->findCountersNotFilled('112', 'adminMenu', NULL)
+#5 /ext/WWW/konex.com.ua/zayavki/app/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+#6 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#9 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-04-03 06:40:54 --> Unknown column 'adminMenu' in 'where clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id')
+ 4 APPPATH/Models/Search.php(330): CodeIgniter\Database\BaseConnection->query('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id')
+ 5 APPPATH/Models/Telegram.php(131): App\Models\Search->findCountersNotFilled('112', 'adminMenu', null)
+ 6 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-04-03 06:41:03 --> mysqli_sql_exception: Unknown column 'adminMenu' in 'where clause' in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT counter....', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT counter....')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT counter....')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(330): CodeIgniter\Database\BaseConnection->query('SELECT counter....')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/Telegram.php(131): App\Models\Search->findCountersNotFilled('112', 'adminMenu', NULL)
+#5 /ext/WWW/konex.com.ua/zayavki/app/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+#6 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#9 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-04-03 06:41:03 --> Unknown column 'adminMenu' in 'where clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id')
+ 4 APPPATH/Models/Search.php(330): CodeIgniter\Database\BaseConnection->query('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id')
+ 5 APPPATH/Models/Telegram.php(131): App\Models\Search->findCountersNotFilled('112', 'adminMenu', null)
+ 6 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-04-03 06:41:19 --> mysqli_sql_exception: Unknown column 'adminMenu' in 'where clause' in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT counter....', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT counter....')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT counter....')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(330): CodeIgniter\Database\BaseConnection->query('SELECT counter....')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/Telegram.php(131): App\Models\Search->findCountersNotFilled('112', 'adminMenu', NULL)
+#5 /ext/WWW/konex.com.ua/zayavki/app/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+#6 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#9 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-04-03 06:41:19 --> Unknown column 'adminMenu' in 'where clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id')
+ 4 APPPATH/Models/Search.php(330): CodeIgniter\Database\BaseConnection->query('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id')
+ 5 APPPATH/Models/Telegram.php(131): App\Models\Search->findCountersNotFilled('112', 'adminMenu', null)
+ 6 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-04-03 06:41:51 --> mysqli_sql_exception: Unknown column 'adminMenu' in 'where clause' in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT counter....', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT counter....')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT counter....')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(330): CodeIgniter\Database\BaseConnection->query('SELECT counter....')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/Telegram.php(131): App\Models\Search->findCountersNotFilled('112', 'adminMenu', NULL)
+#5 /ext/WWW/konex.com.ua/zayavki/app/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+#6 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#9 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-04-03 06:41:51 --> Unknown column 'adminMenu' in 'where clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id')
+ 4 APPPATH/Models/Search.php(330): CodeIgniter\Database\BaseConnection->query('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id')
+ 5 APPPATH/Models/Telegram.php(131): App\Models\Search->findCountersNotFilled('112', 'adminMenu', null)
+ 6 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-04-03 06:42:55 --> mysqli_sql_exception: Unknown column 'adminMenu' in 'where clause' in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT counter....', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT counter....')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT counter....')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(330): CodeIgniter\Database\BaseConnection->query('SELECT counter....')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/Telegram.php(131): App\Models\Search->findCountersNotFilled('112', 'adminMenu', NULL)
+#5 /ext/WWW/konex.com.ua/zayavki/app/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+#6 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#9 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-04-03 06:42:55 --> Unknown column 'adminMenu' in 'where clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id')
+ 4 APPPATH/Models/Search.php(330): CodeIgniter\Database\BaseConnection->query('SELECT counter.id, counter.counterId, counter.counterName, area.unit, area.addr 
+                                      FROM counter
+                                      JOIN area ON counter.unit = area.id 
+                                      JOIN pokaz ON counter.id = pokaz.cId
+                                      WHERE counter.id NOT IN (
+                                            SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId 
+                                            WHERE ts = \'2023-03-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true 
+                                            GROUP BY counter.id
+                                          )
+                                          AND pokaz.ts =  \'2023-02-01\'  AND counter.unit = 112 AND counter.typeC = adminMenu AND counter.state = true
+                                      GROUP BY counter.id')
+ 5 APPPATH/Models/Telegram.php(131): App\Models\Search->findCountersNotFilled('112', 'adminMenu', null)
+ 6 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-04-03 07:20:38 --> mysqli_sql_exception: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'zayavki.area.addr' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT area.uni...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT area.uni...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT area.uni...')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(362): CodeIgniter\Database\BaseConnection->query('SELECT area.uni...')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/Telegram.php(59): App\Models\Search->findCountNotFilledCountersOfUser()
+#5 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(173): App\Models\Telegram->telegramUpdates(Object(stdClass))
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->telegramUpdates()
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-04-03 07:20:38 --> Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'zayavki.area.addr' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT area.unit, area.addr, area.tel, group_concat(counter.counterId) as counters
+                                        FROM counter 
+                                        JOIN area ON counter.unit = area.id 
+                                        JOIN pokaz ON counter.id = pokaz.cId
+                                         WHERE counter.id NOT IN ( SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId WHERE ts = \'2023-03-01\' AND counter.state = true GROUP BY counter.id )
+                                          AND pokaz.ts = \'2023-02-01\' AND counter.state = true GROUP BY area.unit', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT area.unit, area.addr, area.tel, group_concat(counter.counterId) as counters
+                                        FROM counter 
+                                        JOIN area ON counter.unit = area.id 
+                                        JOIN pokaz ON counter.id = pokaz.cId
+                                         WHERE counter.id NOT IN ( SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId WHERE ts = \'2023-03-01\' AND counter.state = true GROUP BY counter.id )
+                                          AND pokaz.ts = \'2023-02-01\' AND counter.state = true GROUP BY area.unit')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT area.unit, area.addr, area.tel, group_concat(counter.counterId) as counters
+                                        FROM counter 
+                                        JOIN area ON counter.unit = area.id 
+                                        JOIN pokaz ON counter.id = pokaz.cId
+                                         WHERE counter.id NOT IN ( SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId WHERE ts = \'2023-03-01\' AND counter.state = true GROUP BY counter.id )
+                                          AND pokaz.ts = \'2023-02-01\' AND counter.state = true GROUP BY area.unit')
+ 4 APPPATH/Models/Search.php(362): CodeIgniter\Database\BaseConnection->query('SELECT area.unit, area.addr, area.tel, group_concat(counter.counterId) as counters
+                                        FROM counter 
+                                        JOIN area ON counter.unit = area.id 
+                                        JOIN pokaz ON counter.id = pokaz.cId
+                                         WHERE counter.id NOT IN ( SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId WHERE ts = \'2023-03-01\' AND counter.state = true GROUP BY counter.id )
+                                          AND pokaz.ts = \'2023-02-01\' AND counter.state = true GROUP BY area.unit')
+ 5 APPPATH/Models/Telegram.php(59): App\Models\Search->findCountNotFilledCountersOfUser()
+ 6 APPPATH/Controllers/Meters.php(173): App\Models\Telegram->telegramUpdates(Object(stdClass))
+ 7 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegramUpdates()
+ 8 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 9 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-04-03 07:21:17 --> mysqli_sql_exception: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'zayavki.area.addr' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT area.uni...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT area.uni...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT area.uni...')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(362): CodeIgniter\Database\BaseConnection->query('SELECT area.uni...')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/Telegram.php(59): App\Models\Search->findCountNotFilledCountersOfUser()
+#5 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(173): App\Models\Telegram->telegramUpdates(Object(stdClass))
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->telegramUpdates()
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-04-03 07:21:17 --> Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'zayavki.area.addr' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT area.unit, area.addr, area.tel, group_concat(counter.counterId) as counters
+                                        FROM counter 
+                                        JOIN area ON counter.unit = area.id 
+                                        JOIN pokaz ON counter.id = pokaz.cId
+                                         WHERE counter.id NOT IN ( SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId WHERE ts = \'2023-03-01\' AND counter.state = true GROUP BY counter.id )
+                                          AND pokaz.ts = \'2023-02-01\' AND counter.state = true GROUP BY area.unit', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT area.unit, area.addr, area.tel, group_concat(counter.counterId) as counters
+                                        FROM counter 
+                                        JOIN area ON counter.unit = area.id 
+                                        JOIN pokaz ON counter.id = pokaz.cId
+                                         WHERE counter.id NOT IN ( SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId WHERE ts = \'2023-03-01\' AND counter.state = true GROUP BY counter.id )
+                                          AND pokaz.ts = \'2023-02-01\' AND counter.state = true GROUP BY area.unit')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT area.unit, area.addr, area.tel, group_concat(counter.counterId) as counters
+                                        FROM counter 
+                                        JOIN area ON counter.unit = area.id 
+                                        JOIN pokaz ON counter.id = pokaz.cId
+                                         WHERE counter.id NOT IN ( SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId WHERE ts = \'2023-03-01\' AND counter.state = true GROUP BY counter.id )
+                                          AND pokaz.ts = \'2023-02-01\' AND counter.state = true GROUP BY area.unit')
+ 4 APPPATH/Models/Search.php(362): CodeIgniter\Database\BaseConnection->query('SELECT area.unit, area.addr, area.tel, group_concat(counter.counterId) as counters
+                                        FROM counter 
+                                        JOIN area ON counter.unit = area.id 
+                                        JOIN pokaz ON counter.id = pokaz.cId
+                                         WHERE counter.id NOT IN ( SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId WHERE ts = \'2023-03-01\' AND counter.state = true GROUP BY counter.id )
+                                          AND pokaz.ts = \'2023-02-01\' AND counter.state = true GROUP BY area.unit')
+ 5 APPPATH/Models/Telegram.php(59): App\Models\Search->findCountNotFilledCountersOfUser()
+ 6 APPPATH/Controllers/Meters.php(173): App\Models\Telegram->telegramUpdates(Object(stdClass))
+ 7 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegramUpdates()
+ 8 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 9 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-04-03 07:21:50 --> mysqli_sql_exception: Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'zayavki.area.tel' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT area.uni...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT area.uni...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT area.uni...')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(362): CodeIgniter\Database\BaseConnection->query('SELECT area.uni...')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/Telegram.php(59): App\Models\Search->findCountNotFilledCountersOfUser()
+#5 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(173): App\Models\Telegram->telegramUpdates(Object(stdClass))
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->telegramUpdates()
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-04-03 07:21:50 --> Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'zayavki.area.tel' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT area.unit, area.addr, area.tel, group_concat(counter.counterId) as counters
+                                        FROM counter 
+                                        JOIN area ON counter.unit = area.id 
+                                        JOIN pokaz ON counter.id = pokaz.cId
+                                         WHERE counter.id NOT IN ( SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId WHERE ts = \'2023-03-01\' AND counter.state = true GROUP BY counter.id )
+                                          AND pokaz.ts = \'2023-02-01\' AND counter.state = true GROUP BY area.unit, area.addr', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT area.unit, area.addr, area.tel, group_concat(counter.counterId) as counters
+                                        FROM counter 
+                                        JOIN area ON counter.unit = area.id 
+                                        JOIN pokaz ON counter.id = pokaz.cId
+                                         WHERE counter.id NOT IN ( SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId WHERE ts = \'2023-03-01\' AND counter.state = true GROUP BY counter.id )
+                                          AND pokaz.ts = \'2023-02-01\' AND counter.state = true GROUP BY area.unit, area.addr')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT area.unit, area.addr, area.tel, group_concat(counter.counterId) as counters
+                                        FROM counter 
+                                        JOIN area ON counter.unit = area.id 
+                                        JOIN pokaz ON counter.id = pokaz.cId
+                                         WHERE counter.id NOT IN ( SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId WHERE ts = \'2023-03-01\' AND counter.state = true GROUP BY counter.id )
+                                          AND pokaz.ts = \'2023-02-01\' AND counter.state = true GROUP BY area.unit, area.addr')
+ 4 APPPATH/Models/Search.php(362): CodeIgniter\Database\BaseConnection->query('SELECT area.unit, area.addr, area.tel, group_concat(counter.counterId) as counters
+                                        FROM counter 
+                                        JOIN area ON counter.unit = area.id 
+                                        JOIN pokaz ON counter.id = pokaz.cId
+                                         WHERE counter.id NOT IN ( SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId WHERE ts = \'2023-03-01\' AND counter.state = true GROUP BY counter.id )
+                                          AND pokaz.ts = \'2023-02-01\' AND counter.state = true GROUP BY area.unit, area.addr')
+ 5 APPPATH/Models/Telegram.php(59): App\Models\Search->findCountNotFilledCountersOfUser()
+ 6 APPPATH/Controllers/Meters.php(173): App\Models\Telegram->telegramUpdates(Object(stdClass))
+ 7 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegramUpdates()
+ 8 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 9 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-03 08:48:51 --> Trying to access array offset on value of type null
+in APPPATH/Controllers/Meters.php on line 174.
+ 1 APPPATH/Controllers/Meters.php(174): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH/Controllers/Meters.php', 174, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegramUpdates()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-03 08:50:49 --> Trying to access array offset on value of type null
+in APPPATH/Controllers/Meters.php on line 174.
+ 1 APPPATH/Controllers/Meters.php(174): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH/Controllers/Meters.php', 174, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegramUpdates()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-03 08:52:41 --> Trying to access array offset on value of type null
+in APPPATH/Controllers/Meters.php on line 174.
+ 1 APPPATH/Controllers/Meters.php(174): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH/Controllers/Meters.php', 174, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegramUpdates()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-03 08:52:52 --> Trying to access array offset on value of type null
+in APPPATH/Controllers/Meters.php on line 174.
+ 1 APPPATH/Controllers/Meters.php(174): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH/Controllers/Meters.php', 174, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegramUpdates()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-03 08:53:55 --> Trying to access array offset on value of type null
+in APPPATH/Controllers/Meters.php on line 174.
+ 1 APPPATH/Controllers/Meters.php(174): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH/Controllers/Meters.php', 174, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegramUpdates()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-03 08:55:01 --> Trying to access array offset on value of type null
+in APPPATH/Controllers/Meters.php on line 174.
+ 1 APPPATH/Controllers/Meters.php(174): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH/Controllers/Meters.php', 174, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegramUpdates()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

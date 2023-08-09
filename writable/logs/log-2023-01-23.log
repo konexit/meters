@@ -1,0 +1,449 @@
+CRITICAL - 2023-01-23 06:13:09 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 06:13:16 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 06:13:24 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 06:13:49 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 06:14:02 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 06:14:11 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 06:14:17 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 08:09:20 --> Object of class CodeIgniter\Database\MySQLi\Result could not be converted to int
+in APPPATH/Models/Search.php on line 76.
+ 1 APPPATH/Models/Search.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Object of class CodeIgniter\\Database\\MySQLi\\Result could not be converted to int', 'APPPATH/Models/Search.php', 76, [...])
+ 2 APPPATH/Models/Search.php(69): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 08:09:21 --> Object of class CodeIgniter\Database\MySQLi\Result could not be converted to int
+in APPPATH/Models/Search.php on line 76.
+ 1 APPPATH/Models/Search.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Object of class CodeIgniter\\Database\\MySQLi\\Result could not be converted to int', 'APPPATH/Models/Search.php', 76, [...])
+ 2 APPPATH/Models/Search.php(69): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 08:09:22 --> Object of class CodeIgniter\Database\MySQLi\Result could not be converted to int
+in APPPATH/Models/Search.php on line 76.
+ 1 APPPATH/Models/Search.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Object of class CodeIgniter\\Database\\MySQLi\\Result could not be converted to int', 'APPPATH/Models/Search.php', 76, [...])
+ 2 APPPATH/Models/Search.php(69): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 08:09:22 --> Object of class CodeIgniter\Database\MySQLi\Result could not be converted to int
+in APPPATH/Models/Search.php on line 76.
+ 1 APPPATH/Models/Search.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Object of class CodeIgniter\\Database\\MySQLi\\Result could not be converted to int', 'APPPATH/Models/Search.php', 76, [...])
+ 2 APPPATH/Models/Search.php(69): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 08:09:22 --> Object of class CodeIgniter\Database\MySQLi\Result could not be converted to int
+in APPPATH/Models/Search.php on line 76.
+ 1 APPPATH/Models/Search.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Object of class CodeIgniter\\Database\\MySQLi\\Result could not be converted to int', 'APPPATH/Models/Search.php', 76, [...])
+ 2 APPPATH/Models/Search.php(69): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 08:09:23 --> Object of class CodeIgniter\Database\MySQLi\Result could not be converted to int
+in APPPATH/Models/Search.php on line 76.
+ 1 APPPATH/Models/Search.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Object of class CodeIgniter\\Database\\MySQLi\\Result could not be converted to int', 'APPPATH/Models/Search.php', 76, [...])
+ 2 APPPATH/Models/Search.php(69): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 08:09:23 --> Object of class CodeIgniter\Database\MySQLi\Result could not be converted to int
+in APPPATH/Models/Search.php on line 76.
+ 1 APPPATH/Models/Search.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Object of class CodeIgniter\\Database\\MySQLi\\Result could not be converted to int', 'APPPATH/Models/Search.php', 76, [...])
+ 2 APPPATH/Models/Search.php(69): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 08:09:23 --> Object of class CodeIgniter\Database\MySQLi\Result could not be converted to int
+in APPPATH/Models/Search.php on line 76.
+ 1 APPPATH/Models/Search.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Object of class CodeIgniter\\Database\\MySQLi\\Result could not be converted to int', 'APPPATH/Models/Search.php', 76, [...])
+ 2 APPPATH/Models/Search.php(69): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 08:39:52 --> Undefined variable: month
+in APPPATH/Views/zayavki.php on line 270.
+ 1 APPPATH/Views/zayavki.php(270): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: month', 'APPPATH/Views/zayavki.php', 270, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(107): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 08:52:08 --> Undefined index: index
+in APPPATH/Models/Search.php on line 93.
+ 1 APPPATH/Models/Search.php(93): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: index', 'APPPATH/Models/Search.php', 93, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 08:52:15 --> Undefined index: index
+in APPPATH/Models/Search.php on line 93.
+ 1 APPPATH/Models/Search.php(93): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: index', 'APPPATH/Models/Search.php', 93, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 08:53:41 --> Undefined index: index
+in APPPATH/Models/Search.php on line 93.
+ 1 APPPATH/Models/Search.php(93): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: index', 'APPPATH/Models/Search.php', 93, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 08:54:49 --> Object of class CodeIgniter\Database\MySQLi\Result could not be converted to int
+in APPPATH/Models/Search.php on line 90.
+ 1 APPPATH/Models/Search.php(90): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Object of class CodeIgniter\\Database\\MySQLi\\Result could not be converted to int', 'APPPATH/Models/Search.php', 90, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 08:56:41 --> Undefined variable: department
+in APPPATH/Views/zayavki.php on line 120.
+ 1 APPPATH/Views/zayavki.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: department', 'APPPATH/Views/zayavki.php', 120, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(28): view('zayavki')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 08:58:23 --> Undefined index: index
+in APPPATH/Models/Search.php on line 93.
+ 1 APPPATH/Models/Search.php(93): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: index', 'APPPATH/Models/Search.php', 93, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:00:12 --> Trying to access array offset on value of type null
+in APPPATH/Models/Search.php on line 93.
+ 1 APPPATH/Models/Search.php(93): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH/Models/Search.php', 93, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:01:15 --> Trying to access array offset on value of type null
+in APPPATH/Models/Search.php on line 93.
+ 1 APPPATH/Models/Search.php(93): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH/Models/Search.php', 93, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:05:36 --> Undefined variable: rowBefore
+in APPPATH/Models/Search.php on line 91.
+ 1 APPPATH/Models/Search.php(91): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: rowBefore', 'APPPATH/Models/Search.php', 91, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:10:55 --> Trying to access array offset on value of type null
+in APPPATH/Models/Search.php on line 92.
+ 1 APPPATH/Models/Search.php(92): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH/Models/Search.php', 92, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:16:12 --> Undefined index: count
+in APPPATH/Models/Search.php on line 90.
+ 1 APPPATH/Models/Search.php(90): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: count', 'APPPATH/Models/Search.php', 90, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:16:52 --> Object of class stdClass could not be converted to int
+in APPPATH/Models/Search.php on line 90.
+ 1 APPPATH/Models/Search.php(90): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Object of class stdClass could not be converted to int', 'APPPATH/Models/Search.php', 90, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:17:16 --> Object of class stdClass could not be converted to int
+in APPPATH/Models/Search.php on line 90.
+ 1 APPPATH/Models/Search.php(90): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Object of class stdClass could not be converted to int', 'APPPATH/Models/Search.php', 90, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:18:30 --> Undefined index: 
+in APPPATH/Models/Search.php on line 90.
+ 1 APPPATH/Models/Search.php(90): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: ', 'APPPATH/Models/Search.php', 90, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:18:50 --> Undefined index: count
+in APPPATH/Models/Search.php on line 90.
+ 1 APPPATH/Models/Search.php(90): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: count', 'APPPATH/Models/Search.php', 90, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:19:05 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Search.php on line 90.
+ 1 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 2 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:20:32 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Search.php on line 91.
+ 1 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 2 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:21:28 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Search.php on line 90.
+ 1 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 2 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:21:45 --> Cannot use [] for reading
+in APPPATH/Models/Search.php on line 90.
+ 1 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 2 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:22:18 --> Use of undefined constant count - assumed 'count' (this will throw an Error in a future version of PHP)
+in APPPATH/Models/Search.php on line 90.
+ 1 APPPATH/Models/Search.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefined constant count - assumed \'count\' (this will throw an Error in a future version of PHP)', 'APPPATH/Models/Search.php', 90, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:22:52 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Search.php on line 90.
+ 1 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 2 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:26:19 --> Call to undefined method stdClass::get()
+in APPPATH/Models/Search.php on line 90.
+ 1 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 2 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:26:27 --> Call to undefined method stdClass::get()
+in APPPATH/Models/Search.php on line 90.
+ 1 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 2 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:30:45 --> Function name must be a string
+in APPPATH/Models/Search.php on line 90.
+ 1 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 2 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:33:36 --> Undefined property: stdClass::$index
+in APPPATH/Models/Search.php on line 90.
+ 1 APPPATH/Models/Search.php(90): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$index', 'APPPATH/Models/Search.php', 90, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:35:51 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Search.php on line 90.
+ 1 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 2 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:45:42 --> Use of undefined constant count - assumed 'count' (this will throw an Error in a future version of PHP)
+in APPPATH/Models/Search.php on line 90.
+ 1 APPPATH/Models/Search.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefined constant count - assumed \'count\' (this will throw an Error in a future version of PHP)', 'APPPATH/Models/Search.php', 90, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:46:27 --> Use of undefined constant count1 - assumed 'count1' (this will throw an Error in a future version of PHP)
+in APPPATH/Models/Search.php on line 90.
+ 1 APPPATH/Models/Search.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefined constant count1 - assumed \'count1\' (this will throw an Error in a future version of PHP)', 'APPPATH/Models/Search.php', 90, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:49:58 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Search.php on line 91.
+ 1 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 2 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:53:53 --> Undefined index: count1
+in APPPATH/Models/Search.php on line 91.
+ 1 APPPATH/Models/Search.php(91): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: count1', 'APPPATH/Models/Search.php', 91, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 09:54:16 --> Trying to get property 'count1' of non-object
+in APPPATH/Models/Search.php on line 91.
+ 1 APPPATH/Models/Search.php(91): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'count1\' of non-object', 'APPPATH/Models/Search.php', 91, [...])
+ 2 APPPATH/Models/Search.php(73): App\Models\Search->checkPokaz('1', '2022-12-1', null)
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 10:01:57 --> Use of undefined constant cid - assumed 'cid' (this will throw an Error in a future version of PHP)
+in APPPATH/Models/Search.php on line 110.
+ 1 APPPATH/Models/Search.php(110): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefined constant cid - assumed \'cid\' (this will throw an Error in a future version of PHP)', 'APPPATH/Models/Search.php', 110, [...])
+ 2 APPPATH/Models/Search.php(74): App\Models\Search->addPokazC('1', null, '2022', '12')
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-23 10:02:02 --> Use of undefined constant cid - assumed 'cid' (this will throw an Error in a future version of PHP)
+in APPPATH/Models/Search.php on line 110.
+ 1 APPPATH/Models/Search.php(110): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefined constant cid - assumed \'cid\' (this will throw an Error in a future version of PHP)', 'APPPATH/Models/Search.php', 110, [...])
+ 2 APPPATH/Models/Search.php(74): App\Models\Search->addPokazC('1', null, '2022', '12')
+ 3 APPPATH/Controllers/Zayavki.php(127): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

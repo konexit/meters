@@ -1,0 +1,172 @@
+CRITICAL - 2023-02-08 06:35:43 --> syntax error, unexpected '}', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$'
+in APPPATH/Models/Search.php on line 82.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Search.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Search')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Search')
+ 4 APPPATH/Controllers/Meters.php(20): spl_autoload_call('App\\Models\\Search')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-08 06:51:31 --> You must set the database table to be used with your query.
+in SYSTEMPATH/Database/BaseConnection.php on line 845.
+ 1 SYSTEMPATH/Model.php(587): CodeIgniter\Database\BaseConnection->table(null)
+ 2 SYSTEMPATH/Model.php(764): CodeIgniter\Model->builder()
+ 3 APPPATH/Models/Search.php(81): CodeIgniter\Model->__call('table', [...])
+ 4 APPPATH/Controllers/Meters.php(111): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-08 06:51:39 --> You must set the database table to be used with your query.
+in SYSTEMPATH/Database/BaseConnection.php on line 845.
+ 1 SYSTEMPATH/Model.php(587): CodeIgniter\Database\BaseConnection->table(null)
+ 2 SYSTEMPATH/Model.php(764): CodeIgniter\Model->builder()
+ 3 APPPATH/Models/Search.php(81): CodeIgniter\Model->__call('table', [...])
+ 4 APPPATH/Controllers/Meters.php(111): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-08 06:52:41 --> You must set the database table to be used with your query.
+in SYSTEMPATH/Database/BaseConnection.php on line 845.
+ 1 SYSTEMPATH/Model.php(587): CodeIgniter\Database\BaseConnection->table(null)
+ 2 SYSTEMPATH/Model.php(764): CodeIgniter\Model->builder()
+ 3 APPPATH/Models/Search.php(81): CodeIgniter\Model->__call('table', [...])
+ 4 APPPATH/Controllers/Meters.php(111): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-08 06:52:46 --> You must set the database table to be used with your query.
+in SYSTEMPATH/Database/BaseConnection.php on line 845.
+ 1 SYSTEMPATH/Model.php(587): CodeIgniter\Database\BaseConnection->table(null)
+ 2 SYSTEMPATH/Model.php(764): CodeIgniter\Model->builder()
+ 3 APPPATH/Models/Search.php(81): CodeIgniter\Model->__call('table', [...])
+ 4 APPPATH/Controllers/Meters.php(111): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-08 07:14:10 --> syntax error, unexpected ')', expecting ']'
+in APPPATH/Models/Search.php on line 82.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Search.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Search')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Search')
+ 4 APPPATH/Controllers/Meters.php(20): spl_autoload_call('App\\Models\\Search')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-08 08:58:51 --> Call to a member function query() on null
+in APPPATH/Models/Search.php on line 19.
+ 1 APPPATH/Controllers/Meters.php(89): App\Models\Search->getDepartments()
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->meters()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-08 09:00:35 --> syntax error, unexpected '->' (T_OBJECT_OPERATOR)
+in APPPATH/Models/Search.php on line 84.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Search.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Search')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Search')
+ 4 APPPATH/Controllers/Meters.php(20): spl_autoload_call('App\\Models\\Search')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-08 09:00:40 --> syntax error, unexpected '->' (T_OBJECT_OPERATOR)
+in APPPATH/Models/Search.php on line 84.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Search.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Search')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Search')
+ 4 APPPATH/Controllers/Meters.php(20): spl_autoload_call('App\\Models\\Search')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-08 09:27:09 --> Undefined index: cId
+in APPPATH/Models/Search.php on line 69.
+ 1 APPPATH/Models/Search.php(69): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: cId', 'APPPATH/Models/Search.php', 69, [...])
+ 2 APPPATH/Controllers/Meters.php(109): App\Models\Search->getLastPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-08 09:27:16 --> Undefined index: cId
+in APPPATH/Models/Search.php on line 69.
+ 1 APPPATH/Models/Search.php(69): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: cId', 'APPPATH/Models/Search.php', 69, [...])
+ 2 APPPATH/Controllers/Meters.php(109): App\Models\Search->getLastPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-08 09:28:36 --> Undefined index: cId
+in APPPATH/Models/Search.php on line 69.
+ 1 APPPATH/Models/Search.php(69): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: cId', 'APPPATH/Models/Search.php', 69, [...])
+ 2 APPPATH/Controllers/Meters.php(109): App\Models\Search->getLastPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-08 09:35:55 --> Undefined variable: pokaz
+in APPPATH/Models/Search.php on line 191.
+ 1 APPPATH/Models/Search.php(191): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: pokaz', 'APPPATH/Models/Search.php', 191, [...])
+ 2 APPPATH/Controllers/Meters.php(117): App\Models\Search->editPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-08 09:36:35 --> Undefined variable: pokaz
+in APPPATH/Models/Search.php on line 191.
+ 1 APPPATH/Models/Search.php(191): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: pokaz', 'APPPATH/Models/Search.php', 191, [...])
+ 2 APPPATH/Controllers/Meters.php(117): App\Models\Search->editPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-08 09:48:45 --> A non-numeric value encountered
+in APPPATH/Models/User.php on line 101.
+ 1 APPPATH/Models/User.php(101): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric value encountered', 'APPPATH/Models/User.php', 101, [...])
+ 2 APPPATH/Models/Search.php(192): App\Models\User->addUserLog([...])
+ 3 APPPATH/Controllers/Meters.php(117): App\Models\Search->editPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-08 09:49:12 --> A non-numeric value encountered
+in APPPATH/Models/User.php on line 101.
+ 1 APPPATH/Models/User.php(101): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric value encountered', 'APPPATH/Models/User.php', 101, [...])
+ 2 APPPATH/Models/Search.php(192): App\Models\User->addUserLog([...])
+ 3 APPPATH/Controllers/Meters.php(117): App\Models\Search->editPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-08 09:50:01 --> A non-numeric value encountered
+in APPPATH/Models/User.php on line 101.
+ 1 APPPATH/Models/User.php(101): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric value encountered', 'APPPATH/Models/User.php', 101, [...])
+ 2 APPPATH/Models/Search.php(85): App\Models\User->addUserLog([...])
+ 3 APPPATH/Controllers/Meters.php(111): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-08 10:07:04 --> A non-numeric value encountered
+in APPPATH/Models/User.php on line 102.
+ 1 APPPATH/Models/User.php(102): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric value encountered', 'APPPATH/Models/User.php', 102, [...])
+ 2 APPPATH/Models/Search.php(85): App\Models\User->addUserLog([...])
+ 3 APPPATH/Controllers/Meters.php(111): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-08 10:07:16 --> A non-numeric value encountered
+in APPPATH/Models/User.php on line 102.
+ 1 APPPATH/Models/User.php(102): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric value encountered', 'APPPATH/Models/User.php', 102, [...])
+ 2 APPPATH/Models/Search.php(85): App\Models\User->addUserLog([...])
+ 3 APPPATH/Controllers/Meters.php(111): App\Models\Search->addPokaz(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

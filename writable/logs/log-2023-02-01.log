@@ -1,0 +1,317 @@
+CRITICAL - 2023-02-01 00:02:13 --> Trying to get property 'unit' of non-object
+in APPPATH/Views/zayavki.php on line 25.
+ 1 APPPATH/Views/zayavki.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'unit\' of non-object', 'APPPATH/Views/zayavki.php', 25, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(110): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 00:02:21 --> Trying to get property 'unit' of non-object
+in APPPATH/Views/zayavki.php on line 25.
+ 1 APPPATH/Views/zayavki.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'unit\' of non-object', 'APPPATH/Views/zayavki.php', 25, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(110): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 00:02:27 --> Trying to get property 'unit' of non-object
+in APPPATH/Views/zayavki.php on line 25.
+ 1 APPPATH/Views/zayavki.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'unit\' of non-object', 'APPPATH/Views/zayavki.php', 25, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(110): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 06:33:26 --> Undefined variable: usAreaName
+in APPPATH/Views/zayavki.php on line 25.
+ 1 APPPATH/Views/zayavki.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: usAreaName', 'APPPATH/Views/zayavki.php', 25, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(72): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->password()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 06:33:41 --> Undefined variable: usAreaName
+in APPPATH/Views/zayavki.php on line 25.
+ 1 APPPATH/Views/zayavki.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: usAreaName', 'APPPATH/Views/zayavki.php', 25, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(72): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->password()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 06:36:58 --> Undefined variable: usAreaName
+in APPPATH/Views/zayavki.php on line 25.
+ 1 APPPATH/Views/zayavki.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: usAreaName', 'APPPATH/Views/zayavki.php', 25, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(74): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->password()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 06:37:01 --> Undefined variable: usAreaName
+in APPPATH/Views/zayavki.php on line 25.
+ 1 APPPATH/Views/zayavki.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: usAreaName', 'APPPATH/Views/zayavki.php', 25, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(74): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->password()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 06:37:38 --> Undefined variable: usAreaName
+in APPPATH/Views/zayavki.php on line 25.
+ 1 APPPATH/Views/zayavki.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: usAreaName', 'APPPATH/Views/zayavki.php', 25, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(75): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->password()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-01 06:38:06 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'id=1 WHERE id=1' at line 1 in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('UPDATE user SET...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE user SET...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE user SET...')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/Update.php(12): CodeIgniter\Database\BaseConnection->query('UPDATE user SET...')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/User.php(64): App\Models\Update->changePW('1', '1111')
+#5 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Zayavki.php(80): App\Models\User->changePassword('1111')
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Zayavki->password()
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-02-01 06:38:32 --> Undefined variable: usAreaName
+in APPPATH/Views/zayavki.php on line 25.
+ 1 APPPATH/Views/zayavki.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: usAreaName', 'APPPATH/Views/zayavki.php', 25, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(75): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->password()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 06:42:48 --> Undefined variable: usAreaName
+in APPPATH/Views/zayavki.php on line 25.
+ 1 APPPATH/Views/zayavki.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: usAreaName', 'APPPATH/Views/zayavki.php', 25, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(75): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->password()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 06:43:00 --> Undefined variable: usAreaName
+in APPPATH/Views/zayavki.php on line 25.
+ 1 APPPATH/Views/zayavki.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: usAreaName', 'APPPATH/Views/zayavki.php', 25, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(75): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->password()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 06:43:08 --> Undefined variable: usAreaName
+in APPPATH/Views/zayavki.php on line 25.
+ 1 APPPATH/Views/zayavki.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: usAreaName', 'APPPATH/Views/zayavki.php', 25, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(75): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->password()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-01 06:43:15 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'id=1 WHERE id=1' at line 1 in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('UPDATE user SET...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE user SET...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE user SET...')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/Update.php(12): CodeIgniter\Database\BaseConnection->query('UPDATE user SET...')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/User.php(64): App\Models\Update->changePW('1', '1234')
+#5 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Zayavki.php(80): App\Models\User->changePassword('1234')
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Zayavki->password()
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-02-01 06:43:15 --> Undefined variable: usAreaName
+in APPPATH/Views/zayavki.php on line 25.
+ 1 APPPATH/Views/zayavki.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: usAreaName', 'APPPATH/Views/zayavki.php', 25, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(87): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->password()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 06:47:37 --> Undefined variable: usAreaName
+in APPPATH/Views/zayavki.php on line 25.
+ 1 APPPATH/Views/zayavki.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: usAreaName', 'APPPATH/Views/zayavki.php', 25, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(75): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->password()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 06:47:51 --> Undefined variable: usAreaName
+in APPPATH/Views/zayavki.php on line 25.
+ 1 APPPATH/Views/zayavki.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: usAreaName', 'APPPATH/Views/zayavki.php', 25, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(87): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->password()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 06:52:29 --> Undefined variable: usAreaName
+in APPPATH/Views/zayavki.php on line 25.
+ 1 APPPATH/Views/zayavki.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: usAreaName', 'APPPATH/Views/zayavki.php', 25, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/zayavki.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('zayavki', [], true)
+ 5 APPPATH/Controllers/Zayavki.php(75): view('zayavki', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->password()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-01 10:01:04 --> mysqli_sql_exception: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'zayavki.a.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT a.unit, ...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT a.unit, ...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT a.unit, ...')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(33): CodeIgniter\Database\BaseConnection->query('SELECT a.unit, ...')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Zayavki.php(94): App\Models\Search->getCounterArea()
+#5 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-01 10:01:04 --> Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'zayavki.a.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT a.unit, a.id FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT a.unit, a.id FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT a.unit, a.id FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit')
+ 4 APPPATH/Models/Search.php(33): CodeIgniter\Database\BaseConnection->query('SELECT a.unit, a.id FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit')
+ 5 APPPATH/Controllers/Zayavki.php(94): App\Models\Search->getCounterArea()
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-01 10:01:22 --> mysqli_sql_exception: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'zayavki.a.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT a.unit, ...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT a.unit, ...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT a.unit, ...')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(33): CodeIgniter\Database\BaseConnection->query('SELECT a.unit, ...')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Zayavki.php(94): App\Models\Search->getCounterArea()
+#5 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-01 10:01:22 --> Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'zayavki.a.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT a.unit, a.id FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT a.unit, a.id FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT a.unit, a.id FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit')
+ 4 APPPATH/Models/Search.php(33): CodeIgniter\Database\BaseConnection->query('SELECT a.unit, a.id FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit')
+ 5 APPPATH/Controllers/Zayavki.php(94): App\Models\Search->getCounterArea()
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-01 10:02:46 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit' at line 1 in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT a.unit. ...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT a.unit. ...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT a.unit. ...')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(33): CodeIgniter\Database\BaseConnection->query('SELECT a.unit. ...')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Zayavki.php(94): App\Models\Search->getCounterArea()
+#5 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-01 10:02:46 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit' at line 1
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT a.unit.  FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT a.unit.  FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT a.unit.  FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit')
+ 4 APPPATH/Models/Search.php(33): CodeIgniter\Database\BaseConnection->query('SELECT a.unit.  FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit')
+ 5 APPPATH/Controllers/Zayavki.php(94): App\Models\Search->getCounterArea()
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-01 10:03:04 --> mysqli_sql_exception: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'zayavki.a.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT a.unit, ...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT a.unit, ...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT a.unit, ...')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(33): CodeIgniter\Database\BaseConnection->query('SELECT a.unit, ...')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Zayavki.php(94): App\Models\Search->getCounterArea()
+#5 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-01 10:03:04 --> Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'zayavki.a.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT a.unit, a.id  FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT a.unit, a.id  FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT a.unit, a.id  FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit')
+ 4 APPPATH/Models/Search.php(33): CodeIgniter\Database\BaseConnection->query('SELECT a.unit, a.id  FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit')
+ 5 APPPATH/Controllers/Zayavki.php(94): App\Models\Search->getCounterArea()
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-01 10:14:55 --> mysqli_sql_exception: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'zayavki.a.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT a.unit, ...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT a.unit, ...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT a.unit, ...')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(33): CodeIgniter\Database\BaseConnection->query('SELECT a.unit, ...')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Zayavki.php(94): App\Models\Search->getCounterArea()
+#5 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-01 10:14:55 --> Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'zayavki.a.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT a.unit, a.id  FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT a.unit, a.id  FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT a.unit, a.id  FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit')
+ 4 APPPATH/Models/Search.php(33): CodeIgniter\Database\BaseConnection->query('SELECT a.unit, a.id  FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit ORDER BY a.unit')
+ 5 APPPATH/Controllers/Zayavki.php(94): App\Models\Search->getCounterArea()
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->zayavki()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

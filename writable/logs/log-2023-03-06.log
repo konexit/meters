@@ -1,0 +1,1072 @@
+CRITICAL - 2023-03-06 06:01:48 --> 7 : Failed to connect to 10.10.5.173 port 8081: Connection refused
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('7', 'Failed to connect to 10.10.5.173 port 8081: Connection refused')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(34): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 06:01:48 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 06:03:40 --> 7 : Failed to connect to 10.10.5.173 port 8081: Connection refused
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('7', 'Failed to connect to 10.10.5.173 port 8081: Connection refused')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(34): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 06:03:40 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 06:05:08 --> 7 : Failed to connect to 10.10.5.173 port 8081: Connection refused
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('7', 'Failed to connect to 10.10.5.173 port 8081: Connection refused')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(34): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 06:05:08 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 06:07:41 --> 7 : Failed to connect to 10.10.5.173 port 8081: Connection refused
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('7', 'Failed to connect to 10.10.5.173 port 8081: Connection refused')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(34): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 06:07:41 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 06:07:51 --> 7 : Failed to connect to 10.10.5.173 port 8081: Connection refused
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('7', 'Failed to connect to 10.10.5.173 port 8081: Connection refused')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(34): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 06:07:51 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 06:09:11 --> 7 : Failed to connect to 10.10.5.173 port 8081: Connection refused
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('7', 'Failed to connect to 10.10.5.173 port 8081: Connection refused')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(34): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 06:09:11 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 06:09:15 --> 7 : Failed to connect to 10.10.5.173 port 8081: Connection refused
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('7', 'Failed to connect to 10.10.5.173 port 8081: Connection refused')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(34): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 06:09:15 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 06:09:19 --> 7 : Failed to connect to 10.10.5.173 port 8081: Connection refused
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('7', 'Failed to connect to 10.10.5.173 port 8081: Connection refused')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(34): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 06:09:19 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 06:09:26 --> 7 : Failed to connect to 10.10.5.173 port 8081: Connection refused
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('7', 'Failed to connect to 10.10.5.173 port 8081: Connection refused')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(34): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 06:09:26 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 06:13:44 --> 7 : Failed to connect to 10.10.5.173 port 8081: Connection refused
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('7', 'Failed to connect to 10.10.5.173 port 8081: Connection refused')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(34): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 06:13:44 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 07:20:45 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 43.
+ 1 APPPATH/Models/Telegram.php(43): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 43, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 07:21:45 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 43.
+ 1 APPPATH/Models/Telegram.php(43): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 43, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 07:23:46 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 43.
+ 1 APPPATH/Models/Telegram.php(43): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 43, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 07:28:47 --> array_merge(): Expected parameter 2 to be an array, bool given
+in APPPATH/Models/Telegram.php on line 86.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'array_merge(): Expected parameter 2 to be an array, bool given', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(86): array_merge([...], true)
+ 3 APPPATH/Models/Telegram.php(58): App\Models\Telegram->createTelegramMessage('Введіть пароль для логіна <b>zlyuka</b>', null, true)
+ 4 APPPATH/Models/Telegram.php(44): App\Models\Telegram->logics(null, 'zlyuka')
+ 5 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 07:29:19 --> array_merge(): Expected parameter 2 to be an array, bool given
+in APPPATH/Models/Telegram.php on line 86.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'array_merge(): Expected parameter 2 to be an array, bool given', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(86): array_merge([...], true)
+ 3 APPPATH/Models/Telegram.php(58): App\Models\Telegram->createTelegramMessage('Введіть пароль для логіна <b>zlyuka</b>', null, true)
+ 4 APPPATH/Models/Telegram.php(44): App\Models\Telegram->logics(null, 'zlyuka')
+ 5 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 07:29:31 --> 22 : The requested URL returned error: 401 Unauthorized
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('22', 'The requested URL returned error: 401 Unauthorized')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(46): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 07:29:31 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 07:31:31 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 43.
+ 1 APPPATH/Models/Telegram.php(43): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 43, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 07:32:31 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 43.
+ 1 APPPATH/Models/Telegram.php(43): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 43, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 07:34:31 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 43.
+ 1 APPPATH/Models/Telegram.php(43): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 43, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 07:47:19 --> syntax error, unexpected '}'
+in APPPATH/Models/Telegram.php on line 65.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Telegram.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Telegram')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Telegram')
+ 4 APPPATH/Controllers/Meters.php(26): spl_autoload_call('App\\Models\\Telegram')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 07:49:43 --> syntax error, unexpected '}'
+in APPPATH/Models/Telegram.php on line 65.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Telegram.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Telegram')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Telegram')
+ 4 APPPATH/Controllers/Meters.php(26): spl_autoload_call('App\\Models\\Telegram')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:21:03 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Telegram.php on line 62.
+ 1 APPPATH/Models/Telegram.php(44): App\Models\Telegram->logics(Object(stdClass), Object(stdClass))
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:21:51 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Telegram.php on line 63.
+ 1 APPPATH/Models/Telegram.php(44): App\Models\Telegram->logics(Object(stdClass), Object(stdClass))
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:21:58 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Telegram.php on line 63.
+ 1 APPPATH/Models/Telegram.php(44): App\Models\Telegram->logics(Object(stdClass), Object(stdClass))
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:22:08 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Telegram.php on line 62.
+ 1 APPPATH/Models/Telegram.php(44): App\Models\Telegram->logics(Object(stdClass), Object(stdClass))
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:22:49 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Telegram.php on line 64.
+ 1 APPPATH/Models/Telegram.php(44): App\Models\Telegram->logics(Object(stdClass), Object(stdClass))
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:23:05 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Telegram.php on line 65.
+ 1 APPPATH/Models/Telegram.php(44): App\Models\Telegram->logics(Object(stdClass), Object(stdClass))
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:23:32 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Telegram.php on line 64.
+ 1 APPPATH/Models/Telegram.php(44): App\Models\Telegram->logics(Object(stdClass), Object(stdClass))
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:23:50 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Telegram.php on line 65.
+ 1 APPPATH/Models/Telegram.php(44): App\Models\Telegram->logics(Object(stdClass), Object(stdClass))
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:28:06 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 43.
+ 1 APPPATH/Models/Telegram.php(43): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 43, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:29:06 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 43.
+ 1 APPPATH/Models/Telegram.php(43): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 43, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:31:06 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 43.
+ 1 APPPATH/Models/Telegram.php(43): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 43, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:34:43 --> syntax error, unexpected '$respTgMess' (T_VARIABLE), expecting ')'
+in APPPATH/Models/Telegram.php on line 23.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Telegram.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Telegram')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Telegram')
+ 4 APPPATH/Controllers/Meters.php(26): spl_autoload_call('App\\Models\\Telegram')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:37:08 --> syntax error, unexpected '$respTgMess' (T_VARIABLE), expecting ')'
+in APPPATH/Models/Telegram.php on line 23.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Telegram.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Telegram')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Telegram')
+ 4 APPPATH/Controllers/Meters.php(26): spl_autoload_call('App\\Models\\Telegram')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:38:08 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 21.
+ 1 APPPATH/Models/Telegram.php(21): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 21, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:39:08 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 21.
+ 1 APPPATH/Models/Telegram.php(21): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 21, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:41:08 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 21.
+ 1 APPPATH/Models/Telegram.php(21): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 21, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:41:23 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 23.
+ 1 APPPATH/Models/Telegram.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 23, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:41:59 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 21.
+ 1 APPPATH/Models/Telegram.php(21): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 21, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:42:08 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 21.
+ 1 APPPATH/Models/Telegram.php(21): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 21, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:42:33 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 21.
+ 1 APPPATH/Models/Telegram.php(21): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 21, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:43:06 --> Undefined property: stdClass::$chat
+in APPPATH/Models/Telegram.php on line 21.
+ 1 APPPATH/Models/Telegram.php(21): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$chat', 'APPPATH/Models/Telegram.php', 21, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:43:09 --> Undefined property: stdClass::$chat
+in APPPATH/Models/Telegram.php on line 21.
+ 1 APPPATH/Models/Telegram.php(21): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$chat', 'APPPATH/Models/Telegram.php', 21, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:43:13 --> Undefined property: stdClass::$chat
+in APPPATH/Models/Telegram.php on line 21.
+ 1 APPPATH/Models/Telegram.php(21): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$chat', 'APPPATH/Models/Telegram.php', 21, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:43:23 --> Undefined property: stdClass::$chat
+in APPPATH/Models/Telegram.php on line 21.
+ 1 APPPATH/Models/Telegram.php(21): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$chat', 'APPPATH/Models/Telegram.php', 21, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:43:45 --> Undefined property: stdClass::$chat
+in APPPATH/Models/Telegram.php on line 22.
+ 1 APPPATH/Models/Telegram.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$chat', 'APPPATH/Models/Telegram.php', 22, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:43:52 --> Undefined property: stdClass::$chat
+in APPPATH/Models/Telegram.php on line 21.
+ 1 APPPATH/Models/Telegram.php(21): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$chat', 'APPPATH/Models/Telegram.php', 21, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:43:57 --> Undefined property: stdClass::$chat
+in APPPATH/Models/Telegram.php on line 21.
+ 1 APPPATH/Models/Telegram.php(21): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$chat', 'APPPATH/Models/Telegram.php', 21, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:44:03 --> Undefined property: stdClass::$chat
+in APPPATH/Models/Telegram.php on line 22.
+ 1 APPPATH/Models/Telegram.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$chat', 'APPPATH/Models/Telegram.php', 22, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:44:08 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 21.
+ 1 APPPATH/Models/Telegram.php(21): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 21, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:44:49 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 23.
+ 1 APPPATH/Models/Telegram.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 23, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:45:00 --> syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ')'
+in APPPATH/Models/Telegram.php on line 21.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Telegram.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Telegram')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Telegram')
+ 4 APPPATH/Controllers/Meters.php(26): spl_autoload_call('App\\Models\\Telegram')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:45:14 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 24.
+ 1 APPPATH/Models/Telegram.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 24, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:45:35 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 23.
+ 1 APPPATH/Models/Telegram.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 23, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:50:46 --> syntax error, unexpected ')'
+in APPPATH/Models/Telegram.php on line 56.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Telegram.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Telegram')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Telegram')
+ 4 APPPATH/Controllers/Meters.php(26): spl_autoload_call('App\\Models\\Telegram')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:51:46 --> syntax error, unexpected ')'
+in APPPATH/Models/Telegram.php on line 56.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Telegram.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Telegram')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Telegram')
+ 4 APPPATH/Controllers/Meters.php(26): spl_autoload_call('App\\Models\\Telegram')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 08:52:46 --> syntax error, unexpected ')'
+in APPPATH/Models/Telegram.php on line 56.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Telegram.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Telegram')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Telegram')
+ 4 APPPATH/Controllers/Meters.php(26): spl_autoload_call('App\\Models\\Telegram')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 09:41:00 --> 56 : Recv failure: Connection reset by peer
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('56', 'Recv failure: Connection reset by peer')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(25): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 09:41:00 --> 56 : Recv failure: Connection reset by peer
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('56', 'Recv failure: Connection reset by peer')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(25): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 09:41:00 --> 56 : Recv failure: Connection reset by peer
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('56', 'Recv failure: Connection reset by peer')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(25): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 09:41:00 --> 56 : Recv failure: Connection reset by peer
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('56', 'Recv failure: Connection reset by peer')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(25): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 09:41:00 --> 56 : Recv failure: Connection reset by peer
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('56', 'Recv failure: Connection reset by peer')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(25): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 09:41:00 --> 56 : Recv failure: Connection reset by peer
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('56', 'Recv failure: Connection reset by peer')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(25): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 09:41:00 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 09:41:00 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 09:41:00 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 09:41:00 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 09:41:00 --> 56 : Recv failure: Connection reset by peer
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('56', 'Recv failure: Connection reset by peer')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(25): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 09:41:00 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 09:41:00 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 09:41:00 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 09:47:59 --> 22 : The requested URL returned error: 401 Unauthorized
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('22', 'The requested URL returned error: 401 Unauthorized')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(25): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 09:47:59 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 09:48:33 --> 7 : Failed to connect to 10.10.5.173 port 8081: Connection refused
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('7', 'Failed to connect to 10.10.5.173 port 8081: Connection refused')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(25): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 09:48:33 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 09:49:19 --> 7 : Failed to connect to 10.10.5.173 port 8081: Connection refused
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('7', 'Failed to connect to 10.10.5.173 port 8081: Connection refused')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(25): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 09:49:19 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 09:49:47 --> 7 : Failed to connect to 10.10.5.173 port 8081: Connection refused
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('7', 'Failed to connect to 10.10.5.173 port 8081: Connection refused')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(25): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 09:49:47 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 09:50:15 --> 7 : Failed to connect to 10.10.5.173 port 8081: Connection refused
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('7', 'Failed to connect to 10.10.5.173 port 8081: Connection refused')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(25): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 09:50:15 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 09:51:09 --> 7 : Failed to connect to 10.10.5.173 port 8081: Connection refused
+in SYSTEMPATH/HTTP/CURLRequest.php on line 655.
+ 1 SYSTEMPATH/HTTP/CURLRequest.php(655): CodeIgniter\HTTP\Exceptions\HTTPException::forCurlError('7', 'Failed to connect to 10.10.5.173 port 8081: Connection refused')
+ 2 SYSTEMPATH/HTTP/CURLRequest.php(363): CodeIgniter\HTTP\CURLRequest->sendRequest([...])
+ 3 SYSTEMPATH/HTTP/CURLRequest.php(136): CodeIgniter\HTTP\CURLRequest->send('post', 'http://10.10.5.173:8081/sendMessage/')
+ 4 SYSTEMPATH/HTTP/CURLRequest.php(209): CodeIgniter\HTTP\CURLRequest->request('post', 'http://10.10.5.173:8081/sendMessage/', [...])
+ 5 APPPATH/Models/HTTP.php(14): CodeIgniter\HTTP\CURLRequest->post('http://10.10.5.173:8081/sendMessage/', [...])
+ 6 APPPATH/Models/Telegram.php(25): App\Models\HTTP->request([...])
+ 7 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 09:51:09 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php:41
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Format/JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(348): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /ext/WWW/konex.com.ua/zayavki/system/API/ResponseTrait.php(99): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /ext/WWW/konex.com.ua/zayavki/system/Debug/Exceptions.php(133): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#5 {main}
+  thrown
+in SYSTEMPATH/Format/JSONFormatter.php on line 41.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-03-06 09:58:52 --> syntax error, unexpected '}'
+in APPPATH/Models/Search.php on line 464.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Search.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Search')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Search')
+ 4 APPPATH/Controllers/Meters.php(24): spl_autoload_call('App\\Models\\Search')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 09:59:51 --> syntax error, unexpected '}'
+in APPPATH/Models/Search.php on line 464.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Search.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Search')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Search')
+ 4 APPPATH/Controllers/Meters.php(24): spl_autoload_call('App\\Models\\Search')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 10:00:52 --> syntax error, unexpected '}'
+in APPPATH/Models/Search.php on line 467.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Search.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Search')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Search')
+ 4 APPPATH/Controllers/Meters.php(24): spl_autoload_call('App\\Models\\Search')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 10:03:12 --> syntax error, unexpected '$this' (T_VARIABLE)
+in APPPATH/Models/Telegram.php on line 63.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Telegram.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Telegram')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Telegram')
+ 4 APPPATH/Controllers/Meters.php(26): spl_autoload_call('App\\Models\\Telegram')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 10:07:30 --> You must set the database table to be used with your query.
+in SYSTEMPATH/Database/BaseConnection.php on line 845.
+ 1 SYSTEMPATH/Model.php(587): CodeIgniter\Database\BaseConnection->table(null)
+ 2 SYSTEMPATH/Model.php(764): CodeIgniter\Model->builder()
+ 3 APPPATH/Models/Telegram.php(62): CodeIgniter\Model->__call('findCountersByArea', [...])
+ 4 APPPATH/Models/Telegram.php(27): App\Models\Telegram->callback(Object(stdClass), Object(stdClass))
+ 5 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 10:08:30 --> You must set the database table to be used with your query.
+in SYSTEMPATH/Database/BaseConnection.php on line 845.
+ 1 SYSTEMPATH/Model.php(587): CodeIgniter\Database\BaseConnection->table(null)
+ 2 SYSTEMPATH/Model.php(764): CodeIgniter\Model->builder()
+ 3 APPPATH/Models/Telegram.php(62): CodeIgniter\Model->__call('findCountersByArea', [...])
+ 4 APPPATH/Models/Telegram.php(27): App\Models\Telegram->callback(Object(stdClass), Object(stdClass))
+ 5 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 10:08:37 --> You must set the database table to be used with your query.
+in SYSTEMPATH/Database/BaseConnection.php on line 845.
+ 1 SYSTEMPATH/Model.php(587): CodeIgniter\Database\BaseConnection->table(null)
+ 2 SYSTEMPATH/Model.php(764): CodeIgniter\Model->builder()
+ 3 APPPATH/Models/Telegram.php(62): CodeIgniter\Model->__call('findCountersByArea', [...])
+ 4 APPPATH/Models/Telegram.php(27): App\Models\Telegram->callback(Object(stdClass), Object(stdClass))
+ 5 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 10:08:55 --> You must set the database table to be used with your query.
+in SYSTEMPATH/Database/BaseConnection.php on line 845.
+ 1 SYSTEMPATH/Model.php(587): CodeIgniter\Database\BaseConnection->table(null)
+ 2 SYSTEMPATH/Model.php(764): CodeIgniter\Model->builder()
+ 3 APPPATH/Models/Telegram.php(62): CodeIgniter\Model->__call('findCountersByArea', [...])
+ 4 APPPATH/Models/Telegram.php(27): App\Models\Telegram->callback(Object(stdClass), Object(stdClass))
+ 5 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 10:09:45 --> You must set the database table to be used with your query.
+in SYSTEMPATH/Database/BaseConnection.php on line 845.
+ 1 SYSTEMPATH/Model.php(587): CodeIgniter\Database\BaseConnection->table(null)
+ 2 SYSTEMPATH/Model.php(764): CodeIgniter\Model->builder()
+ 3 APPPATH/Models/Telegram.php(62): CodeIgniter\Model->__call('findCountersByArea', [...])
+ 4 APPPATH/Models/Telegram.php(27): App\Models\Telegram->callback(Object(stdClass), Object(stdClass))
+ 5 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-06 10:10:45 --> You must set the database table to be used with your query.
+in SYSTEMPATH/Database/BaseConnection.php on line 845.
+ 1 SYSTEMPATH/Model.php(587): CodeIgniter\Database\BaseConnection->table(null)
+ 2 SYSTEMPATH/Model.php(764): CodeIgniter\Model->builder()
+ 3 APPPATH/Models/Telegram.php(62): CodeIgniter\Model->__call('findCountersByArea', [...])
+ 4 APPPATH/Models/Telegram.php(27): App\Models\Telegram->callback(Object(stdClass), Object(stdClass))
+ 5 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

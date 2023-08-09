@@ -1,0 +1,8 @@
+CRITICAL - 2023-04-05 07:55:03 --> Trying to get property 'message' of non-object
+in APPPATH/Models/Telegram.php on line 16.
+ 1 APPPATH/Models/Telegram.php(16): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'message\' of non-object', 'APPPATH/Models/Telegram.php', 16, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(null)
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

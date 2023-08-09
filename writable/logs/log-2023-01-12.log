@@ -1,0 +1,580 @@
+CRITICAL - 2023-01-12 06:12:31 --> Undefined property: App\Controllers\Home::$
+in APPPATH/Controllers/Home.php on line 20.
+ 1 APPPATH/Controllers/Home.php(20): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\Home::$', 'APPPATH/Controllers/Home.php', 20, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:12:40 --> Call to a member function getFirstNameByid() on null
+in APPPATH/Controllers/Home.php on line 20.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:12:59 --> Call to a member function getFirstEl() on null
+in APPPATH/Controllers/Home.php on line 20.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:13:24 --> syntax error, unexpected 'if' (T_IF)
+in APPPATH/Controllers/Home.php on line 20.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/Home.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Home')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Home')
+ 4 [internal function]: spl_autoload_call('App\\Controllers\\Home')
+ 5 SYSTEMPATH/CodeIgniter.php(877): class_exists('\\App\\Controllers\\Home', true)
+ 6 SYSTEMPATH/CodeIgniter.php(469): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:13:37 --> syntax error, unexpected 'if' (T_IF)
+in APPPATH/Controllers/Home.php on line 20.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/Home.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Home')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Home')
+ 4 [internal function]: spl_autoload_call('App\\Controllers\\Home')
+ 5 SYSTEMPATH/CodeIgniter.php(877): class_exists('\\App\\Controllers\\Home', true)
+ 6 SYSTEMPATH/CodeIgniter.php(469): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:13:41 --> Call to a member function getFirstEl() on null
+in APPPATH/Controllers/Home.php on line 18.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:14:14 --> Call to a member function getFirstEl() on null
+in APPPATH/Controllers/Home.php on line 18.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:14:20 --> Call to a member function getFirstEl() on null
+in APPPATH/Controllers/Home.php on line 18.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:15:15 --> Cannot use object of type stdClass as array
+in APPPATH/Views/test.php on line 7.
+ 1 SYSTEMPATH/View/View.php(213): include()
+ 2 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('test', [], true)
+ 4 APPPATH/Controllers/Home.php(20): view('test', [...])
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:16:15 --> Cannot use object of type stdClass as array
+in APPPATH/Views/test.php on line 7.
+ 1 SYSTEMPATH/View/View.php(213): include()
+ 2 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('test', [], true)
+ 4 APPPATH/Controllers/Home.php(20): view('test', [...])
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:16:24 --> Cannot use object of type stdClass as array
+in APPPATH/Views/test.php on line 7.
+ 1 SYSTEMPATH/View/View.php(213): include()
+ 2 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('test', [], true)
+ 4 APPPATH/Controllers/Home.php(20): view('test', [...])
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:16:41 --> Cannot use object of type stdClass as array
+in APPPATH/Views/test.php on line 7.
+ 1 SYSTEMPATH/View/View.php(213): include()
+ 2 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('test', [], true)
+ 4 APPPATH/Controllers/Home.php(20): view('test', [...])
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:16:44 --> Cannot use object of type stdClass as array
+in APPPATH/Views/test.php on line 7.
+ 1 SYSTEMPATH/View/View.php(213): include()
+ 2 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('test', [], true)
+ 4 APPPATH/Controllers/Home.php(20): view('test', [...])
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:16:46 --> Cannot use object of type stdClass as array
+in APPPATH/Views/test.php on line 7.
+ 1 SYSTEMPATH/View/View.php(213): include()
+ 2 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('test', [], true)
+ 4 APPPATH/Controllers/Home.php(20): view('test', [...])
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:17:25 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::getValue()
+in APPPATH/Models/TestModel.php on line 17.
+ 1 APPPATH/Controllers/Home.php(20): App\Models\TestModel->getFirstNameById('14')
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:17:44 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::getValue()
+in APPPATH/Models/TestModel.php on line 17.
+ 1 APPPATH/Controllers/Home.php(20): App\Models\TestModel->getFirstNameById('14')
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:20:25 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::get()
+in APPPATH/Models/TestModel.php on line 17.
+ 1 APPPATH/Controllers/Home.php(20): App\Models\TestModel->getFirstNameById('14')
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:23:03 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::result_array()
+in APPPATH/Models/TestModel.php on line 12.
+ 1 APPPATH/Controllers/Home.php(18): App\Models\TestModel->getFirstEl()
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:23:34 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::result_object()
+in APPPATH/Models/TestModel.php on line 12.
+ 1 APPPATH/Controllers/Home.php(18): App\Models\TestModel->getFirstEl()
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:24:56 --> Cannot use object of type stdClass as array
+in APPPATH/Views/test.php on line 7.
+ 1 SYSTEMPATH/View/View.php(213): include()
+ 2 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('test', [], true)
+ 4 APPPATH/Controllers/Home.php(20): view('test', [...])
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:25:10 --> Function name must be a string
+in APPPATH/Views/test.php on line 7.
+ 1 SYSTEMPATH/View/View.php(213): include()
+ 2 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('test', [], true)
+ 4 APPPATH/Controllers/Home.php(20): view('test', [...])
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:39:00 --> Object of class CodeIgniter\Cache\Handlers\FileHandler could not be converted to string
+in APPPATH/Views/test.php on line 10.
+ 1 SYSTEMPATH/View/View.php(213): include()
+ 2 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('test', [], true)
+ 4 APPPATH/Controllers/Home.php(20): view('test', [...])
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:52:39 --> Undefined index: word
+in APPPATH/Controllers/Home.php on line 25.
+ 1 APPPATH/Controllers/Home.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: word', 'APPPATH/Controllers/Home.php', 25, [])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->say()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:53:09 --> Undefined index: word
+in APPPATH/Controllers/Home.php on line 25.
+ 1 APPPATH/Controllers/Home.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: word', 'APPPATH/Controllers/Home.php', 25, [])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->say()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:53:23 --> Undefined index: sessText
+in APPPATH/Controllers/Home.php on line 30.
+ 1 APPPATH/Controllers/Home.php(30): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: sessText', 'APPPATH/Controllers/Home.php', 30, [])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:54:24 --> Undefined index: sessText
+in APPPATH/Controllers/Home.php on line 30.
+ 1 APPPATH/Controllers/Home.php(30): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: sessText', 'APPPATH/Controllers/Home.php', 30, [])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:55:29 --> Undefined index: sessText
+in APPPATH/Controllers/Home.php on line 30.
+ 1 APPPATH/Controllers/Home.php(30): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: sessText', 'APPPATH/Controllers/Home.php', 30, [])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:55:31 --> Undefined index: sessText
+in APPPATH/Controllers/Home.php on line 30.
+ 1 APPPATH/Controllers/Home.php(30): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: sessText', 'APPPATH/Controllers/Home.php', 30, [])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:55:57 --> Invalid file: sessTest.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('sessTest.php')
+ 2 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 3 APPPATH/Controllers/Home.php(32): view('sessTest')
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:57:40 --> syntax error, unexpected ';'
+in APPPATH/Controllers/Home.php on line 30.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/Home.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Home')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Home')
+ 4 [internal function]: spl_autoload_call('App\\Controllers\\Home')
+ 5 SYSTEMPATH/CodeIgniter.php(877): class_exists('\\App\\Controllers\\Home', true)
+ 6 SYSTEMPATH/CodeIgniter.php(469): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:57:54 --> syntax error, unexpected ';'
+in APPPATH/Controllers/Home.php on line 30.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/Home.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Home')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Home')
+ 4 [internal function]: spl_autoload_call('App\\Controllers\\Home')
+ 5 SYSTEMPATH/CodeIgniter.php(877): class_exists('\\App\\Controllers\\Home', true)
+ 6 SYSTEMPATH/CodeIgniter.php(469): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:58:17 --> Invalid file: sessTest.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('sessTest.php')
+ 2 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 3 APPPATH/Controllers/Home.php(32): view('sessTest')
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:58:30 --> Invalid file: sessTest.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('sessTest.php')
+ 2 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 3 APPPATH/Controllers/Home.php(32): view('sessTest')
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:59:37 --> Invalid file: sessTest.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('sessTest.php')
+ 2 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 3 APPPATH/Controllers/Home.php(32): view('sessTest', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 06:59:47 --> Invalid file: sessTest.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('sessTest.php')
+ 2 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 3 APPPATH/Controllers/Home.php(32): view('sessTest', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:00:00 --> Invalid file: sessTest.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('sessTest.php')
+ 2 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 3 APPPATH/Controllers/Home.php(32): view('sessTest', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:00:04 --> Invalid file: sessTest.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('sessTest.php')
+ 2 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 3 APPPATH/Controllers/Home.php(32): view('sessTest', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:00:07 --> Invalid file: sessTest.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('sessTest.php')
+ 2 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 3 APPPATH/Controllers/Home.php(32): view('sessTest', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:00:29 --> Undefined index: sessText
+in APPPATH/Controllers/Home.php on line 32.
+ 1 APPPATH/Controllers/Home.php(32): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: sessText', 'APPPATH/Controllers/Home.php', 32, [])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:00:51 --> Invalid file: sessTest.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('sessTest.php')
+ 2 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 3 APPPATH/Controllers/Home.php(32): view('sessTest', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:01:22 --> Invalid file: sessTest.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('sessTest.php')
+ 2 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 3 APPPATH/Controllers/Home.php(32): view('sessTest', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:04:46 --> Undefined variable: text
+in APPPATH/Views/sessTest.php on line 10.
+ 1 APPPATH/Views/sessTest.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: text', 'APPPATH/Views/sessTest.php', 10, [])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/sessTest.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 5 APPPATH/Controllers/Home.php(31): view('sessTest')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:04:57 --> Undefined index: text
+in APPPATH/Views/sessTest.php on line 10.
+ 1 APPPATH/Views/sessTest.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: text', 'APPPATH/Views/sessTest.php', 10, [])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/sessTest.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 5 APPPATH/Controllers/Home.php(31): view('sessTest')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:05:08 --> Undefined index: text
+in APPPATH/Views/sessTest.php on line 9.
+ 1 APPPATH/Views/sessTest.php(9): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: text', 'APPPATH/Views/sessTest.php', 9, [])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/sessTest.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 5 APPPATH/Controllers/Home.php(31): view('sessTest')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:05:18 --> Undefined index: text
+in APPPATH/Views/sessTest.php on line 9.
+ 1 APPPATH/Views/sessTest.php(9): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: text', 'APPPATH/Views/sessTest.php', 9, [])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/sessTest.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 5 APPPATH/Controllers/Home.php(31): view('sessTest')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:05:24 --> Undefined index: text
+in APPPATH/Views/sessTest.php on line 9.
+ 1 APPPATH/Views/sessTest.php(9): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: text', 'APPPATH/Views/sessTest.php', 9, [])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/sessTest.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 5 APPPATH/Controllers/Home.php(31): view('sessTest')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:07:36 --> Undefined index: text
+in APPPATH/Views/sessTest.php on line 3.
+ 1 APPPATH/Views/sessTest.php(3): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: text', 'APPPATH/Views/sessTest.php', 3, [])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/sessTest.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 5 APPPATH/Controllers/Home.php(31): view('sessTest')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:08:07 --> Undefined variable: sessText
+in APPPATH/Controllers/Home.php on line 31.
+ 1 APPPATH/Controllers/Home.php(31): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: sessText', 'APPPATH/Controllers/Home.php', 31, [])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:11:47 --> syntax error, unexpected '\' (T_NS_SEPARATOR), expecting ';' or ','
+in APPPATH/Views/sessTest.php on line 3.
+ 1 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 3 APPPATH/Controllers/Home.php(31): view('sessTest', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:24:28 --> Trying to get property 'name' of non-object
+in APPPATH/Views/test.php on line 7.
+ 1 APPPATH/Views/test.php(7): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'name\' of non-object', 'APPPATH/Views/test.php', 7, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/test.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('test', [], true)
+ 5 APPPATH/Controllers/Home.php(18): view('test', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->test()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:39:58 --> Undefined property: App\Controllers\Home::$session
+in APPPATH/Controllers/Home.php on line 32.
+ 1 APPPATH/Controllers/Home.php(32): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\Home::$session', 'APPPATH/Controllers/Home.php', 32, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:43:24 --> syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')'
+in APPPATH/Views/sessTest.php on line 4.
+ 1 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 3 APPPATH/Controllers/Home.php(31): view('sessTest', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:43:38 --> Undefined property: CodeIgniter\View\View::$session
+in APPPATH/Views/sessTest.php on line 4.
+ 1 APPPATH/Views/sessTest.php(4): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: CodeIgniter\\View\\View::$session', 'APPPATH/Views/sessTest.php', 4, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/sessTest.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 5 APPPATH/Controllers/Home.php(31): view('sessTest', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:43:50 --> Undefined property: CodeIgniter\View\View::$session
+in APPPATH/Views/sessTest.php on line 4.
+ 1 APPPATH/Views/sessTest.php(4): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: CodeIgniter\\View\\View::$session', 'APPPATH/Views/sessTest.php', 4, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/sessTest.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 5 APPPATH/Controllers/Home.php(31): view('sessTest', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:43:55 --> Undefined property: CodeIgniter\View\View::$session
+in APPPATH/Views/sessTest.php on line 4.
+ 1 APPPATH/Views/sessTest.php(4): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: CodeIgniter\\View\\View::$session', 'APPPATH/Views/sessTest.php', 4, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/sessTest.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 5 APPPATH/Controllers/Home.php(31): view('sessTest', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:44:19 --> Undefined property: CodeIgniter\View\View::$session
+in APPPATH/Views/sessTest.php on line 4.
+ 1 APPPATH/Views/sessTest.php(4): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: CodeIgniter\\View\\View::$session', 'APPPATH/Views/sessTest.php', 4, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/sessTest.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 5 APPPATH/Controllers/Home.php(31): view('sessTest', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:45:16 --> Undefined property: CodeIgniter\View\View::$session
+in APPPATH/Views/sessTest.php on line 4.
+ 1 APPPATH/Views/sessTest.php(4): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: CodeIgniter\\View\\View::$session', 'APPPATH/Views/sessTest.php', 4, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/sessTest.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 5 APPPATH/Controllers/Home.php(31): view('sessTest', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:45:28 --> Undefined property: CodeIgniter\View\View::$session
+in APPPATH/Views/sessTest.php on line 4.
+ 1 APPPATH/Views/sessTest.php(4): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: CodeIgniter\\View\\View::$session', 'APPPATH/Views/sessTest.php', 4, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/sessTest.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 5 APPPATH/Controllers/Home.php(31): view('sessTest', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:45:29 --> Undefined property: CodeIgniter\View\View::$session
+in APPPATH/Views/sessTest.php on line 4.
+ 1 APPPATH/Views/sessTest.php(4): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: CodeIgniter\\View\\View::$session', 'APPPATH/Views/sessTest.php', 4, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/sessTest.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 5 APPPATH/Controllers/Home.php(31): view('sessTest', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:45:48 --> Undefined property: CodeIgniter\View\View::$session
+in APPPATH/Views/sessTest.php on line 4.
+ 1 APPPATH/Views/sessTest.php(4): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: CodeIgniter\\View\\View::$session', 'APPPATH/Views/sessTest.php', 4, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/sessTest.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 5 APPPATH/Controllers/Home.php(31): view('sessTest', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 07:48:07 --> Undefined variable: _SESSION
+in APPPATH/Views/sessTest.php on line 3.
+ 1 APPPATH/Views/sessTest.php(3): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: _SESSION', 'APPPATH/Views/sessTest.php', 3, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/sessTest.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('sessTest', [], true)
+ 5 APPPATH/Controllers/Home.php(31): view('sessTest', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 08:03:28 --> syntax error, unexpected '[', expecting variable (T_VARIABLE) or '{' or '$'
+in APPPATH/Controllers/Home.php on line 30.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/Home.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Home')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Home')
+ 4 [internal function]: spl_autoload_call('App\\Controllers\\Home')
+ 5 SYSTEMPATH/CodeIgniter.php(877): class_exists('\\App\\Controllers\\Home', true)
+ 6 SYSTEMPATH/CodeIgniter.php(469): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 08:04:55 --> Undefined property: App\Controllers\Home::$input
+in APPPATH/Controllers/Home.php on line 30.
+ 1 APPPATH/Controllers/Home.php(30): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\Home::$input', 'APPPATH/Controllers/Home.php', 30, [])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->sessionTest()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 12:06:56 --> Undefined index: word
+in APPPATH/Controllers/Home.php on line 25.
+ 1 APPPATH/Controllers/Home.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: word', 'APPPATH/Controllers/Home.php', 25, [])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->say()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-12 12:09:57 --> Undefined index: word
+in APPPATH/Controllers/Home.php on line 25.
+ 1 APPPATH/Controllers/Home.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: word', 'APPPATH/Controllers/Home.php', 25, [])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->say()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

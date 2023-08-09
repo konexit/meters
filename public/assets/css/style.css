@@ -1,0 +1,354 @@
+/*--------��������------------*/
+#cYear {
+    display: none;
+}
+
+.editPokaz {
+    cursor: pointer;
+}
+
+#counterList {
+    margin: 0 auto;
+}
+
+#countStat {
+    display: none;
+}
+
+#inputPokaz {
+    display: none;
+}
+
+.bcType {
+    float: right;
+    padding-left: 35px;
+}
+
+#cNumer {
+    width: 150px;
+    font-size: 12pt;
+}
+
+#buttCounter {
+    font-size: 16pt;
+}
+
+#counterList {
+    display: none;
+}
+
+#counter {
+    display: none;
+}
+
+#mCounter {
+    display: none;
+}
+
+/*--------����------------*/
+ul.menu {
+    margin: auto;
+    padding: 0;
+    height: 30px;
+    width: 100%;
+    background-color: brown;
+}
+
+ul.menu li {
+    float: left;
+    list-style: none;
+}
+
+ul.menu li a {
+    color: White;
+    display: block;
+    padding: 6px 6px;
+    text-decoration: none;
+}
+
+
+/**
+ *  ul.menu li :hover {
+ *      color:#E88F00;
+ *    text-decoration:none;
+ *    text-shadow:1px 2px 3px #ddd;
+ *    background-position: -99.99% 0;
+ *  }
+ */
+
+
+
+ul.menu li a:hover {
+    background-color: maroon;
+}
+
+ul.menu li ul {
+    display: none;
+    margin-left: 12px;
+    padding: 0px;
+    z-index: 10;
+}
+
+ul.menu li:hover ul {
+    display: block;
+    position: absolute;
+}
+
+ul.menu li:hover ul li {
+    float: none;
+    background-color: brown;
+}
+
+ul.menu ul li {
+    padding: 1px;
+}
+
+ul.menu ul li a {
+    color: white;
+    padding: 6px 12px;
+}
+
+/**
+ * ul.menu ul li a:hover {
+ *     color:#E88F00;
+ *   text-decoration:none;
+ *   text-shadow:1px 2px 3px #ddd;
+ *   background-position: -99.99% 0;;
+ * }
+ */
+
+ul.menu li:hover ul li a {
+    padding: 8px;
+}
+
+/*----------------------------*/
+#cPass {
+    display: none;
+}
+
+#butArea {
+    position: relative;
+    width: 150px;
+    left: 850px;
+
+}
+
+#bconfirm {
+    position: relative;
+    margin-left: 630px;
+}
+
+#bidNam {
+    width: 150px;
+    font-size: 12pt;
+}
+
+#bFinBid {
+    font-size: 14pt;
+}
+
+#table {
+    width: 100%;
+    display: none;
+    position: relative;
+}
+
+#text {
+    width: 99%;
+    height: 100px;
+    font-size: 12pt;
+    resize: none;
+}
+
+#afterLogin {
+    display: none;
+}
+
+.headContent {
+    position: relative;
+    margin: 0 auto;
+    width: 1000px;
+    top: 10px;
+}
+
+#usl {
+    font-size: 14pt;
+    width: 240px;
+}
+
+#usp {
+    font-size: 14pt;
+}
+
+#login {
+    position: relative;
+    margin: 0 auto;
+    width: 370px;
+}
+
+#submit {
+    position: relative;
+    font-size: 14px;
+    width: 100px;
+    left: 125px;
+}
+
+input[type="text"] {
+    border: 2px solid #cccccc;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -khtml-border-radius: 6px;
+    background: #ffffff !important;
+    outline: none;
+    height: 24px;
+    width: 420px;
+    color: #000000;
+    font-size: 20px;
+    font-family: Tahoma;
+}
+
+#heada {
+    width: 100%;
+}
+
+h2 {
+    color: green;
+}
+
+/**
+ * #menu{
+ *     position: relative;
+ *     font-size: 14pt;
+ *     width: 100%;
+ *     background-color: brown;
+ * }
+ * .menu a{
+ *     color: white;
+ *     padding-left: 10px;
+ *     padding-right: 10px;
+ *     cursor: pointer;
+ * }
+ * .menu a:hover{
+ *     color:#E88F00;
+ *     text-decoration:none;
+ *     text-shadow:1px 2px 3px #ddd;
+ *     background-position: -99.99% 0;
+ * }
+ */
+#adminMenu {
+    position: relative;
+    font-size: 14pt;
+    width: 100%;
+    background-color: brown;
+}
+
+#exit {
+    float: right;
+    position: relative;
+    right: 10px;
+    top: -35px;
+    cursor: pointer;
+}
+
+#exita {
+    padding: 10px;
+}
+
+#id {
+    padding: 10px
+}
+
+#adminPanel {
+    display: none;
+}
+
+#mAdmin {
+    display: none;
+}
+
+.menItem {
+    cursor: pointer;
+}
+
+#menu {
+    font-size: 14px;
+}
+
+.login-error {
+    margin-top: 20px;
+    padding: 5px 17px 5px 0;
+    width: max-content;
+    border-radius: 8px;
+    background-color: #fffbb4;
+    font-size: 14px;
+}
+
+.form-report-counter {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 700px;
+    margin: 0 auto;
+}
+
+.label-report-counter {
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.input-report-counter {
+    margin-bottom: 14px;
+}
+
+.select-report-counter {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-report-counter {
+    border-radius: 4px;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2), 0 2px 11px 0 rgba(0, 0, 0, -2.81);
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-report-counter:hover {
+    background-color: #45a049;
+}
+
+.company-table {
+    border-collapse: collapse;
+    width: 100%
+}
+
+.company-table th,
+.company-table td {
+    padding: 5px;
+    border: solid 1px #777;
+}
+
+.company-table th {
+    position: sticky;
+    top: 0; 
+    background-color: lightblue;
+}
+
+.input-color {
+    width: 100%;
+}
+
+#pharmacyType {
+    margin-top: 5px;
+    border: solid 1px #777;
+    height: 370px;
+    overflow: auto;
+}

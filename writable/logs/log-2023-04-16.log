@@ -1,0 +1,1098 @@
+CRITICAL - 2023-04-16 00:01:47 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:03:39 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:05:09 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:06:41 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:07:51 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:09:36 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:11:07 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:12:52 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:14:29 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:15:32 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:17:11 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:18:47 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:20:07 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:21:14 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:22:45 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:24:24 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:26:13 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:27:58 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:29:29 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:31:22 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:33:20 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:34:28 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:36:03 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:37:40 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:38:47 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:40:41 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:42:17 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:44:08 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:46:05 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:47:55 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:49:44 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:51:16 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:52:48 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:54:15 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:55:15 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:56:23 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:57:45 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 00:58:48 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:00:23 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:01:37 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:03:28 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:05:06 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:06:35 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:07:43 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:09:32 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:10:36 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:12:37 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:13:49 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:15:42 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:17:18 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:18:23 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:20:03 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:21:06 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:22:58 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:24:17 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:25:34 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:27:30 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:28:46 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:30:46 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:32:09 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:34:06 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:35:56 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:37:11 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:38:26 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:39:54 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:41:19 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:42:27 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:43:45 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:45:19 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:46:57 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:47:58 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:49:54 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:51:27 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:52:32 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:54:17 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:56:18 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:57:53 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 01:59:45 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:01:02 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:02:05 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:03:25 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:04:38 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:05:53 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:07:17 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:08:50 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:10:50 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:12:33 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:13:48 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:15:46 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:17:05 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:18:53 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:20:43 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:22:20 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:23:39 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:24:58 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:26:13 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:27:35 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:29:27 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:31:19 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:33:13 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:34:38 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:36:24 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:38:19 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:40:02 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:41:53 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:43:27 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:45:24 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:47:10 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:48:39 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:49:58 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:51:57 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:53:28 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:55:12 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:57:12 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:59:02 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:59:02 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:59:03 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:59:05 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:59:10 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:59:18 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 02:59:34 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-16 03:00:06 --> Undefined property: stdClass::$text
+in APPPATH/Models/Telegram.php on line 76.
+ 1 APPPATH/Models/Telegram.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$text', 'APPPATH/Models/Telegram.php', 76, [...])
+ 2 APPPATH/Models/Telegram.php(17): App\Models\Telegram->message(Object(stdClass), 1613113283)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

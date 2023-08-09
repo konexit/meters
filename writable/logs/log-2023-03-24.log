@@ -1,0 +1,251 @@
+ERROR - 2023-03-24 02:33:02 --> mysqli_sql_exception: Unknown column 'c.state' in 'field list' in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT c.id, c....', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT c.id, c....')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT c.id, c....')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(486): CodeIgniter\Database\BaseConnection->query('SELECT c.id, c....')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(51): App\Models\Search->getCounter('', '')
+#5 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(120): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-03-24 02:33:02 --> Unknown column 'c.state' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT c.id, c.counterId AS ci, c.counterName AS cn, a.addr, a.unit, ct.Name, c.ctype, c.spokaz, c.state
+                                        FROM counter AS c 
+                                        JOIN area AS a ON a.id = c.unit 
+                                        JOIN conterType AS ct ON ct.id = c.typeC  
+                                        ORDER BY c.state DESC, a.unit', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT c.id, c.counterId AS ci, c.counterName AS cn, a.addr, a.unit, ct.Name, c.ctype, c.spokaz, c.state
+                                        FROM counter AS c 
+                                        JOIN area AS a ON a.id = c.unit 
+                                        JOIN conterType AS ct ON ct.id = c.typeC  
+                                        ORDER BY c.state DESC, a.unit')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT c.id, c.counterId AS ci, c.counterName AS cn, a.addr, a.unit, ct.Name, c.ctype, c.spokaz, c.state
+                                        FROM counter AS c 
+                                        JOIN area AS a ON a.id = c.unit 
+                                        JOIN conterType AS ct ON ct.id = c.typeC  
+                                        ORDER BY c.state DESC, a.unit')
+ 4 APPPATH/Models/Search.php(486): CodeIgniter\Database\BaseConnection->query('SELECT c.id, c.counterId AS ci, c.counterName AS cn, a.addr, a.unit, ct.Name, c.ctype, c.spokaz, c.state
+                                        FROM counter AS c 
+                                        JOIN area AS a ON a.id = c.unit 
+                                        JOIN conterType AS ct ON ct.id = c.typeC  
+                                        ORDER BY c.state DESC, a.unit')
+ 5 APPPATH/Models/Search.php(51): App\Models\Search->getCounter('ROOTPATH/public', 'ROOTPATH/public')
+ 6 APPPATH/Controllers/Meters.php(120): App\Models\Search->getCounters(Object(CodeIgniter\HTTP\IncomingRequest))
+ 7 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 8 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 9 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 02:52:53 --> Trying to get property 'telegramState' of non-object
+in APPPATH/Models/Telegram.php on line 86.
+ 1 APPPATH/Models/Telegram.php(86): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'telegramState\' of non-object', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 02:52:53 --> Trying to get property 'telegramState' of non-object
+in APPPATH/Models/Telegram.php on line 86.
+ 1 APPPATH/Models/Telegram.php(86): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'telegramState\' of non-object', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 02:52:55 --> Trying to get property 'telegramState' of non-object
+in APPPATH/Models/Telegram.php on line 86.
+ 1 APPPATH/Models/Telegram.php(86): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'telegramState\' of non-object', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 02:52:59 --> Trying to get property 'telegramState' of non-object
+in APPPATH/Models/Telegram.php on line 86.
+ 1 APPPATH/Models/Telegram.php(86): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'telegramState\' of non-object', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 02:53:07 --> Trying to get property 'telegramState' of non-object
+in APPPATH/Models/Telegram.php on line 86.
+ 1 APPPATH/Models/Telegram.php(86): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'telegramState\' of non-object', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 03:06:08 --> Trying to get property 'telegramState' of non-object
+in APPPATH/Models/Telegram.php on line 86.
+ 1 APPPATH/Models/Telegram.php(86): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'telegramState\' of non-object', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 542389660)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 03:06:08 --> Trying to get property 'telegramState' of non-object
+in APPPATH/Models/Telegram.php on line 86.
+ 1 APPPATH/Models/Telegram.php(86): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'telegramState\' of non-object', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 542389660)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 03:06:10 --> Trying to get property 'telegramState' of non-object
+in APPPATH/Models/Telegram.php on line 86.
+ 1 APPPATH/Models/Telegram.php(86): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'telegramState\' of non-object', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 542389660)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 03:06:14 --> Trying to get property 'telegramState' of non-object
+in APPPATH/Models/Telegram.php on line 86.
+ 1 APPPATH/Models/Telegram.php(86): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'telegramState\' of non-object', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 542389660)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 03:06:22 --> Trying to get property 'telegramState' of non-object
+in APPPATH/Models/Telegram.php on line 86.
+ 1 APPPATH/Models/Telegram.php(86): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'telegramState\' of non-object', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 542389660)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 03:06:38 --> Trying to get property 'telegramState' of non-object
+in APPPATH/Models/Telegram.php on line 86.
+ 1 APPPATH/Models/Telegram.php(86): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'telegramState\' of non-object', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 542389660)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 03:13:31 --> Trying to get property 'telegramState' of non-object
+in APPPATH/Models/Telegram.php on line 86.
+ 1 APPPATH/Models/Telegram.php(86): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'telegramState\' of non-object', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 03:13:31 --> Trying to get property 'telegramState' of non-object
+in APPPATH/Models/Telegram.php on line 86.
+ 1 APPPATH/Models/Telegram.php(86): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'telegramState\' of non-object', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 03:13:33 --> Trying to get property 'telegramState' of non-object
+in APPPATH/Models/Telegram.php on line 86.
+ 1 APPPATH/Models/Telegram.php(86): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'telegramState\' of non-object', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 03:13:37 --> Trying to get property 'telegramState' of non-object
+in APPPATH/Models/Telegram.php on line 86.
+ 1 APPPATH/Models/Telegram.php(86): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'telegramState\' of non-object', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 03:13:46 --> Trying to get property 'telegramState' of non-object
+in APPPATH/Models/Telegram.php on line 86.
+ 1 APPPATH/Models/Telegram.php(86): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'telegramState\' of non-object', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 03:14:02 --> Trying to get property 'telegramState' of non-object
+in APPPATH/Models/Telegram.php on line 86.
+ 1 APPPATH/Models/Telegram.php(86): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'telegramState\' of non-object', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 03:14:34 --> Trying to get property 'telegramState' of non-object
+in APPPATH/Models/Telegram.php on line 86.
+ 1 APPPATH/Models/Telegram.php(86): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'telegramState\' of non-object', 'APPPATH/Models/Telegram.php', 86, [...])
+ 2 APPPATH/Models/Telegram.php(22): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 05:57:52 --> Array to string conversion
+in APPPATH/Models/Telegram.php on line 39.
+ 1 APPPATH/Models/Telegram.php(39): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'APPPATH/Models/Telegram.php', 39, [...])
+ 2 APPPATH/Controllers/Meters.php(173): App\Models\Telegram->telegramUpdates()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegramUpdates()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 05:59:21 --> Array to string conversion
+in APPPATH/Models/Telegram.php on line 39.
+ 1 APPPATH/Models/Telegram.php(39): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'APPPATH/Models/Telegram.php', 39, [...])
+ 2 APPPATH/Controllers/Meters.php(173): App\Models\Telegram->telegramUpdates()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegramUpdates()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 05:59:49 --> Array to string conversion
+in APPPATH/Models/Telegram.php on line 39.
+ 1 APPPATH/Models/Telegram.php(39): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'APPPATH/Models/Telegram.php', 39, [...])
+ 2 APPPATH/Controllers/Meters.php(173): App\Models\Telegram->telegramUpdates()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegramUpdates()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 05:59:54 --> Array to string conversion
+in APPPATH/Models/Telegram.php on line 39.
+ 1 APPPATH/Models/Telegram.php(39): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'APPPATH/Models/Telegram.php', 39, [...])
+ 2 APPPATH/Controllers/Meters.php(173): App\Models\Telegram->telegramUpdates()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegramUpdates()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 06:08:17 --> Cannot use [] for reading
+in APPPATH/Models/Telegram.php on line 39.
+ 1 APPPATH/Controllers/Meters.php(173): App\Models\Telegram->telegramUpdates()
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegramUpdates()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-24 06:10:07 --> Array to string conversion
+in APPPATH/Models/Telegram.php on line 39.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'APPPATH/Models/Telegram.php', 39, [...])
+ 2 APPPATH/Models/Telegram.php(39): implode('ROOTPATH/public', [...])
+ 3 APPPATH/Controllers/Meters.php(173): App\Models\Telegram->telegramUpdates()
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegramUpdates()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

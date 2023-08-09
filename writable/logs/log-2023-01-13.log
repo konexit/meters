@@ -1,0 +1,511 @@
+CRITICAL - 2023-01-13 07:10:29 --> Undefined variable: userArr
+in APPPATH/Views/login.php on line 4.
+ 1 APPPATH/Views/login.php(4): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: userArr', 'APPPATH/Views/login.php', 4, [])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/login.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('login', [], true)
+ 5 APPPATH/Controllers/Home.php(9): view('login')
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->index()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 07:40:37 --> Class 'CI_Controller' not found
+in APPPATH/Controllers/main.php on line 2.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(282): include_once()
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/main.php')
+ 3 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\main')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\main')
+ 5 [internal function]: spl_autoload_call('App\\Controllers\\main')
+ 6 SYSTEMPATH/CodeIgniter.php(877): class_exists('\\App\\Controllers\\main', true)
+ 7 SYSTEMPATH/CodeIgniter.php(469): CodeIgniter\CodeIgniter->startController()
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 07:40:49 --> Class 'Controller' not found
+in APPPATH/Controllers/main.php on line 2.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(282): include_once()
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/main.php')
+ 3 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\main')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\main')
+ 5 [internal function]: spl_autoload_call('App\\Controllers\\main')
+ 6 SYSTEMPATH/CodeIgniter.php(877): class_exists('\\App\\Controllers\\main', true)
+ 7 SYSTEMPATH/CodeIgniter.php(469): CodeIgniter\CodeIgniter->startController()
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 07:42:11 --> Undefined property: App\Controllers\Main::$session
+in APPPATH/Controllers/main.php on line 56.
+ 1 APPPATH/Controllers/main.php(56): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\Main::$session', 'APPPATH/Controllers/main.php', 56, [])
+ 2 APPPATH/Controllers/main.php(16): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 07:42:33 --> Undefined variable: usDat
+in APPPATH/Controllers/main.php on line 17.
+ 1 APPPATH/Controllers/main.php(17): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: usDat', 'APPPATH/Controllers/main.php', 17, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 07:42:44 --> Undefined property: App\Controllers\Main::$load
+in APPPATH/Controllers/main.php on line 22.
+ 1 APPPATH/Controllers/main.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\Main::$load', 'APPPATH/Controllers/main.php', 22, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 07:44:40 --> syntax error, unexpected 'session' (T_STRING)
+in APPPATH/Controllers/main.php on line 2.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/main.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\main')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\main')
+ 4 [internal function]: spl_autoload_call('App\\Controllers\\main')
+ 5 SYSTEMPATH/CodeIgniter.php(877): class_exists('\\App\\Controllers\\main', true)
+ 6 SYSTEMPATH/CodeIgniter.php(469): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 07:44:45 --> Undefined property: App\Controllers\Main::$session
+in APPPATH/Controllers/main.php on line 56.
+ 1 APPPATH/Controllers/main.php(56): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\Main::$session', 'APPPATH/Controllers/main.php', 56, [])
+ 2 APPPATH/Controllers/main.php(16): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 07:52:45 --> Undefined variable: session
+in APPPATH/Controllers/main.php on line 56.
+ 1 APPPATH/Controllers/main.php(56): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: session', 'APPPATH/Controllers/main.php', 56, [])
+ 2 APPPATH/Controllers/main.php(16): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 07:53:29 --> Undefined variable: _SESSION
+in APPPATH/Controllers/main.php on line 56.
+ 1 APPPATH/Controllers/main.php(56): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: _SESSION', 'APPPATH/Controllers/main.php', 56, [])
+ 2 APPPATH/Controllers/main.php(16): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 07:56:16 --> Undefined variable: session
+in APPPATH/Controllers/main.php on line 58.
+ 1 APPPATH/Controllers/main.php(58): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: session', 'APPPATH/Controllers/main.php', 58, [])
+ 2 APPPATH/Controllers/main.php(16): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 07:56:32 --> Class 'App\Controllers\Services' not found
+in APPPATH/Controllers/main.php on line 56.
+ 1 APPPATH/Controllers/main.php(16): App\Controllers\Main->getSesionInfo()
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 07:56:42 --> Undefined variable: session
+in APPPATH/Controllers/main.php on line 56.
+ 1 APPPATH/Controllers/main.php(56): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: session', 'APPPATH/Controllers/main.php', 56, [])
+ 2 APPPATH/Controllers/main.php(16): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:03:26 --> mkdir(): Permission denied
+in SYSTEMPATH/Session/Handlers/FileHandler.php on line 97.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mkdir(): Permission denied', 'SYSTEMPATH/Session/Handlers/FileHandler.php', 97, [...])
+ 2 SYSTEMPATH/Session/Handlers/FileHandler.php(97): mkdir('/usr/local/www/zayavki/writable/session', 448, true)
+ 3 [internal function]: CodeIgniter\Session\Handlers\FileHandler->open('/usr/local/www/zayavki/writable/session', 'ci_session')
+ 4 SYSTEMPATH/Session/Session.php(912): session_start()
+ 5 SYSTEMPATH/Session/Session.php(234): CodeIgniter\Session\Session->startSession()
+ 6 SYSTEMPATH/Config/Services.php(665): CodeIgniter\Session\Session->start()
+ 7 SYSTEMPATH/Config/BaseService.php(253): CodeIgniter\Config\Services::session(Object(Config\App), false)
+ 8 SYSTEMPATH/Config/BaseService.php(194): CodeIgniter\Config\BaseService::__callStatic('session', [...])
+ 9 SYSTEMPATH/Config/Services.php(637): CodeIgniter\Config\BaseService::getSharedInstance('session', null)
+10 SYSTEMPATH/Config/BaseService.php(253): CodeIgniter\Config\Services::session()
+11 SYSTEMPATH/Common.php(931): CodeIgniter\Config\BaseService::__callStatic('session', [])
+12 APPPATH/Controllers/main.php(56): session()
+13 APPPATH/Controllers/main.php(16): App\Controllers\Main->getSesionInfo()
+14 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+15 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+16 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+17 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:04:40 --> syntax error, unexpected '->' (T_OBJECT_OPERATOR)
+in APPPATH/Controllers/main.php on line 56.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/main.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\main')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\main')
+ 4 [internal function]: spl_autoload_call('App\\Controllers\\main')
+ 5 SYSTEMPATH/CodeIgniter.php(877): class_exists('\\App\\Controllers\\main', true)
+ 6 SYSTEMPATH/CodeIgniter.php(469): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:07:00 --> Undefined variable: session
+in APPPATH/Controllers/main.php on line 56.
+ 1 APPPATH/Controllers/main.php(56): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: session', 'APPPATH/Controllers/main.php', 56, [])
+ 2 APPPATH/Controllers/main.php(16): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:07:37 --> Undefined variable: config
+in APPPATH/Controllers/main.php on line 56.
+ 1 APPPATH/Controllers/main.php(56): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: config', 'APPPATH/Controllers/main.php', 56, [])
+ 2 APPPATH/Controllers/main.php(16): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:09:05 --> Undefined variable: session
+in APPPATH/Controllers/main.php on line 56.
+ 1 APPPATH/Controllers/main.php(56): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: session', 'APPPATH/Controllers/main.php', 56, [])
+ 2 APPPATH/Controllers/main.php(16): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:10:30 --> Undefined property: App\Controllers\Main::$user_model
+in APPPATH/Controllers/main.php on line 35.
+ 1 APPPATH/Controllers/main.php(35): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\Main::$user_model', 'APPPATH/Controllers/main.php', 35, [...])
+ 2 APPPATH/Controllers/main.php(63): App\Controllers\Main->userLogin('1234', 'zlyuka')
+ 3 APPPATH/Controllers/main.php(16): App\Controllers\Main->getSesionInfo()
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:11:42 --> Undefined property: App\Controllers\Main::$user_model
+in APPPATH/Controllers/main.php on line 36.
+ 1 APPPATH/Controllers/main.php(36): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\Main::$user_model', 'APPPATH/Controllers/main.php', 36, [...])
+ 2 APPPATH/Controllers/main.php(64): App\Controllers\Main->userLogin('1234', 'zlyuka')
+ 3 APPPATH/Controllers/main.php(16): App\Controllers\Main->getSesionInfo()
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:15:18 --> Class 'App\Controllers\user_model' not found
+in APPPATH/Controllers/main.php on line 27.
+ 1 APPPATH/Controllers/main.php(64): App\Controllers\Main->userLogin('1234', 'zlyuka')
+ 2 APPPATH/Controllers/main.php(16): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:19:20 --> Class 'App\Controllers\User_model' not found
+in APPPATH/Controllers/main.php on line 27.
+ 1 APPPATH/Controllers/main.php(64): App\Controllers\Main->userLogin('1234', 'zlyuka')
+ 2 APPPATH/Controllers/main.php(16): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:21:14 --> Class 'App\Controllers\User_model' not found
+in APPPATH/Controllers/main.php on line 27.
+ 1 APPPATH/Controllers/main.php(64): App\Controllers\Main->userLogin('1234', 'zlyuka')
+ 2 APPPATH/Controllers/main.php(16): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:23:52 --> Class 'App\Controllers\User_model' not found
+in APPPATH/Controllers/main.php on line 27.
+ 1 APPPATH/Controllers/main.php(64): App\Controllers\Main->userLogin('1234', 'zlyuka')
+ 2 APPPATH/Controllers/main.php(16): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:24:19 --> Class 'App\Controllers\model' not found
+in APPPATH/Controllers/main.php on line 27.
+ 1 APPPATH/Controllers/main.php(64): App\Controllers\Main->userLogin('1234', 'zlyuka')
+ 2 APPPATH/Controllers/main.php(16): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:25:24 --> Undefined property: App\Controllers\Main::$user_model
+in APPPATH/Controllers/main.php on line 38.
+ 1 APPPATH/Controllers/main.php(38): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\Main::$user_model', 'APPPATH/Controllers/main.php', 38, [...])
+ 2 APPPATH/Controllers/main.php(66): App\Controllers\Main->userLogin('1234', 'zlyuka')
+ 3 APPPATH/Controllers/main.php(18): App\Controllers\Main->getSesionInfo()
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:25:41 --> Call to a member function checkPass() on null
+in APPPATH/Controllers/main.php on line 38.
+ 1 APPPATH/Controllers/main.php(66): App\Controllers\Main->userLogin('1234', 'zlyuka')
+ 2 APPPATH/Controllers/main.php(18): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:26:00 --> Call to a member function checkPass() on null
+in APPPATH/Controllers/main.php on line 38.
+ 1 APPPATH/Controllers/main.php(66): App\Controllers\Main->userLogin('1234', 'zlyuka')
+ 2 APPPATH/Controllers/main.php(18): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:26:05 --> Call to a member function checkPass() on null
+in APPPATH/Controllers/main.php on line 38.
+ 1 APPPATH/Controllers/main.php(66): App\Controllers\Main->userLogin('1234', 'zlyuka')
+ 2 APPPATH/Controllers/main.php(18): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:26:56 --> Use of undefined constant zlyuka - assumed 'zlyuka' (this will throw an Error in a future version of PHP)
+in APPPATH/Controllers/main.php on line 66.
+ 1 APPPATH/Controllers/main.php(66): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefined constant zlyuka - assumed \'zlyuka\' (this will throw an Error in a future version of PHP)', 'APPPATH/Controllers/main.php', 66, [])
+ 2 APPPATH/Controllers/main.php(18): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:27:03 --> Call to a member function checkPass() on null
+in APPPATH/Controllers/main.php on line 38.
+ 1 APPPATH/Controllers/main.php(66): App\Controllers\Main->userLogin(1234, 'zlyuka')
+ 2 APPPATH/Controllers/main.php(18): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:27:54 --> Call to a member function checkPass() on null
+in APPPATH/Controllers/main.php on line 38.
+ 1 APPPATH/Controllers/main.php(66): App\Controllers\Main->userLogin('1234', 'zlyuka')
+ 2 APPPATH/Controllers/main.php(18): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:28:23 --> Call to a member function test() on null
+in APPPATH/Controllers/main.php on line 38.
+ 1 APPPATH/Controllers/main.php(66): App\Controllers\Main->userLogin('1234', 'zlyuka')
+ 2 APPPATH/Controllers/main.php(18): App\Controllers\Main->getSesionInfo()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:29:04 --> Trying to access array offset on value of type bool
+in APPPATH/Controllers/main.php on line 19.
+ 1 APPPATH/Controllers/main.php(19): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type bool', 'APPPATH/Controllers/main.php', 19, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:29:25 --> Undefined property: App\Controllers\Main::$load
+in APPPATH/Controllers/main.php on line 24.
+ 1 APPPATH/Controllers/main.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\Main::$load', 'APPPATH/Controllers/main.php', 24, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:30:00 --> Trying to access array offset on value of type bool
+in APPPATH/Controllers/main.php on line 19.
+ 1 APPPATH/Controllers/main.php(19): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type bool', 'APPPATH/Controllers/main.php', 19, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:30:12 --> Trying to access array offset on value of type bool
+in APPPATH/Controllers/main.php on line 20.
+ 1 APPPATH/Controllers/main.php(20): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type bool', 'APPPATH/Controllers/main.php', 20, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:30:19 --> Undefined property: App\Controllers\Main::$load
+in APPPATH/Controllers/main.php on line 24.
+ 1 APPPATH/Controllers/main.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\Main::$load', 'APPPATH/Controllers/main.php', 24, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:30:47 --> Undefined property: App\Controllers\Main::$load
+in APPPATH/Controllers/main.php on line 24.
+ 1 APPPATH/Controllers/main.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\Main::$load', 'APPPATH/Controllers/main.php', 24, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:31:41 --> Undefined property: CodeIgniter\View\View::$lang
+in APPPATH/Views/open_view.php on line 52.
+ 1 APPPATH/Views/open_view.php(52): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: CodeIgniter\\View\\View::$lang', 'APPPATH/Views/open_view.php', 52, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/open_view.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('open_view', [], true)
+ 5 APPPATH/Controllers/main.php(24): view('open_view', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:32:10 --> Undefined property: CodeIgniter\View\View::$lang
+in APPPATH/Views/open_view.php on line 52.
+ 1 APPPATH/Views/open_view.php(52): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: CodeIgniter\\View\\View::$lang', 'APPPATH/Views/open_view.php', 52, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/open_view.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('open_view', [], true)
+ 5 APPPATH/Controllers/main.php(24): view('open_view', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:32:18 --> Undefined property: CodeIgniter\View\View::$lang
+in APPPATH/Views/open_view.php on line 52.
+ 1 APPPATH/Views/open_view.php(52): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: CodeIgniter\\View\\View::$lang', 'APPPATH/Views/open_view.php', 52, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/open_view.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('open_view', [], true)
+ 5 APPPATH/Controllers/main.php(24): view('open_view', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 08:34:23 --> Use of undefined constant STATIC_FILES_VERSION - assumed 'STATIC_FILES_VERSION' (this will throw an Error in a future version of PHP)
+in APPPATH/Views/open_view.php on line 8.
+ 1 APPPATH/Views/open_view.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefined constant STATIC_FILES_VERSION - assumed \'STATIC_FILES_VERSION\' (this will throw an Error in a future version of PHP)', 'APPPATH/Views/open_view.php', 8, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/open_view.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1134): CodeIgniter\View\View->render('open_view', [], true)
+ 5 APPPATH/Controllers/main.php(24): view('open_view', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->open()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 09:15:43 --> Call to a member function test() on null
+in APPPATH/Controllers/main.php on line 38.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->userLogin()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 09:18:40 --> Call to a member function test() on null
+in APPPATH/Controllers/main.php on line 38.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->userLogin()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 09:19:23 --> Call to a member function checkPass() on null
+in APPPATH/Controllers/main.php on line 38.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->userLogin()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 09:47:24 --> Call to a member function checkPass() on null
+in APPPATH/Controllers/main.php on line 39.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->userLogin()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 09:47:31 --> Call to a member function checkPass() on null
+in APPPATH/Controllers/main.php on line 39.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->userLogin()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 09:47:56 --> Call to a member function checkPass() on null
+in APPPATH/Controllers/main.php on line 39.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->userLogin()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 09:47:58 --> Call to a member function checkPass() on null
+in APPPATH/Controllers/main.php on line 39.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->userLogin()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 09:48:05 --> Call to a member function checkPass() on null
+in APPPATH/Controllers/main.php on line 39.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->userLogin()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 09:49:26 --> Class 'App\Models\User_model' not found
+in APPPATH/Controllers/main.php on line 29.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->userLogin()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-01-13 09:50:23 --> Error connecting to the database: mysqli_sql_exception: Access denied for user ''@'localhost' (using password: NO) in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:171
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(171): mysqli->real_connect('localhost', '', '', 'zayavki', 3306, '', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/User.php(12): CodeIgniter\Database\BaseConnection->query('SELECT login,pa...')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Controllers/main.php(39): App\Models\User->checkPass('', '')
+#5 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Main->userLogin()
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user ''@'localhost' (using password: NO) in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:215
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+#2 /ext/WWW/konex.com.ua/zayavki/app/Models/User.php(12): CodeIgniter\Database\BaseConnection->query('SELECT login,pa...')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Controllers/main.php(39): App\Models\User->checkPass('', '')
+#4 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Main->userLogin()
+#5 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2023-01-13 09:50:23 --> Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user ''@'localhost' (using password: NO)
+in SYSTEMPATH/Database/BaseConnection.php on line 418.
+ 1 SYSTEMPATH/Database/BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH/Models/User.php(12): CodeIgniter\Database\BaseConnection->query('SELECT login,pass,id,rights FROM user where login=\'\' and pass=\'\' and rights<>4')
+ 3 APPPATH/Controllers/main.php(39): App\Models\User->checkPass('ROOTPATH/public', 'ROOTPATH/public')
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->userLogin()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 09:52:33 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::row_array()
+in APPPATH/Models/User.php on line 13.
+ 1 APPPATH/Controllers/main.php(39): App\Models\User->checkPass('ROOTPATH/public', 'ROOTPATH/public')
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->userLogin()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 09:56:32 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::row_array()
+in APPPATH/Models/User.php on line 13.
+ 1 APPPATH/Controllers/main.php(38): App\Models\User->checkPass('ROOTPATH/public', 'ROOTPATH/public')
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->userLogin()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 10:00:09 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::resultArray()
+in APPPATH/Models/User.php on line 13.
+ 1 APPPATH/Controllers/main.php(38): App\Models\User->checkPass('ROOTPATH/public', 'ROOTPATH/public')
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->userLogin()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 10:00:46 --> count(): Parameter must be an array or an object that implements Countable
+in APPPATH/Controllers/main.php on line 39.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'count(): Parameter must be an array or an object that implements Countable', 'APPPATH/Controllers/main.php', 39, [...])
+ 2 APPPATH/Controllers/main.php(39): count(null)
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->userLogin()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 10:01:48 --> count(): Parameter must be an array or an object that implements Countable
+in APPPATH/Controllers/main.php on line 39.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'count(): Parameter must be an array or an object that implements Countable', 'APPPATH/Controllers/main.php', 39, [...])
+ 2 APPPATH/Controllers/main.php(39): count(null)
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->userLogin()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 10:03:12 --> Call to undefined function App\Controllers\getFieldCount()
+in APPPATH/Controllers/main.php on line 39.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->userLogin()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-13 10:03:16 --> Call to undefined function App\Controllers\getFieldCount()
+in APPPATH/Controllers/main.php on line 39.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Main->userLogin()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

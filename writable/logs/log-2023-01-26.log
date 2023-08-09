@@ -1,0 +1,160 @@
+CRITICAL - 2023-01-26 06:30:29 --> count(): Parameter must be an array or an object that implements Countable
+in APPPATH/Models/Search.php on line 111.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'count(): Parameter must be an array or an object that implements Countable', 'APPPATH/Models/Search.php', 111, [...])
+ 2 APPPATH/Models/Search.php(111): count(Object(stdClass))
+ 3 APPPATH/Models/Search.php(90): App\Models\Search->getUnitIdByUnit(' ')
+ 4 APPPATH/Controllers/Zayavki.php(126): App\Models\Search->addCounter(Object(CodeIgniter\HTTP\IncomingRequest))
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-26 06:30:31 --> count(): Parameter must be an array or an object that implements Countable
+in APPPATH/Models/Search.php on line 111.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'count(): Parameter must be an array or an object that implements Countable', 'APPPATH/Models/Search.php', 111, [...])
+ 2 APPPATH/Models/Search.php(111): count(Object(stdClass))
+ 3 APPPATH/Models/Search.php(90): App\Models\Search->getUnitIdByUnit(' ')
+ 4 APPPATH/Controllers/Zayavki.php(126): App\Models\Search->addCounter(Object(CodeIgniter\HTTP\IncomingRequest))
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-26 06:38:14 --> count(): Parameter must be an array or an object that implements Countable
+in APPPATH/Models/Search.php on line 111.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'count(): Parameter must be an array or an object that implements Countable', 'APPPATH/Models/Search.php', 111, [...])
+ 2 APPPATH/Models/Search.php(111): count(Object(stdClass))
+ 3 APPPATH/Models/Search.php(90): App\Models\Search->getUnitIdByUnit(' ')
+ 4 APPPATH/Controllers/Zayavki.php(126): App\Models\Search->addCounter(Object(CodeIgniter\HTTP\IncomingRequest))
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-26 06:38:24 --> count(): Parameter must be an array or an object that implements Countable
+in APPPATH/Models/Search.php on line 111.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'count(): Parameter must be an array or an object that implements Countable', 'APPPATH/Models/Search.php', 111, [...])
+ 2 APPPATH/Models/Search.php(111): count(Object(stdClass))
+ 3 APPPATH/Models/Search.php(90): App\Models\Search->getUnitIdByUnit(' ')
+ 4 APPPATH/Controllers/Zayavki.php(126): App\Models\Search->addCounter(Object(CodeIgniter\HTTP\IncomingRequest))
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-26 06:40:13 --> count(): Parameter must be an array or an object that implements Countable
+in APPPATH/Models/Search.php on line 111.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'count(): Parameter must be an array or an object that implements Countable', 'APPPATH/Models/Search.php', 111, [...])
+ 2 APPPATH/Models/Search.php(111): count(Object(stdClass))
+ 3 APPPATH/Models/Search.php(90): App\Models\Search->getUnitIdByUnit(' ')
+ 4 APPPATH/Controllers/Zayavki.php(126): App\Models\Search->addCounter(Object(CodeIgniter\HTTP\IncomingRequest))
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-26 06:41:20 --> Undefined index: id
+in APPPATH/Models/Search.php on line 111.
+ 1 APPPATH/Models/Search.php(111): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id', 'APPPATH/Models/Search.php', 111, [...])
+ 2 APPPATH/Models/Search.php(90): App\Models\Search->getUnitIdByUnit(' ')
+ 3 APPPATH/Controllers/Zayavki.php(126): App\Models\Search->addCounter(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-26 06:42:55 --> Undefined index: id
+in APPPATH/Models/Search.php on line 112.
+ 1 APPPATH/Models/Search.php(112): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id', 'APPPATH/Models/Search.php', 112, [...])
+ 2 APPPATH/Models/Search.php(85): App\Models\Search->getUnitIdByUnit(' ')
+ 3 APPPATH/Controllers/Zayavki.php(126): App\Models\Search->addCounter(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-26 06:43:35 --> Undefined index: id
+in APPPATH/Models/Search.php on line 112.
+ 1 APPPATH/Models/Search.php(112): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id', 'APPPATH/Models/Search.php', 112, [...])
+ 2 APPPATH/Models/Search.php(85): App\Models\Search->getUnitIdByUnit(' ')
+ 3 APPPATH/Controllers/Zayavki.php(126): App\Models\Search->addCounter(Object(CodeIgniter\HTTP\IncomingRequest))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-26 06:46:28 --> Object of class stdClass could not be converted to string
+in SYSTEMPATH/Database/Query.php on line 335.
+ 1 SYSTEMPATH/Database/Query.php(335): strtr('UPDATE `counter` SET `counterId` = :counterId:, `spokaz` = :spokaz:, `ctype` = :ctype:, `counterName` = :counterName:, `unit` = :unit:, `typeC` = :typeC:
+WHERE `id` = :id:', [...])
+ 2 SYSTEMPATH/Database/Query.php(310): CodeIgniter\Database\Query->matchNamedBinds('UPDATE `counter` SET `counterId` = :counterId:, `spokaz` = :spokaz:, `ctype` = :ctype:, `counterName` = :counterName:, `unit` = :unit:, `typeC` = :typeC:
+WHERE `id` = :id:', [...])
+ 3 SYSTEMPATH/Database/Query.php(159): CodeIgniter\Database\Query->compileBinds()
+ 4 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\Query->getQuery()
+ 5 SYSTEMPATH/Database/BaseBuilder.php(2079): CodeIgniter\Database\BaseConnection->query('UPDATE `counter` SET `counterId` = :counterId:, `spokaz` = :spokaz:, `ctype` = :ctype:, `counterName` = :counterName:, `unit` = :unit:, `typeC` = :typeC:
+WHERE `id` = :id:', [...], false)
+ 6 APPPATH/Models/Search.php(106): CodeIgniter\Database\BaseBuilder->update([...], [...])
+ 7 APPPATH/Models/Search.php(94): App\Models\Search->updateCountersById('45', [...])
+ 8 APPPATH/Controllers/Zayavki.php(126): App\Models\Search->addCounter(Object(CodeIgniter\HTTP\IncomingRequest))
+ 9 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+10 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+11 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-26 06:53:09 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Search.php on line 93.
+ 1 APPPATH/Controllers/Zayavki.php(126): App\Models\Search->addCounter(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-26 07:16:50 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::insert()
+in APPPATH/Models/Search.php on line 102.
+ 1 APPPATH/Models/Search.php(97): App\Models\Search->addCounterDB([...])
+ 2 APPPATH/Controllers/Zayavki.php(126): App\Models\Search->addCounter(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-26 07:57:16 --> Cannot redeclare App\Models\Search::getCountersStat()
+in APPPATH/Models/Search.php on line 145.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-01-26 08:57:29 --> Undefined variable: chartArray
+in APPPATH/Models/Search.php on line 141.
+ 1 APPPATH/Models/Search.php(141): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: chartArray', 'APPPATH/Models/Search.php', 141, [...])
+ 2 APPPATH/Controllers/Zayavki.php(128): App\Models\Search->getCountersStat(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-26 08:57:32 --> Undefined variable: chartArray
+in APPPATH/Models/Search.php on line 141.
+ 1 APPPATH/Models/Search.php(141): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: chartArray', 'APPPATH/Models/Search.php', 141, [...])
+ 2 APPPATH/Controllers/Zayavki.php(128): App\Models\Search->getCountersStat(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-26 08:57:36 --> Undefined variable: chartArray
+in APPPATH/Models/Search.php on line 141.
+ 1 APPPATH/Models/Search.php(141): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: chartArray', 'APPPATH/Models/Search.php', 141, [...])
+ 2 APPPATH/Controllers/Zayavki.php(128): App\Models\Search->getCountersStat(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-26 08:57:38 --> Undefined variable: chartArray
+in APPPATH/Models/Search.php on line 141.
+ 1 APPPATH/Models/Search.php(141): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: chartArray', 'APPPATH/Models/Search.php', 141, [...])
+ 2 APPPATH/Controllers/Zayavki.php(128): App\Models\Search->getCountersStat(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-26 08:57:46 --> Undefined variable: chartArray
+in APPPATH/Models/Search.php on line 141.
+ 1 APPPATH/Models/Search.php(141): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: chartArray', 'APPPATH/Models/Search.php', 141, [...])
+ 2 APPPATH/Controllers/Zayavki.php(128): App\Models\Search->getCountersStat(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-26 08:57:54 --> Undefined variable: chartArray
+in APPPATH/Models/Search.php on line 141.
+ 1 APPPATH/Models/Search.php(141): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: chartArray', 'APPPATH/Models/Search.php', 141, [...])
+ 2 APPPATH/Controllers/Zayavki.php(128): App\Models\Search->getCountersStat(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Zayavki->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Zayavki))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

@@ -1,0 +1,340 @@
+ERROR - 2023-02-09 05:59:04 --> mysqli_sql_exception: Unknown column 'message' in 'field list' in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `us...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/User.php(100): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(49): App\Models\User->addUserLog(Array)
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->login()
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-02-09 05:59:04 --> Unknown column 'message' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `userlog` (`login`, `message`) VALUES (\'zlyuka\', \'Увійшов в систему\')', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `userlog` (`login`, `message`) VALUES (\'zlyuka\', \'Увійшов в систему\')')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `userlog` (`login`, `message`) VALUES (\'zlyuka\', \'Увійшов в систему\')')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `userlog` (`login`, `message`) VALUES (:login:, :message:)', [...], false)
+ 5 APPPATH/Models/User.php(100): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH/Controllers/Meters.php(49): App\Models\User->addUserLog([...])
+ 7 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->login()
+ 8 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 9 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-09 06:00:24 --> mysqli_sql_exception: Unknown column 'message' in 'field list' in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `us...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/User.php(100): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(49): App\Models\User->addUserLog(Array)
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->login()
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-02-09 06:00:24 --> Unknown column 'message' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `userlog` (`login`, `message`) VALUES (\'zlyuka\', \'Увійшов в систему\')', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `userlog` (`login`, `message`) VALUES (\'zlyuka\', \'Увійшов в систему\')')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `userlog` (`login`, `message`) VALUES (\'zlyuka\', \'Увійшов в систему\')')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `userlog` (`login`, `message`) VALUES (:login:, :message:)', [...], false)
+ 5 APPPATH/Models/User.php(100): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH/Controllers/Meters.php(49): App\Models\User->addUserLog([...])
+ 7 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->login()
+ 8 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 9 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-09 06:00:32 --> mysqli_sql_exception: Unknown column 'message' in 'field list' in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `us...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/User.php(100): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(49): App\Models\User->addUserLog(Array)
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->login()
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-02-09 06:00:32 --> Unknown column 'message' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `userlog` (`login`, `message`) VALUES (\'zlyuka\', \'Увійшов в систему\')', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `userlog` (`login`, `message`) VALUES (\'zlyuka\', \'Увійшов в систему\')')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `userlog` (`login`, `message`) VALUES (\'zlyuka\', \'Увійшов в систему\')')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `userlog` (`login`, `message`) VALUES (:login:, :message:)', [...], false)
+ 5 APPPATH/Models/User.php(100): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH/Controllers/Meters.php(49): App\Models\User->addUserLog([...])
+ 7 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->login()
+ 8 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 9 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-09 06:15:43 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Dec-Sat 06:12:43' at line 1 in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('DELETE FROM use...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM use...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM use...')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/User.php(101): CodeIgniter\Database\BaseConnection->query('DELETE FROM use...')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(49): App\Models\User->addUserLog(Array)
+#5 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->login()
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-09 06:15:43 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Dec-Sat 06:12:43' at line 1
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('DELETE FROM userlog WHERE date < 2022-Dec-Sat 06:12:43', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM userlog WHERE date < 2022-Dec-Sat 06:12:43')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM userlog WHERE date < 2022-Dec-Sat 06:12:43')
+ 4 APPPATH/Models/User.php(101): CodeIgniter\Database\BaseConnection->query('DELETE FROM userlog WHERE date < 2022-Dec-Sat 06:12:43')
+ 5 APPPATH/Controllers/Meters.php(49): App\Models\User->addUserLog([...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->login()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-09 06:16:28 --> mysqli_sql_exception: Incorrect TIMESTAMP value: '2022-Dec-Sat 06:12:28' in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('DELETE FROM use...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM use...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM use...')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/User.php(101): CodeIgniter\Database\BaseConnection->query('DELETE FROM use...')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(49): App\Models\User->addUserLog(Array)
+#5 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->login()
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-09 06:16:28 --> Incorrect TIMESTAMP value: '2022-Dec-Sat 06:12:28'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('DELETE FROM userlog WHERE date < \'2022-Dec-Sat 06:12:28\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM userlog WHERE date < \'2022-Dec-Sat 06:12:28\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM userlog WHERE date < \'2022-Dec-Sat 06:12:28\'')
+ 4 APPPATH/Models/User.php(101): CodeIgniter\Database\BaseConnection->query('DELETE FROM userlog WHERE date < \'2022-Dec-Sat 06:12:28\'')
+ 5 APPPATH/Controllers/Meters.php(49): App\Models\User->addUserLog([...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->login()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-09 06:17:59 --> mysqli_sql_exception: Incorrect TIMESTAMP value: '2022-Dec-Sat 06:12:59' in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM u...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/User.php(101): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(49): App\Models\User->addUserLog(Array)
+#5 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->login()
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-09 06:17:59 --> Incorrect TIMESTAMP value: '2022-Dec-Sat 06:12:59'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM userlog WHERE date < \'2022-Dec-Sat 06:12:59\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM userlog WHERE date < \'2022-Dec-Sat 06:12:59\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM userlog WHERE date < \'2022-Dec-Sat 06:12:59\'')
+ 4 APPPATH/Models/User.php(101): CodeIgniter\Database\BaseConnection->query('SELECT * FROM userlog WHERE date < \'2022-Dec-Sat 06:12:59\'')
+ 5 APPPATH/Controllers/Meters.php(49): App\Models\User->addUserLog([...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->login()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-09 06:18:04 --> mysqli_sql_exception: Incorrect TIMESTAMP value: '2022-Dec-Sat 06:12:04' in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM u...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/User.php(101): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(49): App\Models\User->addUserLog(Array)
+#5 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->login()
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-09 06:18:04 --> Incorrect TIMESTAMP value: '2022-Dec-Sat 06:12:04'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM userlog WHERE date < \'2022-Dec-Sat 06:12:04\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM userlog WHERE date < \'2022-Dec-Sat 06:12:04\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM userlog WHERE date < \'2022-Dec-Sat 06:12:04\'')
+ 4 APPPATH/Models/User.php(101): CodeIgniter\Database\BaseConnection->query('SELECT * FROM userlog WHERE date < \'2022-Dec-Sat 06:12:04\'')
+ 5 APPPATH/Controllers/Meters.php(49): App\Models\User->addUserLog([...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->login()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-09 06:18:10 --> mysqli_sql_exception: Incorrect TIMESTAMP value: '2022-Dec-Sat 06:12:10' in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM u...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/User.php(101): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(49): App\Models\User->addUserLog(Array)
+#5 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->login()
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-09 06:18:10 --> Incorrect TIMESTAMP value: '2022-Dec-Sat 06:12:10'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM userlog WHERE date < \'2022-Dec-Sat 06:12:10\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM userlog WHERE date < \'2022-Dec-Sat 06:12:10\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM userlog WHERE date < \'2022-Dec-Sat 06:12:10\'')
+ 4 APPPATH/Models/User.php(101): CodeIgniter\Database\BaseConnection->query('SELECT * FROM userlog WHERE date < \'2022-Dec-Sat 06:12:10\'')
+ 5 APPPATH/Controllers/Meters.php(49): App\Models\User->addUserLog([...])
+ 6 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->login()
+ 7 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 8 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-09 06:46:15 --> mysqli_sql_exception: Duplicate entry 'test' for key 'user.login' in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `us...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(324): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(218): App\Models\Search->addUser(Array)
+#6 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(123): App\Models\Search->usADD(Object(CodeIgniter\HTTP\IncomingRequest))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#9 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-02-09 06:46:15 --> Duplicate entry 'test' for key 'user.login'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `user` (`name`, `surname`, `login`, `pass`, `area`, `rights`) VALUES (\'test\', \'test\', \'test\', \'test\', \'260\', \'1\')', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `user` (`name`, `surname`, `login`, `pass`, `area`, `rights`) VALUES (\'test\', \'test\', \'test\', \'test\', \'260\', \'1\')')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `user` (`name`, `surname`, `login`, `pass`, `area`, `rights`) VALUES (\'test\', \'test\', \'test\', \'test\', \'260\', \'1\')')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `user` (`name`, `surname`, `login`, `pass`, `area`, `rights`) VALUES (:name:, :surname:, :login:, :pass:, :area:, :rights:)', [...], false)
+ 5 APPPATH/Models/Search.php(324): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH/Models/Search.php(218): App\Models\Search->addUser([...])
+ 7 APPPATH/Controllers/Meters.php(123): App\Models\Search->usADD(Object(CodeIgniter\HTTP\IncomingRequest))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-09 06:46:16 --> mysqli_sql_exception: Duplicate entry 'test' for key 'user.login' in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `us...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(324): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(218): App\Models\Search->addUser(Array)
+#6 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(123): App\Models\Search->usADD(Object(CodeIgniter\HTTP\IncomingRequest))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#9 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-02-09 06:46:16 --> Duplicate entry 'test' for key 'user.login'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `user` (`name`, `surname`, `login`, `pass`, `area`, `rights`) VALUES (\'test\', \'test\', \'test\', \'test\', \'260\', \'1\')', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `user` (`name`, `surname`, `login`, `pass`, `area`, `rights`) VALUES (\'test\', \'test\', \'test\', \'test\', \'260\', \'1\')')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `user` (`name`, `surname`, `login`, `pass`, `area`, `rights`) VALUES (\'test\', \'test\', \'test\', \'test\', \'260\', \'1\')')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `user` (`name`, `surname`, `login`, `pass`, `area`, `rights`) VALUES (:name:, :surname:, :login:, :pass:, :area:, :rights:)', [...], false)
+ 5 APPPATH/Models/Search.php(324): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH/Models/Search.php(218): App\Models\Search->addUser([...])
+ 7 APPPATH/Controllers/Meters.php(123): App\Models\Search->usADD(Object(CodeIgniter\HTTP\IncomingRequest))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-09 06:46:19 --> mysqli_sql_exception: Duplicate entry 'test' for key 'user.login' in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `us...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(324): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(218): App\Models\Search->addUser(Array)
+#6 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(123): App\Models\Search->usADD(Object(CodeIgniter\HTTP\IncomingRequest))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#9 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-02-09 06:46:19 --> Duplicate entry 'test' for key 'user.login'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `user` (`name`, `surname`, `login`, `pass`, `area`, `rights`) VALUES (\'test\', \'test\', \'test\', \'test\', \'260\', \'1\')', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `user` (`name`, `surname`, `login`, `pass`, `area`, `rights`) VALUES (\'test\', \'test\', \'test\', \'test\', \'260\', \'1\')')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `user` (`name`, `surname`, `login`, `pass`, `area`, `rights`) VALUES (\'test\', \'test\', \'test\', \'test\', \'260\', \'1\')')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `user` (`name`, `surname`, `login`, `pass`, `area`, `rights`) VALUES (:name:, :surname:, :login:, :pass:, :area:, :rights:)', [...], false)
+ 5 APPPATH/Models/Search.php(324): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH/Models/Search.php(218): App\Models\Search->addUser([...])
+ 7 APPPATH/Controllers/Meters.php(123): App\Models\Search->usADD(Object(CodeIgniter\HTTP\IncomingRequest))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-09 06:46:31 --> mysqli_sql_exception: Duplicate entry 'test' for key 'user.login' in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `us...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(324): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(218): App\Models\Search->addUser(Array)
+#6 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(123): App\Models\Search->usADD(Object(CodeIgniter\HTTP\IncomingRequest))
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#9 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-02-09 06:46:31 --> Duplicate entry 'test' for key 'user.login'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `user` (`name`, `surname`, `login`, `pass`, `area`, `rights`) VALUES (\'test\', \'tes\', \'test\', \'test\', \'260\', \'1\')', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `user` (`name`, `surname`, `login`, `pass`, `area`, `rights`) VALUES (\'test\', \'tes\', \'test\', \'test\', \'260\', \'1\')')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `user` (`name`, `surname`, `login`, `pass`, `area`, `rights`) VALUES (\'test\', \'tes\', \'test\', \'test\', \'260\', \'1\')')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `user` (`name`, `surname`, `login`, `pass`, `area`, `rights`) VALUES (:name:, :surname:, :login:, :pass:, :area:, :rights:)', [...], false)
+ 5 APPPATH/Models/Search.php(324): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH/Models/Search.php(218): App\Models\Search->addUser([...])
+ 7 APPPATH/Controllers/Meters.php(123): App\Models\Search->usADD(Object(CodeIgniter\HTTP\IncomingRequest))
+ 8 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 9 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+10 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-09 07:17:47 --> syntax error, unexpected ';', expecting ')'
+in APPPATH/Models/Search.php on line 228.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Search.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Search')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Search')
+ 4 APPPATH/Controllers/Meters.php(20): spl_autoload_call('App\\Models\\Search')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-09 07:18:25 --> Call to undefined method CodeIgniter\HTTP\IncomingRequest::trimSpace()
+in APPPATH/Models/Search.php on line 228.
+ 1 APPPATH/Controllers/Meters.php(125): App\Models\Search->unADD(Object(CodeIgniter\HTTP\IncomingRequest))
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-09 07:19:55 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= '5678' ORDER BY id DESC' at line 1 in /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/zayavki/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT unit, id...', 0)
+#1 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT unit, id...')
+#2 /ext/WWW/konex.com.ua/zayavki/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT unit, id...')
+#3 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(17): CodeIgniter\Database\BaseConnection->query('SELECT unit, id...')
+#4 /ext/WWW/konex.com.ua/zayavki/app/Models/Search.php(237): App\Models\Search->getDepartmentByUnit('5678')
+#5 /ext/WWW/konex.com.ua/zayavki/app/Controllers/Meters.php(125): App\Models\Search->unADD(Object(CodeIgniter\HTTP\IncomingRequest))
+#6 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+#7 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#8 /ext/WWW/konex.com.ua/zayavki/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /ext/WWW/konex.com.ua/zayavki/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-02-09 07:19:55 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= '5678' ORDER BY id DESC' at line 1
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT unit, id FROM area WHERE = \'5678\' ORDER BY id DESC', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT unit, id FROM area WHERE = \'5678\' ORDER BY id DESC')
+ 3 SYSTEMPATH/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT unit, id FROM area WHERE = \'5678\' ORDER BY id DESC')
+ 4 APPPATH/Models/Search.php(17): CodeIgniter\Database\BaseConnection->query('SELECT unit, id FROM area WHERE = \'5678\' ORDER BY id DESC')
+ 5 APPPATH/Models/Search.php(237): App\Models\Search->getDepartmentByUnit('5678')
+ 6 APPPATH/Controllers/Meters.php(125): App\Models\Search->unADD(Object(CodeIgniter\HTTP\IncomingRequest))
+ 7 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 8 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 9 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

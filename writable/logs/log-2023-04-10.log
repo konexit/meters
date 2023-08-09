@@ -1,0 +1,10 @@
+CRITICAL - 2023-04-10 08:17:20 --> syntax error, unexpected ']'
+in APPPATH/Models/Search.php on line 282.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Search.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Search')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Search')
+ 4 APPPATH/Controllers/Meters.php(24): spl_autoload_call('App\\Models\\Search')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

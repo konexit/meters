@@ -1,0 +1,572 @@
+CRITICAL - 2023-03-23 04:10:14 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:10:15 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:10:17 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:10:21 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:10:29 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:10:45 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:11:17 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:12:22 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:14:10 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:15:39 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:17:11 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:19:00 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:20:51 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:21:51 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:23:08 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:24:33 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:26:04 --> syntax error, unexpected '$key' (T_VARIABLE)
+in APPPATH/Models/Auth.php on line 37.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Auth.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Auth')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Auth')
+ 4 APPPATH/Controllers/Meters.php(25): spl_autoload_call('App\\Models\\Auth')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:28:01 --> syntax error, unexpected '$key' (T_VARIABLE)
+in APPPATH/Models/Auth.php on line 37.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Auth.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Auth')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Auth')
+ 4 APPPATH/Controllers/Meters.php(25): spl_autoload_call('App\\Models\\Auth')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:29:58 --> syntax error, unexpected '$key' (T_VARIABLE)
+in APPPATH/Models/Auth.php on line 38.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Auth.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Auth')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Auth')
+ 4 APPPATH/Controllers/Meters.php(25): spl_autoload_call('App\\Models\\Auth')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:31:22 --> syntax error, unexpected '$key' (T_VARIABLE)
+in APPPATH/Models/Auth.php on line 38.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Auth.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Auth')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Auth')
+ 4 APPPATH/Controllers/Meters.php(25): spl_autoload_call('App\\Models\\Auth')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:32:53 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:41:58 --> You must set the database table to be used with your query.
+in SYSTEMPATH/Database/BaseConnection.php on line 845.
+ 1 SYSTEMPATH/Model.php(587): CodeIgniter\Database\BaseConnection->table(null)
+ 2 SYSTEMPATH/Model.php(764): CodeIgniter\Model->builder()
+ 3 APPPATH/Models/Auth.php(36): CodeIgniter\Model->__call('clean_key', [...])
+ 4 APPPATH/Controllers/Meters.php(154): App\Models\Auth->auth()
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:42:31 --> You must set the database table to be used with your query.
+in SYSTEMPATH/Database/BaseConnection.php on line 845.
+ 1 SYSTEMPATH/Model.php(587): CodeIgniter\Database\BaseConnection->table(null)
+ 2 SYSTEMPATH/Model.php(764): CodeIgniter\Model->builder()
+ 3 APPPATH/Models/Auth.php(35): CodeIgniter\Model->__call('clean_key', [...])
+ 4 APPPATH/Controllers/Meters.php(154): App\Models\Auth->auth()
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:42:36 --> You must set the database table to be used with your query.
+in SYSTEMPATH/Database/BaseConnection.php on line 845.
+ 1 SYSTEMPATH/Model.php(587): CodeIgniter\Database\BaseConnection->table(null)
+ 2 SYSTEMPATH/Model.php(764): CodeIgniter\Model->builder()
+ 3 APPPATH/Models/Auth.php(35): CodeIgniter\Model->__call('clean_key', [...])
+ 4 APPPATH/Controllers/Meters.php(154): App\Models\Auth->auth()
+ 5 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 6 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:47:25 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:49:20 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:50:54 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:51:58 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:53:42 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 04:54:44 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 05:12:24 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 05:14:13 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 05:21:00 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 05:21:00 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 05:21:28 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 05:23:12 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 05:41:43 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 05:42:58 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 05:44:10 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 05:46:07 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 05:48:00 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 05:49:42 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 05:50:53 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 05:56:03 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 05:56:03 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 05:56:05 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 05:56:09 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 05:56:18 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 05:56:46 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 06:00:54 --> syntax error, unexpected ']'
+in APPPATH/Models/Telegram.php on line 20.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Telegram.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Telegram')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Telegram')
+ 4 APPPATH/Controllers/Meters.php(26): spl_autoload_call('App\\Models\\Telegram')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 06:00:54 --> syntax error, unexpected ']'
+in APPPATH/Models/Telegram.php on line 20.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Telegram.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Telegram')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Telegram')
+ 4 APPPATH/Controllers/Meters.php(26): spl_autoload_call('App\\Models\\Telegram')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 06:01:53 --> syntax error, unexpected ']'
+in APPPATH/Models/Telegram.php on line 20.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Telegram.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Telegram')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Telegram')
+ 4 APPPATH/Controllers/Meters.php(26): spl_autoload_call('App\\Models\\Telegram')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 06:07:28 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 06:07:28 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 12.
+ 1 APPPATH/Models/Telegram.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 12, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 06:14:50 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 82.
+ 1 APPPATH/Models/Telegram.php(82): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 82, [...])
+ 2 APPPATH/Models/Telegram.php(16): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 06:15:16 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 82.
+ 1 APPPATH/Models/Telegram.php(82): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 82, [...])
+ 2 APPPATH/Models/Telegram.php(16): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 06:15:18 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 82.
+ 1 APPPATH/Models/Telegram.php(82): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 82, [...])
+ 2 APPPATH/Models/Telegram.php(16): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 06:15:23 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 82.
+ 1 APPPATH/Models/Telegram.php(82): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 82, [...])
+ 2 APPPATH/Models/Telegram.php(16): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 06:15:31 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 82.
+ 1 APPPATH/Models/Telegram.php(82): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 82, [...])
+ 2 APPPATH/Models/Telegram.php(16): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 06:15:47 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 82.
+ 1 APPPATH/Models/Telegram.php(82): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 82, [...])
+ 2 APPPATH/Models/Telegram.php(16): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 06:16:19 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 82.
+ 1 APPPATH/Models/Telegram.php(82): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 82, [...])
+ 2 APPPATH/Models/Telegram.php(16): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 06:16:22 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 82.
+ 1 APPPATH/Models/Telegram.php(82): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 82, [...])
+ 2 APPPATH/Models/Telegram.php(16): App\Models\Telegram->callback(Object(stdClass), 971483502)
+ 3 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 4 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 5 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 6 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 06:17:06 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 19.
+ 1 APPPATH/Models/Telegram.php(19): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 19, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 06:17:23 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 19.
+ 1 APPPATH/Models/Telegram.php(19): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 19, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 06:17:52 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 19.
+ 1 APPPATH/Models/Telegram.php(19): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 19, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 06:18:28 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 20.
+ 1 APPPATH/Models/Telegram.php(20): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 20, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 06:18:29 --> Undefined property: stdClass::$message
+in APPPATH/Models/Telegram.php on line 13.
+ 1 APPPATH/Models/Telegram.php(13): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$message', 'APPPATH/Models/Telegram.php', 13, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-03-23 06:18:41 --> Undefined property: stdClass::$callback_query
+in APPPATH/Models/Telegram.php on line 20.
+ 1 APPPATH/Models/Telegram.php(20): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$callback_query', 'APPPATH/Models/Telegram.php', 20, [...])
+ 2 APPPATH/Controllers/Meters.php(158): App\Models\Telegram->telegram(Object(stdClass))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->telegram()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
