@@ -352,3 +352,107 @@ h2 {
     height: 370px;
     overflow: auto;
 }
+
+#addUnit {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    margin-top: 15px;
+  }
+  
+  #addUnit h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+  }
+  
+  #addUnit p {
+    margin: 14px 0;
+  }
+  
+  #addUnit input[type="text"],
+  #addUnit input[type="number"],
+  #addUnit select {
+    width: 98%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  #addUnit input[type="checkbox"] {
+    margin-right: 10px; 
+    vertical-align: middle;
+  }
+  
+  #addUnit button#confirmUn {
+    font-size: 14pt;
+    display: block;
+    margin: 0 auto; 
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #addUnit button#confirmUn:hover {
+    background-color: #0056b3;
+  }
+
+  #addUser {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    margin-top: 15px;
+}
+
+#addUser h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+#addUser p {
+    margin: 14px 0;
+}
+
+#addUser input[type="text"],
+#addUser input[type="password"],
+#addUser select {
+    width: 98%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#addUser input[type="text"][list="unitUs"] {
+    width: 95%;
+}
+
+#addUser input[type="text"]:focus,
+#addUser input[type="password"]:focus,
+#addUser select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#addUser button#confirmUs {
+    font-size: 14pt;
+    display: block;
+    margin: 0 auto; 
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#addUser button#confirmUs:hover {
+    background-color: #0056b3;
+}  

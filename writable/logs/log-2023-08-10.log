@@ -1,0 +1,67 @@
+CRITICAL - 2023-08-10 05:56:54 --> Call to a member function getMessage() on null
+in APPPATH/Models/Excel.php on line 83.
+ 1 APPPATH/Models/Search.php(479): App\Models\Excel->createReports([...])
+ 2 APPPATH/Controllers/Meters.php(149): App\Models\Search->getReportCounter(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-08-10 06:26:40 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Update.php on line 20.
+ 1 APPPATH/Controllers/Meters.php(184): App\Models\Update->addCompanies([...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->updateDB()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-08-10 06:27:35 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Update.php on line 20.
+ 1 APPPATH/Controllers/Meters.php(184): App\Models\Update->addCompanies([...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->updateDB()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-08-10 06:27:47 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Update.php on line 20.
+ 1 APPPATH/Controllers/Meters.php(184): App\Models\Update->addCompanies([...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->updateDB()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-08-10 07:22:56 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Update.php on line 21.
+ 1 APPPATH/Controllers/Meters.php(184): App\Models\Update->addCompanies([...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->updateDB()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-08-10 07:23:11 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Update.php on line 21.
+ 1 APPPATH/Controllers/Meters.php(184): App\Models\Update->addCompanies([...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->updateDB()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-08-10 07:27:00 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Update.php on line 21.
+ 1 APPPATH/Controllers/Meters.php(184): App\Models\Update->addCompanies([...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->updateDB()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-08-10 07:27:49 --> Cannot use object of type stdClass as array
+in APPPATH/Models/Update.php on line 21.
+ 1 APPPATH/Controllers/Meters.php(184): App\Models\Update->addCompanies([...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Meters->updateDB()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-08-10 07:49:16 --> syntax error, unexpected 'exit' (T_EXIT)
+in APPPATH/Models/Update.php on line 22.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Update.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Update')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Update')
+ 4 APPPATH/Controllers/Meters.php(23): spl_autoload_call('App\\Models\\Update')
+ 5 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Meters->__construct()
+ 6 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

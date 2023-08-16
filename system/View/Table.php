@@ -466,8 +466,8 @@ class Table
     protected function _defaultTemplate()
     {
         return [
-            'table_open'         => '<table border="0" cellpadding="4" cellspacing="0">',
-            'thead_open'         => '<thead>',
+            'table_open'         => '<table border="0" cellpadding="4" cellspacing="0" >',
+            'thead_open'         => '<thead style="position: sticky; top: 0;">',
             'thead_close'        => '</thead>',
             'heading_row_start'  => '<tr>',
             'heading_row_end'    => '</tr>',

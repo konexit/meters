@@ -16,53 +16,10 @@
 
     $departmentOptions = '';
     foreach ($department as $arr) {
-        $departmentOptions .= '<option data-value="' . $arr['id'] . '"  data-text="' . trim($arr['unit']) . '">' . trim($arr['unit']) . '</option>';
+        if(isset($companiesAreas[$arr['id']])) $departmentOptions .= '<option data-value="' . $arr['id'] . '"  data-text="' . trim($arr['unit']) . '" data-codeokpo=' . $companiesAreas[$arr['id']]['code_okpo'] . '  data-tradePointId=' . $companiesAreas[$arr['id']]['trade_point_id'] . '>' . trim($arr['unit']) . '</option>';
+        else $departmentOptions .= '<option data-value="' . $arr['id'] . '"  data-text="' . trim($arr['unit']) . '">' . trim($arr['unit']) . '</option>';
     }
     ?>
-    <style>
-        /* body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        form {
-            border: 1px solid #ccc;
-            padding: 20px;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input[type="date"],
-        select {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        select[multiple] {
-            height: 100px;
-        }
-
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        } */
-    </style>
     <title>Cистема заявок "Конекс"</title>
 </head>
 
@@ -138,19 +95,31 @@
                     </div>
                     <div id="addUnit">
                         <h3>
-                            <p>Підрозділ: <input type="text" id="unit" title="Ліміт 30 символів" /> </p>
-                            <p>Адреса: <input type="text" id="unADDR" title="Ліміт 80 символів" /> </p>
-                            <p>Телефон: <input type="text" id="tel" title="Ліміт 100 символів" /> </p>
+                            <p>Підрозділ: <input type="text" id="unit" title="Ліміт 30 символів" maxlength="30" /> </p>
+                            <p>Адреса: <input type="text" id="unADDR" title="Ліміт 80 символів" maxlength="80" /> </p>
+                            <p>Телефон: <input type="text" id="tel" title="Ліміт 100 символів" maxlength="100" /> </p>
+                            <p style="margin-bottom: 25px;font-size: 20px;">Добавити аптеку: <input id="isTradePoint" type="checkbox" onclick="tradePointFormStatus(this)"/></p>
+                            <div id="tradePointForm" style="display: none">
+                                <p>Торгова точка: <input id="tradePointId" type="number" /></p>
+                                <p>Копманія: <select id="companyId" style="width: 100%;">
+                                        <?
+                                        foreach ($companies as $company) {
+                                            echo "<option value=" . $company['company_1s_code'] . ">" . $company['company_name'] . "</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </p>
+                            </div>
                             <button style="font-size: 14pt;" id="confirmUn" onclick="">Додати</button>
                         </h3>
                     </div>
                     <div id="addUser">
                         <h3>
-                            <p>Ім'я: <input type="text" id="usName" title="Ліміт 25 символів" /> </p>
-                            <p>Прізвище: <input type="text" id="usSurname" title="Ліміт 25 символів" /> </p>
-                            <p>Логін: <input type="text" id="usLogin" title="Ліміт 15 символів" /> </p>
-                            <p>Пароль: <input type="password" id="usPass" title="Ліміт 20 символів" /> </p>
-                            <p>Підрозділ: <input id="inputUnitUs" list="unitUs" placeholder="Виберіть підрозділ">
+                            <p>Ім'я: <input type="text" id="usName" title="Ліміт 25 символів" maxlength="25" /> </p>
+                            <p>Прізвище: <input type="text" id="usSurname" title="Ліміт 25 символів" maxlength="25" /> </p>
+                            <p>Логін: <input type="text" id="usLogin" title="Ліміт 15 символів" maxlength="15"/> </p>
+                            <p>Пароль: <input type="password" id="usPass" title="Ліміт 20 символів" maxlength="20"/> </p>
+                            <p style="margin-bottom: 25px;font-size: 20px;" >Підрозділ: <input id="inputUnitUs" list="unitUs" placeholder="Виберіть підрозділ" onChange="companyUserDefaulValues()">
                                 <datalist class="unit" name="area" id="unitUs">
                                     <?
                                     echo $departmentOptions;

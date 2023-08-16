@@ -290,15 +290,11 @@ function maddUser(edMode) {
 }
 
 function usADD() {
-    if ($("#usName").val() && $("#usSurname").val() && $("#usLogin").val() && $("#usPass").val()) {
-        if ($("#usName").val().length > 25 || $("#usSurname").val().length > 25 || $("#usLogin").val().length > 15 || $("#usPass").val().length > 20) {
-            alert("Ви вписали занадто багато символів")
-            return;
-        }
+    if (!$("#usName").val() || !$("#usSurname").val() || !$("#usLogin").val() || !$("#usPass").val()) alert("Обов'язкові поля не заповнені");
+    else {
         unit = getDataFromDatalist('#unitUs', '#inputUnitUs')
-        if (unit == undefined || unit == '') {
-            if (unit == '') alert("Виберіть варіант із списка")
-        } else {
+        if (unit == undefined || unit == '') alert("Виберіть варіант із списка")
+        else
             $.post(ajaxURL, {
                 action: "usADD",
                 user: $("#usName").val().trim(),
@@ -308,17 +304,20 @@ function usADD() {
                 unit: unit,
                 rights: $("#RightsUs :selected").val()
             }, function (result) {
-                if (result) {
-                    $("#usName").val("");
-                    $("#usSurname").val("");
-                    $("#usLogin").val("");
-                    $("#usPass").val("");
-                    alert("Користувач успішно доданий");
-                } else alert("Такий користувач вже існує");
+                res = JSON.parse(result);
+                if (res.error) {
+                    alert(res.error);
+                    return
+                }
+                document.querySelector('#usPass').disabled = false
+                document.querySelector('#RightsUs').disabled = false
+                $("#usName").val("");
+                $("#usSurname").val("");
+                $("#usLogin").val("");
+                $("#usPass").val("");
+                alert(res.success);
             })
-        }
-
-    } else alert("Обов'язкові поля не заповнені");
+    }
 }
 
 function maddUnit(edMode) {
@@ -334,30 +333,56 @@ function maddUnit(edMode) {
     showSet([$("#adminPanel"), $("#addUnit")]);
 }
 
-function unADD() {
-    if ($("#unADDR").val() && $("#tel").val() && $("#unit").val()) {
-        if ($("#unADDR").val().length > 80 || $("#tel").val().length > 100 || $("#unit").val().length > 30) {
-            alert("Ви вписали занадто багато символів")
-            return;
-        }
-        $.post(ajaxURL, {
-            action: "unADD",
-            addr: $("#unADDR").val().trim(),
-            tel: $("#tel").val().trim(),
-            unit: $("#unit").val().trim()
-        }, function (result) {
-            if (result) {
-                res = JSON.parse(result);
-                $(".unit").append('<option data-value="' + res.id + '"  data-text="' + res.unit.trim() + '">' + res.unit.trim() + '</option>');
-                $("#unADDR").val("");
-                $("#tel").val("");
-                $("#unit").val("");
-                alert("Підрозділ додано");
-            } else alert("Підрозділ уже існує");
+function tradePointFormStatus(status) {
+    if (status.checked) document.querySelector('#tradePointForm').style.display = 'block';
+    else document.querySelector('#tradePointForm').style.display = 'none';
+};
 
-        });
-    } else alert("Oбов'язкові поля не заповнені");
+
+function unADD() {
+    const isTradePoint = document.querySelector('#isTradePoint').checked;
+    const tradePointId = +document.querySelector('#tradePointId').value
+    const companyId = +document.querySelector('#companyId').value
+
+    if (isTradePoint) {
+        if (tradePointId < 1) {
+            alert("Введіть унікальний id торгової точки")
+            return
+        }
+
+        if (companyId < 1) {
+            alert("Виберіть обовязково компанію")
+            return
+        }
+    }
+
+    if (!($("#unADDR").val() && $("#tel").val() && $("#unit").val())) {
+        alert("Oбов'язкові поля не заповнені");
+        return;
+    }
+
+    $.post(ajaxURL, {
+        action: "unADD",
+        addr: $("#unADDR").val().trim(),
+        tel: $("#tel").val().trim(),
+        unit: $("#unit").val().trim(),
+        isTradePoint: isTradePoint,
+        tradePointId: tradePointId,
+        companyId: +document.querySelector('#companyId').value
+    }, function (result) {
+        res = JSON.parse(result);
+        if (res.error) {
+            alert(res.error);
+            return
+        }
+        $(".unit").append('<option data-value="' + res.id + '"  data-text="' + res.unit.trim() + '">' + res.unit.trim() + '</option>');
+        $("#unADDR").val("");
+        $("#tel").val("");
+        $("#unit").val("");
+        alert("Підрозділ додано");
+    });
 }
+
 
 function mallUnit() {
     showSet([$("#adminPanel"), $("#allUnit")]);
@@ -373,36 +398,61 @@ function getAllUnit() {
     })
 }
 
-function unitEdit(uId, unit, addr, tel) {
+function unitEdit(uId, unit, addr, tel, isTradePoint = false, tradePointId = 0, companyId = 0) {
     $("#unit").val(unit);
     $("#unADDR").val(decodeURIComponent(addr));
     $("#tel").val(tel);
+    document.querySelector('#isTradePoint').checked = isTradePoint
+    if (isTradePoint) document.querySelector('#tradePointForm').style.display = 'block';
+    else document.querySelector('#tradePointForm').style.display = 'none';
+    document.querySelector('#tradePointId').value = tradePointId
+    document.querySelector('#companyId').value = companyId
     maddUnit(uId);
 }
 
 function confirmUnitEdit(id) {
-    if ($("#unit").val() && $("#unADDR").val() && $("#tel").val()) {
-        if ($("#unADDR").val().length > 80 || $("#tel").val().length > 100 || $("#unit").val().length > 30) {
-            alert("Ви вписали занадто багато символів")
-            return;
-        }
-        $.post(ajaxURL, {
-            action: "unitEDIT",
-            unitID: id,
-            unit: $("#unit").val().trim(),
-            addr: $("#unADDR").val().trim(),
-            tel: $("#tel").val().trim()
-        }, function (result) {
-            if (result) {
-                $("#unit").val("");
-                $("#unADDR").val("");
-                $("#tel").val("");
-                alert("Дані підрозділа змінені");
-                mallUnit();
-            }
-        })
-    } else alert("Oбов'язкові поля не заповнені");
+    const isTradePoint = document.querySelector('#isTradePoint').checked;
+    const tradePointId = +document.querySelector('#tradePointId').value
+    const companyId = +document.querySelector('#companyId').value
 
+    if (isTradePoint) {
+        if (tradePointId < 1) {
+            alert("Введіть унікальний id торгової точки")
+            return
+        }
+
+        if (companyId < 1) {
+            alert("Виберіть обовязково компанію")
+            return
+        }
+    }
+
+    if (!($("#unADDR").val() && $("#tel").val() && $("#unit").val())) {
+        alert("Oбов'язкові поля не заповнені");
+        return;
+    }
+
+    $.post(ajaxURL, {
+        action: "unitEDIT",
+        unitID: id,
+        addr: $("#unADDR").val().trim(),
+        tel: $("#tel").val().trim(),
+        unit: $("#unit").val().trim(),
+        isTradePoint: isTradePoint,
+        tradePointId: tradePointId,
+        companyId: +document.querySelector('#companyId').value
+    }, function (result) {
+        res = JSON.parse(result);
+        if (res.error) {
+            alert(res.error);
+            return
+        }
+        $("#unADDR").val("");
+        $("#tel").val("");
+        $("#unit").val("");
+        alert("Дані підрозділа змінені");
+        mallUnit();
+    })
 }
 
 function mallUser() {
@@ -418,6 +468,9 @@ function userEdit(uId, uNam, uSur, uPass, uLogin, uArea, uRights) {
     $("#usPass").val(uPass);
     document.querySelector('#inputUnitUs').value = uArea.trim()
     $("#RightsUs [text='" + uRights + "']").attr("selected", "selected");
+    const dataset = document.querySelector(`#unitUs option[data-text="${document.querySelector('#inputUnitUs').value}"]`)?.dataset
+    document.querySelector('#usPass').disabled = dataset.tradepointid
+    document.querySelector('#RightsUs').disabled = dataset.tradepointid
     maddUser(uId);
 }
 
@@ -426,15 +479,11 @@ function getDataValue(datalistSelector, selector) {
 }
 
 function confirmUserEdit(id) {
-    if ($("#usName").val() && $("#usSurname").val() && $("#usLogin").val() && $("#usPass").val()) {
-        if ($("#usName").val().length > 25 || $("#usSurname").val().length > 25 || $("#usLogin").val().length > 15 || $("#usPass").val().length > 20) {
-            alert("Ви вписали занадто багато символів")
-            return;
-        }
+    if (!$("#usName").val() || !$("#usSurname").val() || !$("#usLogin").val() || !$("#usPass").val()) alert("Обов'язкові поля не заповнені");
+    else {
         unit = getDataFromDatalist('#unitUs', '#inputUnitUs')
-        if (unit == undefined || unit == '') {
-            if (unit == '') alert("Виберіть варіант із списка")
-        } else {
+        if (unit == undefined || unit == '') alert("Виберіть варіант із списка")
+        else
             $.post(ajaxURL, {
                 action: "userEDIT",
                 userID: id,
@@ -445,17 +494,21 @@ function confirmUserEdit(id) {
                 unit: unit,
                 rights: $("#RightsUs :selected").val()
             }, function (result) {
-                if (result) {
-                    $("#usName").val("");
-                    $("#usSurname").val("");
-                    $("#usLogin").val("");
-                    $("#usPass").val("");
-                    alert("Дані користувача змінені");
-                    mallUser();
+                res = JSON.parse(result);
+                if (res.error) {
+                    alert(res.error);
+                    return
                 }
+                document.querySelector('#usPass').disabled = false
+                document.querySelector('#RightsUs').disabled = false
+                $("#usName").val("");
+                $("#usSurname").val("");
+                $("#usLogin").val("");
+                $("#usPass").val("");
+                alert(res.success);
+                mallUser();
             })
-        }
-    } else alert("Oбов'язкові поля не заповнені");
+    }
 }
 function mchangePass() {
     showSet([$("#cPass")]);
@@ -504,6 +557,13 @@ function getReportCounter(event) {
         alert("Виберіть компанії")
         return
     }
+
+    // let countDownload = +localStorage.getItem(document.cookie)
+    // if (countDownload > 25) {
+    //     alert("Ви перевищили ліміт завантажень\nДля продовження, будь ласка, зробіть грошовий внесок")
+    //     return
+    // } else localStorage.setItem(document.cookie, ++countDownload);
+
 
     fetch(ajaxURL, {
         headers: {
@@ -562,3 +622,23 @@ function getCompaniesAndColors(selector) {
         }
     }).filter(row => row !== null)
 }
+
+function companyUserDefaulValues() {
+    unitInput = document.querySelector('#inputUnitUs')
+    dataValue = getDataValue('#unitUs', '#inputUnitUs')
+    unit;
+
+    let disabledInputs = false;
+    if (unitInput.value && dataValue != 0 && dataValue != undefined) {
+        const dataset = document.querySelector(`#unitUs option[data-text="${document.querySelector('#inputUnitUs').value}"]`)?.dataset
+        const isTradePoint = dataset.tradepointid;
+        if (isTradePoint) {
+            disabledInputs = true
+            document.querySelector('#usLogin').value = dataset.tradepointid
+            document.querySelector('#usPass').value = dataset.codeokpo
+            document.querySelector('#RightsUs').value = 3
+        }
+    }
+    document.querySelector('#usPass').disabled = disabledInputs
+    document.querySelector('#RightsUs').disabled = disabledInputs
+} 

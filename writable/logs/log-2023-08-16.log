@@ -1,0 +1,13 @@
+ERROR - 2023-08-16 05:54:21 --> mysqli_sql_exception: Duplicate entry '207' for key 'user.login' in /ext/WWW/konex.com.ua/meters/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /ext/WWW/konex.com.ua/meters/system/Database/MySQLi/Connection.php(292): mysqli->query('UPDATE `user` S...', 0)
+#1 /ext/WWW/konex.com.ua/meters/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `user` S...')
+#2 /ext/WWW/konex.com.ua/meters/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `user` S...')
+#3 /ext/WWW/konex.com.ua/meters/system/Database/BaseBuilder.php(2079): CodeIgniter\Database\BaseConnection->query('UPDATE `user` S...', Array, false)
+#4 /ext/WWW/konex.com.ua/meters/app/Models/Search.php(470): CodeIgniter\Database\BaseBuilder->update(Array, Array)
+#5 /ext/WWW/konex.com.ua/meters/app/Controllers/Meters.php(148): App\Models\Search->userEdit(Object(CodeIgniter\HTTP\IncomingRequest))
+#6 /ext/WWW/konex.com.ua/meters/system/CodeIgniter.php(927): App\Controllers\Meters->ajax()
+#7 /ext/WWW/konex.com.ua/meters/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Meters))
+#8 /ext/WWW/konex.com.ua/meters/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /ext/WWW/konex.com.ua/meters/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}

@@ -15,6 +15,22 @@ class Search extends Model
         return $this->db->query("SELECT unit, id FROM area ORDER BY unit")->getResultArray();
     }
 
+    public function getCompaniesAreas()
+    {
+        $result = [];
+        $companiesAreas = $this->db->query("SELECT companiesAreas.area_id, companies.code_okpo, area.trade_point_id
+                                            FROM companiesAreas 
+                                            JOIN companies ON companiesAreas.company_1s_code = companies.company_1s_code
+                                            JOIN area ON area_id = area.id")->getResultArray();
+        foreach ($companiesAreas as $companyArea) {
+            $result[$companyArea['area_id']] = [
+                'trade_point_id' => $companyArea['trade_point_id'],
+                'code_okpo' => $companyArea['code_okpo']
+            ];
+        }
+        return $result;
+    }
+
     private function getDepartmentByUnit($unit)
     {
         return $this->db->query("SELECT unit, id FROM area WHERE unit = '" . $unit . "' ORDER BY id DESC")->getFirstRow();
@@ -298,24 +314,50 @@ class Search extends Model
             'area' => $request->getVar('unit'),
             'rights' => $request->getVar('rights')
         ];
-        if ($this->checkUserDB($user)) {
-            $this->addUser($user);
-            echo true;
-        } else echo false;
+        header('Content-Type: application/json; charset=utf-8');
+        if (!$this->checkUserDB($user)) {
+            echo json_encode(['error' => 'Користувач ' . $request->getVar('login') . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
+            return;
+        }
+        $this->db->table('user')->insert($user);
+        echo json_encode(['success' => 'Користувач ' . $request->getVar('login') . ' успішно доданий'], JSON_UNESCAPED_UNICODE);
     }
 
     function unADD($request)
     {
+        $this->db->transStart();
         $unit = $this->trimSpace($request->getVar('unit'));
-        $area = [
+        if (!$this->checkUnDB($unit)) {
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['error' => 'Підрозділ ' . $unit . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
+            return;
+        }
+
+        $tradePointId = $request->getVar('tradePointId');
+        if (filter_var($request->getVar('isTradePoint'), FILTER_VALIDATE_BOOLEAN)) {
+            if ($this->checkUnTradePointDB($tradePointId)) {
+                $this->addUnit([
+                    'addr' => $request->getVar('addr'),
+                    'tel' => $request->getVar('tel'),
+                    'unit' => $unit,
+                    'trade_point_id' => $tradePointId
+                ]);
+                $area = $this->db->query("SELECT * FROM area WHERE trade_point_id = " . $tradePointId)->getFirstRow();
+                $this->db->table('companiesAreas')->insert(['area_id' => $area->id, 'company_1s_code' => $request->getVar('companyId')]);
+            } else {
+                header('Content-Type: application/json; charset=utf-8');
+                echo json_encode(['error' => 'Торгова точка із номером №' . $tradePointId . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
+                return;
+            }
+        } else  $this->addUnit([
             'addr' => $request->getVar('addr'),
             'tel' => $request->getVar('tel'),
-            'unit' => $unit
-        ];
-        if ($this->checkUnDB($area)) {
-            $this->addUnit($area);
-            return json_encode($this->getDepartmentByUnit($unit));
-        }
+            'unit' => $unit,
+            'trade_point_id' => $tradePointId
+        ]);
+        $this->db->transComplete();
+
+        return json_encode($this->getDepartmentByUnit($unit));
     }
 
     function getAllUnit()
@@ -323,11 +365,30 @@ class Search extends Model
         $table = new Table();
         $table->setTemplate($this->tablShablone());
         echo "<p></p>";
-        $table->setHeading("Підрозділ", "Адрес", "Телефон", "Редакт");
+        $table->setHeading("Підрозділ", "Адрес", "Телефон", "Дії");
         $query = $this->getAllUnitDB();
+        $allCompaniesAreas = $this->db->query("SELECT * FROM companiesAreas")->getResultArray();
+        $companyTradePoint = [];
+        foreach ($allCompaniesAreas as $tradePont) {
+            $companyTradePoint[$tradePont['area_id']] = $tradePont['company_1s_code'];
+        }
+
         if (count($query)) {
             foreach ($query as $row) {
-                $table->addRow($row['unit'], $row['addr'], $row['tel'], '<button onClick="unitEdit(' . $row['id'] . ',' . "'" . $row['unit'] . "'" . ',' . "'" . rawurlencode($row['addr']) . "'" . ',' . "'" . $row['tel'] . "'" . ')">' . "Редагувати" . '</button>');
+                if (isset($companyTradePoint[$row['id']]))
+                    $table->addRow(
+                        $row['unit'],
+                        $row['addr'],
+                        $row['tel'],
+                        '<button onClick="unitEdit(' . $row['id'] . ',' . "'" . $row['unit'] . "'" . ',' . "'" . rawurlencode($row['addr']) . "'" . ',' . "'" . $row['tel'] . "'" . ', true, ' . $row['trade_point_id'] . ', ' . $companyTradePoint[$row['id']] . ')">' . "Редагувати" . '</button>'
+                    );
+                else
+                    $table->addRow(
+                        $row['unit'],
+                        $row['addr'],
+                        $row['tel'],
+                        '<button onClick="unitEdit(' . $row['id'] . ',' . "'" . $row['unit'] . "'" . ',' . "'" . rawurlencode($row['addr']) . "'" . ',' . "'" . $row['tel'] . "'" . ')">' . "Редагувати" . '</button>'
+                    );
             }
             echo $table->generate();
         }
@@ -335,19 +396,48 @@ class Search extends Model
 
     function unitEDIT($request)
     {
-        $unit = [
+        $this->db->transStart();
+        $unitId = $request->getVar('unitID');
+        $unit = $this->trimSpace($request->getVar('unit'));
+        if (!$this->checkUnDB($unit, $unitId)) {
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['error' => 'Підрозділ ' . $unit . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
+            return;
+        }
+
+        $tradePointId = $request->getVar('tradePointId');
+        $companyId = $request->getVar('companyId');
+        if (!filter_var($request->getVar('isTradePoint'), FILTER_VALIDATE_BOOLEAN)) {
+            $this->db->query("DELETE FROM companiesAreas WHERE area_id = " . $unitId);
+            $tradePointId = 0;
+        } else {
+            $area = $this->db->query("SELECT * FROM area WHERE trade_point_id = " . $tradePointId)->getFirstRow();
+            if (!isset($area->id)) {
+                $this->db->query("DELETE FROM companiesAreas WHERE area_id = " . $unitId);
+                $this->db->table('companiesAreas')->insert(['company_1s_code' => $companyId, 'area_id' => $unitId]);
+            } else {
+                if ($area->id != $unitId) {
+                    header('Content-Type: application/json; charset=utf-8');
+                    echo json_encode(['error' => 'Торгова точка із номером №' . $tradePointId . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
+                    return;
+                } else $this->db->table('companiesAreas')->update(['company_1s_code' => $companyId], ['area_id' => $unitId]);
+            }
+        }
+
+        echo $this->db->table('area')->update([
             'addr' => $request->getVar('addr'),
             'tel' => $request->getVar('tel'),
-            'unit' => $this->trimSpace($request->getVar('unit'))
-        ];
-        $this->editUnit($unit, $request->getVar('unitID'));
+            'unit' => $this->trimSpace($request->getVar('unit')),
+            'trade_point_id' => $tradePointId
+        ], ['id' => $unitId]);
+        $this->db->transComplete();
     }
 
     function getAllUser()
     {
         $table = new Table();
         $table->setTemplate($this->tablShablone());
-        $table->setHeading("Прізвище", "Ім'я", "Логін", "Права", "Підрозділ", "Телеграм ID", "Редакт");
+        $table->setHeading("Прізвище", "Ім'я", "Логін", "Права", "Підрозділ", "Телеграм ID", "Дії");
         $query = $this->getAllUserDB();
         echo "<p></p>";
         if (count($query) > 0) {
@@ -360,15 +450,21 @@ class Search extends Model
 
     function userEdit($request)
     {
-        $user = [
-            'name' => $request->getVar('user'),
-            'surname' => $request->getVar('surname'),
-            'login' => $request->getVar('login'),
-            'pass' => $request->getVar('pass'),
-            'area' => $request->getVar('unit'),
-            'rights' => $request->getVar('rights')
-        ];
-        $this->editUserDB($user, $request->getVar('userID'));
+        $userID = intval($request->getVar('userID'));
+
+        $userRow = $this->db->query("SELECT * FROM user WHERE login='" . $request->getVar('login') . "'")->getFirstRow();
+        header('Content-Type: application/json; charset=utf-8');
+        if ($userRow == null || $userRow->id == $userID) {
+            $this->db->table('user')->update([
+                'name' => $request->getVar('user'),
+                'surname' => $request->getVar('surname'),
+                'login' => $request->getVar('login'),
+                'pass' => $request->getVar('pass'),
+                'area' => $request->getVar('unit'),
+                'rights' => $request->getVar('rights')
+            ], ['id' => $userID]);
+            echo json_encode(['success' => 'Дані користувач ' . $request->getVar('login') . ' успішно змінено '], JSON_UNESCAPED_UNICODE);
+        } else echo json_encode(['error' => 'Користувач ' . $request->getVar('login') . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
     }
 
     public function findCountersNotFilled($area = null, $type = null, $counterPK = null)
@@ -493,14 +589,14 @@ class Search extends Model
                                     pokaz 
                                     JOIN counter ON pokaz.cId = counter.id 
                                     JOIN area ON counter.unit = area.id 
-                                    JOIN companiesTradePoints USING(trade_point_id) 
+                                    JOIN companiesAreas ON area.id = companiesAreas.area_id 
                                 WHERE 
                                     typeC = " . $counter->typeCounterId . " 
                                     AND state = 1 
                                     AND company_1s_code = " . $company->companyId . "  
                                     AND ts BETWEEN '" . $json->reportStartDate . "' AND '" . $json->reportEndDate . "'      
                                 ORDER BY 
-                                    pokaz.ts, areaId DESC")->getResultArray();
+                                    unit ASC, pokaz.ts DESC")->getResultArray();
     }
 
     private function createValidJSONForReport($counter, $json,  $company, $dataReport)
@@ -616,16 +712,6 @@ class Search extends Model
                 ORDER BY us.surname")->getResultArray();
     }
 
-    private function editUnit($unit, $unitID)
-    {
-        echo $this->db->table('area')->update($unit, ['id' => $unitID]);
-    }
-
-    private function editUserDB($user, $userID)
-    {
-        echo $this->db->table('user')->update($user, ['id' => $userID]);
-    }
-
     private function getAllUnitDB()
     {
         return $this->db->query("SELECT * FROM area ORDER BY unit")->getResultArray();
@@ -636,9 +722,14 @@ class Search extends Model
         return preg_replace('/[ ]{2,}/', ' ', $str);
     }
 
-    private function checkUnDB($area)
+    private function checkUnDB($unit, $areaId = 0)
     {
-        return count($this->db->query("SELECT unit FROM area WHERE unit='" . $area['unit'] . "'")->getResultArray()) ? false : true;
+        return count($this->db->query("SELECT * FROM area WHERE unit='" . $unit . "' AND id != " . $areaId)->getResultArray()) ? false : true;
+    }
+
+    private function checkUnTradePointDB($tradePoint)
+    {
+        return count($this->db->query("SELECT * FROM area WHERE trade_point_id = " . $tradePoint)->getResultArray()) ? false : true;
     }
 
     private function addUnit($area)
@@ -649,11 +740,6 @@ class Search extends Model
     private function checkUserDB($user)
     {
         return count($this->db->query("SELECT login FROM user WHERE login='" . $user['login'] . "'")->getResultArray()) ? false : true;
-    }
-
-    private function addUser($user)
-    {
-        $this->db->table('user')->insert($user);
     }
 
     private function getLogConnectionDB()

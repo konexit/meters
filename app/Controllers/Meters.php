@@ -106,7 +106,8 @@ class Meters extends BaseController
             'counterType' => $this->search->getCounterType(),
             'counterArea' => $this->search->getCounterArea(),
             'usAreaName' => $this->search->getUnitById(session()->get('usArea')),
-            'companies' => $this->search->getCompanies()
+            'companies' => $this->search->getCompanies(),
+            'companiesAreas' => $this->search->getCompaniesAreas(),
         ], $this->user->getCounterDate()));
     }
 
