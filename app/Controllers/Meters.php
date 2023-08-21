@@ -178,6 +178,7 @@ class Meters extends BaseController
             return $this->response->setStatusCode($res['code'])->setJSON($res['json']);
         }
     }
+
     public function updateDB()
     {
         switch ($this->request->getVar('action')) {
