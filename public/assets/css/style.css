@@ -19,11 +19,6 @@
     display: none;
 }
 
-.bcType {
-    float: right;
-    padding-left: 35px;
-}
-
 #cNumer {
     width: 150px;
     font-size: 12pt;
@@ -454,5 +449,189 @@ h2 {
 }
 
 #addUser button#confirmUs:hover {
+    background-color: #0056b3;
+}  
+
+#addCounters {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    margin-top: 15px;
+}
+
+#addCounters h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+#addCounters p {
+    margin: 14px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#addCounters input[type="text"],
+#addCounters input[type="number"],
+#addCounters select {
+    width: 98%; 
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#addCounters input[type="text"][list="cArr"] {
+    width: 95%;
+}
+
+#addCounters input[type="text"]:focus,
+#addCounters input[type="number"]:focus,
+#addCounters select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#buttCounter {
+    font-size: 14pt;
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#buttCounter:hover {
+    background-color: #0056b3;
+}
+
+#cState {
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+#counterList {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    margin-top: 15px;
+}
+
+#counterList h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.bcType {
+    font-weight: bold;
+}
+
+#hcYear,
+#hcType,
+#inputCUnit {
+    padding: 8px;
+    margin-right: 10px; 
+}
+
+#inputCUnit {
+    width: 200px; 
+}
+
+#cUnit {
+    width: 100%; 
+}
+
+#cYear,
+#cType,
+#inputCUnit {
+    font-size: 14px; 
+}
+
+#cYear {
+    margin-top: 10px;
+}
+
+#hcYear:hover,
+#hcType:hover,
+#inputCUnit:hover {
+    border-color: #007bff;
+    outline: none;
+}
+
+.cUnit option {
+    font-size: 14px; 
+}
+
+#addCounterBtn {
+    background-color: #4CAF50; 
+    color: white; 
+    padding: 10px 20px;
+    border: none; 
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer; 
+    border-radius: 4px;
+  }
+  
+  #addCounterBtn:hover {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2); 
+  }
+
+
+  #cPass {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    margin-top: 15px;
+}
+
+#cPass h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+#cPass p {
+    margin: 14px 0;
+}
+
+#cPass input[type="password"],
+#cPass select {
+    width: 98%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#cPass input[type="text"][list="unitUs"] {
+    width: 95%;
+}
+
+#cPass input[type="password"]:focus,
+#cPass select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#cPass button#changePass {
+    font-size: 14pt;
+    display: block;
+    margin: 0 auto; 
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#cPass button#changePass:hover {
     background-color: #0056b3;
 }  

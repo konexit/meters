@@ -60,17 +60,128 @@ function getCounters() {
     } else {
         unit = getDataFromDatalist('#cUnit', '#inputCUnit')
         if (unit != undefined) {
+            const stateCounter = $("#setCounters").is(":visible") ? 0 : 1
             $.post(ajaxURL, {
                 action: "getCounters",
                 cUnit: unit,
                 cType: $('#hcType :selected')[0].value,
-                state: $("#setCounters").is(":visible") ? 0 : 1
+                state: stateCounter
             }, function (result) {
-                ($("#setCounters").is(":visible")) ? $("#allCount").html(result) : $("#counter").html(result);
+                if (stateCounter) {
+                    const tableCounter = document.querySelector("#counter")
+                    if (tableCounter.children[1]) tableCounter.replaceChild(createTableFromJSON(result), tableCounter.children[1])
+                    else tableCounter.appendChild(createTableFromJSON(result))
+                } else {
+                    $("#allCount").html(result);
+                }
             });
         }
     }
 }
+
+function createTableFromJSON(jsonData) {
+    const data = JSON.parse(jsonData)
+
+    const table = document.createElement("table")
+    table.setAttribute("border", "2")
+    table.setAttribute("cellpadding", "4")
+    table.setAttribute("cellspacing", "0")
+    table.setAttribute("align", "center")
+    table.setAttribute("style", "width: 100%;table-layout: fixed;")
+    table.setAttribute("align", "left");
+    table.setAttribute("scope", "col");
+
+    // Create table header
+    const tableHeader = document.createElement("thead")
+    tableHeader.setAttribute("style", "position: sticky; top: 0;")
+
+    const headerRow = document.createElement("tr")
+    headerRow.setAttribute("style", "color:White;background-color:#006698;font-size:14pt;font-weight:bold;")
+
+    const colgroup = document.createElement("colgroup");
+    data.columns.forEach(column => {
+        const th = document.createElement("th")
+        th.textContent = column
+        headerRow.appendChild(th)
+
+        const col = document.createElement("col");
+        const specialColumn = column == 'ID' || column == 'Добавити' || column == 'Стан'
+        col.setAttribute("style", `width: ${specialColumn ? "auto" : "12%"};`);
+        colgroup.appendChild(col);
+    });
+
+    table.appendChild(colgroup);
+    tableHeader.appendChild(headerRow);
+    table.appendChild(tableHeader);
+
+    // Create table body
+    const tableBody = document.createElement("tbody");
+
+    data.counters.forEach(counter => {
+        const row = document.createElement("tr")
+        row.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;")
+
+        let cell = document.createElement("td")
+
+        cell.setAttribute("align", "left")
+        cell.textContent = counter['ctype']
+        row.appendChild(cell)
+
+        cell = document.createElement("td")
+        cell.textContent = counter['ci']
+        row.appendChild(cell)
+
+        cell = document.createElement("td")
+        cell.textContent = counter['cn']
+        row.appendChild(cell)
+
+        cell = document.createElement("td")
+        cell.textContent = counter['unit']
+        row.appendChild(cell)
+
+        cell = document.createElement("td")
+        cell.textContent = counter['addr']
+        row.appendChild(cell)
+
+        cell = document.createElement("td")
+        cell.textContent = counter['Name']
+        row.appendChild(cell)
+
+        cell = document.createElement("td")
+        cell.textContent = counter['trade_point_id']
+        row.appendChild(cell)
+
+        if (usRights != 3) {
+            cell = document.createElement("td")
+            const checkbox = document.createElement("input")
+            checkbox.type = "checkbox"
+            checkbox.checked = counter['state'] == 1
+            checkbox.disabled = true;
+            cell.appendChild(checkbox)
+            row.appendChild(cell)
+        }
+
+        cell = document.createElement("td")
+        const addButton = document.createElement("button")
+        addButton.textContent = "Добавити"
+        addButton.addEventListener("click", function () {
+            setPokaz(counter['id'], counter['ci'])
+        });
+        cell.appendChild(addButton)
+        row.appendChild(cell)
+
+        row.style.cssText = "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;"
+        if (data.filledCointerIds.find(item => item.cId === counter.id)) row.style.backgroundColor = "#01f92842"
+        else row.style.backgroundColor = "#ffff1c75"
+
+        tableBody.appendChild(row)
+    });
+
+    table.appendChild(tableBody)
+
+    return table
+}
+
 
 function setPokaz(counterPK, cNom) {
     $("#cNum").html(cNom);
@@ -290,44 +401,54 @@ function maddUser(edMode) {
 }
 
 function usADD() {
-    if (!$("#usName").val() || !$("#usSurname").val() || !$("#usLogin").val() || !$("#usPass").val()) alert("Обов'язкові поля не заповнені");
-    else {
-        unit = getDataFromDatalist('#unitUs', '#inputUnitUs')
-        if (unit == undefined || unit == '') alert("Виберіть варіант із списка")
-        else
-            $.post(ajaxURL, {
-                action: "usADD",
-                user: $("#usName").val().trim(),
-                surname: $("#usSurname").val().trim(),
-                login: $("#usLogin").val().trim(),
-                pass: $("#usPass").val().trim(),
-                unit: unit,
-                rights: $("#RightsUs :selected").val()
-            }, function (result) {
-                res = JSON.parse(result);
-                if (res.error) {
-                    alert(res.error);
-                    return
-                }
-                document.querySelector('#usPass').disabled = false
-                document.querySelector('#RightsUs').disabled = false
-                $("#usName").val("");
-                $("#usSurname").val("");
-                $("#usLogin").val("");
-                $("#usPass").val("");
-                alert(res.success);
-            })
+    if (!$("#usName").val() || !$("#usSurname").val() || !$("#usLogin").val() || !$("#usPass").val()) {
+        alert("Обов'язкові поля не заповнені")
+        return
     }
+
+    const dataset = document.querySelector(`#unitUs option[data-text="${document.querySelector('#inputUnitUs').value}"]`)?.dataset
+    if ($("#usLogin").val() == dataset.tradepointid + '-') {
+        alert("Вкажіть унікальний логін")
+        return
+    }
+
+    unit = getDataFromDatalist('#unitUs', '#inputUnitUs')
+    if (unit == undefined || unit == '') alert("Виберіть варіант із списка")
+    else
+        $.post(ajaxURL, {
+            action: "usADD",
+            user: $("#usName").val().trim(),
+            surname: $("#usSurname").val().trim(),
+            login: $("#usLogin").val().trim(),
+            pass: $("#usPass").val().trim(),
+            unit: unit,
+            rights: $("#RightsUs :selected").val()
+        }, function (result) {
+            res = JSON.parse(result);
+            if (res.error) {
+                alert(res.error);
+                return
+            }
+            document.querySelector('#RightsUs').disabled = false
+            $("#usName").val("");
+            $("#usSurname").val("");
+            $("#usLogin").val("");
+            $("#usPass").val("");
+            alert(res.success);
+        })
+
 }
 
 function maddUnit(edMode) {
     if (edMode) {
         $("#confirmUn").text("Редагувати");
         $("#confirmUn").attr("onClick", "confirmUnitEdit(" + edMode + ")");
+        tradePointInput(true)
     } else {
         $("#confirmUn").text("Додати підрозділ");
         $("#confirmUn").attr("onClick", "unADD()");
         $("#addUnit input").val("")
+        tradePointInput(false)
         setBackground($("#aArea"));
     }
     showSet([$("#adminPanel"), $("#addUnit")]);
@@ -356,7 +477,7 @@ function unADD() {
         }
     }
 
-    if (!($("#unADDR").val() && $("#tel").val() && $("#unit").val())) {
+    if (!($("#unADDR").val() || $("#tel").val() || $("#unit").val())) {
         alert("Oбов'язкові поля не заповнені");
         return;
     }
@@ -366,6 +487,7 @@ function unADD() {
         addr: $("#unADDR").val().trim(),
         tel: $("#tel").val().trim(),
         unit: $("#unit").val().trim(),
+        areaState: document.querySelector('#areaState').checked,
         isTradePoint: isTradePoint,
         tradePointId: tradePointId,
         companyId: +document.querySelector('#companyId').value
@@ -379,7 +501,9 @@ function unADD() {
         $("#unADDR").val("");
         $("#tel").val("");
         $("#unit").val("");
+        $("#tradePointId").val("");
         alert("Підрозділ додано");
+        location.reload()
     });
 }
 
@@ -398,16 +522,23 @@ function getAllUnit() {
     })
 }
 
-function unitEdit(uId, unit, addr, tel, isTradePoint = false, tradePointId = 0, companyId = 0) {
+function unitEdit(uId, unit, addr, tel, areaState = true, isTradePoint = false, tradePointId = 0, companyId = 0) {
     $("#unit").val(unit);
     $("#unADDR").val(decodeURIComponent(addr));
     $("#tel").val(tel);
     document.querySelector('#isTradePoint').checked = isTradePoint
+    document.querySelector('#areaState').checked = areaState
     if (isTradePoint) document.querySelector('#tradePointForm').style.display = 'block';
     else document.querySelector('#tradePointForm').style.display = 'none';
     document.querySelector('#tradePointId').value = tradePointId
     document.querySelector('#companyId').value = companyId
     maddUnit(uId);
+}
+
+function tradePointInput(state = false) {
+    document.querySelector('#isTradePoint').disabled = state
+    document.querySelector('#tradePointId').disabled = state
+    document.querySelector('#companyId').disabled = state
 }
 
 function confirmUnitEdit(id) {
@@ -438,6 +569,7 @@ function confirmUnitEdit(id) {
         addr: $("#unADDR").val().trim(),
         tel: $("#tel").val().trim(),
         unit: $("#unit").val().trim(),
+        areaState: document.querySelector('#areaState').checked,
         isTradePoint: isTradePoint,
         tradePointId: tradePointId,
         companyId: +document.querySelector('#companyId').value
@@ -469,7 +601,6 @@ function userEdit(uId, uNam, uSur, uPass, uLogin, uArea, uRights) {
     document.querySelector('#inputUnitUs').value = uArea.trim()
     $("#RightsUs [text='" + uRights + "']").attr("selected", "selected");
     const dataset = document.querySelector(`#unitUs option[data-text="${document.querySelector('#inputUnitUs').value}"]`)?.dataset
-    document.querySelector('#usPass').disabled = dataset.tradepointid
     document.querySelector('#RightsUs').disabled = dataset.tradepointid
     maddUser(uId);
 }
@@ -479,37 +610,45 @@ function getDataValue(datalistSelector, selector) {
 }
 
 function confirmUserEdit(id) {
-    if (!$("#usName").val() || !$("#usSurname").val() || !$("#usLogin").val() || !$("#usPass").val()) alert("Обов'язкові поля не заповнені");
-    else {
-        unit = getDataFromDatalist('#unitUs', '#inputUnitUs')
-        if (unit == undefined || unit == '') alert("Виберіть варіант із списка")
-        else
-            $.post(ajaxURL, {
-                action: "userEDIT",
-                userID: id,
-                user: $("#usName").val().trim(),
-                surname: $("#usSurname").val().trim(),
-                login: $("#usLogin").val().trim(),
-                pass: $("#usPass").val().trim(),
-                unit: unit,
-                rights: $("#RightsUs :selected").val()
-            }, function (result) {
-                res = JSON.parse(result);
-                if (res.error) {
-                    alert(res.error);
-                    return
-                }
-                document.querySelector('#usPass').disabled = false
-                document.querySelector('#RightsUs').disabled = false
-                $("#usName").val("");
-                $("#usSurname").val("");
-                $("#usLogin").val("");
-                $("#usPass").val("");
-                alert(res.success);
-                mallUser();
-            })
+    if (!$("#usName").val() || !$("#usSurname").val() || !$("#usLogin").val() || !$("#usPass").val()) {
+        alert("Обов'язкові поля не заповнені")
+        return
     }
+
+    const dataset = document.querySelector(`#unitUs option[data-text="${document.querySelector('#inputUnitUs').value}"]`)?.dataset
+    if ($("#usLogin").val() == dataset.tradepointid + '-') {
+        alert("Вкажіть унікальний логін")
+        return
+    }
+
+    unit = getDataFromDatalist('#unitUs', '#inputUnitUs')
+    if (unit == undefined || unit == '') alert("Виберіть варіант із списка")
+    else
+        $.post(ajaxURL, {
+            action: "userEDIT",
+            userID: id,
+            user: $("#usName").val().trim(),
+            surname: $("#usSurname").val().trim(),
+            login: $("#usLogin").val().trim(),
+            pass: $("#usPass").val().trim(),
+            unit: unit,
+            rights: $("#RightsUs :selected").val()
+        }, function (result) {
+            res = JSON.parse(result);
+            if (res.error) {
+                alert(res.error);
+                return
+            }
+            document.querySelector('#RightsUs').disabled = false
+            $("#usName").val("");
+            $("#usSurname").val("");
+            $("#usLogin").val("");
+            $("#usPass").val("");
+            alert(res.success);
+            mallUser();
+        })
 }
+
 function mchangePass() {
     showSet([$("#cPass")]);
     $("#confirmPass").val("");
@@ -628,17 +767,49 @@ function companyUserDefaulValues() {
     dataValue = getDataValue('#unitUs', '#inputUnitUs')
     unit;
 
-    let disabledInputs = false;
+    if (unitInput.value && dataValue != 0 && dataValue != undefined) {
+        const dataset = document.querySelector(`#unitUs option[data-text="${document.querySelector('#inputUnitUs').value}"]`)?.dataset
+        const isTradePoint = dataset.tradepointid
+        if (isTradePoint) {
+            document.querySelector('#managerTradePointForm').style.display = 'block'
+            return
+        }
+    }
+    document.querySelector('#managerTradePointForm').style.display = 'none'
+    document.querySelector('#isManagerTradePoint').checked = false
+    const usLogin = document.querySelector('#usLogin')
+    usLogin.removeEventListener("input", setStartLogin)
+    usLogin.value = ''
+    document.querySelector('#RightsUs').disabled = false
+}
+
+function managerTradePointFormStatus() {
+    const usLogin = document.querySelector('#usLogin');
+    if (!document.querySelector('#isManagerTradePoint').checked) {
+        usLogin.removeEventListener("input", setStartLogin)
+        usLogin.value = ''
+        document.querySelector('#RightsUs').disabled = false
+        return
+    }
+
+    unitInput = document.querySelector('#inputUnitUs')
+    dataValue = getDataValue('#unitUs', '#inputUnitUs')
+    unit;
+
     if (unitInput.value && dataValue != 0 && dataValue != undefined) {
         const dataset = document.querySelector(`#unitUs option[data-text="${document.querySelector('#inputUnitUs').value}"]`)?.dataset
         const isTradePoint = dataset.tradepointid;
         if (isTradePoint) {
-            disabledInputs = true
-            document.querySelector('#usLogin').value = dataset.tradepointid
-            document.querySelector('#usPass').value = dataset.codeokpo
+            const startLogin = dataset.tradepointid + '-'
+            usLogin.value = startLogin
+            usLogin.addEventListener("input", setStartLogin)
             document.querySelector('#RightsUs').value = 3
+            document.querySelector('#RightsUs').disabled = true
         }
     }
-    document.querySelector('#usPass').disabled = disabledInputs
-    document.querySelector('#RightsUs').disabled = disabledInputs
-} 
+}
+
+function setStartLogin(e) {
+    const dataset = document.querySelector(`#unitUs option[data-text="${document.querySelector('#inputUnitUs').value}"]`)?.dataset
+    if (!e.target.value.startsWith(dataset.tradepointid + '-')) document.querySelector('#usLogin').value = dataset.tradepointid + '-'
+}

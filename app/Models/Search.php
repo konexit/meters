@@ -84,64 +84,52 @@ class Search extends Model
         $query = $this->getCounter($request->getVar('cUnit'), $request->getVar('cType'));
         $table->setTemplate($this->tablShablone());
         $userRights = session("usRights");
+        if ($request->getVar('state') == 1) {
+            $columns = ["Тип", "Номер", "Назва", "Підрозділ", "Адреса", "Вид лічильника", "ID"];
+            $additionalColumns = [];
+            if ($userRights != 3) $additionalColumns[] = "Стан";
+            $editColumn = ($request->getVar('state') == 1) ? "Добавити" : "Редагувати";
+            $finalColumns = array_merge($columns, $additionalColumns, [$editColumn]);
+            $ids = [];
+            foreach ($query as $row) {
+                array_push($ids, intval($row['id']));
+            }
+            $filledConters = $this->getFilledCounter($ids);
+            header("Content-Type: application/json");
+            echo json_encode(["columns" => $finalColumns, "counters" => $query, "filledCointerIds" => $filledConters], JSON_UNESCAPED_UNICODE);
+            exit();
+        }
         if ($userRights == 3) $table->setHeading("Тип", "Номер", "Назва", "Підрозділ", "Адреса", "Вид лічильника", "ID", ($request->getVar('state') == 1) ? "" : "Редагувати");
         else $table->setHeading("Тип", "Номер", "Назва", "Підрозділ", "Адреса", "Вид лічильника", "ID", "Стан", ($request->getVar('state') == 1) ? "" : "Редагувати");
         if (count($query)) {
             foreach ($query as $row) {
-                if ($request->getVar('state') == 1) {
-                    if ($userRights == 3) {
-                        $table->addRow(
-                            $row['ctype'],
-                            $row['ci'],
-                            $row['cn'],
-                            $row['unit'],
-                            $row['addr'],
-                            $row['Name'],
-                            $row['trade_point_id'],
-                            '<button id="counterPokazAdd" onClick="setPokaz(' . $row['id'] . ', \'' . $row['ci'] . '\')">Добавити</button>'
-                        );
-                    } else {
-                        $table->addRow(
-                            $row['ctype'],
-                            $row['ci'],
-                            $row['cn'],
-                            $row['unit'],
-                            $row['addr'],
-                            $row['Name'],
-                            $row['trade_point_id'],
-                            $this->createInput($row['state']),
-                            '<button id="counterPokazAdd" onClick="setPokaz(' . $row['id'] . ', \'' . $row['ci'] . '\')">Добавити</button>'
-                        );
-                    }
+                if ($userRights == 3) {
+                    $table->addRow(
+                        $row['ctype'],
+                        $row['ci'],
+                        $row['cn'],
+                        $row['unit'],
+                        $row['addr'],
+                        $row['Name'],
+                        $row['trade_point_id'],
+                        '<button onClick="setCounter(' . $row['id'] . ",'" . $row['unit'] . "'," . "'" . $row['Name'] . "',
+                                                     " . "'" . $row['cn'] . "'," . "'" . $row['ci'] . "','" . $row['ctype'] . "',
+                                                     '" . $row['spokaz'] . "'" . ', ' . $row['state'] . ')">Редагувати</button>'
+                    );
                 } else {
-                    if ($userRights == 3) {
-                        $table->addRow(
-                            $row['ctype'],
-                            $row['ci'],
-                            $row['cn'],
-                            $row['unit'],
-                            $row['addr'],
-                            $row['Name'],
-                            $row['trade_point_id'],
-                            '<button onClick="setCounter(' . $row['id'] . ",'" . $row['unit'] . "'," . "'" . $row['Name'] . "',
+                    $table->addRow(
+                        $row['ctype'],
+                        $row['ci'],
+                        $row['cn'],
+                        $row['unit'],
+                        $row['addr'],
+                        $row['Name'],
+                        $row['trade_point_id'],
+                        $this->createInput($row['state']),
+                        '<button onClick="setCounter(' . $row['id'] . ",'" . $row['unit'] . "'," . "'" . $row['Name'] . "',
                                                      " . "'" . $row['cn'] . "'," . "'" . $row['ci'] . "','" . $row['ctype'] . "',
                                                      '" . $row['spokaz'] . "'" . ', ' . $row['state'] . ')">Редагувати</button>'
-                        );
-                    } else {
-                        $table->addRow(
-                            $row['ctype'],
-                            $row['ci'],
-                            $row['cn'],
-                            $row['unit'],
-                            $row['addr'],
-                            $row['Name'],
-                            $row['trade_point_id'],
-                            $this->createInput($row['state']),
-                            '<button onClick="setCounter(' . $row['id'] . ",'" . $row['unit'] . "'," . "'" . $row['Name'] . "',
-                                                     " . "'" . $row['cn'] . "'," . "'" . $row['ci'] . "','" . $row['ctype'] . "',
-                                                     '" . $row['spokaz'] . "'" . ', ' . $row['state'] . ')">Редагувати</button>'
-                        );
-                    }
+                    );
                 }
             }
         }
@@ -314,6 +302,7 @@ class Search extends Model
             'area' => $request->getVar('unit'),
             'rights' => $request->getVar('rights')
         ];
+
         header('Content-Type: application/json; charset=utf-8');
         if (!$this->checkUserDB($user)) {
             echo json_encode(['error' => 'Користувач ' . $request->getVar('login') . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
@@ -334,30 +323,57 @@ class Search extends Model
         }
 
         $tradePointId = $request->getVar('tradePointId');
-        if (filter_var($request->getVar('isTradePoint'), FILTER_VALIDATE_BOOLEAN)) {
-            if ($this->checkUnTradePointDB($tradePointId)) {
-                $this->addUnit([
-                    'addr' => $request->getVar('addr'),
-                    'tel' => $request->getVar('tel'),
-                    'unit' => $unit,
-                    'trade_point_id' => $tradePointId
-                ]);
-                $area = $this->db->query("SELECT * FROM area WHERE trade_point_id = " . $tradePointId)->getFirstRow();
-                $this->db->table('companiesAreas')->insert(['area_id' => $area->id, 'company_1s_code' => $request->getVar('companyId')]);
-            } else {
-                header('Content-Type: application/json; charset=utf-8');
-                echo json_encode(['error' => 'Торгова точка із номером №' . $tradePointId . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
-                return;
-            }
-        } else  $this->addUnit([
+        if (
+            filter_var($request->getVar('isTradePoint'), FILTER_VALIDATE_BOOLEAN)
+            && !$this->checkUnTradePointDB($tradePointId)
+        ) {
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['error' => 'Торгова точка із номером №' . $tradePointId . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
+            return;
+        }
+        $this->addUnit([
             'addr' => $request->getVar('addr'),
             'tel' => $request->getVar('tel'),
             'unit' => $unit,
-            'trade_point_id' => $tradePointId
+            'trade_point_id' => $tradePointId,
+            'state' => filter_var($request->getVar('areaState'), FILTER_VALIDATE_BOOLEAN)
         ]);
+
+        if (filter_var($request->getVar('isTradePoint'), FILTER_VALIDATE_BOOLEAN)) {
+            $area = $this->db->query("SELECT * FROM area WHERE trade_point_id = " . $tradePointId)->getFirstRow();
+            $this->db->table('companiesAreas')->insert(['area_id' => $area->id, 'company_1s_code' => $request->getVar('companyId')]);
+
+            $areaData = $this->db->query("SELECT area_id, code_okpo FROM area
+                                                JOIN companiesAreas ON area.id = companiesAreas.area_id
+                                                JOIN companies ON companiesAreas.company_1s_code = companies.company_1s_code
+                                                WHERE area.trade_point_id = " . $tradePointId)->getFirstRow();
+
+            $newUser = [
+                'name' => $unit,
+                'surname' => '',
+                'login' => $tradePointId,
+                'pass' =>  $areaData->code_okpo,
+                'area' => $areaData->area_id,
+                'rights' => 3
+            ];
+
+            if (!$this->checkUserDB($newUser)) {
+                header('Content-Type: application/json; charset=utf-8');
+                echo json_encode(['error' => 'Не вдається створити користувача ' . $tradePointId . '. Перевірте дані та спробуйте ще раз. Якщо проблема не вирішилась, зверніться в ІТ відділ'], JSON_UNESCAPED_UNICODE);
+                return;
+            }
+
+            $this->db->table('user')->insert($newUser);
+        }
+
         $this->db->transComplete();
 
-        return json_encode($this->getDepartmentByUnit($unit));
+        if ($this->db->transStatus() === false) {
+            header('Content-Type: application/json; charset=utf-8');
+            return json_encode(['error' => 'Не вдалось створити підрозділ. Перевірте дані та спробуйте ще раз. Якщо проблема не вирішилась, зверніться в ІТ відділ'], JSON_UNESCAPED_UNICODE);
+        } else {
+            return json_encode($this->getDepartmentByUnit($unit));
+        }
     }
 
     function getAllUnit()
@@ -365,7 +381,7 @@ class Search extends Model
         $table = new Table();
         $table->setTemplate($this->tablShablone());
         echo "<p></p>";
-        $table->setHeading("Підрозділ", "Адрес", "Телефон", "Дії");
+        $table->setHeading("Підрозділ", "Адрес", "Телефон", "ID", "Стан", "Дії");
         $query = $this->getAllUnitDB();
         $allCompaniesAreas = $this->db->query("SELECT * FROM companiesAreas")->getResultArray();
         $companyTradePoint = [];
@@ -375,19 +391,23 @@ class Search extends Model
 
         if (count($query)) {
             foreach ($query as $row) {
-                if (isset($companyTradePoint[$row['id']]))
+                if (isset($companyTradePoint[$row['id']])) {
                     $table->addRow(
                         $row['unit'],
                         $row['addr'],
                         $row['tel'],
-                        '<button onClick="unitEdit(' . $row['id'] . ',' . "'" . $row['unit'] . "'" . ',' . "'" . rawurlencode($row['addr']) . "'" . ',' . "'" . $row['tel'] . "'" . ', true, ' . $row['trade_point_id'] . ', ' . $companyTradePoint[$row['id']] . ')">' . "Редагувати" . '</button>'
+                        $row['trade_point_id'],
+                        $row["state"] == 1 ? '<input type="checkbox" checked disabled="">' : '<input type="checkbox" disabled="">',
+                        '<button onClick="unitEdit(' . $row['id'] . ',' . "'" . $row['unit'] . "'" . ',' . "'" . rawurlencode($row['addr']) . "'" . ',' . "'" . $row['tel'] . "'" . ', ' . $row['state']  . ' , true, ' . $row['trade_point_id'] . ', ' . $companyTradePoint[$row['id']] . ')">' . "Редагувати" . '</button>'
                     );
-                else
+                } else
                     $table->addRow(
                         $row['unit'],
                         $row['addr'],
                         $row['tel'],
-                        '<button onClick="unitEdit(' . $row['id'] . ',' . "'" . $row['unit'] . "'" . ',' . "'" . rawurlencode($row['addr']) . "'" . ',' . "'" . $row['tel'] . "'" . ')">' . "Редагувати" . '</button>'
+                        $row['trade_point_id'],
+                        $row["state"] == 1 ? '<input type="checkbox" checked disabled="">' : '<input type="checkbox" disabled="">',
+                        '<button onClick="unitEdit(' . $row['id'] . ',' . "'" . $row['unit'] . "'" . ',' . "'" . rawurlencode($row['addr']) . "'" . ',' . "'" . $row['tel'] . "'" . ', ' . $row['state']  . ' )">' . "Редагувати" . '</button>'
                     );
             }
             echo $table->generate();
@@ -423,12 +443,12 @@ class Search extends Model
                 } else $this->db->table('companiesAreas')->update(['company_1s_code' => $companyId], ['area_id' => $unitId]);
             }
         }
-
         echo $this->db->table('area')->update([
             'addr' => $request->getVar('addr'),
             'tel' => $request->getVar('tel'),
             'unit' => $this->trimSpace($request->getVar('unit')),
-            'trade_point_id' => $tradePointId
+            'trade_point_id' => $tradePointId,
+            'state' => filter_var($request->getVar('areaState'), FILTER_VALIDATE_BOOLEAN)
         ], ['id' => $unitId]);
         $this->db->transComplete();
     }
@@ -498,7 +518,7 @@ class Search extends Model
                                                             GROUP BY counter.id
                                 )
                                 AND pokaz.ts =  '" . $prev_last . "' " . $conditionUnit . $conditionType . $conditionCounter . " 
-                                AND counter.state = true
+                                AND counter.state = true AND area.state = true
                                 GROUP BY counter.id")->getResultArray();
     }
 
@@ -512,6 +532,7 @@ class Search extends Model
         return $this->db->query("SELECT 
                                         telegramChatId 
                                 FROM user
+                                JOIN area ON user.unit = area.id 
                                 WHERE telegramChatId != '' 
                                 AND telegramState != 'pass' 
                                 AND rights = 3 
@@ -531,7 +552,7 @@ class Search extends Model
                                                                             AND counter.state = true 
                                                                             GROUP BY counter.id
                                                                         )
-                                                AND pokaz.ts = '" . $prev_last . "' AND counter.state = true 
+                                                AND pokaz.ts = '" . $prev_last . "' AND counter.state = true AND area.state = true
                                                 GROUP BY counter.unit)")->getResultArray();
     }
 
@@ -545,7 +566,7 @@ class Search extends Model
                                         JOIN area ON counter.unit = area.id 
                                         JOIN pokaz ON counter.id = pokaz.cId
                                           WHERE counter.id NOT IN ( SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId WHERE ts = '" . $last['year'] . "-" . $last['month'] . "-01' AND counter.state = true GROUP BY counter.id )
-                                          AND pokaz.ts = '" . date('Y', $prevLast) . "-" . date('m', $prevLast) . "-01' AND counter.state = true 
+                                          AND pokaz.ts = '" . date('Y', $prevLast) . "-" . date('m', $prevLast) . "-01' AND counter.state = true AND area.state = true
                                           GROUP BY area.unit, area.addr, area.tel")->getResultArray();
     }
 
@@ -714,7 +735,7 @@ class Search extends Model
 
     private function getAllUnitDB()
     {
-        return $this->db->query("SELECT * FROM area ORDER BY unit")->getResultArray();
+        return $this->db->query("SELECT * FROM area ORDER BY state DESC, unit, trade_point_id DESC")->getResultArray();
     }
 
     private function trimSpace($str)
@@ -760,7 +781,6 @@ class Search extends Model
         $this->db->table('pokaz')->update(['index' => $pokaz], ['id' => $pId]);
         return $this->db->query("SELECT cId FROM pokaz WHERE id=" . $pId)->getFirstRow()->cId;
     }
-
 
     private function getCountersStatDB($cUnit, $cType, $cYear)
     {
@@ -853,7 +873,10 @@ class Search extends Model
 
     private function getLastPokazDB($counterPK)
     {
-        return $this->db->query("SELECT p.ts, p.index, p.consumed, p.id, c.counterId FROM pokaz AS p JOIN counter AS c ON p.cId = c.id WHERE cId=" . $counterPK . " ORDER BY ts DESC")->getResultArray();
+        return $this->db->query("SELECT p.ts, p.index, p.consumed, p.id, c.counterId 
+                                 FROM pokaz AS p 
+                                 JOIN counter AS c ON p.cId = c.id 
+                                 WHERE cId=" . $counterPK . " ORDER BY ts DESC")->getResultArray();
     }
 
     private function getCounter($cUnit, $cType)
@@ -875,6 +898,13 @@ class Search extends Model
                                     JOIN conterType AS ct ON ct.id = c.typeC " . $condition . " 
                                 ORDER BY 
                                     c.state DESC, a.unit")->getResultArray();
+    }
+
+    private function getFilledCounter($countersId)
+    {
+        $user = new User();
+        $last = $user->getCounterDate();
+        return $this->db->query("SELECT cId FROM pokaz WHERE ts = '" . $last['year'] . "-" . $last['month'] . "-01' AND cId IN (" . implode(", ", $countersId) . ")")->getResultArray();
     }
 
     private function tablShablone()

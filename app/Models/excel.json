@@ -1,0 +1,768 @@
+{
+    "meters": [
+      {
+        "typePharmacy": "ТзОВ \"Аптека Конекс\"",
+        "typeCounter": "Электричество",
+        "colorARGB": {
+          "table": "#d90202"
+        },
+        "startDate": "2023-07-01",
+        "endDate": "2023-08-21",
+        "headers": {
+          "counter": [
+            {
+              "key": 1,
+              "name": "Попередні",
+              "keyName": "prev_index"
+            },
+            {
+              "key": 2,
+              "name": "Поточні",
+              "keyName": "curr_index"
+            },
+            {
+              "key": 3,
+              "name": "Різниця, кВт",
+              "keyName": "consumed"
+            }
+          ],
+          "tradePoint": [
+            {
+              "key": 1,
+              "name": "Торг. точки",
+              "keyName": "unit"
+            },
+            {
+              "key": 2,
+              "name": "Адреса",
+              "keyName": "addr"
+            }
+          ]
+        },
+        "data": {
+          "2023": {
+            "57": {
+              "unit": "АК-31 Мог-Под",
+              "addr": "м. Мог.-Подільський, вул. Стависька, 65",
+              "counters": {
+                "297": [
+                  {
+                    "month": 7,
+                    "consumed": 290,
+                    "curr_index": 6856,
+                    "prev_index": 6566
+                  }
+                ]
+              }
+            },
+            "61": {
+              "unit": "АК-35 Бар",
+              "addr": "м. Бар, вул. Героїв Майдану, 30",
+              "counters": {
+                "361": [
+                  {
+                    "month": 8,
+                    "consumed": 216,
+                    "curr_index": 2445,
+                    "prev_index": 2229
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 310,
+                    "curr_index": 2229,
+                    "prev_index": 1919
+                  }
+                ]
+              }
+            },
+            "68": {
+              "unit": "АК-42 Мог.-Под",
+              "addr": "м. Мог.-Подільський, вул. Стависька, 47",
+              "counters": {
+                "109": [
+                  {
+                    "month": 7,
+                    "consumed": 361,
+                    "curr_index": 75196,
+                    "prev_index": 74835
+                  }
+                ]
+              }
+            },
+            "71": {
+              "unit": "АК-45 Шаргород",
+              "addr": "м. Шаргород, вул. Героїв Майдану, 268-б",
+              "counters": {
+                "112": [
+                  {
+                    "month": 8,
+                    "consumed": 353,
+                    "curr_index": 101824,
+                    "prev_index": 101471
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 419,
+                    "curr_index": 101471,
+                    "prev_index": 101052
+                  }
+                ]
+              }
+            },
+            "74": {
+              "unit": "АК-48 Чернівці",
+              "addr": "м. Чернівці, вул. Святомиколаївська, 99-А",
+              "counters": {
+                "183": [
+                  {
+                    "month": 8,
+                    "consumed": 451,
+                    "curr_index": 71959,
+                    "prev_index": 71508
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 317,
+                    "curr_index": 71508,
+                    "prev_index": 71191
+                  }
+                ],
+                "188": [
+                  {
+                    "month": 8,
+                    "consumed": 119,
+                    "curr_index": 18869,
+                    "prev_index": 18750
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 132,
+                    "curr_index": 18750,
+                    "prev_index": 18618
+                  }
+                ]
+              }
+            },
+            "78": {
+              "unit": "АК-52 Мог.-Под",
+              "addr": "м. Мог.-Подільський, вул. Полтавська, 86",
+              "counters": {
+                "117": [
+                  {
+                    "month": 7,
+                    "consumed": 587,
+                    "curr_index": 161633,
+                    "prev_index": 161046
+                  }
+                ]
+              }
+            },
+            "79": {
+              "unit": "АК-53 Бершадь",
+              "addr": "м. Бершадь, вул. Яр.Мудрого, 16-а",
+              "counters": {
+                "280": [
+                  {
+                    "month": 7,
+                    "consumed": 910,
+                    "curr_index": 42628,
+                    "prev_index": 41718
+                  }
+                ]
+              }
+            },
+            "80": {
+              "unit": "АК-54 Ямпіль",
+              "addr": "м. Ямпіль, вул. Свободи, 81/49",
+              "counters": {
+                "119": [
+                  {
+                    "month": 7,
+                    "consumed": 450,
+                    "curr_index": 325630,
+                    "prev_index": 325180
+                  }
+                ]
+              }
+            },
+            "81": {
+              "unit": "АК-55 Мог.-Под",
+              "addr": "м. Мог.-Подільський, вул. Стависька, 10",
+              "counters": {
+                "120": [
+                  {
+                    "month": 7,
+                    "consumed": 271,
+                    "curr_index": 62825,
+                    "prev_index": 62554
+                  }
+                ]
+              }
+            },
+            "94": {
+              "unit": "АК-59 Тростянець",
+              "addr": "м. Тростянець, вул. Соборна,50а",
+              "counters": {
+                "124": [
+                  {
+                    "month": 8,
+                    "consumed": 557,
+                    "curr_index": 107895,
+                    "prev_index": 107338
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 765,
+                    "curr_index": 107338,
+                    "prev_index": 106573
+                  }
+                ]
+              }
+            },
+            "99": {
+              "unit": "АК-66 Бар",
+              "addr": "м.Бар вул.Каштанова,5",
+              "counters": {
+                "195": [
+                  {
+                    "month": 8,
+                    "consumed": 436,
+                    "curr_index": 95234,
+                    "prev_index": 94798
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 362,
+                    "curr_index": 94798,
+                    "prev_index": 94436
+                  }
+                ]
+              }
+            },
+            "106": {
+              "unit": "АК-68 Оратів",
+              "addr": "с. Оратів, вул. Героїв Майдану 105-А",
+              "counters": {
+                "136": [
+                  {
+                    "month": 8,
+                    "consumed": 207,
+                    "curr_index": 103294,
+                    "prev_index": 103087
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 230,
+                    "curr_index": 103087,
+                    "prev_index": 102857
+                  }
+                ]
+              }
+            },
+            "107": {
+              "unit": "АК-67 Жмеринка",
+              "addr": "м. Жмеринка, вул. Б. Хмельницького, 4",
+              "counters": {
+                "247": [
+                  {
+                    "month": 8,
+                    "consumed": 365,
+                    "curr_index": 21456,
+                    "prev_index": 21091
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 385,
+                    "curr_index": 21091,
+                    "prev_index": 20706
+                  }
+                ]
+              }
+            },
+            "117": {
+              "unit": "АК-69 Бершадь",
+              "addr": "м. Бершадь, вул. Героїв України, 7 прим. 22",
+              "counters": {
+                "248": [
+                  {
+                    "month": 8,
+                    "consumed": 413,
+                    "curr_index": 36177,
+                    "prev_index": 35764
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 297,
+                    "curr_index": 35764,
+                    "prev_index": 35467
+                  }
+                ]
+              }
+            },
+            "121": {
+              "unit": "АК-70 Мог.-Подільський",
+              "addr": "м. Мог.-Подільський, пр-кт Незалежності,287",
+              "counters": {
+                "138": [
+                  {
+                    "month": 8,
+                    "consumed": 379,
+                    "curr_index": 296215,
+                    "prev_index": 295836
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 499,
+                    "curr_index": 295836,
+                    "prev_index": 295337
+                  }
+                ],
+                "189": [
+                  {
+                    "month": 8,
+                    "consumed": 168,
+                    "curr_index": 247528,
+                    "prev_index": 247360
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 200,
+                    "curr_index": 247360,
+                    "prev_index": 247160
+                  }
+                ]
+              }
+            },
+            "124": {
+              "unit": "АК-73 Турбів",
+              "addr": "смт. Турбів вул.Маяковського 2",
+              "counters": {
+                "323": [
+                  {
+                    "month": 8,
+                    "consumed": 633,
+                    "curr_index": 17348,
+                    "prev_index": 16715
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 434,
+                    "curr_index": 16715,
+                    "prev_index": 16281
+                  }
+                ]
+              }
+            },
+            "135": {
+              "unit": "АК-83 Ямпіль",
+              "addr": "м.Ямпіль вул.Сонячна 17",
+              "counters": {
+                "157": [
+                  {
+                    "month": 8,
+                    "consumed": 370,
+                    "curr_index": 95222,
+                    "prev_index": 94852
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 313,
+                    "curr_index": 94852,
+                    "prev_index": 94539
+                  }
+                ]
+              }
+            },
+            "139": {
+              "unit": "АК-86 Літин",
+              "addr": "м.Літин вул.Соборна 26",
+              "counters": {
+                "362": [
+                  {
+                    "month": 7,
+                    "consumed": 351,
+                    "curr_index": 10663,
+                    "prev_index": 10312
+                  }
+                ]
+              }
+            },
+            "202": {
+              "unit": "АК107 Тульчин",
+              "addr": "м. Тульчин вул. Леонтовича, 58",
+              "counters": {
+                "344": [
+                  {
+                    "month": 8,
+                    "consumed": 444,
+                    "curr_index": 12835,
+                    "prev_index": 12391
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 284,
+                    "curr_index": 12391,
+                    "prev_index": 12107
+                  }
+                ]
+              }
+            },
+            "206": {
+              "unit": "АК130 Умань",
+              "addr": "м. Умань, вул. Шевченка, 50, корп. 8",
+              "counters": {
+                "276": [
+                  {
+                    "month": 8,
+                    "consumed": 290,
+                    "curr_index": 14974,
+                    "prev_index": 14684
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 249,
+                    "curr_index": 14684,
+                    "prev_index": 14435
+                  }
+                ]
+              }
+            },
+            "207": {
+              "unit": "АК125 Піщанка",
+              "addr": "смт. Піщанка, вул. Центральна, 39",
+              "counters": {
+                "273": [
+                  {
+                    "month": 8,
+                    "consumed": 314,
+                    "curr_index": 23496,
+                    "prev_index": 23182
+                  }
+                ]
+              }
+            },
+            "223": {
+              "unit": "АК132 Маньківка",
+              "addr": "м. Маньківка, вул. Благородна, 2/4",
+              "counters": {
+                "282": [
+                  {
+                    "month": 7,
+                    "consumed": 314,
+                    "curr_index": 23942,
+                    "prev_index": 23628
+                  }
+                ]
+              }
+            },
+            "225": {
+              "unit": "АК131 Жашків",
+              "addr": "м. Жашків, вул. Благовісна, 2",
+              "counters": {
+                "283": [
+                  {
+                    "month": 8,
+                    "consumed": 315,
+                    "curr_index": 9884,
+                    "prev_index": 9569
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 413,
+                    "curr_index": 9569,
+                    "prev_index": 9156
+                  }
+                ]
+              }
+            },
+            "226": {
+              "unit": "АК144 Біла Церква",
+              "addr": "м.Біла Церква, площа Соборна, буд.11-Б",
+              "counters": {
+                "285": [
+                  {
+                    "month": 7,
+                    "consumed": 789,
+                    "curr_index": 19301,
+                    "prev_index": 18512
+                  }
+                ]
+              }
+            },
+            "228": {
+              "unit": "АК138 Христинівка",
+              "addr": "м.Христинівка, вулиця В. Чорновола,13",
+              "counters": {
+                "287": [
+                  {
+                    "month": 8,
+                    "consumed": 278,
+                    "curr_index": 12800,
+                    "prev_index": 12522
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 263,
+                    "curr_index": 12522,
+                    "prev_index": 12259
+                  }
+                ]
+              }
+            },
+            "229": {
+              "unit": "АК134 Рокитне",
+              "addr": "смт.Рокитне, вул.Руслана Дубовця, буд.1 ",
+              "counters": {
+                "288": [
+                  {
+                    "month": 7,
+                    "consumed": 2961,
+                    "curr_index": 128378,
+                    "prev_index": 125417
+                  }
+                ]
+              }
+            },
+            "231": {
+              "unit": "АК115 Умань",
+              "addr": "м.Умань, вул. Гайдамацька, 14 ",
+              "counters": {
+                "289": [
+                  {
+                    "month": 7,
+                    "consumed": 401,
+                    "curr_index": 53670,
+                    "prev_index": 53269
+                  }
+                ]
+              }
+            },
+            "232": {
+              "unit": "АК137 Окни",
+              "addr": "смт.Окни, вул.Першотравнева, буд.1",
+              "counters": {
+                "290": [
+                  {
+                    "month": 8,
+                    "consumed": 429,
+                    "curr_index": 41948,
+                    "prev_index": 41519
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 338,
+                    "curr_index": 41519,
+                    "prev_index": 41181
+                  }
+                ]
+              }
+            },
+            "233": {
+              "unit": "АК141 Монастирище",
+              "addr": "м.Монастирище, вул.Соборна, 111",
+              "counters": {
+                "291": [
+                  {
+                    "month": 8,
+                    "consumed": 299,
+                    "curr_index": 179112,
+                    "prev_index": 178813
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 253,
+                    "curr_index": 178813,
+                    "prev_index": 178560
+                  }
+                ]
+              }
+            },
+            "236": {
+              "unit": "АК145 Тиврів",
+              "addr": "смт Тиврів, вул. Жовтнева,б.15",
+              "counters": {
+                "320": [
+                  {
+                    "month": 8,
+                    "consumed": 266,
+                    "curr_index": 13293,
+                    "prev_index": 13027
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 211,
+                    "curr_index": 13027,
+                    "prev_index": 12816
+                  }
+                ]
+              }
+            },
+            "237": {
+              "unit": "АК-71 Ободівка",
+              "addr": "с.Ободівка, вул. Криворучка, б 1 А",
+              "counters": {
+                "301": [
+                  {
+                    "month": 7,
+                    "consumed": 153,
+                    "curr_index": 3190,
+                    "prev_index": 3037
+                  }
+                ]
+              }
+            },
+            "239": {
+              "unit": "АК143 Смоліне",
+              "addr": "смт. Смоліне, вул. Казакова, 18",
+              "counters": {
+                "306": [
+                  {
+                    "month": 8,
+                    "consumed": 314,
+                    "curr_index": 27046,
+                    "prev_index": 26732
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 262,
+                    "curr_index": 26732,
+                    "prev_index": 26470
+                  }
+                ]
+              }
+            },
+            "241": {
+              "unit": "АК139 Умань",
+              "addr": "м. Умань вул.Мазепи, 2А ",
+              "counters": {
+                "298": [
+                  {
+                    "month": 8,
+                    "consumed": 2522,
+                    "curr_index": 84020,
+                    "prev_index": 81498
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 2239,
+                    "curr_index": 81498,
+                    "prev_index": 79259
+                  }
+                ]
+              }
+            },
+            "244": {
+              "unit": "АК151 Біла Церква",
+              "addr": "м. Біла Церква, бульвар Олександрійський, 20, прим 192",
+              "counters": {
+                "300": [
+                  {
+                    "month": 7,
+                    "consumed": 508,
+                    "curr_index": 19679,
+                    "prev_index": 19171
+                  }
+                ]
+              }
+            },
+            "247": {
+              "unit": "АК121 Микулинці",
+              "addr": "смт. Микулинці, вулиця Грушевського 42",
+              "counters": {
+                "311": [
+                  {
+                    "month": 8,
+                    "consumed": 221,
+                    "curr_index": 12477,
+                    "prev_index": 12256
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 197,
+                    "curr_index": 12256,
+                    "prev_index": 12059
+                  }
+                ]
+              }
+            },
+            "249": {
+              "unit": "АК152 Біла Церква",
+              "addr": "м. Біла Церква, вулиця Митрофанова, 9, прим. 88",
+              "counters": {
+                "315": [
+                  {
+                    "month": 8,
+                    "consumed": 962,
+                    "curr_index": 36251,
+                    "prev_index": 35289
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 986,
+                    "curr_index": 35289,
+                    "prev_index": 34303
+                  }
+                ],
+                "332": [
+                  {
+                    "month": 8,
+                    "consumed": 441,
+                    "curr_index": 15184,
+                    "prev_index": 14743
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 1,
+                    "curr_index": 14743,
+                    "prev_index": 14742
+                  }
+                ]
+              }
+            },
+            "250": {
+              "unit": "АК153 Біла Церква",
+              "addr": "м. Біла Церква, бульвар Олександрійський, 175, прим 2",
+              "counters": {
+                "316": [
+                  {
+                    "month": 8,
+                    "consumed": 744,
+                    "curr_index": 133188,
+                    "prev_index": 132444
+                  },
+                  {
+                    "month": 7,
+                    "consumed": 593,
+                    "curr_index": 132444,
+                    "prev_index": 131851
+                  }
+                ]
+              }
+            },
+            "252": {
+              "unit": "АК154 Кодима",
+              "addr": "м. Кодима, вулиця Соборна, 52",
+              "counters": {
+                "366": [
+                  {
+                    "month": 7,
+                    "consumed": 428,
+                    "curr_index": 23089,
+                    "prev_index": 22661
+                  }
+                ],
+                "382": [
+                  {
+                    "month": 7,
+                    "consumed": 1580,
+                    "curr_index": 308377,
+                    "prev_index": 306797
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    ]
+  }

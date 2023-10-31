@@ -16,7 +16,7 @@
 
     $departmentOptions = '';
     foreach ($department as $arr) {
-        if(isset($companiesAreas[$arr['id']])) $departmentOptions .= '<option data-value="' . $arr['id'] . '"  data-text="' . trim($arr['unit']) . '" data-codeokpo=' . $companiesAreas[$arr['id']]['code_okpo'] . '  data-tradePointId=' . $companiesAreas[$arr['id']]['trade_point_id'] . '>' . trim($arr['unit']) . '</option>';
+        if (isset($companiesAreas[$arr['id']])) $departmentOptions .= '<option data-value="' . $arr['id'] . '"  data-text="' . trim($arr['unit']) . '" data-codeokpo=' . $companiesAreas[$arr['id']]['code_okpo'] . '  data-tradePointId=' . $companiesAreas[$arr['id']]['trade_point_id'] . '>' . trim($arr['unit']) . '</option>';
         else $departmentOptions .= '<option data-value="' . $arr['id'] . '"  data-text="' . trim($arr['unit']) . '">' . trim($arr['unit']) . '</option>';
     }
     ?>
@@ -95,13 +95,14 @@
                     </div>
                     <div id="addUnit">
                         <h3>
-                            <p>Підрозділ: <input type="text" id="unit" title="Ліміт 30 символів" maxlength="30" /> </p>
+                            <p>Назва: <input type="text" id="unit" title="Ліміт 30 символів" maxlength="30" /> </p>
                             <p>Адреса: <input type="text" id="unADDR" title="Ліміт 80 символів" maxlength="80" /> </p>
                             <p>Телефон: <input type="text" id="tel" title="Ліміт 100 символів" maxlength="100" /> </p>
-                            <p style="margin-bottom: 25px;font-size: 20px;">Добавити аптеку: <input id="isTradePoint" type="checkbox" onclick="tradePointFormStatus(this)"/></p>
+                            <p style="margin-bottom: 25px;font-size: 20px;">Стан підрозділу: <input type="checkbox" name="areaState" id="areaState" checked="checked"></p>
+                            <p style="margin-bottom: 25px;font-size: 20px;">Добавити аптеку: <input id="isTradePoint" type="checkbox" onclick="tradePointFormStatus(this)" /></p>
                             <div id="tradePointForm" style="display: none">
-                                <p>Торгова точка: <input id="tradePointId" type="number" /></p>
-                                <p>Копманія: <select id="companyId" style="width: 100%;">
+                                <p>ID аптеки: <input id="tradePointId" type="number" /></p>
+                                <p>Власник аптеки: <select id="companyId" style="width: 100%;">
                                         <?
                                         foreach ($companies as $company) {
                                             echo "<option value=" . $company['company_1s_code'] . ">" . $company['company_name'] . "</option>";
@@ -117,9 +118,9 @@
                         <h3>
                             <p>Ім'я: <input type="text" id="usName" title="Ліміт 25 символів" maxlength="25" /> </p>
                             <p>Прізвище: <input type="text" id="usSurname" title="Ліміт 25 символів" maxlength="25" /> </p>
-                            <p>Логін: <input type="text" id="usLogin" title="Ліміт 15 символів" maxlength="15"/> </p>
-                            <p>Пароль: <input type="password" id="usPass" title="Ліміт 20 символів" maxlength="20"/> </p>
-                            <p style="margin-bottom: 25px;font-size: 20px;" >Підрозділ: <input id="inputUnitUs" list="unitUs" placeholder="Виберіть підрозділ" onChange="companyUserDefaulValues()">
+                            <p>Логін: <input type="text" id="usLogin" title="Ліміт 15 символів" maxlength="15" /> </p>
+                            <p>Пароль: <input type="password" id="usPass" title="Ліміт 20 символів" maxlength="20" /> </p>
+                            <p style="margin-bottom: 25px;font-size: 20px;">Підрозділ: <input id="inputUnitUs" list="unitUs" placeholder="Виберіть підрозділ" onChange="companyUserDefaulValues()">
                                 <datalist class="unit" name="area" id="unitUs">
                                     <?
                                     echo $departmentOptions;
@@ -135,6 +136,11 @@
                                     ?>
                                 </select>
                             </p>
+                            <div id="managerTradePointForm" style="display: none">
+                                <p style="margin-bottom: 25px;font-size: 20px;">Завідувач аптеки:
+                                    <input id="isManagerTradePoint" type="checkbox" onclick="managerTradePointFormStatus()" />
+                                </p>
+                            </div>
                             <button style="font-size: 14pt;" id="confirmUs" onclick="">Підтвердити</button>
                         </h3>
                     </div>
@@ -142,46 +148,39 @@
                 <div class="table" id="table">
                 </div>
                 <div id="cPass">
-                    <p>Старий пароль:<input id="oldPw" name="oldPw" type="password" /> </p>
-                    <p>Новий пароль:<input id="newPw" name="newPw" type="password" /> </p>
-                    <p>Підтвердіть пароль:<input id="confPw" name="confPw" type="password" /> </p>
-                    <button style="font-size: 14pt;" onclick="cPass()">Змінити</button>
-                    <div id="passError"></div>
-                </div>
-                <div id="cPass">
-                    <p>Старий пароль:<input type="password" id="oldPass" /> </p>
-                    <p>Новий пароль:<input type="password" id="newPass" /> </p>
-                    <p>Підтвердіть пароль:<input type="password" id="confirmPass" /> </p>
-                    <button style="font-size: 14pt;" onclick="cPass()">Змінити</button>
+                    <h3>
+                        <p>Старий пароль: <input id="oldPw" name="oldPw" type="password" title="Ліміт 20 символів" maxlength="20" /> </p>
+                        <p>Новий пароль: <input id="newPw" name="newPw" type="password" title="Ліміт 20 символів" maxlength="20" /> </p>
+                        <p>Підтвердіть пароль: <input id="confPw" name="confPw" type="password" title="Ліміт 20 символів" maxlength="20" /> </p>
+                        <button id="changePass" onclick="cPass()">Змінити</button>
+                        <div id="passError"></div>
+                    </h3>
                 </div>
                 <div id="counterList" align="center">
-                    <p></p>
-                    <h3>
-                        <a class="bcType" id="cYear">Рік: <select name="hcYear" class="hcYear" id="hcYear" onchange="getCounters()">
-                                <option value="">Усі</option>
-                                <?
-                                foreach ($pokazYear as $arr) {
-                                    echo "<option value='" . $arr['year'] . "'>" . $arr['year'] . "</option>";
-                                }
-                                ?>
-                            </select></a>
-                        <a class="bcType">Вид лічильника: <select name="cType" class="cType" id="hcType" onchange="getCounters()">
-                                <option value="">Усі</option>
-                                <?
-                                foreach ($counterType as $arr) {
-                                    echo "<option value='" . $arr['id'] . "'>" . $arr['Name'] . "</option>";
-                                }
-                                ?>
-                            </select></a>
-                        <a class="bcType">Місце розташування лічильника: <input id="inputCUnit" list="cUnit" onchange="getCounters()" placeholder="Усі">
-                            <datalist name="cUnit" class="cUnit" id="cUnit">
-                                <?
-                                echo '<option data-value="0" data-text="Усі">Усі</option>';
-                                foreach ($counterArea as $arr) {
-                                    echo '<option data-value="' . $arr['id'] . '" data-text="' . trim($arr['unit']) . '">' . trim($arr['unit']) . '</option>';
-                                }
-                                ?></datalist></a>
-                    </h3>
+                    <a class="bcType">Місце розташування лічильника: <input id="inputCUnit" list="cUnit" onchange="getCounters()" placeholder="Усі">
+                        <datalist name="cUnit" class="cUnit" id="cUnit">
+                            <?
+                            echo '<option data-value="0" data-text="Усі">Усі</option>';
+                            foreach ($counterArea as $arr) {
+                                echo '<option data-value="' . $arr['id'] . '" data-text="' . trim($arr['unit']) . '">' . trim($arr['unit']) . '</option>';
+                            }
+                            ?></datalist></a>
+                    <a class="bcType">Вид лічильника: <select name="cType" class="cType" id="hcType" onchange="getCounters()">
+                            <option value="">Усі</option>
+                            <?
+                            foreach ($counterType as $arr) {
+                                echo "<option value='" . $arr['id'] . "'>" . $arr['Name'] . "</option>";
+                            }
+                            ?>
+                        </select></a>
+                    <a class="bcType" id="cYear">Рік: <select name="hcYear" class="hcYear" id="hcYear" onchange="getCounters()">
+                            <option value="">Усі</option>
+                            <?
+                            foreach ($pokazYear as $arr) {
+                                echo "<option value='" . $arr['year'] . "'>" . $arr['year'] . "</option>";
+                            }
+                            ?>
+                        </select></a>
                 </div>
                 <div id="counter">
                     <p></p>
@@ -212,39 +211,39 @@
                 </div>
                 <div id="setCounters">
                     <p></p>
-                    <button onclick="setCounter(0)">Додати лічильник</button>
+                    <button id="addCounterBtn" onclick="setCounter(0)">Додати лічильник</button>
                     <p></p>
                     <div id="allCount"></div>
                 </div>
                 <div id="addCounters">
-                    <p></p>
-                    <p>
-                    <h3>Місце розташування лічильника: <input id="inputCArr" list="cArr" placeholder="Виберіть підрозділ">
+                    <h3>Місце розташування лічильника:
+                        <input id="inputCArr" list="cArr" placeholder="Виберіть підрозділ">
                         <datalist name="cArr" class="unit" id="cArr">
                             <?
                             echo $departmentOptions;
                             ?>
                         </datalist>
-                        <p>Номер лічильника: <input type="text" id="cNumer" placeholder="н/д" title="Ліміт 30 символів" /></p>
-                        <p>Вид: <input name="cnType" class="cnType" id="cnType" title="Ліміт 30 символів" />
-                        <p>Назва лічильника: <input type="text" id="cName" title="Ліміт 50 символів" /></p>
-                        <p>Тип лічильника: <select name="cType" class="cType" id="cType">
-                                <option value="">Усі</option>
-                                <?
-                                foreach ($counterType as $arr) {
-                                    echo "<option value='" . $arr['Name'] . "'>" . $arr['Name'] . "</option>";
-                                }
-                                ?>
-                            </select></p>
-                        <p>Початковий показник: <input type="number" name="sPokaz" class="sPokaz" id="sPokaz" />
-                        <p>Стан лічильника: <input type="checkbox" name="cState" id="cState" />
-                        <p></p>
-                        <button id="buttCounter" onclick="addCounter()">Додати</button>
                     </h3>
+                    <p>Номер лічильника: <input type="text" id="cNumer" placeholder="н/д" title="Ліміт 30 символів" maxlength="30"></p>
+                    <p>Вид: <input name="cnType" class="cnType" id="cnType" title="Ліміт 30 символів" maxlength="30"></p>
+                    <p>Назва лічильника: <input type="text" id="cName" title="Ліміт 50 символів" maxlength="50"></p>
+                    <p>Тип лічильника:
+                        <select name="cType" class="cType" id="cType">
+                            <option value="">Усі</option>
+                            <?
+                            foreach ($counterType as $arr) {
+                                echo "<option value='" . $arr['Name'] . "'>" . $arr['Name'] . "</option>";
+                            }
+                            ?>
+                        </select>
                     </p>
+                    <p>Початковий показник: <input type="number" name="sPokaz" class="sPokaz" id="sPokaz"></p>
+                    <p>Стан лічильника:<input type="checkbox" name="cState" id="cState"></p>
+                    <p></p>
+                    <button id="buttCounter" onclick="addCounter()">Додати</button>
                 </div>
+
                 <div id="countStat" align="center">
-                    <h4 style="align: center"><br /></h4>
                     <form style="align: center" id="IndexСonsumption" onclick="statInfo()">
                         <h3 style="color: brown">
                             <input name="checkBox" class="radioBox" type="radio" value='0' checked="true" />Показники

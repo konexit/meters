@@ -277,9 +277,8 @@ class Telegram extends Model
                     }
 
                     $search->recalculation($metaCounterPK);
-                    $userModel->addUserLog(
-                        $tgUser->login,
-                        ['login' => $tgUser->login, 'message' => "Додав показник = " . $metadata->pokaz . " лічильнику = " . $search->getCounterByCounterPK($metaCounterPK)->counterId]
+                    $userModel->addUserLog($tgUser->login,
+                        ['login' => $tgUser->login, 'message' => "Додав показник = " . $metadata->pokaz . " лічильнику = " . $search->getCounterByCounterPK($metaCounterPK)->counterId . " (telegram)"]
                     );
                     return $this->menuMess(
                         $chatId,

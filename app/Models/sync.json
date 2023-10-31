@@ -1,0 +1,28 @@
+--------------------------addCompanies-----------------------------
+{
+    "action": "addCompanies",
+    "companies": [
+      {
+        "company_1s_code": "3876",
+        "company_name": "Приватне підприємство \"Конекс\"",
+        "code_okpo": "23060192"
+      }
+    ]
+  }
+--------------------------//addCompanies-----------------------------
+
+--------------------------addCompaniesTradePoints-----------------------------
+{
+    "action": "addCompaniesTradePoints",
+    "companiesTradePoints": [
+      {
+        "trade_point_id": 199,
+        "company_1s_code": 3876
+      },
+      {
+        "trade_point_id": 257,
+        "company_1s_code": 5728
+      }
+    ]
+  }
+--------------------------//addCompaniesTradePoints-----------------------------
