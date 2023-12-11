@@ -1,22 +1,13 @@
 /*--------��������------------*/
-#cYear {
-    display: none;
-}
 
 .editPokaz {
     cursor: pointer;
 }
 
-#counterList {
+#counterList,
+#generatorList,
+#canisterList {
     margin: 0 auto;
-}
-
-#countStat {
-    display: none;
-}
-
-#inputPokaz {
-    display: none;
 }
 
 #cNumer {
@@ -24,19 +15,26 @@
     font-size: 12pt;
 }
 
-#buttCounter {
+#buttCounter,
+#buttCanister,
+#buttGenerator {
     font-size: 16pt;
 }
 
-#counterList {
-    display: none;
-}
-
-#counter {
-    display: none;
-}
-
-#mCounter {
+#counter,
+#mCounter,
+#mGenerator,
+#inputPokaz,
+#countStat,
+#cYear,
+#adminPanel,
+#mAdmin,
+#mGenerator,
+#counterList,
+#generatorList,
+#afterLogin,
+#cPass,
+#canisterList {
     display: none;
 }
 
@@ -117,9 +115,6 @@ ul.menu li:hover ul li a {
 }
 
 /*----------------------------*/
-#cPass {
-    display: none;
-}
 
 #butArea {
     position: relative;
@@ -144,7 +139,6 @@ ul.menu li:hover ul li a {
 
 #table {
     width: 100%;
-    display: none;
     position: relative;
 }
 
@@ -153,10 +147,6 @@ ul.menu li:hover ul li a {
     height: 100px;
     font-size: 12pt;
     resize: none;
-}
-
-#afterLogin {
-    display: none;
 }
 
 .headContent {
@@ -254,14 +244,6 @@ h2 {
     padding: 10px
 }
 
-#adminPanel {
-    display: none;
-}
-
-#mAdmin {
-    display: none;
-}
-
 .menItem {
     cursor: pointer;
 }
@@ -286,13 +268,15 @@ h2 {
     margin: 0 auto;
 }
 
-.label-report-counter {
+.label-report-counter,
+.label-canister-send {
     display: block;
     margin-bottom: 5px;
     margin-top: 5px;
 }
 
-.input-report-counter {
+.input-report-counter,
+.input-canister-send {
     margin-bottom: 14px;
 }
 
@@ -333,7 +317,7 @@ h2 {
 
 .company-table th {
     position: sticky;
-    top: 0; 
+    top: 0;
     background-color: lightblue;
 }
 
@@ -354,61 +338,55 @@ h2 {
     border-radius: 5px;
     background-color: #f5f5f5;
     margin-top: 15px;
-  }
-  
-  #addUnit h3 {
+}
+
+#addUnit h3 {
     font-size: 18px;
     margin-bottom: 20px;
     margin-top: 0px;
-  }
-  
-  #addUnit p {
+}
+
+#addUnit p {
     margin: 14px 0;
-  }
-  
-  #addUnit input[type="text"],
-  #addUnit input[type="number"],
-  #addUnit select {
+}
+
+#addUnit input[type="text"],
+#addUnit input[type="number"],
+#addUnit select {
     width: 98%;
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-  }
-  
-  #addUnit input[type="checkbox"] {
-    margin-right: 10px; 
+}
+
+#addUnit input[type="checkbox"] {
+    margin-right: 10px;
     vertical-align: middle;
-  }
-  
-  #addUnit button#confirmUn {
+}
+
+#addUnit button#confirmUn {
     font-size: 14pt;
     display: block;
-    margin: 0 auto; 
+    margin: 0 auto;
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  #addUnit button#confirmUn:hover {
-    background-color: #0056b3;
-  }
+}
 
-  #addUser {
+#addUnit button#confirmUn:hover {
+    background-color: #0056b3;
+}
+
+#addUser {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f5f5f5;
     margin-top: 15px;
-}
-
-#addUser h3 {
-    font-size: 18px;
-    margin-bottom: 20px;
-    margin-top: 0;
 }
 
 #addUser p {
@@ -439,7 +417,7 @@ h2 {
 #addUser button#confirmUs {
     font-size: 14pt;
     display: block;
-    margin: 0 auto; 
+    margin: 0 auto;
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
@@ -450,9 +428,11 @@ h2 {
 
 #addUser button#confirmUs:hover {
     background-color: #0056b3;
-}  
+}
 
-#addCounters {
+#addCounters,
+#addGenerator,
+#addCanister {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -460,13 +440,19 @@ h2 {
     margin-top: 15px;
 }
 
-#addCounters h3 {
+#addCounters h3,
+#addGenerator h3,
+#addCanister h3,
+#addUser h3,
+#cPass h3 {
     font-size: 18px;
     margin-bottom: 20px;
     margin-top: 0;
 }
 
-#addCounters p {
+#addCounters p,
+#addGenerator p,
+#addCanister p {
     margin: 14px 0;
     font-size: 18px;
     font-weight: bold;
@@ -474,26 +460,49 @@ h2 {
 
 #addCounters input[type="text"],
 #addCounters input[type="number"],
-#addCounters select {
-    width: 98%; 
+#addCounters select,
+#addGenerator input[type="text"],
+#addGenerator input[type="number"],
+#addGenerator select,
+#addCanister input[type="text"],
+#addCanister input[type="number"],
+#addCanister select {
+    width: 98%;
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-#addCounters input[type="text"][list="cArr"] {
+#addCounters input[type="text"][list="cArr"],
+#addGenerator input[type="text"][list="gArr"],
+#addGenerator input[type="text"][list="gType"],
+#addGenerator input[type="text"][list="canisterType"],
+#addCanister input[type="text"][list="canisterType"],
+#addCanister input[type="text"][list="canisterUnit"],
+#addCanister input[type="text"][list="addCanisterUnit"] {
     width: 95%;
 }
 
 #addCounters input[type="text"]:focus,
 #addCounters input[type="number"]:focus,
-#addCounters select:focus {
+#addCounters select:focus,
+#addGenerator input[type="text"]:focus,
+#addGenerator input[type="number"]:focus,
+#addGenerator select:focus,
+#addCanister input[type="text"]:focus,
+#addCanister input[type="number"]:focus,
+#addCanister select:focus,
+#addCanister input[type="text"]:focus,
+#addCanister input[type="number"]:focus,
+#addCanister select:focus {
     border-color: #007bff;
     outline: none;
 }
 
-#buttCounter {
+#buttCounter,
+#buttCanister,
+#buttGenerator {
     font-size: 14pt;
     display: block;
     margin: 0 auto;
@@ -505,16 +514,21 @@ h2 {
     cursor: pointer;
 }
 
-#buttCounter:hover {
+#buttCounter:hover,
+#buttCanister:hover,
+#buttGenerator:hover {
     background-color: #0056b3;
 }
 
-#cState {
+#cState,
+#gState {
     margin-left: 10px;
     vertical-align: middle;
 }
 
-#counterList {
+#counterList,
+#generatorList,
+#canisterList {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -522,7 +536,9 @@ h2 {
     margin-top: 15px;
 }
 
-#counterList h3 {
+#counterList h3,
+#generatorList h3,
+#canisterList h3 {
     font-size: 18px;
     margin-bottom: 20px;
     margin-top: 0;
@@ -534,23 +550,39 @@ h2 {
 
 #hcYear,
 #hcType,
-#inputCUnit {
+#inputCUnit,
+#inputAddCUnit,
+.positiveNumber,
+#inputCanisterUnit,
+#inputCanisterType,
+#inputAddCanisterType,
+#inputCanisterStatus,
+#inputGType,
+#inputGUnit {
     padding: 8px;
-    margin-right: 10px; 
+    margin-right: 10px;
+    width: 200px;
 }
 
-#inputCUnit {
-    width: 200px; 
-}
-
-#cUnit {
-    width: 100%; 
+#cUnit,
+#gUnit,
+#gType,
+#canisterUnit,
+#canisterType,
+#canisterStatus {
+    width: 100%;
 }
 
 #cYear,
 #cType,
-#inputCUnit {
-    font-size: 14px; 
+#inputCUnit,
+#inputAddCUnit,
+.positiveNumber,
+#inputCanisterUnit,
+#inputCanisterType,
+#inputAddCanisterType,
+#inputCanisterStatus {
+    font-size: 14px;
 }
 
 #cYear {
@@ -559,42 +591,47 @@ h2 {
 
 #hcYear:hover,
 #hcType:hover,
-#inputCUnit:hover {
+#inputCUnit:hover,
+#inputAddCUnit:hover,
+.positiveNumber:hover {
     border-color: #007bff;
     outline: none;
 }
 
-.cUnit option {
-    font-size: 14px; 
+.cUnit option,
+.gUnit option,
+.gType option,
+.canisterUnit option,
+.addCanisterUnit option,
+.canisterType option,
+.canisterStatus option {
+    font-size: 14px;
 }
 
-#addCounterBtn {
-    background-color: #4CAF50; 
-    color: white; 
+#addCounterBtn,
+#addGenetarorBtn,
+#addCanisterBtn {
+    background-color: #4CAF50;
+    color: white;
     padding: 10px 20px;
-    border: none; 
+    border: none;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    cursor: pointer; 
+    cursor: pointer;
     border-radius: 4px;
-  }
-  
-  #addCounterBtn:hover {
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2); 
-  }
+}
+
+#addCounterBtn:hover,
+#addGenetarorBtn:hover {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 
-  #cPass {
+#cPass {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f5f5f5;
     margin-top: 15px;
-}
-
-#cPass h3 {
-    font-size: 18px;
-    margin-bottom: 20px;
-    margin-top: 0;
 }
 
 #cPass p {
@@ -623,7 +660,7 @@ h2 {
 #cPass button#changePass {
     font-size: 14pt;
     display: block;
-    margin: 0 auto; 
+    margin: 0 auto;
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
@@ -634,4 +671,58 @@ h2 {
 
 #cPass button#changePass:hover {
     background-color: #0056b3;
-}  
+}
+
+#overlayWritingOff {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.61);
+    z-index: 999;
+}
+
+#modalWritingOff {
+    background-color: #333;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    z-index: 1000;
+}
+
+#areaCanistrBack,
+#prevCanistrBack {
+    background-color: #555;
+    color: #fff;
+    padding: 5px;
+}
+
+#modalWritingOff .modal-content {
+    text-align: center;
+}
+
+#modalWritingOff button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+#modalWritingOff button.cancel {
+    background-color: #ff5555;
+    color: #ffffff;
+}
+
+#modalWritingOff button.confirm {
+    background-color: #4caf50;
+    color: #ffffff;
+}

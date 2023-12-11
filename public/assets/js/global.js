@@ -4,8 +4,28 @@ var usRights;
 var usArea;
 var usAreaName;
 var ecId = 0;
+var gId = 0;
 var pMonth = 0;
 var pYear = 0;
+
+function ressetFields(elem) {
+    elem.forEach(id => {
+        const type = document.querySelector('#' + id).type
+        switch (type) {
+            case 'checkbox': {
+                document.querySelector('#' + id).checked = false
+                break
+            }
+            case 'select-one': {
+                document.querySelector('#' + id).disabled = false
+                break
+            }
+            default: {
+                document.querySelector('#' + id).value = ''
+            }
+        }
+    })
+}
 
 function getDataFromDatalist(datalist, input) {
     unitInput = document.querySelector(input)
@@ -37,46 +57,44 @@ function mCaunter(typeC) {
 function getStatistic(mode) {
     showSet([$("#countStat"), $("#counterList"), $('#cYear')]);
     unit = getDataFromDatalist('#cUnit', '#inputCUnit')
-    if (unit != undefined) {
-        $.post(ajaxURL, {
-            action: 'getCountersStat',
-            cYear: $('#hcYear :selected').val(),
-            mod: mode,
-            cUnit: unit,
-            cType: $('#hcType :selected').val()
-        }, function (result) {
-            rez = result
-            $("#cStat").html(rez['table'])
-            $('#chart').html('')
-            if (unit) drawChart(rez['diagram'], rez['arrayCount'])
-        }, 'json')
-    }
+    if (unit == undefined) return
+    $.post(ajaxURL, {
+        action: 'getCountersStat',
+        cYear: $('#hcYear :selected').val(),
+        mod: mode,
+        cUnit: unit,
+        cType: $('#hcType :selected').val()
+    }, function (result) {
+        rez = result
+        $("#cStat").html(rez['table'])
+        $('#chart').html('')
+        if (unit) drawChart(rez['diagram'], rez['arrayCount'])
+    }, 'json')
+
 }
 
 function getCounters() {
     if ($("#countStat").is(":visible")) {
         getStatistic($('.radioBox[checked]').val());
         return;
-    } else {
-        unit = getDataFromDatalist('#cUnit', '#inputCUnit')
-        if (unit != undefined) {
-            const stateCounter = $("#setCounters").is(":visible") ? 0 : 1
-            $.post(ajaxURL, {
-                action: "getCounters",
-                cUnit: unit,
-                cType: $('#hcType :selected')[0].value,
-                state: stateCounter
-            }, function (result) {
-                if (stateCounter) {
-                    const tableCounter = document.querySelector("#counter")
-                    if (tableCounter.children[1]) tableCounter.replaceChild(createTableFromJSON(result), tableCounter.children[1])
-                    else tableCounter.appendChild(createTableFromJSON(result))
-                } else {
-                    $("#allCount").html(result);
-                }
-            });
-        }
     }
+    unit = getDataFromDatalist('#cUnit', '#inputCUnit')
+    if (unit == undefined) return
+    const stateCounter = $("#setCounters").is(":visible") ? 0 : 1
+    $.post(ajaxURL, {
+        action: "getCounters",
+        cUnit: unit,
+        cType: $('#hcType :selected')[0].value,
+        state: stateCounter
+    }, function (result) {
+        if (stateCounter) {
+            const tableCounter = document.querySelector("#counter")
+            if (tableCounter.children[0]) tableCounter.replaceChild(createTableFromJSON(result), tableCounter.children[0])
+            else tableCounter.appendChild(createTableFromJSON(result))
+        } else {
+            $("#allCount").html(result);
+        }
+    });
 }
 
 function createTableFromJSON(jsonData) {
@@ -182,7 +200,6 @@ function createTableFromJSON(jsonData) {
     return table
 }
 
-
 function setPokaz(counterPK, cNom) {
     $("#cNum").html(cNom);
     $('#pMonch [value=' + pMonth + ']').attr("selected", "selected");
@@ -211,6 +228,8 @@ function showSet(mShow) {
         $("#setCounters"),
         $("#addCounters"),
         $("#counter"),
+        $("#generator"),
+        $("#canister"),
         $("#log"),
         $("#allUnit"),
         $("#cPass"),
@@ -219,7 +238,13 @@ function showSet(mShow) {
         $("#adminPanel"),
         $("#addUser"),
         $(".table"),
-        $("#reportCounter")
+        $("#reportCounter"),
+        $("#setGenerator"),
+        $("#setCanister"),
+        $("#addGenerator"),
+        $("#addCanister"),
+        $("#generatorList"),
+        $("#canisterList"),
     ];
     $.each(masObj, function (ind, val) {
         val.hide();
@@ -243,7 +268,11 @@ function setBackground(meIt) {
         $("#allArea"),
         $("#aUser"),
         $("#aArea"),
-        $("#report")
+        $("#report"),
+        $("#mGeneratorManage"),
+        $("#mUserGenerator"),
+        $("#mCanisterTracking"),
+        $("#mGeneratorReport"),
     ];
     $.each(arrCss, function (ind, val) {
         val.css({ "color": "White", "text-shadow": "none", "background-position": "none" });
@@ -261,78 +290,68 @@ function setCounter(cId, cUnit, cType, cName, cNum, cVid, csPokaz, cState) {
         document.querySelector('#cState').checked = cState;
         document.querySelector('#inputCArr').value = cUnit.trim()
         ecId = cId;
-        mSh = [$("#addCounters")];
-        showSet(mSh);
     }
-    else {
-        mSh = [$("#addCounters")];
-        showSet(mSh);
-    }
+    document.querySelector('#buttCounter').innerText = cId ? 'Редагувати' : 'Добавити'
+    mSh = [$("#addCounters")];
+    showSet(mSh);
 }
 
 function enterPokaz(counterPK, counter) {
-    if ($("#counterPokaz").val()) {
-        $.post(ajaxURL, {
-            action: "addPokaz",
-            counter,
-            counterPK,
-            pokaz: $("#counterPokaz").val(),
-            month: $("#pMonch :selected").text() ? $("#pMonch :selected").text() : pMonth,
-            year: $("#pYear :selected").text() ? $("#pYear :selected").text() : pYear
-        }, function (result) {
-            alert(result)
-            $("#counterPokaz").val("")
-            mCaunter("#Pokaz")
-        })
-    } else alert('Введіть будь ласка показник!')
+    if (!$("#counterPokaz").val()) {
+        alert('Введіть будь ласка показник!')
+        return
+    }
+    $.post(ajaxURL, {
+        action: "addPokaz",
+        counter,
+        counterPK,
+        pokaz: $("#counterPokaz").val(),
+        month: $("#pMonch :selected").text() ? $("#pMonch :selected").text() : pMonth,
+        year: $("#pYear :selected").text() ? $("#pYear :selected").text() : pYear
+    }, function (result) {
+        alert(result)
+        $("#counterPokaz").val("")
+        mCaunter("#Pokaz")
+    })
 }
 
 function addCounter() {
-    if ($('#cType :selected').val() && document.querySelector('#sPokaz').value != '') {
-        if ($("#cNumer").val().length > 30 || $("#cName").val().length > 50 || $('#cnType').val().length > 30) {
-            alert("Ви вписали занадто багато символів")
-            return;
-        }
-        unit = getDataFromDatalist('#cArr', '#inputCArr')
-        if (unit == undefined || unit == '') {
-            if (unit == '') alert("Виберіть варіант із списка")
-            return;
-        } else {
-            $.post(ajaxURL, {
-                action: "addCounter",
-                spokaz: $('#sPokaz').val().trim(),
-                ctype: $('#cnType').val().trim(),
-                cArr: unit,
-                cNumer: $("#cNumer").val() ? $("#cNumer").val().trim() : 'н/д',
-                cName: $("#cName").val().trim(),
-                cType: $('#cType :selected').text().trim(),
-                cState: document.querySelector('#cState').checked,
-                edit: ecId
-            }, function () {
-                document.querySelector('#inputCArr').value = ''
-                $('#cNumer').val("")
-                $('#cName').val("")
-                $('#cType').val("")
-                $("#sPokaz").val("")
-                $("#cnType").val("")
-                document.querySelector('#cState').checked = false
-                mCountAdd()
-            });
-            ecId = 0
-        }
-    } else alert("Обов'язкове поле не заповнене")
-}
+    if (!$('#cType :selected').val() || document.querySelector('#sPokaz').value == '') {
+        alert("Обов'язкове поле не заповнене")
+        return
+    }
 
-function statInfo() {
-    getStatistic($('.radioBox[checked]').val());
+    if ($("#cNumer").val().length > 30 || $("#cName").val().length > 50 || $('#cnType').val().length > 30) {
+        alert("Ви вписали занадто багато символів")
+        return;
+    }
+
+    unit = getDataFromDatalist('#cArr', '#inputCArr')
+    if (unit == undefined) return;
+
+
+    $.post(ajaxURL, {
+        action: "addCounter",
+        spokaz: $('#sPokaz').val().trim(),
+        ctype: $('#cnType').val().trim(),
+        cArr: unit,
+        cNumer: $("#cNumer").val() ? $("#cNumer").val().trim() : 'н/д',
+        cName: $("#cName").val().trim(),
+        cType: $('#cType :selected').text().trim(),
+        cState: document.querySelector('#cState').checked,
+        edit: ecId
+    }, function () {
+        ressetFields(['inputCArr', 'cNumer', 'cName', 'cType', 'sPokaz', 'cnType', 'cState'])
+        showSet([$("#setCounters"), $("#counterList")]);
+        setBackground($("#aCounter"));
+        getCounters();
+    });
+    ecId = 0
 }
 
 function mCountAdd() {
     ecId = 0;
-    document.querySelector('#inputCArr').value = ''
-    $('#cNumer').val("");
-    $('#cName').val("");
-    $('#cType').val("");
+    ressetFields(['inputCArr', 'cNumer', 'cName', 'cType'])
     showSet([$("#setCounters"), $("#counterList")]);
     setBackground($("#aCounter"));
     getCounters();
@@ -349,7 +368,6 @@ function getAllUsers() {
 function editPokaz(cId, counter) {
     editPokazAjax(cId, counter)
 }
-
 
 function isEnter(event, cId, counter) {
     if (event.keyCode == 13) editPokazAjax(cId, counter)
@@ -373,6 +391,7 @@ function editPokazAjax(cId, counter) {
         }
     );
 }
+
 function mLog() {
     showSet([$("#adminPanel"), $("#log")]);
     setBackground($("#aLog"));
@@ -413,30 +432,25 @@ function usADD() {
     }
 
     unit = getDataFromDatalist('#unitUs', '#inputUnitUs')
-    if (unit == undefined || unit == '') alert("Виберіть варіант із списка")
-    else
-        $.post(ajaxURL, {
-            action: "usADD",
-            user: $("#usName").val().trim(),
-            surname: $("#usSurname").val().trim(),
-            login: $("#usLogin").val().trim(),
-            pass: $("#usPass").val().trim(),
-            unit: unit,
-            rights: $("#RightsUs :selected").val()
-        }, function (result) {
-            res = JSON.parse(result);
-            if (res.error) {
-                alert(res.error);
-                return
-            }
-            document.querySelector('#RightsUs').disabled = false
-            $("#usName").val("");
-            $("#usSurname").val("");
-            $("#usLogin").val("");
-            $("#usPass").val("");
-            alert(res.success);
-        })
+    if (unit == undefined) return
 
+    $.post(ajaxURL, {
+        action: "usADD",
+        user: $("#usName").val().trim(),
+        surname: $("#usSurname").val().trim(),
+        login: $("#usLogin").val().trim(),
+        pass: $("#usPass").val().trim(),
+        unit: unit,
+        rights: $("#RightsUs :selected").val()
+    }, function (result) {
+        res = JSON.parse(result);
+        if (res.error) {
+            alert(res.error);
+            return
+        }
+        ressetFields(['usName', 'usSurname', 'usLogin', 'usPass', 'RightsUs'])
+        alert(res.success);
+    })
 }
 
 function maddUnit(edMode) {
@@ -455,10 +469,9 @@ function maddUnit(edMode) {
 }
 
 function tradePointFormStatus(status) {
-    if (status.checked) document.querySelector('#tradePointForm').style.display = 'block';
+    if (status) document.querySelector('#tradePointForm').style.display = 'block';
     else document.querySelector('#tradePointForm').style.display = 'none';
 };
-
 
 function unADD() {
     const isTradePoint = document.querySelector('#isTradePoint').checked;
@@ -498,15 +511,11 @@ function unADD() {
             return
         }
         $(".unit").append('<option data-value="' + res.id + '"  data-text="' + res.unit.trim() + '">' + res.unit.trim() + '</option>');
-        $("#unADDR").val("");
-        $("#tel").val("");
-        $("#unit").val("");
-        $("#tradePointId").val("");
+        ressetFields(['unADDR', 'tel', 'unit', 'tradePointId'])
         alert("Підрозділ додано");
         location.reload()
     });
 }
-
 
 function mallUnit() {
     showSet([$("#adminPanel"), $("#allUnit")]);
@@ -528,8 +537,7 @@ function unitEdit(uId, unit, addr, tel, areaState = true, isTradePoint = false, 
     $("#tel").val(tel);
     document.querySelector('#isTradePoint').checked = isTradePoint
     document.querySelector('#areaState').checked = areaState
-    if (isTradePoint) document.querySelector('#tradePointForm').style.display = 'block';
-    else document.querySelector('#tradePointForm').style.display = 'none';
+    tradePointFormStatus(isTradePoint)
     document.querySelector('#tradePointId').value = tradePointId
     document.querySelector('#companyId').value = companyId
     maddUnit(uId);
@@ -579,9 +587,7 @@ function confirmUnitEdit(id) {
             alert(res.error);
             return
         }
-        $("#unADDR").val("");
-        $("#tel").val("");
-        $("#unit").val("");
+        ressetFields(['unADDR', 'tel', 'unit'])
         alert("Дані підрозділа змінені");
         mallUnit();
     })
@@ -606,7 +612,7 @@ function userEdit(uId, uNam, uSur, uPass, uLogin, uArea, uRights) {
 }
 
 function getDataValue(datalistSelector, selector) {
-    return document.querySelector(`${datalistSelector} option[data-text="${document.querySelector(selector).value}"]`)?.dataset?.value
+    return document.querySelector(`${datalistSelector} option[data-text="${document.querySelector(selector).value.trim()}"]`)?.dataset?.value
 }
 
 function confirmUserEdit(id) {
@@ -622,38 +628,31 @@ function confirmUserEdit(id) {
     }
 
     unit = getDataFromDatalist('#unitUs', '#inputUnitUs')
-    if (unit == undefined || unit == '') alert("Виберіть варіант із списка")
-    else
-        $.post(ajaxURL, {
-            action: "userEDIT",
-            userID: id,
-            user: $("#usName").val().trim(),
-            surname: $("#usSurname").val().trim(),
-            login: $("#usLogin").val().trim(),
-            pass: $("#usPass").val().trim(),
-            unit: unit,
-            rights: $("#RightsUs :selected").val()
-        }, function (result) {
-            res = JSON.parse(result);
-            if (res.error) {
-                alert(res.error);
-                return
-            }
-            document.querySelector('#RightsUs').disabled = false
-            $("#usName").val("");
-            $("#usSurname").val("");
-            $("#usLogin").val("");
-            $("#usPass").val("");
-            alert(res.success);
-            mallUser();
-        })
+    if (unit == undefined) return
+    $.post(ajaxURL, {
+        action: "userEDIT",
+        userID: id,
+        user: $("#usName").val().trim(),
+        surname: $("#usSurname").val().trim(),
+        login: $("#usLogin").val().trim(),
+        pass: $("#usPass").val().trim(),
+        unit: unit,
+        rights: $("#RightsUs :selected").val()
+    }, function (result) {
+        res = JSON.parse(result);
+        if (res.error) {
+            alert(res.error);
+            return
+        }
+        ressetFields(['usName', 'usSurname', 'usLogin', 'usPass', 'RightsUs'])
+        alert(res.success);
+        mallUser();
+    })
 }
 
 function mchangePass() {
+    ressetFields(['confirmPass', 'oldPass', 'newPass'])
     showSet([$("#cPass")]);
-    $("#confirmPass").val("");
-    $("#oldPass").val("");
-    $('#newPass').val("");
     setBackground($("#changePass"));
 }
 
@@ -667,9 +666,7 @@ function cPass() {
             document.querySelector('#passError').innerHTML = `<div class="login-error">${JSON.parse(result).validation}</div>`
         } else {
             document.querySelector('#passError').innerHTML = ''
-            $("#oldPw").val("");
-            $("#newPw").val("");
-            $('#confPw').val("");
+            ressetFields(['oldPw', 'newPw', 'confPw'])
             alert("Пароль успішно змінено")
         }
     });
@@ -776,19 +773,16 @@ function companyUserDefaulValues() {
         }
     }
     document.querySelector('#managerTradePointForm').style.display = 'none'
-    document.querySelector('#isManagerTradePoint').checked = false
     const usLogin = document.querySelector('#usLogin')
     usLogin.removeEventListener("input", setStartLogin)
-    usLogin.value = ''
-    document.querySelector('#RightsUs').disabled = false
+    ressetFields(['usLogin', 'RightsUs', 'isManagerTradePoint'])
 }
 
 function managerTradePointFormStatus() {
     const usLogin = document.querySelector('#usLogin');
     if (!document.querySelector('#isManagerTradePoint').checked) {
         usLogin.removeEventListener("input", setStartLogin)
-        usLogin.value = ''
-        document.querySelector('#RightsUs').disabled = false
+        ressetFields(['usLogin', 'RightsUs'])
         return
     }
 
@@ -812,4 +806,338 @@ function managerTradePointFormStatus() {
 function setStartLogin(e) {
     const dataset = document.querySelector(`#unitUs option[data-text="${document.querySelector('#inputUnitUs').value}"]`)?.dataset
     if (!e.target.value.startsWith(dataset.tradepointid + '-')) document.querySelector('#usLogin').value = dataset.tradepointid + '-'
+}
+
+//// ------------------------ GENERATOR --------------------------------------- 
+
+
+function setGenerator(gId, gUnit, gName, gSerialNum, gCoeff, gType, gState, action = 'Добавити') {
+    if (gId) {
+        document.querySelector('#gName').value = gName
+        document.querySelector('#gSerialNum').value = gSerialNum
+        document.querySelector('#gCoeff').value = gCoeff
+        document.querySelector('#inputGenType').value = gType
+        document.querySelector('#gState').checked = gState == 1
+        document.querySelector('#inputGArr').value = gUnit
+    }
+    document.querySelector('#buttGenerator').innerText = action
+    showSet([$("#addGenerator")]);
+}
+
+function addGenerator() {
+    const gSerialNum = document.querySelector('#gSerialNum').value
+    const gName = document.querySelector('#gName').value
+    const gCoeff = document.querySelector('#gCoeff').value
+    const gState = document.querySelector('#gState').checked
+
+    if (!gName.trim() || !gCoeff.trim()) {
+        alert("Обов'язкові поля не заповнені")
+        return
+    }
+
+    if (gSerialNum.length > 30 || gName.length > 50) {
+        alert("Ви вписали занадто багато символів")
+        return;
+    }
+
+    const unit = getDataFromDatalist('#gArr', '#inputGArr')
+    const type = getDataFromDatalist('#gType', '#inputGenType')
+    if (unit == undefined || type == undefined) return;
+    if (type == '') {
+        alert("Обов'язкові поля не заповнені")
+        return
+    }
+
+    $.post(ajaxURL, {
+        action: "modifGenerator",
+        gArr: unit,
+        gType: type,
+        gSerialNum: gSerialNum ? gSerialNum : 'н/д',
+        gCoeff: gCoeff,
+        gName: gName.trim(),
+        gState: gState,
+        gId: gId
+    }, function () {
+        mGeneratorManage()
+    });
+}
+
+function mGeneratorManage() {
+    ressetFields(['inputGArr', 'inputGenType', 'gSerialNum', 'gName', 'gCoeff', 'gState'])
+    showSet([$("#setGenerator"), $("#generatorList"), $("#generator")]);
+    setBackground($("#mGeneratorManage"));
+    getGenerators();
+}
+
+function getGenerators() {
+    const unit = getDataFromDatalist('#gUnit', '#inputGUnit')
+    const type = getDataFromDatalist('#gType', '#inputGType')
+    if (unit == undefined || type == undefined) return
+    $.post(ajaxURL, {
+        action: "getGenerators",
+        gUnit: unit,
+        gType: type
+    }, function (result) {
+        const tableGenerator = document.querySelector("#generator")
+        const action = $("#setGenerator").is(":visible") ? 'Редагувати' : 'Добавити'
+        if (tableGenerator.children[0]) tableGenerator.replaceChild(createGeneratorFromJSON(result, action), tableGenerator.children[0])
+        else tableGenerator.appendChild(createGeneratorFromJSON(result, action))
+    });
+}
+
+function createGeneratorFromJSON(jsonData, action) {
+    const data = JSON.parse(jsonData);
+
+    const table = document.createElement("table");
+    table.setAttribute("border", "2");
+    table.setAttribute("cellpadding", "4");
+    table.setAttribute("cellspacing", "0");
+    table.setAttribute("align", "center");
+    table.setAttribute("style", "width: 100%;table-layout: fixed;");
+    table.setAttribute("align", "left");
+    table.setAttribute("scope", "col");
+
+    // Create table header
+    const tableHeader = document.createElement("thead");
+    tableHeader.setAttribute("style", "position: sticky; top: 0;");
+
+    const headerRow = document.createElement("tr");
+    headerRow.setAttribute("style", "color:White;background-color:#006698;font-size:14pt;font-weight:bold;");
+
+    data.columns.forEach(column => {
+        const th = document.createElement("th");
+        th.textContent = column;
+        headerRow.appendChild(th);
+    });
+    const th = document.createElement("th");
+    th.textContent = 'Дія';
+    headerRow.appendChild(th);
+
+    tableHeader.appendChild(headerRow);
+    table.appendChild(tableHeader);
+
+    // Create table body
+    const tableBody = document.createElement("tbody");
+
+    data.generators.forEach(generator => {
+        const row = document.createElement("tr");
+        row.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
+
+        data.columns.forEach(column => {
+            const cell = document.createElement("td")
+            const key = data.ref[column]
+            if (key == 'state') {
+                const checkbox = document.createElement("input")
+                checkbox.type = "checkbox"
+                checkbox.checked = generator['state'] == 1
+                checkbox.disabled = true;
+                cell.appendChild(checkbox)
+            } else cell.textContent = generator[key]
+            row.appendChild(cell)
+        })
+
+        tableBody.appendChild(row);
+
+        const rowAction = document.createElement("tr");
+        rowAction.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
+        const cell = document.createElement("td")
+        const addButton = document.createElement("button")
+        addButton.textContent = action
+        addButton.addEventListener("click", function () {
+            gId = generator['id']
+            setGenerator(generator['id'], generator['unit'], generator['name'], generator['serialNum'], generator['coeff'], generator['type'], generator['state'], action)
+        });
+        cell.appendChild(addButton)
+        row.appendChild(cell)
+        tableBody.appendChild(row);
+    });
+
+    table.appendChild(tableBody);
+
+    return table;
+}
+
+function mCanisterTracking() {
+    ressetFields(['inputCanisterUnit', 'inputCanisterType', 'inputCanisterStatus'])
+    showSet([$("#setCanister"), $("#canisterList"), $("#canister")]);
+    setBackground($("#mCanisterTracking"));
+    getCanisters();
+}
+
+function getCanisters() {
+    const unit = getDataFromDatalist('#canisterUnit', '#inputCanisterUnit')
+    const type = getDataFromDatalist('#canisterType', '#inputCanisterType')
+    const status = getDataFromDatalist('#canisterStatus', '#inputCanisterStatus')
+    if (unit == undefined || type == undefined || status == undefined) return
+    $.post(ajaxURL, {
+        action: "getCanisters",
+        unit: unit,
+        type: type,
+        status: status,
+    }, function (result) {
+        const tableCanister = document.querySelector("#canister")
+        if (tableCanister.children[0]) tableCanister.replaceChild(createCanisterFromJSON(result), tableCanister.children[0])
+        else tableCanister.appendChild(createCanisterFromJSON(result))
+    });
+
+}
+
+function createCanisterFromJSON(jsonData) {
+    const data = JSON.parse(jsonData);
+
+    const table = document.createElement("table");
+    table.setAttribute("border", "2");
+    table.setAttribute("cellpadding", "4");
+    table.setAttribute("cellspacing", "0");
+    table.setAttribute("align", "center");
+    table.setAttribute("style", "width: 100%;table-layout: fixed;");
+    table.setAttribute("align", "left");
+    table.setAttribute("scope", "col");
+
+    // Create table header
+    const tableHeader = document.createElement("thead");
+    tableHeader.setAttribute("style", "position: sticky; top: 0;");
+
+    const headerRow = document.createElement("tr");
+    headerRow.setAttribute("style", "color:White;background-color:#006698;font-size:14pt;font-weight:bold;");
+
+    data.columns.forEach(column => {
+        const th = document.createElement("th");
+        th.textContent = column;
+        headerRow.appendChild(th);
+    });
+    const th = document.createElement("th");
+    th.textContent = 'Дія';
+    headerRow.appendChild(th);
+
+    tableHeader.appendChild(headerRow);
+    table.appendChild(tableHeader);
+
+    // Create table body
+    const tableBody = document.createElement("tbody");
+
+    data.canisters.forEach(canister => {
+        const row = document.createElement("tr");
+        row.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
+
+        data.columns.forEach(column => {
+            const cell = document.createElement("td")
+            const key = data.ref[column]
+            if (key == 'state') {
+                const checkbox = document.createElement("input")
+                checkbox.type = "checkbox"
+                checkbox.checked = canister['state'] == 1
+                checkbox.disabled = true;
+                cell.appendChild(checkbox)
+            } else cell.textContent = canister[key]
+            row.appendChild(cell)
+        })
+
+        tableBody.appendChild(row);
+
+        const rowAction = document.createElement("tr");
+        rowAction.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
+        const cell = document.createElement("td")
+        const addButton = document.createElement("button")
+        addButton.textContent = "Списання"
+        addButton.addEventListener("click", function () {
+            canisteraWritingOff(canister['id'], canister['unit'], canister['canister'])
+        });
+        cell.appendChild(addButton)
+        row.appendChild(cell)
+        tableBody.appendChild(row);
+    });
+
+    table.appendChild(tableBody);
+
+    return table;
+}
+
+function setCanister() {
+    showSet([$("#addCanister")]);
+}
+
+function listenerRemoveAllNonDigit(targetElem) {
+    targetElem.forEach(elem => {
+        document.querySelector(elem).addEventListener("input", function () {
+            const inputElement = document.querySelector(elem);
+            inputElement.value = inputElement.value.replace(/[^\d-]/g, "");
+            if (inputElement.value.length > 5) {
+                inputElement.value = inputElement.value.slice(0, 5);
+            }
+        });
+    });
+}
+
+function addCanister() {
+    const sendCanisterDate = document.querySelector('#sendCanisterDate').value
+    const countCanistr = document.querySelector('#countCanistr').value
+    const fuelVolume = document.querySelector('#fuelVolume').value
+
+    if (!sendCanisterDate.trim() || !countCanistr.trim() || !fuelVolume.trim()) {
+        alert("Обов'язкові поля не заповнені")
+        return
+    }
+
+    const type = getDataFromDatalist('#addCanisterType', '#inputAddCanisterType')
+    const unit = getDataFromDatalist('#addCanisterUnit', '#inputAddCUnit')
+    if (unit == undefined || type == undefined) return;
+
+    $.post(ajaxURL, {
+        action: "addCanister",
+        sendCanisterDate: sendCanisterDate,
+        countCanistr: countCanistr,
+        fuelVolume: fuelVolume,
+        type: type,
+        unit: unit
+    }, function () {
+        ressetFields(['sendCanisterDate', 'countCanistr', 'fuelVolume', 'inputAddCanisterType', 'inputAddCUnit'])
+        mCanisterTracking()
+    });
+}
+
+function canisteraWritingOff(canisterId, area, countCanister) {
+    document.querySelector("#modalWritingOff").style.display = "block"
+    document.querySelector("#overlayWritingOff").style.display = "block"
+    document.querySelector('#areaCanistrBack').value = area
+    document.querySelector('#prevCanistrBack').value = countCanister
+    document.querySelector('#canisterIdWritingOff').value = canisterId
+}
+function confirmAction() {
+    const prevCanistr = +document.querySelector("#prevCanistrBack").value
+    const backCanistr = +document.querySelector("#countCanistrBack").value
+    document.querySelector('#canisterIdWritingOff').value
+    if (backCanistr < 1 || prevCanistr < backCanistr) {
+        alert("Введіть коректні дані")
+        return
+    }
+
+    $.post(ajaxURL, {
+        action: "canisterWritingOff",
+        idCanister: document.querySelector('#canisterIdWritingOff').value,
+        backCanistr: backCanistr
+    }, function (result) {
+        const data = JSON.parse(result)
+        if (data['response'] != 200) {
+            alert(data['message'])
+            return;
+        }
+        ressetFields(['countCanistrBack'])
+        closeModal()
+        mCanisterTracking()
+    });
+}
+
+function closeModal() {
+    document.querySelector("#modalWritingOff").style.display = "none"
+    document.querySelector("#overlayWritingOff").style.display = "none"
+    document.querySelector("#countCanistrBack").value = ''
+}
+
+
+function mUserGenerator() {
+    ressetFields(['', 'gState'])
+    showSet([$("#setGenerator"), $("#generatorList"), $("#generator")]);
+    setBackground($("#mGeneratorManage"));
+    getGenerators();
 }

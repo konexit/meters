@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Auth;
 use App\Models\Search;
+use App\Models\Generator;
 use App\Models\Telegram;
 use App\Models\Update;
 use App\Models\User;
@@ -14,6 +15,7 @@ class Meters extends BaseController
     private $user;
     private $update;
     private $search;
+    private $generator;
     private $auth;
     private $telegram;
 
@@ -22,6 +24,7 @@ class Meters extends BaseController
         $this->user = new User();
         $this->update = new Update();
         $this->search = new Search();
+        $this->generator = new Generator();
         $this->auth = new Auth();
         $this->telegram = new Telegram();
     }
@@ -108,6 +111,10 @@ class Meters extends BaseController
             'usAreaName' => $this->search->getUnitById(session()->get('usArea')),
             'companies' => $this->search->getCompanies(),
             'companiesAreas' => $this->search->getCompaniesAreas(),
+            'generatorArea' => $this->generator->getGeneratorArea(),
+            'canisterArea' => $this->generator->getCanisterArea(),
+            'typeGenerator' => $this->generator->getTypeGenerator(),
+            'canisterStatus' => $this->generator->getCanisterStatus(),
         ], $this->user->getCounterDate()));
     }
 
@@ -148,6 +155,16 @@ class Meters extends BaseController
                 return $this->search->userEdit($this->request);
             case 'getReportCounter':
                 return $this->search->getReportCounter($this->request);
+            case 'modifGenerator':
+                return $this->generator->modifGenerator($this->request);
+            case 'getGenerators':
+                return $this->generator->getGenerators($this->request);
+            case 'getCanisters':
+                return $this->generator->getCanisters($this->request);
+            case 'addCanister':
+                return $this->generator->addCanister($this->request);
+            case 'canisterWritingOff':
+                return $this->generator->canisterWritingOff($this->request);
             default:
                 return 404;
         }
