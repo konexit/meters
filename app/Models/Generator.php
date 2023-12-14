@@ -40,7 +40,7 @@ class Generator extends Model
 
     function getGenerators($request)
     {
-        $generators = $this->getSpecificGenerator($request->getVar('gUnit'), $request->getVar('gType'));
+        $generators = $this->getSpecificGenerator($request->getVar('gUnit'), $request->getVar('gType'), '');
         $columns = ["Назва", "Номер", "Підрозділ", "Адреса", "Коеф", "Паливо", "Каністр", "Тип", "ID", "Стан"];
         $ref = [
             "Назва" => "name", "Номер" => "serialNum", "Підрозділ" => "unit", "Адреса" => "addr", "Коеф" => "coeff",
@@ -48,28 +48,6 @@ class Generator extends Model
         ];
         header("Content-Type: application/json");
         echo json_encode(["columns" => $columns, "generators" => $generators, "ref" => $ref], JSON_UNESCAPED_UNICODE);
-    }
-
-    private function getSpecificGenerator($gUnit, $gType)
-    {
-        $condition = "";
-        if ($gUnit) $condition =  " g.unit = '" . $gUnit . "' ";
-        if ($gType) $condition = ($condition != "") ? $condition . " AND g.type = " . $gType : " g.type = " . $gType;
-        if ($condition) $condition = " WHERE " . $condition;
-
-        return $this->db->query("SELECT 
-                                    g.id, g.name, g.serialNum, a.addr, a.unit, g.coeff, g.fuel, g.canister, t.type, g.state,
-                                    (
-                                        CASE WHEN a.trade_point_id = 0 THEN '' ELSE a.trade_point_id 
-                                            END
-                                    ) AS trade_point_id
-                                FROM 
-                                    generator AS g
-                                    JOIN area AS a ON a.id = g.unit
-                                    JOIN typeGenerator AS t ON g.type = t.id 
-                                    " . $condition . " 
-                                ORDER BY 
-                                    g.state DESC, a.unit")->getResultArray();
     }
 
     function getGeneratorArea()
@@ -102,7 +80,7 @@ class Generator extends Model
 
     function getCanisters($request)
     {
-        $canisters = $this->getSpecificCanister($request->getVar('unit'), $request->getVar('type'), $request->getVar('status'));
+        $canisters = $this->getSpecificCanister($request->getVar('unit'), $request->getVar('type'), $request->getVar('status'), '');
         $columns = ["Підрозділ", "Адреса", "Паливо", "Каністр", "Літраж", "Статус"];
         $ref = [
             "Підрозділ" => "unit", "Адреса" => "addr", "Паливо" => "type",
@@ -110,25 +88,6 @@ class Generator extends Model
         ];
         header("Content-Type: application/json");
         echo json_encode(["columns" => $columns, "canisters" => $canisters, "ref" => $ref], JSON_UNESCAPED_UNICODE);
-    }
-
-    private function getSpecificCanister($unit, $type, $status)
-    {
-        $condition = "";
-        if ($unit) $condition =  " c.unit = " . $unit;
-        if ($type) $condition = ($condition != "") ? $condition . " AND c.type = " . $type : " c.type = " . $type;
-        if ($status) $condition = ($condition != "") ? $condition . " AND c.status = " . $status : " c.status = " . $status;
-        if ($condition) $condition = " WHERE " . $condition;
-        return $this->db->query("SELECT 
-                                    c.id, tg.type, c.fuel, c.canister, a.addr, a.unit, sc.name AS status
-                                FROM 
-                                    trackingCanister AS c
-                                    LEFT JOIN area AS a ON a.id = c.unit
-                                    LEFT JOIN typeGenerator AS tg ON tg.id = c.type
-                                    LEFT JOIN statusCanister AS sc ON sc.id = c.status 
-                                    " . $condition . " 
-                                ORDER BY 
-                                    c.date")->getResultArray();
     }
 
     function canisterWritingOff($request)
@@ -149,7 +108,128 @@ class Generator extends Model
                     ['id' => $idCanister]
                 );
             }
+            $canisters = $this->getSpecificCanister('', '', '', $idCanister);
+            $this->db->table('fuelArea')->update(
+                ['canister' => $dataTargetCanister[0]->canister - $backCanistr],
+                ['areaId' => $canisters[0]['areaId'], 'type' => $canisters[0]['typeId']]
+            );
             echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
         }
+    }
+
+    function addGeneratorPokaz($request)
+    {
+        $consumed = intval($request->getVar('consumed'));
+        $genId = $request->getVar('genId');
+        $dataTargetGenerator = $this->getSpecificGenerator('', '', $genId);
+        $currentFuel = intval($dataTargetGenerator[0]['fuel']);
+        $balanceFuel = intval($currentFuel  - $consumed);
+
+        header("Content-Type: application/json");
+        if (!$dataTargetGenerator || $currentFuel < $consumed) {
+            echo json_encode(["response" => 500, "message" => "Перевірте введені дані та оновіть сторінку. Якщо проблема не вирішилась, зверніться в ІТ відділ"], JSON_UNESCAPED_UNICODE);
+        } else {
+            $this->db->table('genaratorPokaz')->insert([
+                'date' => $request->getVar('date'),
+                'workingTime' => $request->getVar('workingTime'),
+                'consumed' => $consumed,
+                'genId' => $genId
+            ]);
+            $this->db->table('fuelArea')->update(
+                ['fuel' => $balanceFuel],
+                ['areaId' => $dataTargetGenerator[0]['genAreaId'], 'type' => $dataTargetGenerator[0]['genTypeId']]
+            );
+            echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
+        }
+    }
+
+    function confirmCanister($request)
+    {
+        $genId = $request->getVar('idCanister');
+        $dataTargetCanister = $this->getSpecificCanister('', '', '', $genId);
+        header("Content-Type: application/json");
+        if (!$dataTargetCanister) {
+            echo json_encode(["response" => 500, "message" => "Перевірте введені дані та оновіть сторінку. Якщо проблема не вирішилась, зверніться в ІТ відділ"], JSON_UNESCAPED_UNICODE);
+        } else {
+            $this->db->query('UPDATE trackingCanister SET status = 2 WHERE id = ' . $genId);
+            $fuelArea = $this->db->query('SELECT * FROM fuelArea WHERE areaId = ' . $dataTargetCanister[0]['areaId'] . ' AND type = ' . $dataTargetCanister[0]['typeId'])->getResultArray();
+            if ($fuelArea) {
+                $this->db->query('UPDATE fuelArea SET fuel = fuel + ' . $dataTargetCanister[0]['fuel'] . ', canister = canister + ' . $dataTargetCanister[0]['canister'] . '
+                WHERE type = ' . $dataTargetCanister[0]['typeId'] . ' AND areaId = ' . $dataTargetCanister[0]['areaId']);
+            } else {
+                $this->db->query('INSERT INTO fuelArea(fuel, canister, areaId, type) 
+                VALUES (' . $dataTargetCanister[0]['fuel'] . ', ' . $dataTargetCanister[0]['canister'] . ', ' . $dataTargetCanister[0]['areaId'] . ', ' . $dataTargetCanister[0]['typeId'] . ')');
+            }
+            echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
+        }
+    }
+
+    function getGeneratorsAndCanisters()
+    {
+        header("Content-Type: application/json");
+        echo json_encode([
+            "generators" =>  $this->getSpecificGenerator(session()->get('usArea'), '', ''),
+            "canisters" => $this->getSpecificCanister(session()->get('usArea'), '', 1, '')
+        ], JSON_UNESCAPED_UNICODE);
+    }
+
+    private function getSpecificCanister($unit, $type, $status, $canisterId)
+    {
+        $condition = "";
+        if ($unit) $condition =  " c.unit = " . $unit;
+        if ($type) $condition = ($condition != "") ? $condition . " AND c.type = " . $type : " c.type = " . $type;
+        if ($status) $condition = ($condition != "") ? $condition . " AND c.status = " . $status : " c.status = " . $status;
+        if ($canisterId) $condition = ($condition != "") ? $condition . " AND c.id = " . $canisterId : " c.id = " . $canisterId;
+        if ($condition) $condition = " WHERE " . $condition;
+        return $this->db->query("SELECT 
+                                    c.id, tg.type, a.addr, a.unit, sc.name AS status, c.date, a.id as areaId, c.type AS typeId,
+                                    (
+                                        CASE WHEN c.fuel IS NULL THEN 0 ELSE c.fuel
+                                            END
+                                    ) AS fuel, 
+                                    (
+                                        CASE WHEN c.canister IS NULL THEN 0 ELSE c.canister
+                                            END
+                                    ) AS canister
+                                FROM 
+                                    trackingCanister AS c
+                                    LEFT JOIN area AS a ON a.id = c.unit
+                                    LEFT JOIN typeGenerator AS tg ON tg.id = c.type
+                                    LEFT JOIN statusCanister AS sc ON sc.id = c.status 
+                                    " . $condition . " 
+                                ORDER BY 
+                                    c.date")->getResultArray();
+    }
+
+    private function getSpecificGenerator($gUnit, $gType, $genId)
+    {
+        $condition = "";
+        if ($gUnit) $condition =  " g.unit = '" . $gUnit . "' ";
+        if ($gType) $condition = ($condition != "") ? $condition . " AND g.type = " . $gType : " g.type = " . $gType;
+        if ($genId) $condition = ($condition != "") ? $condition . " AND g.id = " . $genId : " g.id = " . $genId;
+        if ($condition) $condition = " WHERE " . $condition;
+
+        return $this->db->query("SELECT 
+                                    g.id, g.name, g.serialNum, a.addr, a.unit, g.coeff, t.type, g.state, g.unit AS genAreaId, g.type AS genTypeId,
+                                    (
+                                        CASE WHEN fu.fuel IS NULL THEN 0 ELSE fu.fuel
+                                            END
+                                    ) AS fuel, 
+                                    (
+                                        CASE WHEN fu.canister IS NULL THEN 0 ELSE fu.canister
+                                            END
+                                    ) AS canister, 
+                                    (
+                                        CASE WHEN a.trade_point_id = 0 THEN '' ELSE a.trade_point_id 
+                                            END
+                                    ) AS trade_point_id
+                                FROM 
+                                    generator AS g
+                                    LEFT JOIN area AS a ON a.id = g.unit
+                                    LEFT JOIN typeGenerator AS t ON t.id = g.type 
+                                    LEFT JOIN fuelArea AS fu ON fu.areaId = g.unit AND fu.type = g.type
+                                    " . $condition . " 
+                                ORDER BY 
+                                    g.state DESC, a.unit")->getResultArray();
     }
 }

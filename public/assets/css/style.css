@@ -610,6 +610,7 @@ h2 {
 
 #addCounterBtn,
 #addGenetarorBtn,
+#addGenetarorPokaz,
 #addCanisterBtn {
     background-color: #4CAF50;
     color: white;
@@ -621,7 +622,8 @@ h2 {
 }
 
 #addCounterBtn:hover,
-#addGenetarorBtn:hover {
+#addGenetarorBtn:hover,
+#addGenetarorPokaz:hover {
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -725,4 +727,130 @@ h2 {
 #modalWritingOff button.confirm {
     background-color: #4caf50;
     color: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    font-size: 30px;
+    margin-top: 25px;
+    border: #9e0404 2px solid;
+}
+
+.flex-container>div {
+    display: flex;
+}
+
+.generator-info {
+    width: 50%;
+    padding: 10px;
+    border-right: #9e0404 2px solid;
+}
+
+.generator-resources {
+    width: 50%;
+    padding: 10px;
+}
+
+.adding-pokaz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    border-top: #9e0404 2px solid;
+}
+
+.adding-pokaz div {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.adding-pokaz span {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.adding-pokaz h3 {
+    color: #333;
+    font-size: 36px;
+    margin-top: 0;
+    size: 50px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.adding-pokaz button {
+    margin-top: 25px;
+}
+
+.desc-gen span,
+.res-gen span {
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+input[type="datetime-local"] {
+    margin-right: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+
+#getCanister .flex-container {
+    display: flex;
+    flex-direction: row;
+    font-size: 24px;
+    margin-top: 20px;
+    border: #d8e934 2px solid;
+}
+
+#getCanister .flex-container>div {
+    display: flex;
+}
+
+.canister-desc {
+    width: 85%;
+    padding: 10px;
+    display: flex;
+    border-right: #d8e934 2px solid;
+}
+
+.desc-can {
+    margin-left: 7px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirm-canister {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#confirmCanister  {
+    height: 40px;
+    background-color: #d8d912;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#confirmCanister:hover {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
 }

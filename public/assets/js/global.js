@@ -225,6 +225,7 @@ function showSet(mShow) {
         $("#countStat"),
         $("#inputPokaz"),
         $("#counterList"),
+        $("#getCanister"),
         $("#setCounters"),
         $("#addCounters"),
         $("#counter"),
@@ -245,6 +246,7 @@ function showSet(mShow) {
         $("#addCanister"),
         $("#generatorList"),
         $("#canisterList"),
+        $("#areaGenerator"),
     ];
     $.each(masObj, function (ind, val) {
         val.hide();
@@ -270,7 +272,7 @@ function setBackground(meIt) {
         $("#aArea"),
         $("#report"),
         $("#mGeneratorManage"),
-        $("#mUserGenerator"),
+        $("#mAreaGenerator"),
         $("#mCanisterTracking"),
         $("#mGeneratorReport"),
     ];
@@ -1128,16 +1130,121 @@ function confirmAction() {
     });
 }
 
+function confirmCanister(canId) {
+    $.post(ajaxURL, {
+        action: "confirmCanister",
+        idCanister: canId
+    }, function (result) {
+        const data = JSON.parse(result)
+        if (data['response'] != 200) {
+            alert(data['message'])
+            return;
+        }
+        window.location.reload();
+    });
+}
+
 function closeModal() {
     document.querySelector("#modalWritingOff").style.display = "none"
     document.querySelector("#overlayWritingOff").style.display = "none"
     document.querySelector("#countCanistrBack").value = ''
 }
 
+function mAreaGenerator() {
+    showSet([$("#areaGenerator"), $("#getCanister")])
+    setBackground($("#mAreaGenerator"));
+    getGeneratorsAndCanisters()
+}
 
-function mUserGenerator() {
-    ressetFields(['', 'gState'])
-    showSet([$("#setGenerator"), $("#generatorList"), $("#generator")]);
-    setBackground($("#mGeneratorManage"));
-    getGenerators();
+function addGeneratorPokaz(gId) {
+    const startGenerator = new Date(document.querySelector('#genId_' + gId + ' .start-generator').value);
+    const endGenerator = new Date(document.querySelector('#genId_' + gId + ' .end-generator').value);
+    const generatorCoeff = document.querySelector('#genId_' + gId + ' .generator-coeff').value;
+
+    if (startGenerator >= endGenerator) {
+        alert("Перевірьте вказані данні роботи генератора");
+        return;
+    }
+
+    const workingTimeMinutes = (endGenerator - startGenerator) / (1000 * 60)
+
+    $.post(ajaxURL, {
+        action: "addGeneratorPokaz",
+        workingTime: workingTimeMinutes,
+        consumed: Math.round(((workingTimeMinutes / 60) * generatorCoeff) * 100) / 100,
+        genId: gId,
+        date: document.querySelector('#genId_' + gId + ' .start-generator').value
+    }, function (result) {
+        const data = JSON.parse(result)
+        if (data['response'] != 200) {
+            alert(data['message'])
+            return;
+        }
+        getGeneratorsAndCanisters()
+    });
+}
+
+function getGeneratorsAndCanisters() {
+    $.post(ajaxURL, {
+        action: "getGeneratorsAndCanisters",
+    }, function (result) {
+        const data = JSON.parse(result)
+        const getCanisterElement = document.querySelector("#getCanister");
+        const areaGeneratorElement = document.querySelector("#areaGenerator");
+
+        getCanisterElement.innerHTML = "";
+        areaGeneratorElement.innerHTML = "";
+
+        data.canisters.forEach(function (areaCanister) {
+            var canisterElement = document.createElement("div");
+            canisterElement.className = "flex-container";
+
+            canisterElement.innerHTML = "<div class='canister-desc'>" +
+                "<div class='desc-can' style='width: 35%;'>" +
+                "<strong>Відправка:</strong><span style='margin-left: 5px;'>" + areaCanister.date + "</span></div>" +
+                "<div class='desc-can' style='width: 25%;'>" +
+                "<strong>Тип:</strong><span style='margin-left: 5px;'>" + areaCanister.type + "</span></div>" +
+                "<div class='desc-can' style='width: 20%;'>" +
+                "<strong>Каністр:</strong><span style='margin-left: 5px;'>" + areaCanister.canister + "</span></div>" +
+                "<div class='desc-can' style='width: 20%;'>" +
+                "<strong>Палива:</strong><span style='margin-left: 5px;'>" + areaCanister.fuel + "</span></div></div>" +
+                "<div class='confirm-canister'>" +
+                "<button onclick='confirmCanister(" + areaCanister.id + ")' style='font-size: 20px;'>Підтвердити</button></div></div>";
+
+            getCanisterElement.appendChild(canisterElement);
+        });
+
+        const currentDateTime = new Date().toISOString().slice(0, 16);
+        data.generators.forEach(function (areaGenerator) {
+            if (areaGenerator.state === "1") {
+                var generatorElement = document.createElement("div");
+                generatorElement.className = "flex-container";
+    
+                generatorElement.innerHTML = "<div>" +
+                    "<div class='generator-info'>" +
+                    "<div class='desc-gen'><strong>Назва:</strong><span>" + areaGenerator.name + "</span></div>" +
+                    "<div class='desc-gen'><strong>Тип:</strong><span>" + areaGenerator.type + "</span></div>" +
+                    "<div class='desc-gen'><strong>Серійний номер:</strong><span>" + areaGenerator.serialNum + "</span></div>" +
+                    "</div>" +
+                    "<div class='generator-resources'>" +
+                    "<div class='res-gen'><strong>Каністр:</strong><span>" + areaGenerator.canister + " шт.</span></div>" +
+                    "<div class='res-gen'><strong>Палива:</strong><span>" + areaGenerator.fuel + " л.</span></div>" +
+                    "<div class='res-gen'><strong>&#8776;</strong><span>" + Math.round(areaGenerator.fuel / areaGenerator.coeff * 10) / 10 + " годин</span></div>" +
+                    "</div>" +
+                    "</div>" +
+                    "<div class='adding-pokaz'>" +
+                    "<h3>Час роботи</h3>" +
+                    "<div id='genId_" + areaGenerator.id + "'>" +
+                    "<input style='display: none;' class='generator-coeff' value='" + areaGenerator.coeff + "'>" +
+                    "<span>Початок:<input type='datetime-local' class='start-generator' value='" + currentDateTime + "'/></span>" +
+                    "<span>Кінець:<input type='datetime-local' class='end-generator' value='" + currentDateTime + "' /></span>" +
+                    "</div>" +
+                    "<button onclick='addGeneratorPokaz(" + areaGenerator.id + ")' style='font-size: 20px;'>Подати</button>" +
+                    "</div>" +
+                    "</div>";
+    
+                areaGeneratorElement.appendChild(generatorElement);
+            }
+        });
+    });
 }

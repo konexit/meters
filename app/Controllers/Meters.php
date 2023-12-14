@@ -102,7 +102,7 @@ class Meters extends BaseController
         helper(['form']);
 
         return view('meters', array_merge([
-            'department' => $this->search->getDepartments(),
+            'department' => $this->search->getAllUnitDB(),
             'usDepartment' => $this->search->getDepartmentByUserId(session()->get('usId')),
             'allRights' => $this->search->getAllRights(),
             'pokazYear' => $this->search->getPokazYear(),
@@ -114,7 +114,7 @@ class Meters extends BaseController
             'generatorArea' => $this->generator->getGeneratorArea(),
             'canisterArea' => $this->generator->getCanisterArea(),
             'typeGenerator' => $this->generator->getTypeGenerator(),
-            'canisterStatus' => $this->generator->getCanisterStatus(),
+            'canisterStatus' => $this->generator->getCanisterStatus()
         ], $this->user->getCounterDate()));
     }
 
@@ -165,6 +165,12 @@ class Meters extends BaseController
                 return $this->generator->addCanister($this->request);
             case 'canisterWritingOff':
                 return $this->generator->canisterWritingOff($this->request);
+            case 'addGeneratorPokaz':
+                return $this->generator->addGeneratorPokaz($this->request);
+            case 'confirmCanister':
+                return $this->generator->confirmCanister($this->request);
+            case 'getGeneratorsAndCanisters':
+                return $this->generator->getGeneratorsAndCanisters($this->request);
             default:
                 return 404;
         }

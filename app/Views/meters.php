@@ -59,6 +59,14 @@
                 <div id="menu">
                     <ul class="menu">
                         <?
+                        if (session('usRights') == 3) {
+                            echo "<li><a  class='menItem' id='Pokaz' onclick='mCaunter(" . '"' . "#Pokaz" . '"' . ")'>Показники</a></li>
+                                  <li><a class='menItem' id='mAreaGenerator' onclick='mAreaGenerator()'>Генератори</a></li>                                                              
+                                <script>
+                                $('#mCounter').show();
+                                </script>";
+                        }
+
                         if (session('usRights') == 1) {
                             echo "<li><a class='menItem' id='mAdmin' onclick=''>Адміністрування</a>                   
                                             <ul>                       
@@ -73,14 +81,15 @@
                                 $('#mAdmin').show();
                                 </script>";
                         }
+
                         $Smenu = "";
-                        if (session('usRights') == 1 or session('usRights') == 5 or session('usRights') == 2) {
+                        if (session('usRights') != 3) {
                             $Smenu = "
                                     <li><a  class='menItem' id='aCounter' onclick='mCountAdd()'>Управління</a></li>
                                     <li><a  class='menItem' id='Statistic' onclick='mCaunter(" . '"' . "#Statistic" . '"' . ")'>Статистика</a></li>
                                     <li><a  class='menItem' id='report' onclick='reportCounter()'>Звіт</a></li>";
                         }
-                        if (session('usRights') != 4 &&  session('usRights') != 2) {
+                        if (session('usRights') == 1 &&  session('usRights') != 5) {
                             echo "<li><a class='menItem' id='mCounter' onclick=''>Лічильники</a>
                                         <ul>                                            
                                             <li><a  class='menItem' id='Pokaz' onclick='mCaunter(" . '"' . "#Pokaz" . '"' . ")'>Показники</a></li>" . $Smenu . "                                
@@ -90,31 +99,15 @@
                                 $('#mCounter').show();
                                 </script>";
                         }
+                        
                         if (session('usRights') == 2) {
                             echo "<li><a  class='menItem' id='Pokaz' onclick='mCaunter(" . '"' . "#Pokaz" . '"' . ")'>Показники</a></li>" . $Smenu . "                                
                               <script>
                                $('#mCounter').show();
                                </script>";
                         }
-                        if (session('usRights') != 3 && session('usId') != 233) {
-                            echo "<li><a class='menItem' id='mGenerator' onclick=''>Генератори</a>
-                                            <ul>                
-                                                <li><a  class='menItem' id='mGeneratorManage' onclick='mGeneratorManage()'>Управління</a></li>                          
-                                                <li><a  class='menItem' id='mCanisterTracking' onclick='mCanisterTracking()'>Відстежування</a></li>                       
-                                            </ul>
-                                        </li>                                
-                                    <script>
-                                    $('#mGenerator').show();
-                                    </script>";
-                        }
-                        if (session('usRights') == 3) {
-                            echo "<li><a class='menItem' id='mUserGenerator' onclick='mUserGenerator()'>Генератори</a></li>                                
-                                    <script>
-                                    $('#mUserGenerator').show();
-                                    </script>";
-                        }
-                        if (session('usId') == 233) {
-                            // if (session('usRights') !=3) {
+
+                        if (session('usRights') != 3) {
                             echo "<li><a class='menItem' id='mGenerator' onclick=''>Генератори</a>
                                             <ul>                
                                                 <li><a  class='menItem' id='mGeneratorManage' onclick='mGeneratorManage()'>Управління</a></li>                          
@@ -129,7 +122,6 @@
                         if (session('usRights') == 1) {
                             echo '<li><a  class="menItem" id="changePass" onclick="mchangePass()">Змінити пароль</a></li>';
                         }
-
                         ?>
                     </ul>
                     <p></p>
@@ -374,7 +366,7 @@
                     </h3>
                     <p>Серійний номер: <input type="text" id="gSerialNum" placeholder="н/д" title="Ліміт 30 символів" maxlength="30"></p>
                     <p>Назва: <input type="text" id="gName" title="Ліміт 50 символів" maxlength="50"></p>
-                    <p>Кофіцієнт потужності: <input type="number" id="gCoeff"></p>
+                    <p>Кофіцієнт споживання (л/годин): <input type="number" id="gCoeff"></p>
                     <h3>Тип палива:
                         <input id="inputGenType" list="gType" placeholder="Виберіть тип палива">
                         <datalist name="gType" class="unit" id="gType">
@@ -426,7 +418,7 @@
                     <h3>Місце призначення: <input id="inputAddCUnit" list="addCanisterUnit" onchange="getCounters()" placeholder="Усі">
                         <datalist name="addCanisterUnit" class="addCanisterUnit" id="addCanisterUnit">
                             <?
-                            echo $allArea;
+                            echo $departmentOptions;
                             ?></datalist>
                     </h3>
                     <h3>Кількість каністр: <input type="number" class="positiveNumber" id="countCanistr"></h3>
@@ -453,17 +445,19 @@
                         <button class="confirm" onclick="confirmAction()">Підтвердити</button>
                     </div>
                 </div>
+                <div id="getCanister">
+                </div>
+                <div id="areaGenerator">
+                </div>
             </div>
         </div>
-    </div>
-    </div>
-    <?
-    if (session('usId') != false) {
-        echo "<script>
+        <?
+        if (session('usId') != false) {
+            echo "<script>
                     $('#afterLogin').show();
                 </script>";
-    }
-    ?>
+        }
+        ?>
     </div>
     </div>
     <script>

@@ -10,11 +10,6 @@ class Search extends Model
 {
     protected $DBGroup = 'meters';
 
-    public function getDepartments()
-    {
-        return $this->db->query("SELECT unit, id FROM area ORDER BY unit")->getResultArray();
-    }
-
     public function getCompaniesAreas()
     {
         $result = [];
@@ -31,11 +26,6 @@ class Search extends Model
         return $result;
     }
 
-    private function getDepartmentByUnit($unit)
-    {
-        return $this->db->query("SELECT unit, id FROM area WHERE unit = '" . $unit . "' ORDER BY id DESC")->getFirstRow();
-    }
-
     public function getDepartmentByUserId($userId)
     {
         return  $this->db->query("SELECT area as id FROM user where id=" . $userId)->getFirstRow();
@@ -46,39 +36,33 @@ class Search extends Model
         return $this->db->query("SELECT rights, id FROM rights")->getResultArray();
     }
 
-    function getPokazYear()
+    public function getPokazYear()
     {
         return $this->db->query("SELECT year FROM pokaz GROUP BY year ORDER BY year DESC")->getResultArray();
     }
 
-    function getCounterType()
+    public function getCounterType()
     {
         return $this->db->query("SELECT Name, id FROM  conterType ORDER BY id DESC")->getResultArray();
     }
 
-    function getCompanies()
+    public function getCompanies()
     {
         return $this->db->query("SELECT company_1s_code, company_name FROM companies ORDER BY company_1s_code DESC")->getResultArray();
     }
 
 
-    function getCounterArea()
+    public function getCounterArea()
     {
         return $this->db->query("SELECT a.unit, a.id  FROM counter AS c JOIN area AS a ON a.id=c.unit GROUP BY a.unit, a.id ORDER BY a.unit")->getResultArray();
     }
 
-    function getUnitById($unitID)
+    public function getUnitById($unitID)
     {
         return $this->db->query("SELECT unit FROM area WHERE id=" . $unitID)->getFirstRow();
     }
 
-    private function createInput($state)
-    {
-        $check = ($state == 1) ? 'checked="checked"' : '';
-        return '<input type="checkbox" ' . $check . 'onclick="return false;">';
-    }
-
-    function getCounters($request)
+    public function getCounters($request)
     {
         $table = new Table();
         $query = $this->getCounter($request->getVar('cUnit'), $request->getVar('cType'));
@@ -137,7 +121,7 @@ class Search extends Model
         echo $table->generate();
     }
 
-    function getLastPokaz($request)
+    public function getLastPokaz($request)
     {
         $table = new Table();
         $query = $this->getLastPokazDB($request->getVar('counterPK'));
@@ -152,7 +136,7 @@ class Search extends Model
         echo $table->generate();
     }
 
-    function addPokaz($request)
+    public function addPokaz($request)
     {
         $counterPK = $request->getVar('counterPK');
         $dPokazY = $request->getVar('year');
@@ -168,7 +152,12 @@ class Search extends Model
         } else echo "Упс... Показник лічильника не додано";
     }
 
-    function addCounter($request)
+    public function getAllUnitDB()
+    {
+        return $this->db->query("SELECT * FROM area ORDER BY state DESC, unit, trade_point_id DESC")->getResultArray();
+    }
+
+    public function addCounter($request)
     {
         $counter = [
             'counterId' => $request->getVar('cNumer'),
@@ -187,7 +176,7 @@ class Search extends Model
         }
     }
 
-    function getCountersStat($request)
+    public function getCountersStat($request)
     {
         $table = new Table();
         $table->setTemplate($this->tablShablone());
@@ -268,7 +257,7 @@ class Search extends Model
         echo json_encode($mass);
     }
 
-    function editPokaz($request)
+    public function editPokaz($request)
     {
         $pokaz = $request->getVar('index');
         $cid = $this->editPokazDB($request->getVar('pid'), $pokaz);
@@ -278,12 +267,12 @@ class Search extends Model
         echo $cid;
     }
 
-    function getPokazByIdAndCounter($request)
+    public function getPokazByIdAndCounter($request)
     {
         $this->getPokazByIdAndCounterDB($request->getVar('cid'));
     }
 
-    function getLogConnection()
+    public function getLogConnection()
     {
         $table = new Table();
         $table->setTemplate($this->tablShablone());
@@ -292,7 +281,7 @@ class Search extends Model
         echo $table->generate($this->getLogConnectionDB());
     }
 
-    function usADD($request)
+    public function usADD($request)
     {
         $user = [
             'name' => $request->getVar('user'),
@@ -312,7 +301,7 @@ class Search extends Model
         echo json_encode(['success' => 'Користувач ' . $request->getVar('login') . ' успішно доданий'], JSON_UNESCAPED_UNICODE);
     }
 
-    function unADD($request)
+    public function unADD($request)
     {
         $this->db->transStart();
         $unit = $this->trimSpace($request->getVar('unit'));
@@ -376,7 +365,7 @@ class Search extends Model
         }
     }
 
-    function getAllUnit()
+    public function getAllUnit()
     {
         $table = new Table();
         $table->setTemplate($this->tablShablone());
@@ -414,7 +403,40 @@ class Search extends Model
         }
     }
 
-    function unitEDIT($request)
+    public function checkPokaz($counterPK, $ts, $pokaz)
+    {
+        if ($this->db->query("SELECT count(*) AS count FROM pokaz as p WHERE p.cId=" . $counterPK . " AND p.ts>'" . $ts . "' ORDER BY ts LIMIT 1")->getResultObject()[0]->count) {
+            $rowBefore = $this->db->query("SELECT p.index FROM pokaz as p WHERE p.cId=" . $counterPK . " AND p.ts<'" . $ts . "' ORDER BY ts DESC LIMIT 1")->getFirstRow();
+            $rowAfter = $this->db->query("SELECT p.index FROM pokaz as p WHERE p.cId=" . $counterPK . " AND p.ts>'" . $ts . "' ORDER BY ts LIMIT 1")->getFirstRow();
+            if (!empty($rowAfter) && !empty($rowBefore)) {
+                if (($rowBefore->index < $pokaz) and $rowAfter->index > $pokaz) return true;
+            }
+            return false;
+        }
+        return true;
+    }
+
+    public function addPokazC($counterPK, $pokaz, $dPokazY, $dPokazM, $telegram = false)
+    {
+        $resAr = $this->db->query("SELECT id, `index` FROM pokaz WHERE year = " . $dPokazY . " AND month = " . $dPokazM . " AND cId = " . $counterPK)->getFirstRow();
+        if (!empty($resAr)) {
+            if (!$telegram) echo "Показник лічильникa за " . $dPokazM . "." . $dPokazY . " був додані раніше (крайній показник лічильника - " . $resAr->index . ")";
+            return false;
+        } else {
+            $this->db->table('pokaz')->insert([
+                'cid' => $counterPK,
+                'index' => $pokaz,
+                'year' => $dPokazY,
+                'month' => $dPokazM,
+                'ts' => $dPokazY . '-' . $dPokazM . '-01',
+                'consumed' => $pokaz - $this->getConsumed($counterPK)
+            ]);
+            if (!$telegram) echo "Показник лічильникa " . $pokaz . " за " . $dPokazM . "." . $dPokazY . " був успішно додані";
+            return true;
+        }
+    }
+
+    public function unitEDIT($request)
     {
         $this->db->transStart();
         $unitId = $request->getVar('unitID');
@@ -453,7 +475,7 @@ class Search extends Model
         $this->db->transComplete();
     }
 
-    function getAllUser()
+    public function getAllUser()
     {
         $table = new Table();
         $table->setTemplate($this->tablShablone());
@@ -468,7 +490,7 @@ class Search extends Model
         }
     }
 
-    function userEdit($request)
+    public function userEdit($request)
     {
         $userID = intval($request->getVar('userID'));
 
@@ -595,6 +617,23 @@ class Search extends Model
 
         return (new Excel)->createReports(["meters" => $reports]);
     }
+
+    public function recalculation($counterPK)
+    {
+        $nPokaz = $this->db->query("SELECT spokaz FROM counter WHERE id=" . $counterPK)->getRowArray()['spokaz'];
+        $fquery = $this->db->query("SELECT p.index, p.id FROM pokaz AS p WHERE cId=" . $counterPK . " ORDER BY ts")->getResultArray();
+        foreach ($fquery as $row) {
+            $date['consumed'] = $row['index'] - $nPokaz;
+            $nPokaz = $row['index'];
+            $this->db->table('pokaz')->update($date, ['id' => $row['id']]);
+        }
+    }
+
+    public function getCounterByCounterPK($counterPK)
+    {
+        return $this->db->query("SELECT * FROM counter WHERE id = " . $counterPK . " ")->getFirstRow();
+    }
+    
     private function getDataReport($counter, $company, $json)
     {
         return $this->db->query("SELECT 
@@ -733,9 +772,10 @@ class Search extends Model
                 ORDER BY us.surname")->getResultArray();
     }
 
-    private function getAllUnitDB()
+    private function createInput($state)
     {
-        return $this->db->query("SELECT * FROM area ORDER BY state DESC, unit, trade_point_id DESC")->getResultArray();
+        $check = ($state == 1) ? 'checked="checked"' : '';
+        return '<input type="checkbox" ' . $check . 'onclick="return false;">';
     }
 
     private function trimSpace($str)
@@ -815,37 +855,9 @@ class Search extends Model
         $this->db->table('counter')->insert($counter);
     }
 
-    public function checkPokaz($counterPK, $ts, $pokaz)
+    private function getDepartmentByUnit($unit)
     {
-        if ($this->db->query("SELECT count(*) AS count FROM pokaz as p WHERE p.cId=" . $counterPK . " AND p.ts>'" . $ts . "' ORDER BY ts LIMIT 1")->getResultObject()[0]->count) {
-            $rowBefore = $this->db->query("SELECT p.index FROM pokaz as p WHERE p.cId=" . $counterPK . " AND p.ts<'" . $ts . "' ORDER BY ts DESC LIMIT 1")->getFirstRow();
-            $rowAfter = $this->db->query("SELECT p.index FROM pokaz as p WHERE p.cId=" . $counterPK . " AND p.ts>'" . $ts . "' ORDER BY ts LIMIT 1")->getFirstRow();
-            if (!empty($rowAfter) && !empty($rowBefore)) {
-                if (($rowBefore->index < $pokaz) and $rowAfter->index > $pokaz) return true;
-            }
-            return false;
-        }
-        return true;
-    }
-
-    public function addPokazC($counterPK, $pokaz, $dPokazY, $dPokazM, $telegram = false)
-    {
-        $resAr = $this->db->query("SELECT id, `index` FROM pokaz WHERE year = " . $dPokazY . " AND month = " . $dPokazM . " AND cId = " . $counterPK)->getFirstRow();
-        if (!empty($resAr)) {
-            if (!$telegram) echo "Показник лічильникa за " . $dPokazM . "." . $dPokazY . " був додані раніше (крайній показник лічильника - " . $resAr->index . ")";
-            return false;
-        } else {
-            $this->db->table('pokaz')->insert([
-                'cid' => $counterPK,
-                'index' => $pokaz,
-                'year' => $dPokazY,
-                'month' => $dPokazM,
-                'ts' => $dPokazY . '-' . $dPokazM . '-01',
-                'consumed' => $pokaz - $this->getConsumed($counterPK)
-            ]);
-            if (!$telegram) echo "Показник лічильникa " . $pokaz . " за " . $dPokazM . "." . $dPokazY . " був успішно додані";
-            return true;
-        }
+        return $this->db->query("SELECT unit, id FROM area WHERE unit = '" . $unit . "' ORDER BY id DESC")->getFirstRow();
     }
 
     private function getConsumed($counterPK)
@@ -853,22 +865,6 @@ class Search extends Model
         $query = $this->db->query("SELECT ts, p.index FROM pokaz As p WHERE cid=" . $counterPK . " ORDER BY ts DESC");
         if ($query->getNumRows()) return $query->getFirstRow()->index;
         return $this->db->query("SELECT spokaz FROM counter WHERE id=" . $counterPK)->getFirstRow()->spokaz;
-    }
-
-    public function recalculation($counterPK)
-    {
-        $nPokaz = $this->db->query("SELECT spokaz FROM counter WHERE id=" . $counterPK)->getRowArray()['spokaz'];
-        $fquery = $this->db->query("SELECT p.index, p.id FROM pokaz AS p WHERE cId=" . $counterPK . " ORDER BY ts")->getResultArray();
-        foreach ($fquery as $row) {
-            $date['consumed'] = $row['index'] - $nPokaz;
-            $nPokaz = $row['index'];
-            $this->db->table('pokaz')->update($date, ['id' => $row['id']]);
-        }
-    }
-
-    public function getCounterByCounterPK($counterPK)
-    {
-        return $this->db->query("SELECT * FROM counter WHERE id = " . $counterPK . " ")->getFirstRow();
     }
 
     private function getLastPokazDB($counterPK)
