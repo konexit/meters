@@ -127,6 +127,10 @@ class Generator extends Model
         if (!$dataTargetGenerator || $dataTargetGenerator[0]['fuel'] < $consumed) {
             echo json_encode(["response" => 500, "message" => "Перевірте введені дані та оновіть сторінку. Якщо проблема не вирішилась, зверніться в ІТ відділ"], JSON_UNESCAPED_UNICODE);
         } else {
+            $userRights = session("usRights");
+            $user = new User();
+            if ($userRights == 3) $user->addUserLog(session("mLogin"), ['login' => session("mLogin"), 'message' => "Подав час роботи = " . $consumed . " хв, генератору = " . $dataTargetGenerator[0]['serialNum']]);
+
             $this->db->table('genaratorPokaz')->insert([
                 'date' => $request->getVar('date'),
                 'workingTime' => $request->getVar('workingTime'),
