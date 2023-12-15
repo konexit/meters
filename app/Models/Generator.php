@@ -119,14 +119,12 @@ class Generator extends Model
 
     function addGeneratorPokaz($request)
     {
-        $consumed = intval($request->getVar('consumed'));
+        $consumed = $request->getVar('consumed');
         $genId = $request->getVar('genId');
         $dataTargetGenerator = $this->getSpecificGenerator('', '', $genId);
-        $currentFuel = intval($dataTargetGenerator[0]['fuel']);
-        $balanceFuel = intval($currentFuel  - $consumed);
 
         header("Content-Type: application/json");
-        if (!$dataTargetGenerator || $currentFuel < $consumed) {
+        if (!$dataTargetGenerator || $dataTargetGenerator[0]['fuel'] < $consumed) {
             echo json_encode(["response" => 500, "message" => "Перевірте введені дані та оновіть сторінку. Якщо проблема не вирішилась, зверніться в ІТ відділ"], JSON_UNESCAPED_UNICODE);
         } else {
             $this->db->table('genaratorPokaz')->insert([
@@ -136,7 +134,7 @@ class Generator extends Model
                 'genId' => $genId
             ]);
             $this->db->table('fuelArea')->update(
-                ['fuel' => $balanceFuel],
+                ['fuel' => $dataTargetGenerator[0]['fuel']  - $consumed],
                 ['areaId' => $dataTargetGenerator[0]['genAreaId'], 'type' => $dataTargetGenerator[0]['genTypeId']]
             );
             echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
@@ -154,7 +152,7 @@ class Generator extends Model
             $this->db->query('UPDATE trackingCanister SET status = 2 WHERE id = ' . $genId);
             $fuelArea = $this->db->query('SELECT * FROM fuelArea WHERE areaId = ' . $dataTargetCanister[0]['areaId'] . ' AND type = ' . $dataTargetCanister[0]['typeId'])->getResultArray();
             if ($fuelArea) {
-                $this->db->query('UPDATE fuelArea SET fuel = fuel + ' . $dataTargetCanister[0]['fuel'] . ', canister = canister + ' . $dataTargetCanister[0]['canister'] . '
+                $this->db->query('UPDATE fuelArea SET fuel = ROUND(fuel + ' . $dataTargetCanister[0]['fuel'] . ', 2), canister = canister + ' . $dataTargetCanister[0]['canister'] . '
                 WHERE type = ' . $dataTargetCanister[0]['typeId'] . ' AND areaId = ' . $dataTargetCanister[0]['areaId']);
             } else {
                 $this->db->query('INSERT INTO fuelArea(fuel, canister, areaId, type) 
@@ -184,7 +182,7 @@ class Generator extends Model
         return $this->db->query("SELECT 
                                     c.id, tg.type, a.addr, a.unit, sc.name AS status, c.date, a.id as areaId, c.type AS typeId,
                                     (
-                                        CASE WHEN c.fuel IS NULL THEN 0 ELSE c.fuel
+                                        CASE WHEN c.fuel IS NULL THEN 0 ELSE ROUND(c.fuel, 2)
                                             END
                                     ) AS fuel, 
                                     (
@@ -212,7 +210,7 @@ class Generator extends Model
         return $this->db->query("SELECT 
                                     g.id, g.name, g.serialNum, a.addr, a.unit, g.coeff, t.type, g.state, g.unit AS genAreaId, g.type AS genTypeId,
                                     (
-                                        CASE WHEN fu.fuel IS NULL THEN 0 ELSE fu.fuel
+                                        CASE WHEN fu.fuel IS NULL THEN 0 ELSE ROUND(fu.fuel, 2)
                                             END
                                     ) AS fuel, 
                                     (

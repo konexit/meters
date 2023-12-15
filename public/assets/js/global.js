@@ -653,7 +653,7 @@ function confirmUserEdit(id) {
 }
 
 function mchangePass() {
-    ressetFields(['confirmPass', 'oldPass', 'newPass'])
+    ressetFields(['confPw', 'oldPw', 'newPw'])
     showSet([$("#cPass")]);
     setBackground($("#changePass"));
 }
@@ -682,8 +682,8 @@ function reportCounter() {
 function getReportCounter(event) {
     event.preventDefault();
 
-    const startDate = document.getElementById('reportStartDate').value;
-    const endDate = document.getElementById('reportEndDate').value;
+    const startDate = document.querySelector('#reportStartDate').value;
+    const endDate = document.querySelector('#reportEndDate').value;
 
     if (startDate > endDate) {
         alert("Перевірте введені діапазон звіта")
@@ -1140,7 +1140,7 @@ function confirmCanister(canId) {
             alert(data['message'])
             return;
         }
-        window.location.reload();
+        mAreaGenerator()
     });
 }
 
@@ -1167,6 +1167,10 @@ function addGeneratorPokaz(gId) {
     }
 
     const workingTimeMinutes = (endGenerator - startGenerator) / (1000 * 60)
+    const confirmWorkingTime = confirm("Генератор працював: " + workingTimeMinutes + " хвилин?");
+    if (!confirmWorkingTime) {
+        return;
+    }
 
     $.post(ajaxURL, {
         action: "addGeneratorPokaz",
@@ -1214,12 +1218,12 @@ function getGeneratorsAndCanisters() {
             getCanisterElement.appendChild(canisterElement);
         });
 
-        const currentDateTime = new Date().toISOString().slice(0, 16);
+        const currentDateTime = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, 16);
         data.generators.forEach(function (areaGenerator) {
             if (areaGenerator.state === "1") {
                 var generatorElement = document.createElement("div");
                 generatorElement.className = "flex-container";
-    
+
                 generatorElement.innerHTML = "<div>" +
                     "<div class='generator-info'>" +
                     "<div class='desc-gen'><strong>Назва:</strong><span>" + areaGenerator.name + "</span></div>" +
@@ -1229,7 +1233,7 @@ function getGeneratorsAndCanisters() {
                     "<div class='generator-resources'>" +
                     "<div class='res-gen'><strong>Каністр:</strong><span>" + areaGenerator.canister + " шт.</span></div>" +
                     "<div class='res-gen'><strong>Палива:</strong><span>" + areaGenerator.fuel + " л.</span></div>" +
-                    "<div class='res-gen'><strong>&#8776;</strong><span>" + Math.round(areaGenerator.fuel / areaGenerator.coeff * 10) / 10 + " годин</span></div>" +
+                    "<div class='res-gen'><strong>Прогнозований час роботи генератора: &#8776;</strong><span style='color: #eb0b0b;'>" + Math.round(areaGenerator.fuel / areaGenerator.coeff * 10) / 10 + " годин</span></div>" +
                     "</div>" +
                     "</div>" +
                     "<div class='adding-pokaz'>" +
@@ -1242,7 +1246,7 @@ function getGeneratorsAndCanisters() {
                     "<button onclick='addGeneratorPokaz(" + areaGenerator.id + ")' style='font-size: 20px;'>Подати</button>" +
                     "</div>" +
                     "</div>";
-    
+
                 areaGeneratorElement.appendChild(generatorElement);
             }
         });

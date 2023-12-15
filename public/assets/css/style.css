@@ -611,7 +611,8 @@ h2 {
 #addCounterBtn,
 #addGenetarorBtn,
 #addGenetarorPokaz,
-#addCanisterBtn {
+#addCanisterBtn,
+.adding-pokaz button {
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
@@ -623,7 +624,8 @@ h2 {
 
 #addCounterBtn:hover,
 #addGenetarorBtn:hover,
-#addGenetarorPokaz:hover {
+#addGenetarorPokaz:hover,
+.adding-pokaz button {
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -840,7 +842,7 @@ input[type="datetime-local"] {
     justify-content: space-around;
 }
 
-#confirmCanister  {
+.confirm-canister button  {
     height: 40px;
     background-color: #d8d912;
     color: white;
@@ -851,6 +853,6 @@ input[type="datetime-local"] {
     border-radius: 4px;
 }
 
-#confirmCanister:hover {
+.confirm-canister button:hover {
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
 }

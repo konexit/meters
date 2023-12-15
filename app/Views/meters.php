@@ -26,7 +26,6 @@
     }
 
     $typeG = '';
-    $typeG .=  '<option data-value="0" data-text="Усі">Усі</option>';
     foreach ($typeGenerator as $type) {
         $typeG .= '<option data-value="' . $type['id'] . '"  data-text="' . trim($type['type']) . '">' . trim($type['type']) . '</option>';
     }
@@ -99,7 +98,7 @@
                                 $('#mCounter').show();
                                 </script>";
                         }
-                        
+
                         if (session('usRights') == 2) {
                             echo "<li><a  class='menItem' id='Pokaz' onclick='mCaunter(" . '"' . "#Pokaz" . '"' . ")'>Показники</a></li>" . $Smenu . "                                
                               <script>
@@ -366,7 +365,7 @@
                     </h3>
                     <p>Серійний номер: <input type="text" id="gSerialNum" placeholder="н/д" title="Ліміт 30 символів" maxlength="30"></p>
                     <p>Назва: <input type="text" id="gName" title="Ліміт 50 символів" maxlength="50"></p>
-                    <p>Кофіцієнт споживання (л/годин): <input type="number" id="gCoeff"></p>
+                    <p>Кофіцієнт споживання (літр/годин): <input type="number" id="gCoeff"></p>
                     <h3>Тип палива:
                         <input id="inputGenType" list="gType" placeholder="Виберіть тип палива">
                         <datalist name="gType" class="unit" id="gType">
@@ -386,7 +385,10 @@
                     <a class="bcType">Місце розташування генератора: <input id="inputCanisterUnit" list="canisterUnit" onchange="getCanisters()" placeholder="Усі">
                         <datalist name="canisterUnit" class="canisterUnit" id="canisterUnit">
                             <?
-                            echo $allArea;
+                            echo '<option data-value="0" data-text="Усі">Усі</option>';
+                            foreach ($generatorArea as $arr) {
+                                echo '<option data-value="' . $arr['id'] . '" data-text="' . trim($arr['unit']) . '">' . trim($arr['unit']) . '</option>';
+                            }
                             ?></datalist></a>
                     <a class="bcType">Тип палива: <input id="inputCanisterType" list="canisterType" onchange="getCanisters()" placeholder="Усі">
                         <datalist name="canisterType" class="canisterType" id="canisterType">
