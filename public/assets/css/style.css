@@ -261,7 +261,8 @@ h2 {
     font-size: 14px;
 }
 
-.form-report-counter {
+.form-report-counter,
+.form-report-generator {
     border: 1px solid #ccc;
     padding: 20px;
     width: 700px;
@@ -269,18 +270,21 @@ h2 {
 }
 
 .label-report-counter,
-.label-canister-send {
+.label-canister-send,
+.label-report-generator {
     display: block;
     margin-bottom: 5px;
     margin-top: 5px;
 }
 
 .input-report-counter,
-.input-canister-send {
+.input-canister-send,
+.input-report-generator {
     margin-bottom: 14px;
 }
 
-.select-report-counter {
+.select-report-counter,
+.select-report-generator {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
@@ -288,7 +292,8 @@ h2 {
     border-radius: 4px;
 }
 
-.btn-report-counter {
+.btn-report-counter,
+.btn-report-generator {
     border-radius: 4px;
     box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2), 0 2px 11px 0 rgba(0, 0, 0, -2.81);
     background-color: #4CAF50;
@@ -300,7 +305,8 @@ h2 {
     text-align: center;
 }
 
-.btn-report-counter:hover {
+.btn-report-counter:hover,
+.btn-report-generator:hover {
     background-color: #45a049;
 }
 
@@ -842,7 +848,7 @@ input[type="datetime-local"] {
     justify-content: space-around;
 }
 
-.confirm-canister button  {
+.confirm-canister button {
     height: 40px;
     background-color: #d8d912;
     color: white;

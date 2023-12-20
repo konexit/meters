@@ -133,6 +133,11 @@ class Generator extends Model
 
             $this->db->table('genaratorPokaz')->insert([
                 'date' => $request->getVar('date'),
+                'year' => $request->getVar('year'),
+                'month' => $request->getVar('month'),
+                'day' => $request->getVar('day'),
+                'startTime' => $request->getVar('startTime'),
+                'endTime' => $request->getVar('endTime'),
                 'workingTime' => $request->getVar('workingTime'),
                 'consumed' => $consumed,
                 'genId' => $genId
@@ -174,6 +179,36 @@ class Generator extends Model
             "canisters" => $this->getSpecificCanister(session()->get('usArea'), '', 1, '')
         ], JSON_UNESCAPED_UNICODE);
     }
+
+    function getReportGenerator($request)
+    {
+        $json = json_decode($request->getBody());
+
+        $reports = [];
+        foreach ($json->companies as $company) {
+
+            // array_push($reports, $this->createValidJSONForReportMonth($json, $company, $this->getDataReport($company, $json), $this->remnants()));
+        }
+
+        $reports = [];
+        switch ($json->groupBy) {
+            case "month": {
+                    foreach ($json->companies as $company) {
+                        array_push($reports, $this->createValidJSONForReportMonth($json, $company, $this->getDataReport($company, $json), $this->remnants()));
+                    }
+                    break;
+                }
+                // case "day": {
+                //         foreach ($json->companies as $company) {
+                //             array_push($reports, $this->createValidJSONForReport($json, $company, $this->getDataReport($company, $json)));
+                //         }
+                //         break;
+                //     }
+        }
+
+
+    }
+
 
     private function getSpecificCanister($unit, $type, $status, $canisterId)
     {
@@ -233,5 +268,122 @@ class Generator extends Model
                                     " . $condition . " 
                                 ORDER BY 
                                     g.state DESC, a.unit")->getResultArray();
+    }
+
+    private function getDataReport($company, $json)
+    {
+        return $this->db->query("SELECT 
+                                    gp.date, 
+                                    gp.startTime, 
+                                    gp.endTime, 
+                                    gp.workingTime, 
+                                    gp.consumed, 
+                                    a.id,
+                                    a.addr,
+                                    a.unit
+                                FROM 
+                                    area AS a
+                                    JOIN generator AS g ON a.id = g.unit 
+                                    JOIN genaratorPokaz AS gp ON g.id = gp.genId 
+                                    JOIN companiesAreas AS ca ON a.id = ca.id 
+                                WHERE 
+                                    a.state = 1 AND g.state = 1  
+                                    AND company_1s_code = " . $company->companyId . "  
+                                    AND gp.date BETWEEN '" . $json->reportStartDate . "' AND '" . $json->reportEndDate . "'      
+                                ORDER BY 
+                                    unit ASC, gp.date DESC")->getResultArray();
+    }
+
+    private function createValidJSONForReportMonth($json,  $company, $dataReport)
+    {
+
+        $report = [
+            "typePharmacy" => $company->companyName,
+            "tradePoint" => [
+                "name" => '',
+                "addr" => ''
+            ],
+            "startDate" => $json->reportStartDate,
+            "endDate" => $json->reportEndDate,
+            "headers" => [
+                "generator" => [
+                    [
+                        "key" => 1,
+                        "name" => "Початок",
+                        "keyName" => "startTime"
+                    ],
+                    [
+                        "key" => 2,
+                        "name" => "Кінець",
+                        "keyName" => "endTime"
+                    ],
+                    [
+                        "key" => 3,
+                        "name" => "Всього",
+                        "keyName" => "consumed"
+                    ]
+                ]
+            ]
+        ];
+
+        $data = [];
+        foreach ($dataReport as $row) {
+            if (array_key_exists($row["year"], $data)) {
+                if (array_key_exists($row["areaId"], $data[$row["year"]])) {
+                    if (array_key_exists($row["counterId"], $data[$row["year"]][$row["areaId"]]["counters"])) {
+                        array_push($data[$row["year"]][$row["areaId"]]["counters"][$row["counterId"]], [
+                            "month" => intval($row["month"]),
+                            "consumed" =>  intval($row["consumed"]),
+                            "curr_index" =>  intval($row["curr_index"]),
+                            "prev_index" => $row["curr_index"] - $row["consumed"]
+                        ]);
+                    } else {
+                        $data[$row["year"]][$row["areaId"]]["counters"][$row["counterId"]] = [
+                            [
+                                "month" =>  intval($row["month"]),
+                                "consumed" =>  intval($row["consumed"]),
+                                "curr_index" =>  intval($row["curr_index"]),
+                                "prev_index" => $row["curr_index"] - $row["consumed"]
+                            ]
+                        ];
+                    }
+                } else {
+                    $data[$row["year"]][$row["areaId"]] = [
+                        "unit" => $row["unit"],
+                        "addr" => $row["addr"],
+                        "counters" => [
+                            $row["counterId"] => [
+                                [
+                                    "month" =>  intval($row["month"]),
+                                    "consumed" =>  intval($row["consumed"]),
+                                    "curr_index" =>  intval($row["curr_index"]),
+                                    "prev_index" => $row["curr_index"] - $row["consumed"]
+                                ]
+                            ]
+                        ]
+                    ];
+                }
+            } else {
+                $data[$row["year"]] = [
+                    $row["areaId"] => [
+                        "unit" => $row["unit"],
+                        "addr" => $row["addr"],
+                        "counters" => [
+                            $row["counterId"] => [
+                                [
+                                    "month" =>  intval($row["month"]),
+                                    "consumed" =>  intval($row["consumed"]),
+                                    "curr_index" =>  intval($row["curr_index"]),
+                                    "prev_index" => $row["curr_index"] - $row["consumed"]
+                                ]
+                            ]
+                        ]
+                    ]
+                ];
+            }
+        }
+
+        $report["data"] = $data;
+        return $report;
     }
 }

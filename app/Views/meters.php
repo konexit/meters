@@ -106,7 +106,19 @@
                                </script>";
                         }
 
-                        if (session('usRights') != 3) {
+                        if (session('usRights') != 3 && session('usId') != 233) {
+                            echo "<li><a class='menItem' id='mGenerator' onclick=''>Генератори</a>
+                                            <ul>                
+                                                <li><a  class='menItem' id='mGeneratorManage' onclick='mGeneratorManage()'>Управління</a></li>                          
+                                                <li><a  class='menItem' id='mCanisterTracking' onclick='mCanisterTracking()'>Відстежування</a></li>                          
+                                            </ul>
+                                        </li>                                
+                                    <script>
+                                    $('#mGenerator').show();
+                                    </script>";
+                        }
+
+                        if (session('usId') == 233) {
                             echo "<li><a class='menItem' id='mGenerator' onclick=''>Генератори</a>
                                             <ul>                
                                                 <li><a  class='menItem' id='mGeneratorManage' onclick='mGeneratorManage()'>Управління</a></li>                          
@@ -118,6 +130,7 @@
                                     $('#mGenerator').show();
                                     </script>";
                         }
+                        
                         if (session('usRights') == 1) {
                             echo '<li><a  class="menItem" id="changePass" onclick="mchangePass()">Змінити пароль</a></li>';
                         }
@@ -450,6 +463,47 @@
                 <div id="getCanister">
                 </div>
                 <div id="areaGenerator">
+                </div>
+                <div id="reportGenerator">
+                    <p></p>
+
+                    <form id="formReportGenerator" class="form-report-generator" onsubmit="getReportGenerator(event)">
+                        <label for="reportGenStartDate" class="label-report-generator">Початкова дата:</label>
+                        <input type="date" id="reportGenStartDate" name="reportGenStartDate" class="input-report-generator" required>
+
+                        <label for="reportGenEndDate" class="label-report-generator">Кінцева дата:</label>
+                        <input type="date" id="reportGenEndDate" name="reportGenEndDate" class="input-report-generator" required>
+
+
+                        <label for="displayBy" class="label-report-generator">Відображення по:</label>
+                        <select id="displayBy" name="displayBy" class="select-report-generator" required>
+                            <?
+                                echo "<option value='month'>Місяцям</option>";
+                                echo "<option value='day'>Дням</option>";
+                            ?>
+                        </select>
+
+                        <div id="pharmacyType">
+                            <table class="company-table">
+                                <tr>
+                                    <th>Компанії</th>
+                                </tr>
+                                <?
+                                foreach ($companies as $company) {
+                                    echo "<tr class='company-color' data-companyid=" . $company['company_1s_code'] . ">
+                                            <td>
+                                                <input type='checkbox'>
+                                                <label>" . $company['company_name'] . "</label>
+                                            </td>
+                                        </tr>";
+                                }
+                                ?>
+                            </table>
+                        </div>
+                        <div style="text-align: center;margin-top: 15px;">
+                            <input id="btnReportGenerator" name="btnReportGenerator" type="submit" class="btn-report-generator" value="Отримати звіти" />
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

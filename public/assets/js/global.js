@@ -244,6 +244,7 @@ function showSet(mShow) {
         $("#setCanister"),
         $("#addGenerator"),
         $("#addCanister"),
+        $("#reportGenerator"),
         $("#generatorList"),
         $("#canisterList"),
         $("#areaGenerator"),
@@ -690,7 +691,7 @@ function getReportCounter(event) {
         return
     }
 
-    const companies = getCompaniesAndColors('.company-color');
+    const companies = getCompaniesAndColors('counters', '#formReportCounter .company-color');
     if (companies.length == 0) {
         alert("Виберіть компанії")
         return
@@ -735,7 +736,6 @@ function getReportCounter(event) {
         .catch(console.error)
 };
 
-
 function getArrayOfSelectedOptions(element) {
     const typeSelect = document.querySelector(element);
     const selectedTypes = [];
@@ -750,14 +750,25 @@ function getArrayOfSelectedOptions(element) {
     return selectedTypes
 }
 
-function getCompaniesAndColors(selector) {
+function getCompaniesAndColors(type, selector) {
     return Array.from(document.querySelectorAll(selector)).map(row => {
         if (!row.children[0].children[0].checked) return null
-        return {
-            "companyId": +row.dataset.companyid,
-            "companyName": row.children[0].children[1].textContent,
-            "color": row.children[1].children[0].value
+        switch (type) {
+            case 'counters': {
+                return {
+                    "companyId": +row.dataset.companyid,
+                    "companyName": row.children[0].children[1].textContent,
+                    "color": row.children[1].children[0].value
+                }
+            }
+            case 'generators': {
+                return {
+                    "companyId": +row.dataset.companyid,
+                    "companyName": row.children[0].children[1].textContent
+                }
+            }
         }
+
     }).filter(row => row !== null)
 }
 
@@ -1157,6 +1168,7 @@ function mAreaGenerator() {
 }
 
 function addGeneratorPokaz(gId) {
+    const currentDate = new Date();
     const startGenerator = new Date(document.querySelector('#genId_' + gId + ' .start-generator').value);
     const endGenerator = new Date(document.querySelector('#genId_' + gId + ' .end-generator').value);
     const generatorCoeff = document.querySelector('#genId_' + gId + ' .generator-coeff').value;
@@ -1172,12 +1184,19 @@ function addGeneratorPokaz(gId) {
         return;
     }
 
+    const workingTime = workingTimeMinutes / 60
+
     $.post(ajaxURL, {
         action: "addGeneratorPokaz",
-        workingTime: workingTimeMinutes,
-        consumed: Math.round(((workingTimeMinutes / 60) * generatorCoeff) * 100) / 100,
+        year: currentDate.getFullYear(),
+        month: ('0' + (currentDate.getMonth() + 1)).slice(-2),
+        day: ('0' + currentDate.getDate()).slice(-2),
+        workingTime: parseFloat(workingTime.toFixed(1)),
+        consumed: Math.round(((workingTime) * generatorCoeff) * 100) / 100,
         genId: gId,
-        date: document.querySelector('#genId_' + gId + ' .start-generator').value
+        date: currentDate.getFullYear() + '-' + ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' + ('0' + currentDate.getDate()).slice(-2),
+        startTime: ('0' + startGenerator.getHours()).slice(-2) + ':' + ('0' + startGenerator.getMinutes()).slice(-2),
+        endTime: ('0' + endGenerator.getHours()).slice(-2) + ':' + ('0' + endGenerator.getMinutes()).slice(-2)
     }, function (result) {
         const data = JSON.parse(result)
         if (data['response'] != 200) {
@@ -1252,3 +1271,57 @@ function getGeneratorsAndCanisters() {
         });
     });
 }
+
+function mGeneratorReport() {
+    showSet([$("#reportGenerator")]);
+    setBackground($("#mGeneratorReport"));
+}
+
+function getReportGenerator(event) {
+    event.preventDefault();
+
+    const startDate = document.querySelector('#reportGenStartDate').value;
+    const endDate = document.querySelector('#reportGenEndDate').value;
+
+    if (startDate > endDate) {
+        alert("Перевірте введені діапазон звіта")
+        return
+    }
+
+    const companies = getCompaniesAndColors('generators', '#formReportGenerator .company-color');
+    if (companies.length == 0) {
+        alert("Виберіть компанії")
+        return
+    }
+
+    fetch(ajaxURL, {
+        headers: {
+            "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+            "action": 'getReportGenerator',
+            "reportStartDate": startDate,
+            "reportEndDate": endDate,
+            "groupBy": document.querySelector('#displayBy').value,
+            "companies": companies
+        })
+    })
+        .then(result => result.blob())
+        .then(result => {
+            const fileName = 'meters_report_generators.zip'
+            if (false || !!document.documentMode) {
+                window.navigator.msSaveBlob(blob, fileName);
+            } else {
+                const url = window.URL || window.webkitURL;
+                link = url.createObjectURL(result);
+                const a = $("<a />");
+                a.attr("download", fileName);
+                a.attr("href", link);
+                $("body").append(a);
+                a[0].click();
+                a.remove();
+            }
+        })
+        .catch(console.error)
+};

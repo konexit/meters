@@ -74,10 +74,19 @@ class Excel extends Model
         "headerTableRowStart" => 4,
     ];
 
-    public function createReports($dataJson)
+    public function createReports($typeReport, $dataJson)
     {
         try {
-            $this->createZipFileReports(json_decode(json_encode($dataJson)));
+            switch ($typeReport) {
+                case "counters": {
+                        $this->createZipFileReportsCounter(json_decode(json_encode($dataJson)));
+                        break;
+                    }
+                case "generators" : {
+                    $this->createZipFileReportsGenerator(json_decode(json_encode($dataJson)));
+                    break;
+                }
+            }
         } catch (Exception $e) {
             $data = [
                 "error" => "Caught exception: " .  $e->getMessage(),
@@ -88,7 +97,7 @@ class Excel extends Model
         }
     }
 
-    private function createZipFileReports($dataJson)
+    private function createZipFileReportsCounter($dataJson)
     {
         foreach ($dataJson->meters as $report) {
             if (!array_key_exists($report->typeCounter, $this->mapSpreadsheets)) {

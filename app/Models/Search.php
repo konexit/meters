@@ -615,7 +615,7 @@ class Search extends Model
             }
         }
 
-        return (new Excel)->createReports(["meters" => $reports]);
+        return (new Excel)->createReports("counters", ["meters" => $reports]);
     }
 
     public function recalculation($counterPK)
@@ -652,7 +652,7 @@ class Search extends Model
                                     JOIN companiesAreas ON area.id = companiesAreas.area_id 
                                 WHERE 
                                     typeC = " . $counter->typeCounterId . " 
-                                    AND state = 1 
+                                    AND counter.state = 1 
                                     AND company_1s_code = " . $company->companyId . "  
                                     AND ts BETWEEN '" . $json->reportStartDate . "' AND '" . $json->reportEndDate . "'      
                                 ORDER BY 
