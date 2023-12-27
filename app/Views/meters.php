@@ -106,23 +106,11 @@
                                </script>";
                         }
 
-                        if (session('usRights') != 3 && session('usId') != 233) {
+                        if (session('usRights') != 3) {
                             echo "<li><a class='menItem' id='mGenerator' onclick=''>Генератори</a>
                                             <ul>                
                                                 <li><a  class='menItem' id='mGeneratorManage' onclick='mGeneratorManage()'>Управління</a></li>                          
-                                                <li><a  class='menItem' id='mCanisterTracking' onclick='mCanisterTracking()'>Відстежування</a></li>                          
-                                            </ul>
-                                        </li>                                
-                                    <script>
-                                    $('#mGenerator').show();
-                                    </script>";
-                        }
-
-                        if (session('usId') == 233) {
-                            echo "<li><a class='menItem' id='mGenerator' onclick=''>Генератори</a>
-                                            <ul>                
-                                                <li><a  class='menItem' id='mGeneratorManage' onclick='mGeneratorManage()'>Управління</a></li>                          
-                                                <li><a  class='menItem' id='mCanisterTracking' onclick='mCanisterTracking()'>Відстежування</a></li>                          
+                                                <li><a  class='menItem' id='mCanisterTracking' onclick='mCanisterTracking()'>Відстежування</a></li>       
                                                 <li><a  class='menItem' id='mGeneratorReport' onclick='mGeneratorReport()'>Звіт</a></li>                               
                                             </ul>
                                         </li>                                
@@ -130,7 +118,7 @@
                                     $('#mGenerator').show();
                                     </script>";
                         }
-                        
+
                         if (session('usRights') == 1) {
                             echo '<li><a  class="menItem" id="changePass" onclick="mchangePass()">Змінити пароль</a></li>';
                         }
@@ -478,8 +466,8 @@
                         <label for="displayBy" class="label-report-generator">Відображення по:</label>
                         <select id="displayBy" name="displayBy" class="select-report-generator" required>
                             <?
-                                echo "<option value='month'>Місяцям</option>";
-                                echo "<option value='day'>Дням</option>";
+                            echo "<option value='day'>Дням</option>";
+                            echo "<option value='month'>Місяцям</option>";
                             ?>
                         </select>
 

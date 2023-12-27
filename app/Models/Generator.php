@@ -41,10 +41,10 @@ class Generator extends Model
     function getGenerators($request)
     {
         $generators = $this->getSpecificGenerator($request->getVar('gUnit'), $request->getVar('gType'), '');
-        $columns = ["Назва", "Номер", "Підрозділ", "Адреса", "Коеф", "Паливо", "Каністр", "Тип", "ID", "Стан"];
+        $columns = ["Назва", "Номер", "Підрозділ", "Адреса", "Коеф", "Паливо", "Каністр", "Тип", "Стан"];
         $ref = [
             "Назва" => "name", "Номер" => "serialNum", "Підрозділ" => "unit", "Адреса" => "addr", "Коеф" => "coeff",
-            "Паливо" => "fuel", "Каністр" => "canister", "Тип" => "type", "ID" => "trade_point_id", "Стан" => "state"
+            "Паливо" => "fuel", "Каністр" => "canister", "Тип" => "type", "Стан" => "state"
         ];
         header("Content-Type: application/json");
         echo json_encode(["columns" => $columns, "generators" => $generators, "ref" => $ref], JSON_UNESCAPED_UNICODE);
@@ -185,30 +185,280 @@ class Generator extends Model
         $json = json_decode($request->getBody());
 
         $reports = [];
-        foreach ($json->companies as $company) {
-
-            // array_push($reports, $this->createValidJSONForReportMonth($json, $company, $this->getDataReport($company, $json), $this->remnants()));
-        }
-
-        $reports = [];
         switch ($json->groupBy) {
-            case "month": {
+            case "day": {
                     foreach ($json->companies as $company) {
-                        array_push($reports, $this->createValidJSONForReportMonth($json, $company, $this->getDataReport($company, $json), $this->remnants()));
+                        array_push($reports, $this->createValidJSONForReportDay($json, $company, $this->getDataReport($company, $json), $this->getRemnants($company)));
                     }
                     break;
                 }
-                // case "day": {
-                //         foreach ($json->companies as $company) {
-                //             array_push($reports, $this->createValidJSONForReport($json, $company, $this->getDataReport($company, $json)));
-                //         }
-                //         break;
-                //     }
+            case "month": {
+                    foreach ($json->companies as $company) {
+                        array_push($reports, $this->createValidJSONForReportMonth($json, $company, $this->getDataReport($company, $json), $this->getRemnants($company)));
+                    }
+                    break;
+                }
+        }
+
+        return (new Excel)->createReports("generators", ["groupBy" => $json->groupBy, "meters" => $reports]);
+    }
+
+    private function getRemnants($company)
+    {
+        return $this->db->query("SELECT a.id AS areaID, g.id AS genID, g.type, fa.fuel, fa.canister FROM companies AS c
+                                    JOIN companiesAreas AS cs ON c.company_1s_code = cs.company_1s_code
+                                    JOIN area AS a ON cs.area_id = a.id
+                                    JOIN generator AS g ON a.id = g.unit
+                                    JOIN fuelArea as fa ON g.unit = fa.areaId AND g.type = fa.type
+                                    WHERE c.company_1s_code = " . $company->companyId . "  
+                                    ORDER BY a.id, g.id, g.type")->getResultArray();
+    }
+
+    private function getDataReport($company, $json)
+    {
+        return $this->db->query("SELECT 
+                                    gp.date, 
+                                    gp.year,
+                                    gp.month,
+                                    gp.day,
+                                    gp.startTime, 
+                                    gp.endTime, 
+                                    gp.workingTime, 
+                                    gp.consumed, 
+                                    a.id AS areaID,
+                                    g.id AS genID,
+                                    g.name AS genName,
+                                    g.serialNum,
+                                    tg.type AS typeName,
+                                    g.type,
+                                    a.addr,
+                                    a.unit
+                                FROM 
+                                    area AS a
+                                    JOIN generator AS g ON a.id = g.unit 
+                                    JOIN genaratorPokaz AS gp ON g.id = gp.genId 
+                                    JOIN companiesAreas AS ca ON a.id = ca.area_id 
+                                    JOIN typeGenerator AS tg ON g.type = tg.id
+                                WHERE 
+                                    a.state = 1 AND g.state = 1  
+                                    AND ca.company_1s_code = " . $company->companyId . "  
+                                    AND gp.date BETWEEN '" . $json->reportStartDate . "' AND '" . $json->reportEndDate . "'      
+                                ORDER BY 
+                                    a.id, g.id, g.type, gp.date, gp.startTime")->getResultArray();
+    }
+
+    private function createValidJSONForReportDay($json,  $company, $dataReport, $remnants)
+    {
+        $report = [
+            "companyName" => $company->companyName,
+            "company_1s_code" => $company->companyId,
+            "startDate" => $json->reportStartDate,
+            "endDate" => $json->reportEndDate,
+            "headers" => [
+                "generator" => [
+                    "startDate" => [
+                        "key" => 1,
+                        "name" => "Початок"
+                    ],
+                    "endDate" => [
+                        "key" => 2,
+                        "name" => "Кінець"
+                    ],
+                    "workingTime" => [
+                        "key" => 3,
+                        "name" => "Всього часу"
+                    ]
+                ]
+            ]
+        ];
+
+        $targetRemnant = [];
+        foreach ($remnants as $remnant) {
+            $targetRemnant[$remnant["areaID"] . '_' . $remnant["genID"] . '_' . $remnant["type"]] = [
+                "fuel" =>  $remnant["fuel"], "canister" =>  $remnant["canister"]
+            ];
+        }
+
+        $data = [];
+        $uniqueKey = '';
+        $totalSum = 0;
+
+        foreach ($dataReport as $row) {
+            if ($uniqueKey != $row["areaID"] . "_" . $row["genID"] . "_" . $row["type"]) {
+                $totalSum = 0;
+                $uniqueKey = $row["areaID"] . "_" . $row["genID"] . "_" . $row["type"];
+            }
+
+            $totalSum = $totalSum + $row["workingTime"];
+
+            if (array_key_exists($uniqueKey, $data)) {
+                if (array_key_exists($row["year"], $data[$uniqueKey]["data"])) {
+                    if (array_key_exists($row["month"], $data[$uniqueKey]["data"][$row["year"]])) {
+                        if (array_key_exists($row["day"], $data[$uniqueKey]["data"][$row["year"]][$row["month"]])) {
+                            $data[$uniqueKey]["data"][$row["year"]][$row["month"]][$row["day"]][] = [
+                                "startDate" => $row["startTime"],
+                                "endDate" => $row["endTime"],
+                                "workingTime" => $row["workingTime"] . " годин",
+                            ];
+                        } else {
+                            $data[$uniqueKey]["data"][$row["year"]][$row["month"]][$row["day"]] = [
+                                [
+                                    "startDate" => $row["startTime"],
+                                    "endDate" => $row["endTime"],
+                                    "workingTime" => $row["workingTime"] . " годин",
+                                ],
+                            ];
+                        }
+                    } else {
+                        $data[$uniqueKey]["data"][$row["year"]][$row["month"]] = [
+                            $row["day"] => [
+                                [
+                                    "startDate" => $row["startTime"],
+                                    "endDate" => $row["endTime"],
+                                    "workingTime" => $row["workingTime"] . " годин",
+                                ],
+                            ],
+                        ];
+                    }
+                } else {
+                    $data[$uniqueKey]["data"][$row["year"]] = [
+                        $row["month"] => [
+                            $row["day"] => [
+                                [
+                                    "startDate" => $row["startTime"],
+                                    "endDate" => $row["endTime"],
+                                    "workingTime" => $row["workingTime"] . " годин",
+                                ],
+                            ],
+                        ],
+                    ];
+                }
+            } else {
+                $data[$uniqueKey] = [
+                    "name" => $row["unit"],
+                    "addr" => $row["addr"],
+                    "generatorName" => $row["genName"],
+                    "generatorSerial" => $row["serialNum"],
+                    "generatorType" => $row["typeName"],
+                    "balanceFuel" => $targetRemnant[$uniqueKey]["fuel"],
+                    "balanceCanister" => $targetRemnant[$uniqueKey]["canister"],
+                    "sum" => $totalSum,
+                    "data" => [
+                        $row["year"] => [
+                            $row["month"] => [
+                                $row["day"] => [
+                                    [
+                                        "startDate" => $row["startTime"],
+                                        "endDate" => $row["endTime"],
+                                        "workingTime" => $row["workingTime"] . " годин",
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ];
+            }
+
+            $data[$uniqueKey]["sum"] = $totalSum . " годин";
         }
 
 
+        $report["data"] = $data;
+        return $report;
     }
 
+    private function createValidJSONForReportMonth($json,  $company, $dataReport, $remnants)
+    {
+        $report = [
+            "companyName" => $company->companyName,
+            "company_1s_code" => $company->companyId,
+            "startDate" => $json->reportStartDate,
+            "endDate" => $json->reportEndDate,
+            "headers" => [
+                "generator" => [
+                    "workingTime" => [
+                        "key" => 1,
+                        "name" => "Всього часу"
+                    ]
+                ]
+            ]
+        ];
+
+        $targetRemnant = [];
+        foreach ($remnants as $remnant) {
+            $targetRemnant[$remnant["areaID"] . '_' . $remnant["genID"] . '_' . $remnant["type"]] = [
+                "fuel" =>  $remnant["fuel"], "canister" =>  $remnant["canister"]
+            ];
+        }
+
+        $data = [];
+        $uniqueKey = '';
+        $totalSum = 0;
+        $sumPerMonth = 0;
+        $prevYear = '';
+        $prevMonth = '';
+
+
+        foreach ($dataReport as $row) {
+            if ($uniqueKey != $row["areaID"] . "_" . $row["genID"] . "_" . $row["type"]) {
+                $totalSum = 0;
+                $sumPerMonth = 0;
+                $uniqueKey = $row["areaID"] . "_" . $row["genID"] . "_" . $row["type"];
+            }
+
+            if ($prevYear == $row["year"] && $prevMonth == $row["month"]) {
+                $sumPerMonth = $sumPerMonth + $row["workingTime"];
+            } else {
+                $sumPerMonth = $row["workingTime"];
+                $prevYear = $row["year"];
+                $prevMonth = $row["month"];
+            }
+
+            $totalSum = $totalSum + $row["workingTime"];
+
+            if (array_key_exists($uniqueKey, $data)) {
+                if (array_key_exists($row["year"], $data[$uniqueKey]["data"])) {
+                    if (array_key_exists($row["month"], $data[$uniqueKey]["data"][$row["year"]])) {
+                        $data[$uniqueKey]["data"][$row["year"]][$row["month"]][] = ["workingTime" => $sumPerMonth . " годин"];
+                    } else {
+                        $data[$uniqueKey]["data"][$row["year"]][$row["month"]] = [
+                            ["workingTime" => $sumPerMonth . " годин"],
+                        ];
+                    }
+                } else {
+                    $data[$uniqueKey]["data"][$row["year"]] = [
+                        $row["month"] => [
+                            ["workingTime" => $sumPerMonth . " годин"],
+                        ],
+                    ];
+                }
+            } else {
+                $data[$uniqueKey] = [
+                    "name" => $row["unit"],
+                    "addr" => $row["addr"],
+                    "generatorName" => $row["genName"],
+                    "generatorSerial" => $row["serialNum"],
+                    "generatorType" => $row["typeName"],
+                    "balanceFuel" => $targetRemnant[$uniqueKey]["fuel"],
+                    "balanceCanister" => $targetRemnant[$uniqueKey]["canister"],
+                    "sum" => $totalSum,
+                    "data" => [
+                        $row["year"] => [
+                            $row["month"] => [
+                                ["workingTime" => $sumPerMonth . " годин"],
+                            ],
+                        ],
+                    ],
+                ];
+            }
+
+            $data[$uniqueKey]["sum"] = $totalSum . " годин";
+        }
+
+
+        $report["data"] = $data;
+        return $report;
+    }
 
     private function getSpecificCanister($unit, $type, $status, $canisterId)
     {
@@ -268,122 +518,5 @@ class Generator extends Model
                                     " . $condition . " 
                                 ORDER BY 
                                     g.state DESC, a.unit")->getResultArray();
-    }
-
-    private function getDataReport($company, $json)
-    {
-        return $this->db->query("SELECT 
-                                    gp.date, 
-                                    gp.startTime, 
-                                    gp.endTime, 
-                                    gp.workingTime, 
-                                    gp.consumed, 
-                                    a.id,
-                                    a.addr,
-                                    a.unit
-                                FROM 
-                                    area AS a
-                                    JOIN generator AS g ON a.id = g.unit 
-                                    JOIN genaratorPokaz AS gp ON g.id = gp.genId 
-                                    JOIN companiesAreas AS ca ON a.id = ca.id 
-                                WHERE 
-                                    a.state = 1 AND g.state = 1  
-                                    AND company_1s_code = " . $company->companyId . "  
-                                    AND gp.date BETWEEN '" . $json->reportStartDate . "' AND '" . $json->reportEndDate . "'      
-                                ORDER BY 
-                                    unit ASC, gp.date DESC")->getResultArray();
-    }
-
-    private function createValidJSONForReportMonth($json,  $company, $dataReport)
-    {
-
-        $report = [
-            "typePharmacy" => $company->companyName,
-            "tradePoint" => [
-                "name" => '',
-                "addr" => ''
-            ],
-            "startDate" => $json->reportStartDate,
-            "endDate" => $json->reportEndDate,
-            "headers" => [
-                "generator" => [
-                    [
-                        "key" => 1,
-                        "name" => "Початок",
-                        "keyName" => "startTime"
-                    ],
-                    [
-                        "key" => 2,
-                        "name" => "Кінець",
-                        "keyName" => "endTime"
-                    ],
-                    [
-                        "key" => 3,
-                        "name" => "Всього",
-                        "keyName" => "consumed"
-                    ]
-                ]
-            ]
-        ];
-
-        $data = [];
-        foreach ($dataReport as $row) {
-            if (array_key_exists($row["year"], $data)) {
-                if (array_key_exists($row["areaId"], $data[$row["year"]])) {
-                    if (array_key_exists($row["counterId"], $data[$row["year"]][$row["areaId"]]["counters"])) {
-                        array_push($data[$row["year"]][$row["areaId"]]["counters"][$row["counterId"]], [
-                            "month" => intval($row["month"]),
-                            "consumed" =>  intval($row["consumed"]),
-                            "curr_index" =>  intval($row["curr_index"]),
-                            "prev_index" => $row["curr_index"] - $row["consumed"]
-                        ]);
-                    } else {
-                        $data[$row["year"]][$row["areaId"]]["counters"][$row["counterId"]] = [
-                            [
-                                "month" =>  intval($row["month"]),
-                                "consumed" =>  intval($row["consumed"]),
-                                "curr_index" =>  intval($row["curr_index"]),
-                                "prev_index" => $row["curr_index"] - $row["consumed"]
-                            ]
-                        ];
-                    }
-                } else {
-                    $data[$row["year"]][$row["areaId"]] = [
-                        "unit" => $row["unit"],
-                        "addr" => $row["addr"],
-                        "counters" => [
-                            $row["counterId"] => [
-                                [
-                                    "month" =>  intval($row["month"]),
-                                    "consumed" =>  intval($row["consumed"]),
-                                    "curr_index" =>  intval($row["curr_index"]),
-                                    "prev_index" => $row["curr_index"] - $row["consumed"]
-                                ]
-                            ]
-                        ]
-                    ];
-                }
-            } else {
-                $data[$row["year"]] = [
-                    $row["areaId"] => [
-                        "unit" => $row["unit"],
-                        "addr" => $row["addr"],
-                        "counters" => [
-                            $row["counterId"] => [
-                                [
-                                    "month" =>  intval($row["month"]),
-                                    "consumed" =>  intval($row["consumed"]),
-                                    "curr_index" =>  intval($row["curr_index"]),
-                                    "prev_index" => $row["curr_index"] - $row["consumed"]
-                                ]
-                            ]
-                        ]
-                    ]
-                ];
-            }
-        }
-
-        $report["data"] = $data;
-        return $report;
     }
 }

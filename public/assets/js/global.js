@@ -1308,7 +1308,9 @@ function getReportGenerator(event) {
         })
     })
         .then(result => result.blob())
+        // .then(response => response.json()) 
         .then(result => {
+            // console.log(result)
             const fileName = 'meters_report_generators.zip'
             if (false || !!document.documentMode) {
                 window.navigator.msSaveBlob(blob, fileName);
