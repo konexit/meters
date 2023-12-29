@@ -178,7 +178,7 @@ class Telegram extends Model
                     $this->buttonBuilder([[["Повернутися до меню", "backMenu"]]])
                 )];
             }
-        }
+        } 
 
 
         // Помилка користувачу по конкретній ролі
@@ -425,7 +425,7 @@ class Telegram extends Model
     {
         $userModel = new User();
         $userModel->insertTelegramDataByChatId($chatId, "menu");
-        return [$this->createTelegramMessage($title,  $this->buttonBuilder([[["Генератори", "generators"], ["Каністри", "canisters"]], [["Електрика", "8"], ["Газ", "7"], ["Гаряча вода", "6"], ["Холодна вода", "5"]]]))];
+        return [$this->createTelegramMessage($title,  $this->buttonBuilder([[["Генератори", "generators"]], [["Електрика", "8"], ["Газ", "7"], ["Гаряча вода", "6"], ["Холодна вода", "5"]]]))];
     }
 
     private function menuAdminMess()

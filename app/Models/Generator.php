@@ -510,7 +510,7 @@ class Generator extends Model
         return $report;
     }
 
-    private function getSpecificCanister($unit, $type, $status, $canisterId)
+    private function getSpecificCanister($unit, $type = "", $status = "", $canisterId = "")
     {
         $condition = "";
         if ($unit) $condition =  " c.unit = " . $unit;
