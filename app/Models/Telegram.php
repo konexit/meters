@@ -7,6 +7,8 @@ use CodeIgniter\Model;
 class Telegram extends Model
 {
 
+    protected $DBGroup = 'meters';
+
     public function telegram($json)
     {
         try {
@@ -105,99 +107,95 @@ class Telegram extends Model
             if ($user == null) return [$this->createTelegramMessage("Перевірте коректність <b>логіна</b>")];
 
             $userModel->insertTelegramDataByLogin($user->login, $chatId, 'pass');
-            return [$this->createTelegramMessage(
-                "Введіть пароль для логіна <b>" . $textMess . "</b>",
-                $this->buttonBuilder([["Повернутися назад", "backLogin"]])
-            )];
+            return [$this->createTelegramMessage("Введіть пароль для логіна <b>" . $textMess . "</b>", $this->buttonBuilder([[["Повернутися назад", "backLogin"]]]))];
         }
 
         $tgUserState = $tgUser->telegramState;
         if ($tgUserState == "pass") {
             // Валідація пароля
-            if (mb_strlen($textMess) > 20) return [$this->createTelegramMessage(
-                "Пароль не повинен перевищувати <u>20</u> <b>символів</b>",
-                $this->buttonBuilder([["Повернутися назад", "backLogin"]])
-            )];
+            if (mb_strlen($textMess) > 20) return [$this->createTelegramMessage("Пароль не повинен перевищувати <u>20</u> <b>символів</b>", $this->buttonBuilder([[["Повернутися назад", "backLogin"]]]))];
 
             if ($textMess == $tgUser->pass) {
                 $userRights = $tgUser->rights;
-                if ($userRights == 3) return $this->menuMess(
-                    $chatId,
-                    "<b>" . $tgUser->name . " ви успішно увішли</b>\n<i>Виберіть тип лічильника</i>"
-                );
+                if ($userRights == 3) return $this->menuMess($chatId, "<b>" . $tgUser->name . " ви успішно увішли</b>\n<i>Виберіть тип лічильника</i>");
                 elseif ($userRights == 1 || $userRights == 2 || $userRights == 5) {
                     $userModel->insertTelegramDataByChatId($chatId, "adminMenu");
                     return $this->menuAdminMess();
-                } else return [$this->createTelegramMessage(
-                    "<b>Увага!!!</b> <i>Цей сервіс лише для співробітників</i>",
-                    $this->buttonBuilder([["Повернутися назад", "backLogin"]])
-                )];
+                } else return [$this->createTelegramMessage("<b>Увага!!!</b> <i>Цей сервіс лише для співробітників</i>", $this->buttonBuilder([[["Повернутися назад", "backLogin"]]]))];
             }
-            return [$this->createTelegramMessage(
-                "<b>Увага!!!</b> <i>Ви ввели некоректний логін або пароль</i>",
-                $this->buttonBuilder([["Повернутися назад", "backLogin"]])
-            )];
+            return [$this->createTelegramMessage("<b>Увага!!!</b> <i>Ви ввели некоректний логін або пароль</i>", $this->buttonBuilder([[["Повернутися назад", "backLogin"]]]))];
         } elseif ($tgUserState == "addPokaz" && $tgUser->rights == 3) {
 
             // Валідація введеного показнника лічильники
             if (str_contains($textMess, ' ') || !is_numeric($textMess) || mb_strlen($textMess) > 9) {
-                return [$this->createTelegramMessage(
-                    "<b>Були введені некоректні дані лічильники</b>\nПеревірте вказані показники та спробуйте ще раз",
-                    $this->buttonBuilder([["Повернутися до меню", "backMenu"]])
-                )];
+                return [$this->createTelegramMessage("<b>Були введені некоректні дані лічильники</b>\nПеревірте вказані показники та спробуйте ще раз", $this->buttonBuilder([[["Повернутися до меню", "backMenu"]]]))];
             }
             $last = $userModel->getCounterDate();
             $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
             $metaCounterPK = $metadata->counterPK;
 
             if ($search->checkPokaz($metaCounterPK, $last['year'] . "-" . $last['month'] . "-01", $textMess)) {
-                $userModel->insertTelegramDataByChatId(
-                    $chatId,
-                    "confirm",
-                    [
-                        "typeCounter" => $metadata->typeCounter, "counterPK" => $metaCounterPK,
-                        "pokaz" => $textMess
-                    ]
-                );
-                return [$this->createTelegramMessage(
-                    "<b>Для збереження даних</b>\nПідтвердіть чи вказанні привильно данні",
-                    $this->buttonBuilder([
-                        ["Підтвержую", "confirm"],
-                        ["Допущенна помилка", "denied"]
-                    ])
-                )];
+                $userModel->insertTelegramDataByChatId($chatId, "confirm", ["typeCounter" => $metadata->typeCounter, "counterPK" => $metaCounterPK, "pokaz" => $textMess]);
+                return [$this->createTelegramMessage("<b>Для збереження даних</b>\nПідтвердіть чи вказанні привильно данні", $this->buttonBuilder([[["Підтвержую", "confirm"], ["Допущенна помилка", "denied"]]]))];
             }
             return [$this->createTelegramMessage(
                 "<b>Упс... Показник лічильника не додано</b>\nПеревірте вказані показники та спробуйте ще раз",
-                $this->buttonBuilder([["Повернутися до меню", "backMenu"]])
+                $this->buttonBuilder([[["Повернутися до меню", "backMenu"]]])
             )];
+        } elseif ($tgUserState == "addPokazGen" && $tgUser->rights == 3) {
+            try {
+                $parts = explode('_', $textMess);
+
+                list($startDate1, $startTime1) = sscanf($parts[0], "%[^\(](%[^\)])");
+                $startTime = strtotime($startDate1 . ' ' . $startTime1);
+
+                list($endDate2, $endTime2) = sscanf($parts[1], "%[^\(](%[^\)])");
+                $endTime = strtotime($endDate2 . ' ' . $endTime2);
+
+                if ($startTime >= $endTime) {
+                    return [$this->createTelegramMessage("<b>Були введені некоректні дані генератора</b>\nПеревірте вказані показники та спробуйте ще раз", $this->buttonBuilder([[["Повернутися до меню", "backMenu"]]]))];
+                }
+
+                $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
+                $metaGeneratorPK = $metadata->generatorPK;
+
+                $generator = new Generator();
+                $genData = $generator->findActiveGenerators($tgUser->area, $metaGeneratorPK);
+                $workingTimeMinutes = ($endTime - $startTime) / 60;
+
+                if (!$genData || $genData[0]["fuel"] - floatval(number_format($workingTimeMinutes / 60, 1, '.', '') * $genData[0]["coeff"]) < 0) {
+                    return $this->menuMess($chatId, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть генератор");
+                }
+
+                $userModel->insertTelegramDataByChatId($chatId, "confirmGen", ["generatorPK" => $metaGeneratorPK, "pokaz" => $textMess]);
+                return [$this->createTelegramMessage(
+                    "<b>Для збереження даних</b>\nПідтвердіть чи вказанні привильно данні\n<b>Генератор працював:</b> " . $workingTimeMinutes . " хвилин?",
+                    $this->buttonBuilder([[["Підтвержую", "confirm"], ["Допущенна помилка", "denied"]]])
+                )];
+            } catch (Exception $e) {
+                return [$this->createTelegramMessage(
+                    "<b>Упс... Показник генератора не додано</b>\nПеревірте вказані показники та спробуйте ще раз",
+                    $this->buttonBuilder([[["Повернутися до меню", "backMenu"]]])
+                )];
+            }
         }
 
 
         // Помилка користувачу по конкретній ролі
-        $replyMarkup = ($tgUser->rights == 3) ? $this->buttonBuilder([[
-            "Повернутися до меню",
-            "backMenu"
-        ]]) : $this->buttonBuilder([[
-            "Повернутися до списка",
-            "adminMenu"
-        ]]);
-        return [$this->createTelegramMessage(
-            "<b>Упс... Ви не маєте права на дану дію 🤔</b>",
-            $replyMarkup
-        )];
+        $replyMarkup = ($tgUser->rights == 3) ? $this->buttonBuilder([[["Повернутися до меню", "backMenu"]]]) : $this->buttonBuilder([[["Повернутися до списка", "adminMenu"]]]);
+        return [$this->createTelegramMessage("<b>Упс... Ви не маєте права на дану дію 🤔</b>", $replyMarkup)];
     }
 
     private function callback($json, $chatId)
     {
         $userModel = new User();
         $search = new Search();
+        $generator = new Generator();
         $tgUser = $userModel->findUserByChatId($chatId);
         $callbackData = $json->callback_query->data;
 
         // Користувач відсутній у системі
         if ($tgUser == null) return [$this->createTelegramMessage("<b>Упс... Ви не маєте права на дану дію 🤔</b>\nСпробуйте авторизуватися")];
-
 
         $userTgState = $tgUser->telegramState;
 
@@ -210,51 +208,59 @@ class Telegram extends Model
             }
             return [$this->createTelegramMessage(
                 "<b>Упс... Ви не маєте права на дану дію 🤔</b>\nВи повинні ввести свій пароль до користувача <b>" . $tgUser->login . "</b>",
-                $this->buttonBuilder([["Повернутися назад на стадію введеня логіна", "backLogin"]])
+                $this->buttonBuilder([[["Повернутися назад на стадію введеня логіна", "backLogin"]]])
             )];
         }
 
         // Дії адміна
         if ($tgUser->rights == 1 || $tgUser->rights == 2 || $tgUser->rights == 5) {
             if ($userTgState == 'adminMenu' && $callbackData == 'adminMenu') return $this->menuAdminMess();
-            else return [$this->createTelegramMessage(
-                "<b>Упс... Ви не маєте права на дану дію 🤔</b>",
-                $this->buttonBuilder([[
-                    "Повернутися до списка",
-                    "adminMenu"
-                ]])
-            )];
+            else return [$this->createTelegramMessage("<b>Упс... Ви не маєте права на дану дію 🤔</b>", $this->buttonBuilder([[["Повернутися до списка", "adminMenu"]]]))];
         }
 
         // Дії звичайного користувача
         if ($tgUser->rights == 3) {
             if ($callbackData == 'backMenu') return $this->menuMess($chatId, "<b>" . $tgUser->name . "</b> виберіть тип лічильника");
-            elseif ($userTgState == 'menu' && is_numeric($callbackData)) {
-                $counters = $search->findCountersNotFilled($tgUser->area, $callbackData, null);
-
-                if (empty($counters)) return [$this->createTelegramMessage("Показники усім лічильникам були вказані\n<b>Ви молодці😎</b>")];
-
+            elseif ($userTgState == 'menu') {
                 $respMessage = [];
-                $userModel->insertTelegramDataByChatId(
-                    $chatId,
-                    'chooseCounter',
-                    ["typeCounter" => $callbackData]
-                );
-                array_push(
-                    $respMessage,
-                    $this->createTelegramMessage("<b>Список лічильників</b>")
-                );
-                foreach ($counters as $counter) {
-                    array_push(
-                        $respMessage,
-                        $this->createTelegramMessage(
-                            "<b>Щоб вибрати лічильниик №</b> <u>" . $counter['counterId'] . "</u>\nнатисніть на відповідну кнопку\n<b>Коментар:</b> <i>" . $counter['counterName'] . "</i>",
-                            $this->buttonBuilder([["№ " . $counter['counterId'], $counter['id']]])
-                        )
-                    );
+                if ($callbackData == 'generators') {
+                    $generators = $generator->findActiveGenerators($tgUser->area);
+
+                    if (empty($generators)) return [$this->createTelegramMessage("Відсутні генератори в данному підрозділі 😎")];
+
+                    $userModel->insertTelegramDataByChatId($chatId, 'chooseGenerator');
+                    array_push($respMessage, $this->createTelegramMessage("<b>Список генераторів</b>"));
+                    foreach ($generators as $generator) {
+                        array_push(
+                            $respMessage,
+                            $this->createTelegramMessage(
+                                "<b>Щоб вибрати генератор №</b> <u>" . $generator['serialNum'] . "</u>\nнатисніть на відповідну кнопку\n" .
+                                    "<b>Назва:</b> <i>" . $generator['name'] . "</i>\n" .
+                                    "<b>Тип:</b> <i>" . $generator['type'] . "</i>\n",
+                                $this->buttonBuilder([[["№ " . $generator['serialNum'], $generator['id']]]])
+                            )
+                        );
+                    }
+                } elseif (is_numeric($callbackData)) {
+                    $counters = $search->findCountersNotFilled($tgUser->area, $callbackData, null);
+
+                    if (empty($counters)) return [$this->createTelegramMessage("Показники усім лічильникам були вказані\n<b>Ви молодці😎</b>")];
+
+                    $userModel->insertTelegramDataByChatId($chatId, 'chooseCounter', ["typeCounter" => $callbackData]);
+                    array_push($respMessage, $this->createTelegramMessage("<b>Список лічильників</b>"));
+                    foreach ($counters as $counter) {
+                        array_push(
+                            $respMessage,
+                            $this->createTelegramMessage(
+                                "<b>Щоб вибрати лічильниик №</b> <u>" . $counter['counterId'] . "</u>\nнатисніть на відповідну кнопку\n<b>Коментар:</b> <i>" . $counter['counterName'] . "</i>",
+                                $this->buttonBuilder([[["№ " . $counter['counterId'], $counter['id']]]])
+                            )
+                        );
+                    }
                 }
                 return $respMessage;
             } elseif ($userTgState == 'chooseCounter' && is_numeric($callbackData)) return $this->chooseCounter($tgUser, $chatId, $callbackData);
+            elseif ($userTgState == 'chooseGenerator' && is_numeric($callbackData)) return $this->chooseGenerator($tgUser, $chatId, $callbackData);
             elseif ($userTgState == 'confirm') {
                 $last = $userModel->getCounterDate();
                 $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
@@ -277,34 +283,74 @@ class Telegram extends Model
                     }
 
                     $search->recalculation($metaCounterPK);
-                    $userModel->addUserLog($tgUser->login,
-                        ['login' => $tgUser->login, 'message' => "Додав показник = " . $metadata->pokaz . " лічильнику = " . $search->getCounterByCounterPK($metaCounterPK)->counterId . " (telegram)"]
-                    );
-                    return $this->menuMess(
-                        $chatId,
-                        "Показник лічильникa " . $metadata->pokaz . " за " . $last['month'] . "." . $last['year'] . " був <b>успішно додані 👍 </b>\n<i>Виберіть тип лічильника</i>"
-                    );
+                    $userModel->addUserLog($tgUser->login, ['login' => $tgUser->login, 'message' => "Додав показник = " . $metadata->pokaz . " лічильнику = " . $search->getCounterByCounterPK($metaCounterPK)->counterId . " (telegram)"]);
+                    return $this->menuMess($chatId, "Показник лічильникa " . $metadata->pokaz . " за " . $last['month'] . "." . $last['year'] . " був <b>успішно додані 👍 </b>\n<i>Виберіть тип лічильника</i>");
                 }
-            } else return [$this->createTelegramMessage(
-                "<b>Упс... Ви не маєте права на дану дію 🤔</b>",
-                $this->buttonBuilder([[
-                    "Повернутися до меню",
-                    "backMenu"
-                ]])
-            )];
+            } elseif ($userTgState == 'confirmGen') {
+                $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
+
+                if ($callbackData == 'denied') return $this->chooseGenerator($tgUser, $chatId, null);
+                elseif ($callbackData == 'confirm') {
+                    $metaGeneratorPK = $metadata->generatorPK;
+                    $parts = explode('_', $metadata->pokaz);
+
+                    list($startDate1, $startTime1) = sscanf($parts[0], "%[^\(](%[^\)])");
+                    $startTime = strtotime($startDate1 . ' ' . $startTime1);
+
+                    list($endDate2, $endTime2) = sscanf($parts[1], "%[^\(](%[^\)])");
+                    $endTime = strtotime($endDate2 . ' ' . $endTime2);
+
+                    $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
+                    $metaGeneratorPK = $metadata->generatorPK;
+
+                    $generator = new Generator();
+                    $genData = $generator->findActiveGenerators($tgUser->area, $metaGeneratorPK);
+                    $workingTimeMinutes = ($endTime - $startTime) / 60;
+                    $consumedFuel = floatval(number_format($workingTimeMinutes / 60, 1, '.', '') * $genData[0]["coeff"]);
+
+                    if (!$genData || $genData[0]["fuel"] - $consumedFuel < 0) {
+                        return $this->menuMess($chatId, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть генератор");
+                    }
+
+                    $generator = new Generator();
+                    $dataTargetGenerator = $generator->getSpecificGenerator('', '', $metaGeneratorPK);
+                    $consumed = $dataTargetGenerator[0]['fuel'] - $consumedFuel;
+
+                    $userModel->addUserLog(
+                        $tgUser->login,
+                        ['login' => $tgUser->login, 'message' => "Подав час роботи = " . floatval(number_format($workingTimeMinutes / 60, 1, '.', '')) . " годин, генератору = " . $dataTargetGenerator[0]['serialNum'] . " (telegram)"]
+                    );
+                    $this->db->table('genaratorPokaz')->insert([
+                        'date' => date('Y-m-d', $startTime),
+                        'year' => date('Y', $startTime),
+                        'month' => date('m', $startTime),
+                        'day' => date('d', $startTime),
+                        'startTime' => date('H:i', $startTime),
+                        'endTime' => date('H:i', $endTime),
+                        'workingTime' => $workingTimeMinutes,
+                        'consumed' => $consumedFuel,
+                        'genId' => $metaGeneratorPK
+                    ]);
+                    $this->db->table('fuelArea')->update(
+                        ['fuel' => $consumed],
+                        ['areaId' => $dataTargetGenerator[0]['genAreaId'], 'type' => $dataTargetGenerator[0]['genTypeId']]
+                    );
+                    return $this->menuMess($chatId, "Показник генератора <code>" . $metadata->pokaz . "</code> був <b>успішно додані 👍 </b>\n<i>Виберіть тип лічильника</i>");
+                }
+            } else return [$this->createTelegramMessage("<b>Упс... Ви не маєте права на дану дію 🤔</b>", $this->buttonBuilder([[["Повернутися до меню", "backMenu"]]]))];
         }
     }
 
-    private function buttonBuilder($buttons = [], $layout = [], $modeCompose = false, $type = "inline_keyboard")
+    private function buttonBuilder($rowButtons = [], $layout = [], $modeCompose = false, $type = "inline_keyboard")
     {
-        $currBnt = array();
-        foreach ($buttons as $button) {
-            array_push($currBnt, array(
-                "text" => $button[0],
-                "callback_data" => $button[1]
-            ));
+        foreach ($rowButtons as $row) {
+            $currBnt = array();
+            foreach ($row as $button) {
+                array_push($currBnt, array("text" => $button[0], "callback_data" => $button[1]));
+            }
+            array_push($layout, $currBnt);
         }
-        array_push($layout, $currBnt);
+
         if (!$modeCompose) return array("reply_markup" => array($type => array_reverse($layout)));
         else return $layout;
     }
@@ -322,31 +368,56 @@ class Telegram extends Model
         $metadata = json_decode($tgUser->telegramMetadata);
         if ($counterPK != null) {
             if (!$search->findCountersNotFilled($tgUser->area, $metadata->typeCounter, $counterPK)) {
-                return $this->menuMess(
-                    $chatId,
-                    "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть тип лічильника"
-                );
+                return $this->menuMess($chatId, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть тип лічильника");
             }
             return $this->addPokazMess($chatId, $metadata, $counterPK);
         }
         return $this->addPokazMess($chatId, $metadata, $metadata->counterPK);
     }
 
+    private function chooseGenerator($tgUser, $chatId, $generatorPK = null)
+    {
+        $generator = new Generator();
+        $metadata = json_decode($tgUser->telegramMetadata);
+        if ($generatorPK != null) {
+            if (!$generator->findActiveGenerators($tgUser->area, $generatorPK)) {
+                return $this->menuMess($chatId, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть генератор");
+            }
+            return $this->addPokazGenMess($chatId, $tgUser, $generatorPK);
+        }
+        return $this->addPokazGenMess($chatId, $tgUser, $metadata->generatorPK);
+    }
+
     private function addPokazMess($chatId, $metadata, $counterPK)
     {
         $userModel = new User();
         $search = new Search();
-        $userModel->insertTelegramDataByChatId(
-            $chatId,
-            'addPokaz',
-            ["typeCounter" => $metadata->typeCounter, "counterPK" => $counterPK]
-        );
+        $userModel->insertTelegramDataByChatId($chatId, 'addPokaz', ["typeCounter" => $metadata->typeCounter, "counterPK" => $counterPK]);
         $pokaz = $search->getLastPokazByCounter($counterPK);
         $counter = $search->getCounterByCounterPK($counterPK);
         $lastPokaz = ($pokaz) ? $pokaz->index : $counter->spokaz;
         return [$this->createTelegramMessage(
             "<b>Введіть показники лічильнику №</b> <u>" . $counter->counterId . "</u>\n<b>Крайній показник лічильника становить</b> <code>" . $lastPokaz . "</code>",
-            $this->buttonBuilder([["Повернутися до меню", "backMenu"]])
+            $this->buttonBuilder([[["Повернутися до меню", "backMenu"]]])
+        )];
+    }
+
+    private function addPokazGenMess($chatId, $tgUser, $generatorPK)
+    {
+        $userModel = new User();
+        $generator = new Generator();
+        $userModel->insertTelegramDataByChatId($chatId, 'addPokazGen', ["generatorPK" => $generatorPK]);
+        $dataGen = $generator->findActiveGenerators($tgUser->area, $generatorPK);
+        date_default_timezone_set('Europe/Kiev');
+        $currentDateTime = date('d.m.Y(H:i)');
+        $twoHoursAgo = date('d.m.Y(H:i)', strtotime('-2 hours'));
+        return [$this->createTelegramMessage(
+            "<b>Введіть дані роботи (початок-кінець) генератору №</b> <u>" . $dataGen[0]["serialNum"] . "</u>\n" .
+                "<b>Назва:</b> <i>" . $dataGen[0]["name"] . "</i>\n" .
+                "<b>Тип:</b> <i>" . $dataGen[0]["type"] . "</i>\n" .
+                "<b>Палива:</b> <i>" . $dataGen[0]["fuel"] . " л.</i>\n" .
+                "<b>ПРИКЛАД:</b> <code>" . $twoHoursAgo . '_' . $currentDateTime . "</code>\n",
+            $this->buttonBuilder([[["Повернутися до меню", "backMenu"]]])
         )];
     }
 
@@ -354,10 +425,7 @@ class Telegram extends Model
     {
         $userModel = new User();
         $userModel->insertTelegramDataByChatId($chatId, "menu");
-        return [$this->createTelegramMessage(
-            $title,
-            $this->buttonBuilder([["Електрика", "8"], ["Газ", "7"], ["Гаряча вода", "6"], ["Холодна вода", "5"]])
-        )];
+        return [$this->createTelegramMessage($title,  $this->buttonBuilder([[["Генератори", "generators"], ["Каністри", "canisters"]], [["Електрика", "8"], ["Газ", "7"], ["Гаряча вода", "6"], ["Холодна вода", "5"]]]))];
     }
 
     private function menuAdminMess()
@@ -366,33 +434,20 @@ class Telegram extends Model
         $counters = $search->findCountersNotFilled();
 
         if (empty($counters)) {
-            return [$this->createTelegramMessage(
-                "Показники усім лічильникам були вказані\n<b>Чудово😎</b>",
-                $this->buttonBuilder([["Оновити", "adminMenu"]])
-            )];
+            return [$this->createTelegramMessage("Показники усім лічильникам були вказані\n<b>Чудово😎</b>", $this->buttonBuilder([[["Оновити", "adminMenu"]]]))];
         }
 
         $respMessage = [];
-        array_push(
-            $respMessage,
-            $this->createTelegramMessage("<b>Список не вказаних показників лічильників</b>")
-        );
+        array_push($respMessage, $this->createTelegramMessage("<b>Список не вказаних показників лічильників</b>"));
 
-        // array_push(
-        //     $respMessage,
-        //     $this->createTelegramMessage("Лічильник № <u>" . $counters[0]['counterId'] . "</u>\nРозташування: <b>" . $counters[0]['unit'] . "</b>\nАдреса: <b>" . $counters[0]['addr'] . "</b>")
-        // );
         foreach ($counters as $counter) {
-            array_push(
-                $respMessage,
-                $this->createTelegramMessage("Лічильник № <u>" . $counter['counterId'] . "</u>\nРозташування: <b>" . $counter['unit'] . "</b>\nАдреса: <b>" . $counter['addr'] . "</b>")
-            );
+            array_push($respMessage, $this->createTelegramMessage("Лічильник № <u>" . $counter['counterId'] . "</u>\nРозташування: <b>" . $counter['unit'] . "</b>\nАдреса: <b>" . $counter['addr'] . "</b>"));
         }
         array_push(
             $respMessage,
             $this->createTelegramMessage(
                 "<b>Оновити список не вказних показників лічильників</b>\n<b>Всього налічується</b> <code>" . count($counters) . "</code> <b>лічильників</b>",
-                $this->buttonBuilder([["Оновити", "adminMenu"]])
+                $this->buttonBuilder([[["Оновити", "adminMenu"]]])
             )
         );
 

@@ -129,7 +129,10 @@ class Generator extends Model
         } else {
             $userRights = session("usRights");
             $user = new User();
-            if ($userRights == 3) $user->addUserLog(session("mLogin"), ['login' => session("mLogin"), 'message' => "Подав час роботи = " . $consumed . " хв, генератору = " . $dataTargetGenerator[0]['serialNum']]);
+            if ($userRights == 3) $user->addUserLog(
+                session("mLogin"),
+                ['login' => session("mLogin"), 'message' => "Подав час роботи = " . $request->getVar('workingTime') . " годин, генератору = " . $dataTargetGenerator[0]['serialNum']]
+            );
 
             $this->db->table('genaratorPokaz')->insert([
                 'date' => $request->getVar('date'),
@@ -201,6 +204,53 @@ class Generator extends Model
         }
 
         return (new Excel)->createReports("generators", ["groupBy" => $json->groupBy, "meters" => $reports]);
+    }
+
+
+    function findActiveGenerators($area = null, $generatorPK = null)
+    {
+        $conditionUnit = "";
+        $conditionGenPK = "";
+        if ($area != null) $conditionUnit = " AND g.unit = " . $area;
+        if ($generatorPK != null) $conditionGenPK = " AND g.id = " . $generatorPK;
+        return $this->db->query("SELECT 
+                                    g.serialNum, tg.type, fa.fuel, g.id, g.name, g.coeff
+                                FROM generator AS g
+                                JOIN fuelArea AS fa ON g.unit = fa.areaId AND g.type = fa.type
+                                JOIN typeGenerator AS tg ON g.type = tg.id
+                                WHERE g.state = 1 " . $conditionUnit . $conditionGenPK)->getResultArray();
+    }
+
+    function getSpecificGenerator($gUnit, $gType, $genId)
+    {
+        $condition = "";
+        if ($gUnit) $condition =  " g.unit = '" . $gUnit . "' ";
+        if ($gType) $condition = ($condition != "") ? $condition . " AND g.type = " . $gType : " g.type = " . $gType;
+        if ($genId) $condition = ($condition != "") ? $condition . " AND g.id = " . $genId : " g.id = " . $genId;
+        if ($condition) $condition = " WHERE " . $condition;
+
+        return $this->db->query("SELECT 
+                                    g.id, g.name, g.serialNum, a.addr, a.unit, g.coeff, t.type, g.state, g.unit AS genAreaId, g.type AS genTypeId,
+                                    (
+                                        CASE WHEN fu.fuel IS NULL THEN 0 ELSE ROUND(fu.fuel, 2)
+                                            END
+                                    ) AS fuel, 
+                                    (
+                                        CASE WHEN fu.canister IS NULL THEN 0 ELSE fu.canister
+                                            END
+                                    ) AS canister, 
+                                    (
+                                        CASE WHEN a.trade_point_id = 0 THEN '' ELSE a.trade_point_id 
+                                            END
+                                    ) AS trade_point_id
+                                FROM 
+                                    generator AS g
+                                    LEFT JOIN area AS a ON a.id = g.unit
+                                    LEFT JOIN typeGenerator AS t ON t.id = g.type 
+                                    LEFT JOIN fuelArea AS fu ON fu.areaId = g.unit AND fu.type = g.type
+                                    " . $condition . " 
+                                ORDER BY 
+                                    g.state DESC, a.unit")->getResultArray();
     }
 
     private function getRemnants($company)
@@ -486,37 +536,5 @@ class Generator extends Model
                                     " . $condition . " 
                                 ORDER BY 
                                     c.date")->getResultArray();
-    }
-
-    private function getSpecificGenerator($gUnit, $gType, $genId)
-    {
-        $condition = "";
-        if ($gUnit) $condition =  " g.unit = '" . $gUnit . "' ";
-        if ($gType) $condition = ($condition != "") ? $condition . " AND g.type = " . $gType : " g.type = " . $gType;
-        if ($genId) $condition = ($condition != "") ? $condition . " AND g.id = " . $genId : " g.id = " . $genId;
-        if ($condition) $condition = " WHERE " . $condition;
-
-        return $this->db->query("SELECT 
-                                    g.id, g.name, g.serialNum, a.addr, a.unit, g.coeff, t.type, g.state, g.unit AS genAreaId, g.type AS genTypeId,
-                                    (
-                                        CASE WHEN fu.fuel IS NULL THEN 0 ELSE ROUND(fu.fuel, 2)
-                                            END
-                                    ) AS fuel, 
-                                    (
-                                        CASE WHEN fu.canister IS NULL THEN 0 ELSE fu.canister
-                                            END
-                                    ) AS canister, 
-                                    (
-                                        CASE WHEN a.trade_point_id = 0 THEN '' ELSE a.trade_point_id 
-                                            END
-                                    ) AS trade_point_id
-                                FROM 
-                                    generator AS g
-                                    LEFT JOIN area AS a ON a.id = g.unit
-                                    LEFT JOIN typeGenerator AS t ON t.id = g.type 
-                                    LEFT JOIN fuelArea AS fu ON fu.areaId = g.unit AND fu.type = g.type
-                                    " . $condition . " 
-                                ORDER BY 
-                                    g.state DESC, a.unit")->getResultArray();
     }
 }

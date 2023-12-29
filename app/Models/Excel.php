@@ -496,7 +496,7 @@ class Excel extends Model
             "Назва Аптеки" => $pharmacy->name,
             "Адреса" => $pharmacy->addr,
             "Компанія" => $dataJson->companyName,
-            "1s код" => $dataJson->company_1s_code,
+            "1s код компанії" => $dataJson->company_1s_code,
             "Генератор" => $pharmacy->generatorName,
             "Серійний номер" => $pharmacy->generatorSerial,
             "Тип" => $pharmacy->generatorType
