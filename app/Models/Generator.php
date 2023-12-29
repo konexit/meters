@@ -40,7 +40,7 @@ class Generator extends Model
 
     function getGenerators($request)
     {
-        $generators = $this->getSpecificGenerator($request->getVar('gUnit'), $request->getVar('gType'), '');
+        $generators = $this->getSpecificGenerator($request->getVar('gUnit'), $request->getVar('gType'));
         $columns = ["Назва", "Номер", "Підрозділ", "Адреса", "Коеф", "Паливо", "Каністр", "Тип", "Стан"];
         $ref = [
             "Назва" => "name", "Номер" => "serialNum", "Підрозділ" => "unit", "Адреса" => "addr", "Коеф" => "coeff",
@@ -178,7 +178,7 @@ class Generator extends Model
     {
         header("Content-Type: application/json");
         echo json_encode([
-            "generators" =>  $this->getSpecificGenerator(session()->get('usArea'), '', ''),
+            "generators" =>  $this->getSpecificGenerator(session()->get('usArea')),
             "canisters" => $this->getSpecificCanister(session()->get('usArea'), '', 1, '')
         ], JSON_UNESCAPED_UNICODE);
     }
@@ -221,7 +221,7 @@ class Generator extends Model
                                 WHERE g.state = 1 " . $conditionUnit . $conditionGenPK)->getResultArray();
     }
 
-    function getSpecificGenerator($gUnit, $gType, $genId)
+    function getSpecificGenerator($gUnit, $gType = "", $genId = "")
     {
         $condition = "";
         if ($gUnit) $condition =  " g.unit = '" . $gUnit . "' ";
