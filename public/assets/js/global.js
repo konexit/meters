@@ -1168,7 +1168,6 @@ function mAreaGenerator() {
 }
 
 function addGeneratorPokaz(gId) {
-    const currentDate = new Date();
     const startGenerator = new Date(document.querySelector('#genId_' + gId + ' .start-generator').value);
     const endGenerator = new Date(document.querySelector('#genId_' + gId + ' .end-generator').value);
     const generatorCoeff = document.querySelector('#genId_' + gId + ' .generator-coeff').value;
@@ -1188,13 +1187,13 @@ function addGeneratorPokaz(gId) {
 
     $.post(ajaxURL, {
         action: "addGeneratorPokaz",
-        year: currentDate.getFullYear(),
-        month: ('0' + (currentDate.getMonth() + 1)).slice(-2),
-        day: ('0' + currentDate.getDate()).slice(-2),
+        year: startGenerator.getFullYear(),
+        month: ('0' + (startGenerator.getMonth() + 1)).slice(-2),
+        day: ('0' + startGenerator.getDate()).slice(-2),
         workingTime: parseFloat(workingTime.toFixed(1)),
         consumed: Math.round(((workingTime) * generatorCoeff) * 100) / 100,
         genId: gId,
-        date: currentDate.getFullYear() + '-' + ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' + ('0' + currentDate.getDate()).slice(-2),
+        date: startGenerator.getFullYear() + '-' + ('0' + (startGenerator.getMonth() + 1)).slice(-2) + '-' + ('0' + startGenerator.getDate()).slice(-2),
         startTime: ('0' + startGenerator.getHours()).slice(-2) + ':' + ('0' + startGenerator.getMinutes()).slice(-2),
         endTime: ('0' + endGenerator.getHours()).slice(-2) + ':' + ('0' + endGenerator.getMinutes()).slice(-2)
     }, function (result) {
