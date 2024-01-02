@@ -1177,13 +1177,12 @@ function addGeneratorPokaz(gId) {
         return;
     }
 
-    const workingTimeMinutes = (endGenerator - startGenerator) / (1000 * 60)
-    const confirmWorkingTime = confirm("Генератор працював: " + workingTimeMinutes + " хвилин?");
+    const workingTime = Math.round(((endGenerator - startGenerator) / (1000 * 60 * 60)) * 10) / 10 
+    const confirmWorkingTime = confirm("Генератор працював: " + workingTime + " годин?");
     if (!confirmWorkingTime) {
         return;
     }
 
-    const workingTime = workingTimeMinutes / 60
 
     $.post(ajaxURL, {
         action: "addGeneratorPokaz",

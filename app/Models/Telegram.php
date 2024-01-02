@@ -235,9 +235,9 @@ class Telegram extends Model
                 $metaGeneratorPK = $metadata->generatorPK;
 
                 $genData = $generator->findActiveGenerators($tgUser->area, $metaGeneratorPK);
-                $workingTimeMinutes = ($endTime - $startTime) / 60;
+                $workingTime = number_format(($endTime - $startTime) / (60 * 60), 1, '.', '');
 
-                if (!$genData || $genData[0]["fuel"] - floatval(number_format($workingTimeMinutes / 60, 1, '.', '') * $genData[0]["coeff"]) < 0) {
+                if (!$genData || $genData[0]["fuel"] - floatval($workingTime * $genData[0]["coeff"]) < 0) {
                     return $this->menuMess($chatId, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть генератор");
                 }
 
@@ -247,7 +247,7 @@ class Telegram extends Model
                     ["generatorPK" => $metaGeneratorPK, "pokaz" => $textMess]
                 );
                 return [$this->createTelegramMessage(
-                    "<b>Для збереження даних</b>\nПідтвердіть чи вказанні привильно данні\n<b>Генератор працював:</b> " . $workingTimeMinutes . " хвилин?",
+                    "<b>Для збереження даних</b>\nПідтвердіть чи вказанні привильно данні\n<b>Генератор працював:</b> " . $workingTime . " годин?",
                     $this->buttonBuilder([[
                         ["Підтвержую", "confirm"],
                         ["Допущенна помилка", "denied"]
@@ -444,8 +444,8 @@ class Telegram extends Model
                     $endTime = strtotime($endDate2 . ' ' . $endTime2);
 
                     $genData = $generator->findActiveGenerators($tgUser->area, $metaGeneratorPK);
-                    $workingTimeMinutes = ($endTime - $startTime) / 60;
-                    $consumedFuel = floatval(number_format($workingTimeMinutes / 60, 1, '.', '') * $genData[0]["coeff"]);
+                    $workingTime =  number_format(($endTime - $startTime) / (60 * 60), 1, '.', '');
+                    $consumedFuel = floatval(number_format($workingTime * $genData[0]["coeff"], 1, '.', ''));
 
                     if (!$genData || $genData[0]["fuel"] - $consumedFuel < 0) {
                         return $this->menuMess($chatId, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть генератор");
@@ -458,7 +458,7 @@ class Telegram extends Model
                         $tgUser->login,
                         [
                             'login' => $tgUser->login,
-                            'message' => "Подав час роботи = " . floatval(number_format($workingTimeMinutes / 60, 1, '.', '')) . " годин, генератору = " . $dataTargetGenerator[0]['serialNum'] . " (telegram)"
+                            'message' => "Подав час роботи = " . $workingTime . " годин, генератору = " . $dataTargetGenerator[0]['serialNum'] . " (telegram)"
                         ]
                     );
                     $this->db->table('genaratorPokaz')->insert([
@@ -468,7 +468,7 @@ class Telegram extends Model
                         'day' => date('d', $startTime),
                         'startTime' => date('H:i', $startTime),
                         'endTime' => date('H:i', $endTime),
-                        'workingTime' => $workingTimeMinutes,
+                        'workingTime' => $workingTime,
                         'consumed' => $consumedFuel,
                         'genId' => $metaGeneratorPK
                     ]);
@@ -582,6 +582,7 @@ class Telegram extends Model
                 "<b>Назва:</b> <i>" . $dataGen[0]["name"] . "</i>\n" .
                 "<b>Тип:</b> <i>" . $dataGen[0]["type"] . "</i>\n" .
                 "<b>Палива:</b> <i>" . $dataGen[0]["fuel"] . " л.</i>\n" .
+                "<b>Прогнозований час роботи генератора: ≈ </b> <i>" . number_format($dataGen[0]["fuel"] / $dataGen[0]["coeff"], 1, '.', '') . " годин</i>\n" .
                 "<b>ПРИКЛАД:</b> <code>" . $twoHoursAgo . '_' . $currentDateTime . "</code>\n",
             $this->buttonBuilder([
                 [
