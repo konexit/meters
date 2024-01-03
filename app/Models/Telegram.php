@@ -138,7 +138,7 @@ class Telegram extends Model
 
             if ($textMess == $tgUser->pass) {
                 $userRights = $tgUser->rights;
-                if ($userRights == 3) return $this->menuMess($chatId, "<b>" . $tgUser->name . " ви успішно увішли</b>\n<i>Виберіть тип лічильника</i>");
+                if ($userRights == 3) return $this->menuMess($chatId, $tgUser->area, "<b>" . $tgUser->name . " ви успішно увішли</b>\n<i>Виберіть тип лічильника</i>");
                 elseif ($userRights == 1 || $userRights == 2 || $userRights == 5) {
                     $userModel->insertTelegramDataByChatId($chatId, "adminMenu");
                     return $this->menuAdminMess();
@@ -238,7 +238,7 @@ class Telegram extends Model
                 $workingTime = number_format(($endTime - $startTime) / (60 * 60), 1, '.', '');
 
                 if (!$genData || $genData[0]["fuel"] - floatval($workingTime * $genData[0]["coeff"]) < 0) {
-                    return $this->menuMess($chatId, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть генератор");
+                    return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть генератор");
                 }
 
                 $userModel->insertTelegramDataByChatId(
@@ -340,7 +340,7 @@ class Telegram extends Model
 
         // Дії звичайного користувача
         if ($tgUser->rights == 3) {
-            if ($callbackData == 'backMenu') return $this->menuMess($chatId, "<b>" . $tgUser->name . "</b> виберіть тип лічильника");
+            if ($callbackData == 'backMenu') return $this->menuMess($chatId, $tgUser->area, "<b>" . $tgUser->name . "</b> виберіть тип лічильника");
             elseif ($userTgState == 'menu') {
                 $respMessage = [];
                 if ($callbackData == 'generators') {
@@ -362,6 +362,35 @@ class Telegram extends Model
                                         [
                                             "№ " . $generator['serialNum'],
                                             $generator['id']
+                                        ]
+                                    ]
+                                ])
+                            )
+                        );
+                    }
+                } elseif ($callbackData == 'canisters') {
+                    $specificCanister = $generator->getSpecificCanister($tgUser->area, '', 1, '');
+
+                    if (count($specificCanister) == 0) {
+                        return [$this->createTelegramMessage("Відсутні каністри для отримання 😎")];
+                    }
+
+                    $userModel->insertTelegramDataByChatId($chatId, 'chooseCanister');
+                    array_push($respMessage, $this->createTelegramMessage("<b>Список каністр</b>"));
+
+                    foreach ($specificCanister as $canister) {
+                        array_push(
+                            $respMessage,
+                            $this->createTelegramMessage(
+                                "<b>Щоб вибрати каністри №</b> <u>" . $canister['id'] . "</u>\nнатисніть на відповідну кнопку\n" .
+                                    "<b>Палива:</b> <i>" . $canister['fuel'] . "</i>\n" .
+                                    "<b>Кількість:</b> <i>" . $canister['canister'] . "</i>\n" .
+                                    "<b>Тип:</b> <i>" . $canister['type'] . "</i>\n",
+                                $this->buttonBuilder([
+                                    [
+                                        [
+                                            "№ " . $canister['id'],
+                                            $canister['id']
                                         ]
                                     ]
                                 ])
@@ -401,6 +430,8 @@ class Telegram extends Model
                 return $this->chooseCounter($tgUser, $chatId, $callbackData);
             } elseif ($userTgState == 'chooseGenerator' && is_numeric($callbackData)) {
                 return $this->chooseGenerator($tgUser, $chatId, $callbackData);
+            } elseif ($userTgState == 'chooseCanister' && is_numeric($callbackData)) {
+                return $this->chooseCanister($tgUser, $chatId, $callbackData);
             } elseif ($userTgState == 'confirm') {
                 $last = $userModel->getCounterDate();
                 $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
@@ -419,7 +450,7 @@ class Telegram extends Model
 
                     // Перевірка після збереженням
                     if (!$savePokaz) {
-                        return $this->menuMess($chatId, "Показник лічильникa за <b>" . $last['year'] . "-" . $last['month'] . "-01</b> був <b>доданий раніше</b>\n<b>" . $tgUser->name . "</b> Виберіть тип лічильника");
+                        return $this->menuMess($chatId, $tgUser->area, "Показник лічильникa за <b>" . $last['year'] . "-" . $last['month'] . "-01</b> був <b>доданий раніше</b>\n<b>" . $tgUser->name . "</b> Виберіть тип лічильника");
                     }
 
                     $search->recalculation($metaCounterPK);
@@ -427,7 +458,7 @@ class Telegram extends Model
                         $tgUser->login,
                         ['login' => $tgUser->login, 'message' => "Додав показник = " . $metadata->pokaz . " лічильнику = " . $search->getCounterByCounterPK($metaCounterPK)->counterId . " (telegram)"]
                     );
-                    return $this->menuMess($chatId, "Показник лічильникa " . $metadata->pokaz . " за " . $last['month'] . "." . $last['year'] . " був <b>успішно додані 👍 </b>\n<i>Виберіть тип лічильника</i>");
+                    return $this->menuMess($chatId, $tgUser->area, "Показник лічильникa " . $metadata->pokaz . " за " . $last['month'] . "." . $last['year'] . " був <b>успішно додані 👍 </b>\n<i>Виберіть тип лічильника</i>");
                 }
             } elseif ($userTgState == 'confirmGen') {
                 $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
@@ -448,7 +479,7 @@ class Telegram extends Model
                     $consumedFuel = floatval(number_format($workingTime * $genData[0]["coeff"], 1, '.', ''));
 
                     if (!$genData || $genData[0]["fuel"] - $consumedFuel < 0) {
-                        return $this->menuMess($chatId, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть генератор");
+                        return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть генератор");
                     }
 
                     $dataTargetGenerator = $generator->getSpecificGenerator('', '', $metaGeneratorPK);
@@ -476,7 +507,35 @@ class Telegram extends Model
                         ['fuel' => $consumed],
                         ['areaId' => $dataTargetGenerator[0]['genAreaId'], 'type' => $dataTargetGenerator[0]['genTypeId']]
                     );
-                    return $this->menuMess($chatId, "Показник генератора <code>" . $metadata->pokaz . "</code> був <b>успішно додані 👍 </b>\n<i>Виберіть тип лічильника</i>");
+                    return $this->menuMess($chatId, $tgUser->area, "Показник генератора <code>" . $metadata->pokaz . "</code> був <b>успішно додані 👍 </b>\n<i>Виберіть тип лічильника</i>");
+                }
+            } elseif ($userTgState == 'confirmCountCanister') {
+                $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
+
+                if ($callbackData == 'denied') return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть каністри");
+                elseif ($callbackData == 'confirm') {
+                    $metaCanisterPK = $metadata->canisterPK;
+                    $canisterData = $generator->getSpecificCanister('', '', '', $metaCanisterPK);
+                    if (!$canisterData || $canisterData == 0) {
+                        return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть каністри");
+                    }
+                    $this->db->query('UPDATE trackingCanister SET status = 2 WHERE id = ' . $metaCanisterPK);
+                    $fuelArea = $this->db->query('SELECT * FROM fuelArea WHERE areaId = ' . $canisterData[0]['areaId'] . ' AND type = ' . $canisterData[0]['typeId'])->getResultArray();
+                    if ($fuelArea) {
+                        $this->db->query('UPDATE fuelArea SET fuel = ROUND(fuel + ' . $canisterData[0]['fuel'] . ', 2), canister = canister + ' . $canisterData[0]['canister'] . '
+                                            WHERE type = ' . $canisterData[0]['typeId'] . ' AND areaId = ' . $canisterData[0]['areaId']);
+                    } else {
+                        $this->db->query('INSERT INTO fuelArea(fuel, canister, areaId, type) 
+                                            VALUES (' . $canisterData[0]['fuel'] . ', ' . $canisterData[0]['canister'] . ', ' . $canisterData[0]['areaId'] . ', ' . $canisterData[0]['typeId'] . ')');
+                    }
+                    $userModel->addUserLog(
+                        $tgUser->login,
+                        [
+                            'login' => $tgUser->login,
+                            'message' => "Отриманно каністри №" . $metaCanisterPK . ", палива: " . $canisterData[0]['fuel'] . ", каністр = " . $canisterData[0]['canister'] . " (telegram)"
+                        ]
+                    );
+                    return $this->menuMess($chatId, $tgUser->area, "Каністри №<code>" . $metaCanisterPK . "</code> були <b>успішно отримані 👍 </b>\n<i>Виберіть тип лічильника</i>");
                 }
             } else return [$this->createTelegramMessage(
                 "<b>Упс... Ви не маєте права на дану дію 🤔</b>",
@@ -519,7 +578,7 @@ class Telegram extends Model
         $metadata = json_decode($tgUser->telegramMetadata);
         if ($counterPK != null) {
             if (!$search->findCountersNotFilled($tgUser->area, $metadata->typeCounter, $counterPK)) {
-                return $this->menuMess($chatId, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть тип лічильника");
+                return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть тип лічильника");
             }
             return $this->addPokazMess($chatId, $metadata, $counterPK);
         }
@@ -532,11 +591,24 @@ class Telegram extends Model
         $metadata = json_decode($tgUser->telegramMetadata);
         if ($generatorPK != null) {
             if (!$generator->findActiveGenerators($tgUser->area, $generatorPK)) {
-                return $this->menuMess($chatId, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть генератор");
+                return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть генератор");
             }
             return $this->addPokazGenMess($chatId, $tgUser, $generatorPK);
         }
         return $this->addPokazGenMess($chatId, $tgUser, $metadata->generatorPK);
+    }
+
+    private function chooseCanister($tgUser, $chatId, $canisterPK = null)
+    {
+        $generator = new Generator();
+        $metadata = json_decode($tgUser->telegramMetadata);
+        if ($canisterPK != null) {
+            if ($generator->getSpecificCanister($tgUser->area, '', 1, '') == 0) {
+                return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть каністри");
+            }
+            return $this->addCountСanisterMess($chatId, $tgUser, $canisterPK);
+        }
+        return $this->addCountСanisterMess($chatId, $tgUser, $metadata->canisterPK);
     }
 
     private function addPokazMess($chatId, $metadata, $counterPK)
@@ -595,17 +667,56 @@ class Telegram extends Model
         )];
     }
 
-    private function menuMess($chatId, $title)
+    private function addCountСanisterMess($chatId, $tgUser, $canisterPK)
     {
         $userModel = new User();
+        $generator = new Generator();
+        $canister = $generator->getSpecificCanister($tgUser->area, '', 1, $canisterPK);
+        $userModel->insertTelegramDataByChatId(
+            $chatId,
+            'confirmCountCanister',
+            ["canisterPK" => $canisterPK]
+        );
+
+        return [$this->createTelegramMessage(
+            "<b>Отримані каністри №</b> <u>" . $canister[0]["id"] . "</u>\nПідтвердіть чи вказанні привильно данні\n" .
+                "<b>Дата відправки:</b> <i>" . $canister[0]['date'] . "</i>\n" .
+                "<b>Палива:</b> <i>" . $canister[0]['fuel'] . "</i>\n" .
+                "<b>Кількість:</b> <i>" . $canister[0]['canister'] . "</i>\n" .
+                "<b>Тип:</b> <i>" . $canister[0]['type'] . "</i>\n",
+            $this->buttonBuilder([[
+                ["Підтвержую", "confirm"],
+                ["Допущенна помилка", "denied"]
+            ]])
+        )];
+    }
+
+
+    private function menuMess($chatId, $areaId, $title)
+    {
+        $generator = new Generator();
+        $specificCanister = $generator->getSpecificCanister($areaId, '', 1, '');
+        $activeGenerators = $generator->findActiveGenerators($areaId);
+        $userModel = new User();
         $userModel->insertTelegramDataByChatId($chatId, "menu");
+        $genMenu = [];
+        if (count($specificCanister) > 0) {
+            array_push($genMenu, [
+                "Каністри",
+                "canisters"
+            ]);
+        }
+        if (count($activeGenerators) > 0) {
+            array_push($genMenu, [
+                "Генератори",
+                "generators"
+            ]);
+        }
+
         return [$this->createTelegramMessage(
             $title,
             $this->buttonBuilder([
-                [[
-                    "Генератори",
-                    "generators"
-                ]],
+                $genMenu,
                 [
                     ["Електрика", "8"],
                     ["Газ", "7"],

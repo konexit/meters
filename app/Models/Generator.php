@@ -155,6 +155,7 @@ class Generator extends Model
 
     function confirmCanister($request)
     {
+        $userModel = new User();
         $genId = $request->getVar('idCanister');
         $dataTargetCanister = $this->getSpecificCanister('', '', '', $genId);
         header("Content-Type: application/json");
@@ -170,6 +171,13 @@ class Generator extends Model
                 $this->db->query('INSERT INTO fuelArea(fuel, canister, areaId, type) 
                 VALUES (' . $dataTargetCanister[0]['fuel'] . ', ' . $dataTargetCanister[0]['canister'] . ', ' . $dataTargetCanister[0]['areaId'] . ', ' . $dataTargetCanister[0]['typeId'] . ')');
             }
+            $userModel->addUserLog(
+                session("mLogin"),
+                [
+                    'login' => session("mLogin"),
+                    'message' => "Отриманно каністри №" . $dataTargetCanister[0]['id'] . ", палива: " . $dataTargetCanister[0]['fuel'] . ", каністр = " . $dataTargetCanister[0]['canister']
+                ]
+            );
             echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
         }
     }
@@ -251,6 +259,34 @@ class Generator extends Model
                                     " . $condition . " 
                                 ORDER BY 
                                     g.state DESC, a.unit")->getResultArray();
+    }
+
+    function getSpecificCanister($unit, $type = "", $status = "", $canisterId = "")
+    {
+        $condition = "";
+        if ($unit) $condition =  " c.unit = " . $unit;
+        if ($type) $condition = ($condition != "") ? $condition . " AND c.type = " . $type : " c.type = " . $type;
+        if ($status) $condition = ($condition != "") ? $condition . " AND c.status = " . $status : " c.status = " . $status;
+        if ($canisterId) $condition = ($condition != "") ? $condition . " AND c.id = " . $canisterId : " c.id = " . $canisterId;
+        if ($condition) $condition = " WHERE " . $condition;
+        return $this->db->query("SELECT 
+                                    c.id, tg.type, a.addr, a.unit, sc.name AS status, c.date, a.id as areaId, c.type AS typeId,
+                                    (
+                                        CASE WHEN c.fuel IS NULL THEN 0 ELSE ROUND(c.fuel, 2)
+                                            END
+                                    ) AS fuel, 
+                                    (
+                                        CASE WHEN c.canister IS NULL THEN 0 ELSE c.canister
+                                            END
+                                    ) AS canister
+                                FROM 
+                                    trackingCanister AS c
+                                    LEFT JOIN area AS a ON a.id = c.unit
+                                    LEFT JOIN typeGenerator AS tg ON tg.id = c.type
+                                    LEFT JOIN statusCanister AS sc ON sc.id = c.status 
+                                    " . $condition . " 
+                                ORDER BY 
+                                    c.date")->getResultArray();
     }
 
     private function getRemnants($company)
@@ -508,33 +544,5 @@ class Generator extends Model
 
         $report["data"] = $data;
         return $report;
-    }
-
-    private function getSpecificCanister($unit, $type = "", $status = "", $canisterId = "")
-    {
-        $condition = "";
-        if ($unit) $condition =  " c.unit = " . $unit;
-        if ($type) $condition = ($condition != "") ? $condition . " AND c.type = " . $type : " c.type = " . $type;
-        if ($status) $condition = ($condition != "") ? $condition . " AND c.status = " . $status : " c.status = " . $status;
-        if ($canisterId) $condition = ($condition != "") ? $condition . " AND c.id = " . $canisterId : " c.id = " . $canisterId;
-        if ($condition) $condition = " WHERE " . $condition;
-        return $this->db->query("SELECT 
-                                    c.id, tg.type, a.addr, a.unit, sc.name AS status, c.date, a.id as areaId, c.type AS typeId,
-                                    (
-                                        CASE WHEN c.fuel IS NULL THEN 0 ELSE ROUND(c.fuel, 2)
-                                            END
-                                    ) AS fuel, 
-                                    (
-                                        CASE WHEN c.canister IS NULL THEN 0 ELSE c.canister
-                                            END
-                                    ) AS canister
-                                FROM 
-                                    trackingCanister AS c
-                                    LEFT JOIN area AS a ON a.id = c.unit
-                                    LEFT JOIN typeGenerator AS tg ON tg.id = c.type
-                                    LEFT JOIN statusCanister AS sc ON sc.id = c.status 
-                                    " . $condition . " 
-                                ORDER BY 
-                                    c.date")->getResultArray();
     }
 }
