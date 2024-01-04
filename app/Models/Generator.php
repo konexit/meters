@@ -94,24 +94,30 @@ class Generator extends Model
     {
         $idCanister = $request->getVar('idCanister');
         $backCanistr = $request->getVar('backCanistr');
-        $dataTargetCanister = $this->db->query("SELECT c.canister FROM trackingCanister AS c WHERE c.id = " . $idCanister)->getResultObject();
+        $dataTargetCanister = $this->db->query("SELECT c.canister, c.type, c.unit FROM trackingCanister AS c WHERE c.id = " . $idCanister)->getResultObject();
 
         header("Content-Type: application/json");
         if (!$dataTargetCanister || $dataTargetCanister[0]->canister < $backCanistr) {
             echo json_encode(["response" => 500, "message" => "Перевірте введені дані та оновіть сторінку. Якщо проблема не вирішилась, зверніться в ІТ відділ"], JSON_UNESCAPED_UNICODE);
         } else {
+            $remainCanisters = $dataTargetCanister[0]->canister - $backCanistr;
             if ($dataTargetCanister[0]->canister == $backCanistr) {
-                $this->db->table('trackingCanister')->delete(['id' => $idCanister]);
+                $this->db->table('trackingCanister')->update(
+                    [
+                        'canister' => $remainCanisters,
+                        'status' => 3
+                    ],
+                    ['id' => $idCanister]
+                );
             } else {
                 $this->db->table('trackingCanister')->update(
-                    ['canister' => $dataTargetCanister[0]->canister - $backCanistr],
+                    ['canister' => $remainCanisters],
                     ['id' => $idCanister]
                 );
             }
-            $canisters = $this->getSpecificCanister('', '', '', $idCanister);
             $this->db->table('fuelArea')->update(
-                ['canister' => $dataTargetCanister[0]->canister - $backCanistr],
-                ['areaId' => $canisters[0]['areaId'], 'type' => $canisters[0]['typeId']]
+                ['canister' => $remainCanisters],
+                ['areaId' => $dataTargetCanister[0]->unit, 'type' => $dataTargetCanister[0]->type]
             );
             echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
         }
@@ -175,7 +181,7 @@ class Generator extends Model
                 session("mLogin"),
                 [
                     'login' => session("mLogin"),
-                    'message' => "Отриманно каністри №" . $dataTargetCanister[0]['id'] . ", палива: " . $dataTargetCanister[0]['fuel'] . ", каністр = " . $dataTargetCanister[0]['canister']
+                    'message' => "Отриманно каністри №" . $dataTargetCanister[0]['id'] . ", палива = " . $dataTargetCanister[0]['fuel'] . ", каністр = " . $dataTargetCanister[0]['canister']
                 ]
             );
             echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
@@ -286,7 +292,7 @@ class Generator extends Model
                                     LEFT JOIN statusCanister AS sc ON sc.id = c.status 
                                     " . $condition . " 
                                 ORDER BY 
-                                    c.date")->getResultArray();
+                                    sc.id, c.date")->getResultArray();
     }
 
     private function getRemnants($company)

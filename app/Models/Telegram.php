@@ -475,7 +475,7 @@ class Telegram extends Model
                     $endTime = strtotime($endDate2 . ' ' . $endTime2);
 
                     $genData = $generator->findActiveGenerators($tgUser->area, $metaGeneratorPK);
-                    $workingTime =  number_format(($endTime - $startTime) / (60 * 60), 1, '.', '');
+                    $workingTime =  floatval(number_format(($endTime - $startTime) / (60 * 60), 1, '.', ''));
                     $consumedFuel = floatval(number_format($workingTime * $genData[0]["coeff"], 1, '.', ''));
 
                     if (!$genData || $genData[0]["fuel"] - $consumedFuel < 0) {
@@ -532,7 +532,7 @@ class Telegram extends Model
                         $tgUser->login,
                         [
                             'login' => $tgUser->login,
-                            'message' => "Отриманно каністри №" . $metaCanisterPK . ", палива: " . $canisterData[0]['fuel'] . ", каністр = " . $canisterData[0]['canister'] . " (telegram)"
+                            'message' => "Отриманно каністри №" . $metaCanisterPK . ", палива = " . $canisterData[0]['fuel'] . ", каністр = " . $canisterData[0]['canister'] . " (telegram)"
                         ]
                     );
                     return $this->menuMess($chatId, $tgUser->area, "Каністри №<code>" . $metaCanisterPK . "</code> були <b>успішно отримані 👍 </b>\n<i>Виберіть тип лічильника</i>");
@@ -700,16 +700,16 @@ class Telegram extends Model
         $userModel = new User();
         $userModel->insertTelegramDataByChatId($chatId, "menu");
         $genMenu = [];
-        if (count($specificCanister) > 0) {
-            array_push($genMenu, [
-                "Каністри",
-                "canisters"
-            ]);
-        }
         if (count($activeGenerators) > 0) {
             array_push($genMenu, [
                 "Генератори",
                 "generators"
+            ]);
+        }
+        if (count($specificCanister) > 0) {
+            array_push($genMenu, [
+                "Каністри",
+                "canisters"
             ]);
         }
 
