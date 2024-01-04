@@ -121,6 +121,14 @@ class Telegram extends Model
             )];
         }
 
+        // Кінець розмови
+        if ($textMess == '/logout') {
+            if ($userModel->findUserByChatId($chatId) != null) {
+                $userModel->removeTelegramDataByChatId($chatId, "");
+            }
+            return [$this->createTelegramMessage("Ви успішно вийшли із облікового запису\nВведіть новий <b>логін</b>")];
+        }
+
         $tgUserState = $tgUser->telegramState;
         if ($tgUserState == "pass") {
             // Валідація пароля
@@ -138,10 +146,10 @@ class Telegram extends Model
 
             if ($textMess == $tgUser->pass) {
                 $userRights = $tgUser->rights;
-                if ($userRights == 3) return $this->menuMess($chatId, $tgUser->area, "<b>" . $tgUser->name . " ви успішно увішли</b>\n<i>Виберіть тип лічильника</i>");
+                if ($userRights == 3) return $this->menuMess($chatId, $tgUser->area, "<b>" . $tgUser->name . " ви успішно увішли</b>\n<i>Виберіть тип лічильника</i>", true);
                 elseif ($userRights == 1 || $userRights == 2 || $userRights == 5) {
                     $userModel->insertTelegramDataByChatId($chatId, "adminMenu");
-                    return $this->menuAdminMess();
+                    return $this->menuAdminMess(true);
                 } else return [$this->createTelegramMessage(
                     "<b>Увага!!!</b> <i>Цей сервіс лише для співробітників</i>",
                     $this->buttonBuilder([
@@ -692,13 +700,17 @@ class Telegram extends Model
     }
 
 
-    private function menuMess($chatId, $areaId, $title)
+    private function menuMess($chatId, $areaId, $title, $justLoggined = false)
     {
         $generator = new Generator();
         $specificCanister = $generator->getSpecificCanister($areaId, '', 1, '');
         $activeGenerators = $generator->findActiveGenerators($areaId);
         $userModel = new User();
         $userModel->insertTelegramDataByChatId($chatId, "menu");
+
+        $respMessage = [];
+        if ($justLoggined) array_push($respMessage, $this->createTelegramMessage("Щоб вийти із облікового запису напишіть <code>/logout</code>"));
+
         $genMenu = [];
         if (count($activeGenerators) > 0) {
             array_push($genMenu, [
@@ -713,40 +725,50 @@ class Telegram extends Model
             ]);
         }
 
-        return [$this->createTelegramMessage(
-            $title,
-            $this->buttonBuilder([
-                $genMenu,
-                [
-                    ["Електрика", "8"],
-                    ["Газ", "7"],
-                    ["Гаряча вода", "6"],
-                    ["Холодна вода", "5"]
-                ]
-            ])
-        )];
+        array_push(
+            $respMessage,
+            $this->createTelegramMessage(
+                $title,
+                $this->buttonBuilder([
+                    $genMenu,
+                    [
+                        ["Електрика", "8"],
+                        ["Газ", "7"],
+                        ["Гаряча вода", "6"],
+                        ["Холодна вода", "5"]
+                    ]
+                ])
+            )
+        );
+        return $respMessage;
     }
 
-    private function menuAdminMess()
+    private function menuAdminMess($justLoggined = false)
     {
         $search = new Search();
         $counters = $search->findCountersNotFilled();
+        $respMessage = [];
+
+        if ($justLoggined) array_push($respMessage, $this->createTelegramMessage("Щоб вийти із облікового запису напишіть <code>/logout</code>"));
 
         if (empty($counters)) {
-            return [$this->createTelegramMessage(
-                "Показники усім лічильникам були вказані\n<b>Чудово😎</b>",
-                $this->buttonBuilder([
-                    [
+            array_push(
+                $respMessage,
+                $this->createTelegramMessage(
+                    "Показники усім лічильникам були вказані\n<b>Чудово😎</b>",
+                    $this->buttonBuilder([
                         [
-                            "Оновити",
-                            "adminMenu"
+                            [
+                                "Оновити",
+                                "adminMenu"
+                            ]
                         ]
-                    ]
-                ])
-            )];
+                    ])
+                )
+            );
+            return $respMessage;
         }
 
-        $respMessage = [];
         array_push($respMessage, $this->createTelegramMessage("<b>Список не вказаних показників лічильників</b>"));
 
         foreach ($counters as $counter) {
