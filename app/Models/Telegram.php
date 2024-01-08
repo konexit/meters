@@ -217,6 +217,19 @@ class Telegram extends Model
             )];
         } elseif ($tgUserState == "addPokazGen" && $tgUser->rights == 3) {
             try {
+                if (preg_match('/[а-яА-Яa-zA-Z]/u', $textMess)) {
+                    return [$this->createTelegramMessage(
+                        "<b>Були введені некоректні дані генератора</b>\nПеревірте вказані показники та спробуйте ще раз",
+                        $this->buttonBuilder([
+                            [
+                                [
+                                    "Повернутися до меню",
+                                    "backMenu"
+                                ]
+                            ]
+                        ])
+                    )];
+                }
                 $parts = explode('_', $textMess);
 
                 list($startDate1, $startTime1) = sscanf($parts[0], "%[^\(](%[^\)])");
@@ -246,7 +259,17 @@ class Telegram extends Model
                 $workingTime = number_format(($endTime - $startTime) / (60 * 60), 1, '.', '');
 
                 if (!$genData || $genData[0]["fuel"] - floatval($workingTime * $genData[0]["coeff"]) < 0) {
-                    return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть генератор");
+                    return [$this->createTelegramMessage(
+                        "<b>Були введені некоректні дані генератора</b>\nПеревірте вказані показники та спробуйте ще раз",
+                        $this->buttonBuilder([
+                            [
+                                [
+                                    "Повернутися до меню",
+                                    "backMenu"
+                                ]
+                            ]
+                        ])
+                    )];
                 }
 
                 $userModel->insertTelegramDataByChatId(

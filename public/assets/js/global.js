@@ -1177,7 +1177,7 @@ function addGeneratorPokaz(gId) {
         return;
     }
 
-    const workingTime = Math.round(((endGenerator - startGenerator) / (1000 * 60 * 60)) * 10) / 10 
+    const workingTime = Math.round(((endGenerator - startGenerator) / (1000 * 60 * 60)) * 10) / 10
     const confirmWorkingTime = confirm("Генератор працював: " + workingTime + " годин?");
     if (!confirmWorkingTime) {
         return;
@@ -1260,11 +1260,22 @@ function getGeneratorsAndCanisters() {
                     "<span>Початок:<input type='datetime-local' class='start-generator' value='" + currentDateTime + "'/></span>" +
                     "<span>Кінець:<input type='datetime-local' class='end-generator' value='" + currentDateTime + "' /></span>" +
                     "</div>" +
-                    "<button onclick='addGeneratorPokaz(" + areaGenerator.id + ")' style='font-size: 20px;'>Подати</button>" +
+                    "<button id='genBTNId_" + areaGenerator.id + "' onclick='addGeneratorPokaz(" + areaGenerator.id + ")' style='font-size: 20px;'>Подати</button>" +
                     "</div>" +
                     "</div>";
 
                 areaGeneratorElement.appendChild(generatorElement);
+
+                const datapicker = document.querySelectorAll('#genId_' + areaGenerator.id + ' input[type=datetime-local]')
+                datapicker.forEach(function (elem) {
+                    elem.addEventListener("change", function () {
+                        const startGenerator = new Date(document.querySelector('#genId_' + areaGenerator.id + ' .start-generator').value);
+                        const endGenerator = new Date(document.querySelector('#genId_' + areaGenerator.id + ' .end-generator').value);
+
+                        if (startGenerator >= endGenerator) document.querySelector('#genBTNId_' + areaGenerator.id).innerHTML = 'Подати'
+                        else document.querySelector('#genBTNId_' + areaGenerator.id).innerHTML = 'Подати ≈ ' + Math.round(((endGenerator - startGenerator) / (1000 * 60 * 60)) * 10) / 10
+                    });
+                });
             }
         });
     });
