@@ -228,7 +228,7 @@ class Generator extends Model
         if ($area != null) $conditionUnit = " AND g.unit = " . $area;
         if ($generatorPK != null) $conditionGenPK = " AND g.id = " . $generatorPK;
         return $this->db->query("SELECT 
-                                    g.serialNum, tg.type, fa.fuel, g.id, g.name, g.coeff
+                                    g.serialNum, tg.type, fa.fuel, g.id, g.name, g.coeff, fa.canister
                                 FROM generator AS g
                                 JOIN fuelArea AS fa ON g.unit = fa.areaId AND g.type = fa.type
                                 JOIN typeGenerator AS tg ON g.type = tg.id

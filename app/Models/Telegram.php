@@ -685,6 +685,7 @@ class Telegram extends Model
                 "<b>Назва:</b> <i>" . $dataGen[0]["name"] . "</i>\n" .
                 "<b>Тип:</b> <i>" . $dataGen[0]["type"] . "</i>\n" .
                 "<b>Палива:</b> <i>" . $dataGen[0]["fuel"] . " л.</i>\n" .
+                "<b>Каністр:</b> <i>" . $dataGen[0]["canister"] . " од.</i>\n" .
                 "<b>Прогнозований час роботи генератора: ≈ </b> <i>" . number_format($dataGen[0]["fuel"] / $dataGen[0]["coeff"], 1, '.', '') . " годин</i>\n" .
                 "<b>ПРИКЛАД:</b> <code>" . $twoHoursAgo . '_' . $currentDateTime . "</code>\n",
             $this->buttonBuilder([
