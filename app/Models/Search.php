@@ -906,8 +906,7 @@ class Search extends Model
     private function tablShablone()
     {
         return array(
-            'table_open'          => '<table border="2" cellpadding="4" cellspacing="0" align="Center" style="width: 100%;">',
-
+            'table_open'          => '<table border="2" cellpadding="4" cellspacing="0" align="Center" style="width: 100%;table-layout: fixed;">',
             'heading_row_start'   => '<tr style="color:White;background-color:#006698;font-size:14pt;font-weight:bold;">',
             'heading_row_end'     => '</tr>',
             'heading_cell_start'  => '<th align="left" scope="col">',

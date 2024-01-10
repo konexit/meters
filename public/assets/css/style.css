@@ -617,9 +617,18 @@ h2 {
 #addCounterBtn,
 #addGenetarorBtn,
 #addGenetarorPokaz,
-#addCanisterBtn,
-.adding-pokaz button {
+#addCanisterBtn {
     background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.adding-pokaz button {
+    background-color: #4e674f;
     color: white;
     padding: 10px 20px;
     border: none;

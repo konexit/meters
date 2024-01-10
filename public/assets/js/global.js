@@ -1240,6 +1240,7 @@ function getGeneratorsAndCanisters() {
             if (areaGenerator.state === "1") {
                 var generatorElement = document.createElement("div");
                 generatorElement.className = "flex-container";
+                const avWorkingTime = Math.round(areaGenerator.fuel / areaGenerator.coeff * 10) / 10
 
                 generatorElement.innerHTML = "<div>" +
                     "<div class='generator-info'>" +
@@ -1250,7 +1251,7 @@ function getGeneratorsAndCanisters() {
                     "<div class='generator-resources'>" +
                     "<div class='res-gen'><strong>Каністр:</strong><span>" + areaGenerator.canister + " шт.</span></div>" +
                     "<div class='res-gen'><strong>Палива:</strong><span>" + areaGenerator.fuel + " л.</span></div>" +
-                    "<div class='res-gen'><strong>Прогнозований час роботи генератора: &#8776;</strong><span style='color: #eb0b0b;'>" + Math.round(areaGenerator.fuel / areaGenerator.coeff * 10) / 10 + " годин</span></div>" +
+                    "<div class='res-gen'><strong>Прогнозований час роботи генератора: &#8776;</strong><span id='avWorkingTime_" + areaGenerator.id + "' style='color: #eb0b0b;'>" + avWorkingTime + " годин</span></div>" +
                     "</div>" +
                     "</div>" +
                     "<div class='adding-pokaz'>" +
@@ -1271,9 +1272,16 @@ function getGeneratorsAndCanisters() {
                     elem.addEventListener("change", function () {
                         const startGenerator = new Date(document.querySelector('#genId_' + areaGenerator.id + ' .start-generator').value);
                         const endGenerator = new Date(document.querySelector('#genId_' + areaGenerator.id + ' .end-generator').value);
-
-                        if (startGenerator >= endGenerator) document.querySelector('#genBTNId_' + areaGenerator.id).innerHTML = 'Подати'
-                        else document.querySelector('#genBTNId_' + areaGenerator.id).innerHTML = 'Подати ≈ ' + Math.round(((endGenerator - startGenerator) / (1000 * 60 * 60)) * 10) / 10
+                        const currentWorkingTime = Math.round(((endGenerator - startGenerator) / (1000 * 60 * 60)) * 10) / 10
+                        let btn = document.querySelector('#genBTNId_' + areaGenerator.id);
+                        debugger
+                        if (isNaN(startGenerator) || isNaN(endGenerator) || startGenerator >= endGenerator || currentWorkingTime == 0 || currentWorkingTime > avWorkingTime) {
+                            btn.innerHTML = 'Подати'
+                            btn.style['background-color'] = "#517b53"
+                        } else {
+                            btn.innerHTML = 'Подати ≈ ' + Math.round(((endGenerator - startGenerator) / (1000 * 60 * 60)) * 10) / 10
+                            btn.style['background-color'] = "#4CAF50"
+                        }
                     });
                 });
             }
