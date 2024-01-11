@@ -1,11 +1,14 @@
 <?php
+
 namespace App\Models;
+
 include_once FCPATH . '../vendor/autoload.php';
 
 use CodeIgniter\Model;
 
 
-class Auth extends Model {
+class Auth extends Model
+{
 
     public function auth()
     {
@@ -26,7 +29,6 @@ class Auth extends Model {
                 'timestamp' => time(),
                 'error' => 'Token not found in request'
             );
-
         } else {
 
             try {
@@ -35,7 +37,6 @@ class Auth extends Model {
                 $key = new \Firebase\JWT\Key("-----BEGIN PUBLIC KEY-----\n" . wordwrap($public_key, 64, "\n", true) . "\n-----END PUBLIC KEY-----", 'RS256');
                 $token = @\Firebase\JWT\JWT::decode($bearer, $key);
                 $ex = false;
-
             } catch (\InvalidArgumentException $e) {
                 $ex = 'InvalidArgumentException - provided key/key-array is empty or malformed.';
             } catch (\DomainException $e) {
@@ -56,13 +57,14 @@ class Auth extends Model {
                     'timestamp' => time(),
                     'error' => 'Token verification error: ' . $ex
                 );
-
             } else {
 
                 $now = new \DateTimeImmutable();
 
-                if ($token->exp < $now->getTimestamp() ||
-                    $token->iat > $now->getTimestamp()) {
+                if (
+                    $token->exp < $now->getTimestamp() ||
+                    $token->iat > $now->getTimestamp()
+                ) {
 
                     $response = array(
                         'status' => 401,
@@ -73,5 +75,32 @@ class Auth extends Model {
             }
         }
         return (object)$response;
+    }
+
+    public function getAccesToken()
+    {
+        $res_auth = curl_init();
+
+        curl_setopt($res_auth, CURLOPT_URL, "https://auth.konex.com.ua/login");
+        curl_setopt($res_auth, CURLOPT_POST, 1);
+        curl_setopt($res_auth, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($res_auth, CURLOPT_POSTFIELDS, json_encode(array(
+            'login' => 'test',
+            'password' => 'test',
+            'user_type' => 'user_root'
+        )));
+        curl_setopt($res_auth, CURLOPT_RETURNTRANSFER, true);
+
+        $response_auth = curl_exec($res_auth);
+
+        if (curl_errno($res_auth)) {
+            echo 'Curl error: ' . curl_error($res_auth);
+        }
+
+        curl_close($res_auth);
+
+        $data_auth_response = json_decode($response_auth, true);
+
+        return $data_auth_response['access_token'];
     }
 }

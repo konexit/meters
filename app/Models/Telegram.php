@@ -85,6 +85,48 @@ class Telegram extends Model
         }
     }
 
+    public function sendMessage($chatIds, $botName, $message)
+    {
+        $auth = new Auth();
+
+        $req_sendMess = curl_init();
+
+        curl_setopt($req_sendMess, CURLOPT_URL, "http://10.10.1.14:8082/sendMessageTelegram/");
+        curl_setopt($req_sendMess, CURLOPT_POST, 1);
+        curl_setopt(
+            $req_sendMess,
+            CURLOPT_HTTPHEADER,
+            [
+                "Content-Type: application/json; charset=utf-8",
+                "Authorization: Bearer " . $auth->getAccesToken()
+            ]
+        );
+        curl_setopt($req_sendMess, CURLOPT_POSTFIELDS, json_encode(array(
+            "telegramDispatcher" => [
+                "chat_id" => $chatIds,
+                "sendMessage" => true,
+                "botName" => $botName
+            ],
+            "telegram" => [
+                [
+                    "text" => $message,
+                    "parse_mode" => "HTML",
+                    "reply_markup" => [
+                        "inline_keyboard" => []
+                    ]
+                ]
+            ]
+        )));
+        curl_setopt($req_sendMess, CURLOPT_RETURNTRANSFER, true);
+
+        $response_sendMess = curl_exec($req_sendMess);
+
+        if (curl_errno($req_sendMess)) {
+            echo 'Curl error: ' . curl_error($req_sendMess);
+        }
+
+        curl_close($req_sendMess);
+    }
 
     private function message($json, $chatId)
     {

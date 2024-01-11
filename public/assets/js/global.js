@@ -871,6 +871,7 @@ function addGenerator() {
         gState: gState,
         gId: gId
     }, function () {
+        alert("Генератор: " + gName + " усішно добавленний")
         mGeneratorManage()
     });
 }
@@ -1020,7 +1021,7 @@ function createCanisterFromJSON(jsonData) {
         headerRow.appendChild(th);
     });
     const th = document.createElement("th");
-    th.textContent = 'Дія';
+    th.textContent = 'Дії';
     headerRow.appendChild(th);
 
     tableHeader.appendChild(headerRow);
@@ -1048,16 +1049,31 @@ function createCanisterFromJSON(jsonData) {
 
         tableBody.appendChild(row);
 
-        const rowAction = document.createElement("tr");
-        rowAction.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
-        const cell = document.createElement("td")
-        const addButton = document.createElement("button")
-        addButton.textContent = "Списання"
+        row.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
+
+        const cell = document.createElement("td");
+
+        const buttonContainer = document.createElement("div");
+        buttonContainer.setAttribute("style", "text-align: center;");
+
+        const addButton = document.createElement("button");
+        addButton.textContent = "Повернення";
+        addButton.setAttribute("style", "margin: 5px;");
         addButton.addEventListener("click", function () {
-            canisteraWritingOff(canister['id'], canister['unit'], canister['canister'])
+            canisteraWritingOff(canister['id'], canister['unit'], canister['canister']);
         });
-        cell.appendChild(addButton)
-        row.appendChild(cell)
+        buttonContainer.appendChild(addButton);
+
+        const addButton2 = document.createElement("button");
+        addButton2.textContent = "Відмінити";
+        addButton2.addEventListener("click", function () {
+            cancelСanister(canister['id']);
+        });
+        buttonContainer.appendChild(addButton2);
+
+        cell.appendChild(buttonContainer);
+
+        row.appendChild(cell);
         tableBody.appendChild(row);
     });
 
@@ -1101,10 +1117,12 @@ function addCanister() {
         sendCanisterDate: sendCanisterDate,
         countCanistr: countCanistr,
         fuelVolume: fuelVolume,
+        typeFuel: document.querySelector('#addCanisterType option[data-value="' + type + '"]').value,
         type: type,
         unit: unit
     }, function () {
         ressetFields(['sendCanisterDate', 'countCanistr', 'fuelVolume', 'inputAddCanisterType', 'inputAddCUnit'])
+        alert("Каністри усішно відправлено")
         mCanisterTracking()
     });
 }
@@ -1116,6 +1134,26 @@ function canisteraWritingOff(canisterId, area, countCanister) {
     document.querySelector('#prevCanistrBack').value = countCanister
     document.querySelector('#canisterIdWritingOff').value = canisterId
 }
+
+function cancelСanister(canisterId) {
+    const confirmCanister = confirm("Ви впевненні, що бажаєте відмінити відправку канастри?");
+    if (!confirmCanister) {
+        return;
+    }
+    $.post(ajaxURL, {
+        action: "cancelСanister",
+        idCanister: canisterId
+    }, function (result) {
+        const data = JSON.parse(result)
+        if (data['response'] != 200) {
+            alert(data['message'])
+            return;
+        }
+        mCanisterTracking()
+    });
+}
+
+
 function confirmAction() {
     const prevCanistr = +document.querySelector("#prevCanistrBack").value
     const backCanistr = +document.querySelector("#countCanistrBack").value
@@ -1142,6 +1180,10 @@ function confirmAction() {
 }
 
 function confirmCanister(canId) {
+    const confirmWGettingCanister = confirm("Підтвердіть, що ви дійсно отримали вказанну кількість палива та каністр.\nЯкщо виникають труднощі або запитання зверніться у тенічний відділ");
+    if (!confirmWGettingCanister) {
+        return;
+    }
     $.post(ajaxURL, {
         action: "confirmCanister",
         idCanister: canId

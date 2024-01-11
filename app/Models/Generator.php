@@ -27,6 +27,7 @@ class Generator extends Model
 
     function addCanister($request)
     {
+        $telegram = new Telegram();
         $canister = [
             'date' => $request->getVar('sendCanisterDate'),
             'canister' => $request->getVar('countCanistr'),
@@ -36,6 +37,12 @@ class Generator extends Model
             'status' => 1
         ];
         $this->db->table('trackingCanister')->insert($canister);
+        $tgUsersByTradePoint = $this->db->query("SELECT telegramChatId FROM user WHERE area = " . $request->getVar('unit') . " AND telegramChatId != ''")->getResultArray();
+        $chatIds = [];
+        foreach ($tgUsersByTradePoint as $tgUser) {
+            array_push($chatIds, $tgUser["telegramChatId"]);
+        }
+        $telegram->sendMessage($chatIds, 'meters_konex_bot', "<b>Вам були відправлені каністри. Очікуйте їх прибуття.</b>\n<i>Кількість: </i>" . $request->getVar('countCanistr') . " шт.\n<i>Палива: </i>" . $request->getVar('fuelVolume') . " од.\n<i>Тип: </i>" . $request->getVar('typeFuel'));
     }
 
     function getGenerators($request)
@@ -218,6 +225,16 @@ class Generator extends Model
         }
 
         return (new Excel)->createReports("generators", ["groupBy" => $json->groupBy, "meters" => $reports]);
+    }
+
+    function cancelСanister($request)
+    {
+        $this->db->table('trackingCanister')->update(
+            ['status' => 4],
+            ['id' => $request->getVar('idCanister')]
+        );
+        header("Content-Type: application/json");
+        echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
     }
 
 
