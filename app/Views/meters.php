@@ -285,8 +285,7 @@
                         </h3>
                     </form>
                     <div id="cStat"></div>
-                    <!--Вывод диаграммы показатели и потребление-->
-                    <div id="chart" style="width: 800px; height: 400px; align:center;"></div>
+                    <div id="chart" style="width: 800px; align:center;"></div>
                 </div>
                 <div id="reportCounter">
                     <p></p>

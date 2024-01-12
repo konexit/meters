@@ -8,6 +8,10 @@ var gId = 0;
 var pMonth = 0;
 var pYear = 0;
 
+
+
+
+//// ------------------------ GENERAL --------------------------------------- 
 function ressetFields(elem) {
     elem.forEach(id => {
         const type = document.querySelector('#' + id).type
@@ -39,64 +43,86 @@ function getDataFromDatalist(datalist, input) {
     return unit;
 }
 
-function mCaunter(typeC) {
-    setBackground($(typeC));
-    if (typeC == '#Statistic') {
-        $('#hcYear [value=' + new Date().getFullYear() + ']').attr("selected", "selected")
-        getStatistic($('.radioBox[checked]').val())
-        return;
+function setBackground(meIt) {
+    arrCss = [
+        $("#aCounter"),
+        $("#Pokaz"),
+        $("#Statistic"),
+        $("#][]["),
+        $("#aLog"),
+        $("#changePass"),
+        $("#allUs"),
+        $("#allArea"),
+        $("#aUser"),
+        $("#aArea"),
+        $("#report"),
+        $("#mGeneratorManage"),
+        $("#mAreaGenerator"),
+        $("#mCanisterTracking"),
+        $("#mGeneratorReport"),
+    ];
+    $.each(arrCss, function (ind, val) {
+        val.css({ "color": "White", "text-shadow": "none", "background-position": "none" });
+    })
+    meIt.css({ "color": "#E88F00", "text-shadow": "1px 2px 3px #ddd", "background-position": "-99.99% 0" });
+}
+
+function showSet(mShow) {
+    masObj = [
+        $('#pokazEdit'),
+        $('#cYear'),
+        $("#countStat"),
+        $("#inputPokaz"),
+        $("#counterList"),
+        $("#getCanister"),
+        $("#setCounters"),
+        $("#addCounters"),
+        $("#counter"),
+        $("#generator"),
+        $("#canister"),
+        $("#log"),
+        $("#allUnit"),
+        $("#cPass"),
+        $("#allUser"),
+        $("#addUnit"),
+        $("#adminPanel"),
+        $("#addUser"),
+        $(".table"),
+        $("#reportCounter"),
+        $("#setGenerator"),
+        $("#setCanister"),
+        $("#addGenerator"),
+        $("#addCanister"),
+        $("#reportGenerator"),
+        $("#generatorList"),
+        $("#canisterList"),
+        $("#areaGenerator"),
+    ];
+    $.each(masObj, function (ind, val) {
+        val.hide();
+    })
+    if (mShow) {
+        $.each(mShow, function (ind, val) {
+            val.show();
+        })
     }
-    mSh = (usRights == 3) ? [$("#counter"), $(typeC)] : [$("#counter"), $(typeC), $("#counterList")]
-    option = document.querySelector(`#cUnit option[data-value="${usArea == 193 ? 0 : usArea}"]`)
-    if (usRights == 3 && option) document.querySelector('#inputCUnit').value = option.value
-    showSet(mSh);
-    if (usRights == 3 && !option) alert("У вас немає лічильників")
-    else getCounters()
 }
 
-function getStatistic(mode) {
-    showSet([$("#countStat"), $("#counterList"), $('#cYear')]);
-    unit = getDataFromDatalist('#cUnit', '#inputCUnit')
-    if (unit == undefined) return
-    $.post(ajaxURL, {
-        action: 'getCountersStat',
-        cYear: $('#hcYear :selected').val(),
-        mod: mode,
-        cUnit: unit,
-        cType: $('#hcType :selected').val()
-    }, function (result) {
-        rez = result
-        $("#cStat").html(rez['table'])
-        $('#chart').html('')
-        if (unit) drawChart(rez['diagram'], rez['arrayCount'])
-    }, 'json')
-
+function setValidHeightElement(elem, existTable = false) {
+    const docHeight = $(document).height();
+    const currElem = document.querySelector((existTable) ? elem + " table" : elem).offsetHeight
+    document.querySelector(elem + " table").style.height = window.innerHeight - (docHeight - currElem) - 50 + "px"
 }
 
-function getCounters() {
-    if ($("#countStat").is(":visible")) {
-        getStatistic($('.radioBox[checked]').val());
-        return;
-    }
-    unit = getDataFromDatalist('#cUnit', '#inputCUnit')
-    if (unit == undefined) return
-    const stateCounter = $("#setCounters").is(":visible") ? 0 : 1
-    $.post(ajaxURL, {
-        action: "getCounters",
-        cUnit: unit,
-        cType: $('#hcType :selected')[0].value,
-        state: stateCounter
-    }, function (result) {
-        if (stateCounter) {
-            const tableCounter = document.querySelector("#counter")
-            if (tableCounter.children[0]) tableCounter.replaceChild(createTableFromJSON(result), tableCounter.children[0])
-            else tableCounter.appendChild(createTableFromJSON(result))
-        } else {
-            $("#allCount").html(result);
-        }
-    });
+function getDataValue(datalistSelector, selector) {
+    return document.querySelector(`${datalistSelector} option[data-text="${document.querySelector(selector).value.trim()}"]`)?.dataset?.value
 }
+//// ------------------------ ||| GENERAL ||| ---------------------------------------
 
+
+
+
+//// ------------------------ RENDER TABLE --------------------------------------- 
 function createTableFromJSON(jsonData) {
     const data = JSON.parse(jsonData)
 
@@ -105,7 +131,7 @@ function createTableFromJSON(jsonData) {
     table.setAttribute("cellpadding", "4")
     table.setAttribute("cellspacing", "0")
     table.setAttribute("align", "center")
-    table.setAttribute("style", "width: 100%;table-layout: fixed;")
+    table.setAttribute("style", "width: 1000px; display: block; overflow-y: auto;")
     table.setAttribute("align", "left");
     table.setAttribute("scope", "col");
 
@@ -218,146 +244,178 @@ function setPokaz(counterPK, cNom) {
     showSet([$("#inputPokaz"), $("#pokazEdit")]);
 }
 
-function showSet(mShow) {
-    masObj = [
-        $('#pokazEdit'),
-        $('#cYear'),
-        $("#countStat"),
-        $("#inputPokaz"),
-        $("#counterList"),
-        $("#getCanister"),
-        $("#setCounters"),
-        $("#addCounters"),
-        $("#counter"),
-        $("#generator"),
-        $("#canister"),
-        $("#log"),
-        $("#allUnit"),
-        $("#cPass"),
-        $("#allUser"),
-        $("#addUnit"),
-        $("#adminPanel"),
-        $("#addUser"),
-        $(".table"),
-        $("#reportCounter"),
-        $("#setGenerator"),
-        $("#setCanister"),
-        $("#addGenerator"),
-        $("#addCanister"),
-        $("#reportGenerator"),
-        $("#generatorList"),
-        $("#canisterList"),
-        $("#areaGenerator"),
-    ];
-    $.each(masObj, function (ind, val) {
-        val.hide();
-    })
-    if (mShow) {
-        $.each(mShow, function (ind, val) {
-            val.show();
-        })
-    }
-}
+function createGeneratorFromJSON(jsonData, action) {
+    const data = JSON.parse(jsonData);
 
-function setBackground(meIt) {
-    arrCss = [
-        $("#aCounter"),
-        $("#Pokaz"),
-        $("#Statistic"),
-        $("#][]["),
-        $("#aLog"),
-        $("#changePass"),
-        $("#allUs"),
-        $("#allArea"),
-        $("#aUser"),
-        $("#aArea"),
-        $("#report"),
-        $("#mGeneratorManage"),
-        $("#mAreaGenerator"),
-        $("#mCanisterTracking"),
-        $("#mGeneratorReport"),
-    ];
-    $.each(arrCss, function (ind, val) {
-        val.css({ "color": "White", "text-shadow": "none", "background-position": "none" });
-    })
-    meIt.css({ "color": "#E88F00", "text-shadow": "1px 2px 3px #ddd", "background-position": "-99.99% 0" });
-}
+    const table = document.createElement("table");
+    table.setAttribute("border", "2");
+    table.setAttribute("cellpadding", "4");
+    table.setAttribute("cellspacing", "0");
+    table.setAttribute("align", "center");
+    table.setAttribute("style", "width: 1000px; display: block; overflow-y: auto;");
+    table.setAttribute("align", "left");
+    table.setAttribute("scope", "col");
 
-function setCounter(cId, cUnit, cType, cName, cNum, cVid, csPokaz, cState) {
-    if (cId) {
-        $(`#cType [value="${cType}"]`).attr("selected", "selected");
-        $("#cName").val(cName);
-        $("#cNumer").val(cNum);
-        $("#sPokaz").val(csPokaz);
-        $("#cnType").val(cVid);
-        document.querySelector('#cState').checked = cState;
-        document.querySelector('#inputCArr').value = cUnit.trim()
-        ecId = cId;
-    }
-    document.querySelector('#buttCounter').innerText = cId ? 'Редагувати' : 'Добавити'
-    mSh = [$("#addCounters")];
-    showSet(mSh);
-}
+    // Create table header
+    const tableHeader = document.createElement("thead");
+    tableHeader.setAttribute("style", "position: sticky; top: 0;");
 
-function enterPokaz(counterPK, counter) {
-    if (!$("#counterPokaz").val()) {
-        alert('Введіть будь ласка показник!')
-        return
-    }
-    $.post(ajaxURL, {
-        action: "addPokaz",
-        counter,
-        counterPK,
-        pokaz: $("#counterPokaz").val(),
-        month: $("#pMonch :selected").text() ? $("#pMonch :selected").text() : pMonth,
-        year: $("#pYear :selected").text() ? $("#pYear :selected").text() : pYear
-    }, function (result) {
-        alert(result)
-        $("#counterPokaz").val("")
-        mCaunter("#Pokaz")
-    })
-}
+    const headerRow = document.createElement("tr");
+    headerRow.setAttribute("style", "color:White;background-color:#006698;font-size:14pt;font-weight:bold;");
 
-function addCounter() {
-    if (!$('#cType :selected').val() || document.querySelector('#sPokaz').value == '') {
-        alert("Обов'язкове поле не заповнене")
-        return
-    }
-
-    if ($("#cNumer").val().length > 30 || $("#cName").val().length > 50 || $('#cnType').val().length > 30) {
-        alert("Ви вписали занадто багато символів")
-        return;
-    }
-
-    unit = getDataFromDatalist('#cArr', '#inputCArr')
-    if (unit == undefined) return;
-
-
-    $.post(ajaxURL, {
-        action: "addCounter",
-        spokaz: $('#sPokaz').val().trim(),
-        ctype: $('#cnType').val().trim(),
-        cArr: unit,
-        cNumer: $("#cNumer").val() ? $("#cNumer").val().trim() : 'н/д',
-        cName: $("#cName").val().trim(),
-        cType: $('#cType :selected').text().trim(),
-        cState: document.querySelector('#cState').checked,
-        edit: ecId
-    }, function () {
-        ressetFields(['inputCArr', 'cNumer', 'cName', 'cType', 'sPokaz', 'cnType', 'cState'])
-        showSet([$("#setCounters"), $("#counterList")]);
-        setBackground($("#aCounter"));
-        getCounters();
+    data.columns.forEach(column => {
+        const th = document.createElement("th");
+        th.textContent = column;
+        headerRow.appendChild(th);
     });
-    ecId = 0
+    const th = document.createElement("th");
+    th.textContent = 'Дія';
+    headerRow.appendChild(th);
+
+    tableHeader.appendChild(headerRow);
+    table.appendChild(tableHeader);
+
+    // Create table body
+    const tableBody = document.createElement("tbody");
+
+    data.generators.forEach(generator => {
+        const row = document.createElement("tr");
+        row.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
+
+        data.columns.forEach(column => {
+            const cell = document.createElement("td")
+            const key = data.ref[column]
+            if (key == 'state') {
+                const checkbox = document.createElement("input")
+                checkbox.type = "checkbox"
+                checkbox.checked = generator['state'] == 1
+                checkbox.disabled = true;
+                cell.appendChild(checkbox)
+            } else cell.textContent = generator[key]
+            row.appendChild(cell)
+        })
+
+        tableBody.appendChild(row);
+
+        const rowAction = document.createElement("tr");
+        rowAction.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
+        const cell = document.createElement("td")
+        const addButton = document.createElement("button")
+        addButton.textContent = action
+        addButton.addEventListener("click", function () {
+            gId = generator['id']
+            setGenerator(generator['id'], generator['unit'], generator['name'], generator['serialNum'], generator['coeff'], generator['type'], generator['state'], action)
+        });
+        cell.appendChild(addButton)
+        row.appendChild(cell)
+        tableBody.appendChild(row);
+    });
+
+    table.appendChild(tableBody);
+
+    return table;
 }
 
-function mCountAdd() {
-    ecId = 0;
-    ressetFields(['inputCArr', 'cNumer', 'cName', 'cType'])
-    showSet([$("#setCounters"), $("#counterList")]);
-    setBackground($("#aCounter"));
-    getCounters();
+function createCanisterFromJSON(jsonData) {
+    const data = JSON.parse(jsonData);
+
+    const table = document.createElement("table");
+    table.setAttribute("border", "2");
+    table.setAttribute("cellpadding", "4");
+    table.setAttribute("cellspacing", "0");
+    table.setAttribute("align", "center");
+    table.setAttribute("style", "width: 1000px; display: block; overflow-y: auto;");
+    table.setAttribute("align", "left");
+    table.setAttribute("scope", "col");
+
+    // Create table header
+    const tableHeader = document.createElement("thead");
+    tableHeader.setAttribute("style", "position: sticky; top: 0;");
+
+    const headerRow = document.createElement("tr");
+    headerRow.setAttribute("style", "color:White;background-color:#006698;font-size:14pt;font-weight:bold;");
+
+    data.columns.forEach(column => {
+        const th = document.createElement("th");
+        th.textContent = column;
+        headerRow.appendChild(th);
+    });
+    const th = document.createElement("th");
+    th.textContent = 'Дії';
+    headerRow.appendChild(th);
+
+    tableHeader.appendChild(headerRow);
+    table.appendChild(tableHeader);
+
+    // Create table body
+    const tableBody = document.createElement("tbody");
+
+    data.canisters.forEach(canister => {
+        const row = document.createElement("tr");
+        row.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
+
+        data.columns.forEach(column => {
+            const cell = document.createElement("td")
+            const key = data.ref[column]
+            if (key == 'state') {
+                const checkbox = document.createElement("input")
+                checkbox.type = "checkbox"
+                checkbox.checked = canister['state'] == 1
+                checkbox.disabled = true;
+                cell.appendChild(checkbox)
+            } else cell.textContent = canister[key]
+            row.appendChild(cell)
+        })
+
+        tableBody.appendChild(row);
+
+        row.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
+
+        const cell = document.createElement("td");
+
+        const buttonContainer = document.createElement("div");
+        buttonContainer.setAttribute("style", "text-align: center;");
+
+        const addButton = document.createElement("button");
+        addButton.textContent = "Повернення";
+        addButton.setAttribute("style", "margin: 5px;");
+        addButton.addEventListener("click", function () {
+            canisteraWritingOff(canister['id'], canister['unit'], canister['canister']);
+        });
+        buttonContainer.appendChild(addButton);
+
+        const addButton2 = document.createElement("button");
+        addButton2.textContent = "Відмінити";
+        addButton2.addEventListener("click", function () {
+            cancelСanister(canister['id']);
+        });
+        buttonContainer.appendChild(addButton2);
+
+        cell.appendChild(buttonContainer);
+
+        row.appendChild(cell);
+        tableBody.appendChild(row);
+    });
+
+    table.appendChild(tableBody);
+
+    return table;
+}
+
+function editPokaz(cId, counter) {
+    editPokazAjax(cId, counter)
+}
+//// ------------------------ ||| RENDER TABLE ||| ---------------------------------------
+
+
+
+
+//// ------------------------ USERS --------------------------------------- 
+
+function mallUser() {
+    showSet([$("#adminPanel"), $("#allUser")]);
+    getAllUsers();
+    setBackground($("#allUs"));
 }
 
 function getAllUsers() {
@@ -365,47 +423,54 @@ function getAllUsers() {
         action: 'getAllUser'
     }, function (result) {
         $("#allUser").html(result);
+        setValidHeightElement("#allUser");
     })
 }
 
-function editPokaz(cId, counter) {
-    editPokazAjax(cId, counter)
+function userEdit(uId, uNam, uSur, uPass, uLogin, uArea, uRights) {
+    $("#usName").val(uNam);
+    $("#usSurname").val(uSur);
+    $("#usLogin").val(uLogin);
+    $("#usPass").val(uPass);
+    document.querySelector('#inputUnitUs').value = uArea.trim()
+    $("#RightsUs [text='" + uRights + "']").attr("selected", "selected");
+    const dataset = document.querySelector(`#unitUs option[data-text="${document.querySelector('#inputUnitUs').value}"]`)?.dataset
+    document.querySelector('#RightsUs').disabled = dataset.tradepointid
+    maddUser(uId);
 }
 
-function isEnter(event, cId, counter) {
-    if (event.keyCode == 13) editPokazAjax(cId, counter)
-}
+function confirmUserEdit(id) {
+    if (!$("#usName").val() || !$("#usSurname").val() || !$("#usLogin").val() || !$("#usPass").val()) {
+        alert("Обов'язкові поля не заповнені")
+        return
+    }
 
-function editPokazAjax(cId, counter) {
+    const dataset = document.querySelector(`#unitUs option[data-text="${document.querySelector('#inputUnitUs').value}"]`)?.dataset
+    if ($("#usLogin").val() == dataset.tradepointid + '-') {
+        alert("Вкажіть унікальний логін")
+        return
+    }
+
+    unit = getDataFromDatalist('#unitUs', '#inputUnitUs')
+    if (unit == undefined) return
     $.post(ajaxURL, {
-        action: "editPokaz",
-        counter,
-        pid: cId,
-        index: $("#editP" + cId).val()
-    },
-        function (result) {
-            $.post(ajaxURL, {
-                action: "getPokazByIdAndCounter",
-                cid: result
-            }, function (result) {
-                eval(result);
-            }
-            )
-        }
-    );
-}
-
-function mLog() {
-    showSet([$("#adminPanel"), $("#log")]);
-    setBackground($("#aLog"));
-    getConnectLog();
-}
-
-function getConnectLog() {
-    $.post(ajaxURL, {
-        action: "getLogConnection"
+        action: "userEDIT",
+        userID: id,
+        user: $("#usName").val().trim(),
+        surname: $("#usSurname").val().trim(),
+        login: $("#usLogin").val().trim(),
+        pass: $("#usPass").val().trim(),
+        unit: unit,
+        rights: $("#RightsUs :selected").val()
     }, function (result) {
-        $("#log").html(result);
+        res = JSON.parse(result);
+        if (res.error) {
+            alert(res.error);
+            return
+        }
+        ressetFields(['usName', 'usSurname', 'usLogin', 'usPass', 'RightsUs'])
+        alert(res.success);
+        mallUser();
     })
 }
 
@@ -456,6 +521,45 @@ function usADD() {
     })
 }
 
+function companyUserDefaulValues() {
+    unitInput = document.querySelector('#inputUnitUs')
+    dataValue = getDataValue('#unitUs', '#inputUnitUs')
+    unit;
+
+    if (unitInput.value && dataValue != 0 && dataValue != undefined) {
+        const dataset = document.querySelector(`#unitUs option[data-text="${document.querySelector('#inputUnitUs').value}"]`)?.dataset
+        const isTradePoint = dataset.tradepointid
+        if (isTradePoint) {
+            document.querySelector('#managerTradePointForm').style.display = 'block'
+            return
+        }
+    }
+    document.querySelector('#managerTradePointForm').style.display = 'none'
+    const usLogin = document.querySelector('#usLogin')
+    usLogin.removeEventListener("input", setStartLogin)
+    ressetFields(['usLogin', 'RightsUs', 'isManagerTradePoint'])
+}
+//// ------------------------ ||| USERS ||| ---------------------------------------
+
+
+
+
+//// ------------------------ AREAS --------------------------------------- 
+function mallUnit() {
+    showSet([$("#adminPanel"), $("#allUnit")]);
+    getAllUnit();
+    setBackground($("#allArea"));
+}
+
+function getAllUnit() {
+    $.post(ajaxURL, {
+        action: "getAllUnit"
+    }, function (result) {
+        $("#allUnit").html(result);
+        setValidHeightElement("#allUnit");
+    })
+}
+
 function maddUnit(edMode) {
     if (edMode) {
         $("#confirmUn").text("Редагувати");
@@ -470,11 +574,6 @@ function maddUnit(edMode) {
     }
     showSet([$("#adminPanel"), $("#addUnit")]);
 }
-
-function tradePointFormStatus(status) {
-    if (status) document.querySelector('#tradePointForm').style.display = 'block';
-    else document.querySelector('#tradePointForm').style.display = 'none';
-};
 
 function unADD() {
     const isTradePoint = document.querySelector('#isTradePoint').checked;
@@ -518,32 +617,6 @@ function unADD() {
         alert("Підрозділ додано");
         location.reload()
     });
-}
-
-function mallUnit() {
-    showSet([$("#adminPanel"), $("#allUnit")]);
-    getAllUnit();
-    setBackground($("#allArea"));
-}
-
-function getAllUnit() {
-    $.post(ajaxURL, {
-        action: "getAllUnit"
-    }, function (result) {
-        $("#allUnit").html(result);
-    })
-}
-
-function unitEdit(uId, unit, addr, tel, areaState = true, isTradePoint = false, tradePointId = 0, companyId = 0) {
-    $("#unit").val(unit);
-    $("#unADDR").val(decodeURIComponent(addr));
-    $("#tel").val(tel);
-    document.querySelector('#isTradePoint').checked = isTradePoint
-    document.querySelector('#areaState').checked = areaState
-    tradePointFormStatus(isTradePoint)
-    document.querySelector('#tradePointId').value = tradePointId
-    document.querySelector('#companyId').value = companyId
-    maddUnit(uId);
 }
 
 function tradePointInput(state = false) {
@@ -596,83 +669,164 @@ function confirmUnitEdit(id) {
     })
 }
 
-function mallUser() {
-    showSet([$("#adminPanel"), $("#allUser")]);
-    getAllUsers();
-    setBackground($("#allUs"));
-}
-
-function userEdit(uId, uNam, uSur, uPass, uLogin, uArea, uRights) {
-    $("#usName").val(uNam);
-    $("#usSurname").val(uSur);
-    $("#usLogin").val(uLogin);
-    $("#usPass").val(uPass);
-    document.querySelector('#inputUnitUs').value = uArea.trim()
-    $("#RightsUs [text='" + uRights + "']").attr("selected", "selected");
-    const dataset = document.querySelector(`#unitUs option[data-text="${document.querySelector('#inputUnitUs').value}"]`)?.dataset
-    document.querySelector('#RightsUs').disabled = dataset.tradepointid
-    maddUser(uId);
-}
-
-function getDataValue(datalistSelector, selector) {
-    return document.querySelector(`${datalistSelector} option[data-text="${document.querySelector(selector).value.trim()}"]`)?.dataset?.value
-}
-
-function confirmUserEdit(id) {
-    if (!$("#usName").val() || !$("#usSurname").val() || !$("#usLogin").val() || !$("#usPass").val()) {
-        alert("Обов'язкові поля не заповнені")
+function managerTradePointFormStatus() {
+    const usLogin = document.querySelector('#usLogin');
+    if (!document.querySelector('#isManagerTradePoint').checked) {
+        usLogin.removeEventListener("input", setStartLogin)
+        ressetFields(['usLogin', 'RightsUs'])
         return
     }
 
-    const dataset = document.querySelector(`#unitUs option[data-text="${document.querySelector('#inputUnitUs').value}"]`)?.dataset
-    if ($("#usLogin").val() == dataset.tradepointid + '-') {
-        alert("Вкажіть унікальний логін")
-        return
-    }
+    unitInput = document.querySelector('#inputUnitUs')
+    dataValue = getDataValue('#unitUs', '#inputUnitUs')
+    unit;
 
-    unit = getDataFromDatalist('#unitUs', '#inputUnitUs')
+    if (unitInput.value && dataValue != 0 && dataValue != undefined) {
+        const dataset = document.querySelector(`#unitUs option[data-text="${document.querySelector('#inputUnitUs').value}"]`)?.dataset
+        const isTradePoint = dataset.tradepointid;
+        if (isTradePoint) {
+            const startLogin = dataset.tradepointid + '-'
+            usLogin.value = startLogin
+            usLogin.addEventListener("input", setStartLogin)
+            document.querySelector('#RightsUs').value = 3
+            document.querySelector('#RightsUs').disabled = true
+        }
+    }
+}
+
+function setStartLogin(e) {
+    const dataset = document.querySelector(`#unitUs option[data-text="${document.querySelector('#inputUnitUs').value}"]`)?.dataset
+    if (!e.target.value.startsWith(dataset.tradepointid + '-')) document.querySelector('#usLogin').value = dataset.tradepointid + '-'
+}
+
+function tradePointFormStatus(status) {
+    if (status) document.querySelector('#tradePointForm').style.display = 'block';
+    else document.querySelector('#tradePointForm').style.display = 'none';
+};
+
+function unitEdit(uId, unit, addr, tel, areaState = true, isTradePoint = false, tradePointId = 0, companyId = 0) {
+    $("#unit").val(unit);
+    $("#unADDR").val(decodeURIComponent(addr));
+    $("#tel").val(tel);
+    document.querySelector('#isTradePoint').checked = isTradePoint
+    document.querySelector('#areaState').checked = areaState
+    tradePointFormStatus(isTradePoint)
+    document.querySelector('#tradePointId').value = tradePointId
+    document.querySelector('#companyId').value = companyId
+    maddUnit(uId);
+}
+//// ------------------------ ||| AREAS ||| ---------------------------------------
+
+
+
+
+//// ------------------------ LOG --------------------------------------- 
+function mLog() {
+    showSet([$("#adminPanel"), $("#log")]);
+    setBackground($("#aLog"));
+    getConnectLog();
+}
+
+function getConnectLog() {
+    $.post(ajaxURL, {
+        action: "getLogConnection"
+    }, function (result) {
+        $("#log").html(result);
+        setValidHeightElement("#log");
+    })
+}
+//// ------------------------ ||| LOG ||| ---------------------------------------
+
+
+
+
+//// ------------------------ COUNTERS --------------------------------------- 
+function mCaunter(typeC) {
+    setBackground($(typeC));
+    if (typeC == '#Statistic') {
+        $('#hcYear [value=' + new Date().getFullYear() + ']').attr("selected", "selected")
+        getStatistic($('.radioBox[checked]').val())
+        return;
+    }
+    mSh = (usRights == 3) ? [$("#counter"), $(typeC)] : [$("#counter"), $(typeC), $("#counterList")]
+    option = document.querySelector(`#cUnit option[data-value="${usArea == 193 ? 0 : usArea}"]`)
+    if (usRights == 3 && option) document.querySelector('#inputCUnit').value = option.value
+    showSet(mSh);
+    if (usRights == 3 && !option) alert("У вас немає лічильників")
+    else getCounters()
+}
+
+function getCounters() {
+    if ($("#countStat").is(":visible")) {
+        getStatistic($('.radioBox[checked]').val());
+        return;
+    }
+    unit = getDataFromDatalist('#cUnit', '#inputCUnit')
+    if (unit == undefined) return
+    const stateCounter = $("#setCounters").is(":visible") ? 0 : 1
+    $.post(ajaxURL, {
+        action: "getCounters",
+        cUnit: unit,
+        cType: $('#hcType :selected')[0].value,
+        state: stateCounter
+    }, function (result) {
+        if (stateCounter) {
+            const tableCounter = document.querySelector("#counter")
+            if (tableCounter.children[0]) tableCounter.replaceChild(createTableFromJSON(result), tableCounter.children[0])
+            else tableCounter.appendChild(createTableFromJSON(result))
+            setValidHeightElement("#counter", true);
+        } else {
+            $("#allCount").html(result);
+            setValidHeightElement("#allCount");
+        }
+    });
+}
+
+function getStatistic(mode) {
+    showSet([$("#countStat"), $("#counterList"), $('#cYear')]);
+    unit = getDataFromDatalist('#cUnit', '#inputCUnit')
     if (unit == undefined) return
     $.post(ajaxURL, {
-        action: "userEDIT",
-        userID: id,
-        user: $("#usName").val().trim(),
-        surname: $("#usSurname").val().trim(),
-        login: $("#usLogin").val().trim(),
-        pass: $("#usPass").val().trim(),
-        unit: unit,
-        rights: $("#RightsUs :selected").val()
+        action: 'getCountersStat',
+        cYear: $('#hcYear :selected').val(),
+        mod: mode,
+        cUnit: unit,
+        cType: $('#hcType :selected').val()
     }, function (result) {
-        res = JSON.parse(result);
-        if (res.error) {
-            alert(res.error);
-            return
-        }
-        ressetFields(['usName', 'usSurname', 'usLogin', 'usPass', 'RightsUs'])
-        alert(res.success);
-        mallUser();
+        rez = result
+        $("#cStat").html(rez['table'])
+        $("#chart").html('')
+        if (unit) drawChart(rez['diagram'], rez['arrayCount'])
+        setValidHeightElement("#cStat");
+    }, 'json')
+
+}
+
+function enterPokaz(counterPK, counter) {
+    if (!$("#counterPokaz").val()) {
+        alert('Введіть будь ласка показник!')
+        return
+    }
+    $.post(ajaxURL, {
+        action: "addPokaz",
+        counter,
+        counterPK,
+        pokaz: $("#counterPokaz").val(),
+        month: $("#pMonch :selected").text() ? $("#pMonch :selected").text() : pMonth,
+        year: $("#pYear :selected").text() ? $("#pYear :selected").text() : pYear
+    }, function (result) {
+        alert(result)
+        $("#counterPokaz").val("")
+        mCaunter("#Pokaz")
     })
 }
 
-function mchangePass() {
-    ressetFields(['confPw', 'oldPw', 'newPw'])
-    showSet([$("#cPass")]);
-    setBackground($("#changePass"));
-}
-
-function cPass() {
-    $.post(bUrl + '/password', {
-        oldPw: $("#oldPw").val().trim(),
-        newPw: $('#newPw').val().trim(),
-        confPw: $("#confPw").val().trim()
-    }, function (result) {
-        if (result) {
-            document.querySelector('#passError').innerHTML = `<div class="login-error">${JSON.parse(result).validation}</div>`
-        } else {
-            document.querySelector('#passError').innerHTML = ''
-            ressetFields(['oldPw', 'newPw', 'confPw'])
-            alert("Пароль успішно змінено")
-        }
-    });
+function mCountAdd() {
+    ecId = 0;
+    ressetFields(['inputCArr', 'cNumer', 'cName', 'cType'])
+    showSet([$("#setCounters"), $("#counterList")]);
+    setBackground($("#aCounter"));
+    getCounters();
 }
 
 function reportCounter() {
@@ -772,58 +926,111 @@ function getCompaniesAndColors(type, selector) {
     }).filter(row => row !== null)
 }
 
-function companyUserDefaulValues() {
-    unitInput = document.querySelector('#inputUnitUs')
-    dataValue = getDataValue('#unitUs', '#inputUnitUs')
-    unit;
-
-    if (unitInput.value && dataValue != 0 && dataValue != undefined) {
-        const dataset = document.querySelector(`#unitUs option[data-text="${document.querySelector('#inputUnitUs').value}"]`)?.dataset
-        const isTradePoint = dataset.tradepointid
-        if (isTradePoint) {
-            document.querySelector('#managerTradePointForm').style.display = 'block'
-            return
-        }
+function setCounter(cId, cUnit, cType, cName, cNum, cVid, csPokaz, cState) {
+    if (cId) {
+        $(`#cType [value="${cType}"]`).attr("selected", "selected");
+        $("#cName").val(cName);
+        $("#cNumer").val(cNum);
+        $("#sPokaz").val(csPokaz);
+        $("#cnType").val(cVid);
+        document.querySelector('#cState').checked = cState;
+        document.querySelector('#inputCArr').value = cUnit.trim()
+        ecId = cId;
     }
-    document.querySelector('#managerTradePointForm').style.display = 'none'
-    const usLogin = document.querySelector('#usLogin')
-    usLogin.removeEventListener("input", setStartLogin)
-    ressetFields(['usLogin', 'RightsUs', 'isManagerTradePoint'])
+    document.querySelector('#buttCounter').innerText = cId ? 'Редагувати' : 'Добавити'
+    mSh = [$("#addCounters")];
+    showSet(mSh);
 }
 
-function managerTradePointFormStatus() {
-    const usLogin = document.querySelector('#usLogin');
-    if (!document.querySelector('#isManagerTradePoint').checked) {
-        usLogin.removeEventListener("input", setStartLogin)
-        ressetFields(['usLogin', 'RightsUs'])
+function addCounter() {
+    if (!$('#cType :selected').val() || document.querySelector('#sPokaz').value == '') {
+        alert("Обов'язкове поле не заповнене")
         return
     }
 
-    unitInput = document.querySelector('#inputUnitUs')
-    dataValue = getDataValue('#unitUs', '#inputUnitUs')
-    unit;
-
-    if (unitInput.value && dataValue != 0 && dataValue != undefined) {
-        const dataset = document.querySelector(`#unitUs option[data-text="${document.querySelector('#inputUnitUs').value}"]`)?.dataset
-        const isTradePoint = dataset.tradepointid;
-        if (isTradePoint) {
-            const startLogin = dataset.tradepointid + '-'
-            usLogin.value = startLogin
-            usLogin.addEventListener("input", setStartLogin)
-            document.querySelector('#RightsUs').value = 3
-            document.querySelector('#RightsUs').disabled = true
-        }
+    if ($("#cNumer").val().length > 30 || $("#cName").val().length > 50 || $('#cnType').val().length > 30) {
+        alert("Ви вписали занадто багато символів")
+        return;
     }
+
+    unit = getDataFromDatalist('#cArr', '#inputCArr')
+    if (unit == undefined) return;
+
+
+    $.post(ajaxURL, {
+        action: "addCounter",
+        spokaz: $('#sPokaz').val().trim(),
+        ctype: $('#cnType').val().trim(),
+        cArr: unit,
+        cNumer: $("#cNumer").val() ? $("#cNumer").val().trim() : 'н/д',
+        cName: $("#cName").val().trim(),
+        cType: $('#cType :selected').text().trim(),
+        cState: document.querySelector('#cState').checked,
+        edit: ecId
+    }, function () {
+        ressetFields(['inputCArr', 'cNumer', 'cName', 'cType', 'sPokaz', 'cnType', 'cState'])
+        showSet([$("#setCounters"), $("#counterList")]);
+        setBackground($("#aCounter"));
+        getCounters();
+    });
+    ecId = 0
 }
 
-function setStartLogin(e) {
-    const dataset = document.querySelector(`#unitUs option[data-text="${document.querySelector('#inputUnitUs').value}"]`)?.dataset
-    if (!e.target.value.startsWith(dataset.tradepointid + '-')) document.querySelector('#usLogin').value = dataset.tradepointid + '-'
+function isEnter(event, cId, counter) {
+    if (event.keyCode == 13) editPokazAjax(cId, counter)
 }
+
+function editPokazAjax(cId, counter) {
+    $.post(ajaxURL, {
+        action: "editPokaz",
+        counter,
+        pid: cId,
+        index: $("#editP" + cId).val()
+    },
+        function (result) {
+            $.post(ajaxURL, {
+                action: "getPokazByIdAndCounter",
+                cid: result
+            }, function (result) {
+                eval(result);
+            }
+            )
+        }
+    );
+}
+//// ------------------------ ||| COUNTERS ||| ---------------------------------------
+
+
+
+
+//// ------------------------ CHANGE PASS --------------------------------------- 
+function mchangePass() {
+    ressetFields(['confPw', 'oldPw', 'newPw'])
+    showSet([$("#cPass")]);
+    setBackground($("#changePass"));
+}
+
+function cPass() {
+    $.post(bUrl + '/password', {
+        oldPw: $("#oldPw").val().trim(),
+        newPw: $('#newPw').val().trim(),
+        confPw: $("#confPw").val().trim()
+    }, function (result) {
+        if (result) {
+            document.querySelector('#passError').innerHTML = `<div class="login-error">${JSON.parse(result).validation}</div>`
+        } else {
+            document.querySelector('#passError').innerHTML = ''
+            ressetFields(['oldPw', 'newPw', 'confPw'])
+            alert("Пароль успішно змінено")
+        }
+    });
+}
+//// ------------------------ ||| CHANGE PASS ||| ---------------------------------------
+
+
+
 
 //// ------------------------ GENERATOR --------------------------------------- 
-
-
 function setGenerator(gId, gUnit, gName, gSerialNum, gCoeff, gType, gState, action = 'Добавити') {
     if (gId) {
         document.querySelector('#gName').value = gName
@@ -896,79 +1103,8 @@ function getGenerators() {
         const action = $("#setGenerator").is(":visible") ? 'Редагувати' : 'Добавити'
         if (tableGenerator.children[0]) tableGenerator.replaceChild(createGeneratorFromJSON(result, action), tableGenerator.children[0])
         else tableGenerator.appendChild(createGeneratorFromJSON(result, action))
+        setValidHeightElement("#generator", true);
     });
-}
-
-function createGeneratorFromJSON(jsonData, action) {
-    const data = JSON.parse(jsonData);
-
-    const table = document.createElement("table");
-    table.setAttribute("border", "2");
-    table.setAttribute("cellpadding", "4");
-    table.setAttribute("cellspacing", "0");
-    table.setAttribute("align", "center");
-    table.setAttribute("style", "width: 100%;table-layout: fixed;");
-    table.setAttribute("align", "left");
-    table.setAttribute("scope", "col");
-
-    // Create table header
-    const tableHeader = document.createElement("thead");
-    tableHeader.setAttribute("style", "position: sticky; top: 0;");
-
-    const headerRow = document.createElement("tr");
-    headerRow.setAttribute("style", "color:White;background-color:#006698;font-size:14pt;font-weight:bold;");
-
-    data.columns.forEach(column => {
-        const th = document.createElement("th");
-        th.textContent = column;
-        headerRow.appendChild(th);
-    });
-    const th = document.createElement("th");
-    th.textContent = 'Дія';
-    headerRow.appendChild(th);
-
-    tableHeader.appendChild(headerRow);
-    table.appendChild(tableHeader);
-
-    // Create table body
-    const tableBody = document.createElement("tbody");
-
-    data.generators.forEach(generator => {
-        const row = document.createElement("tr");
-        row.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
-
-        data.columns.forEach(column => {
-            const cell = document.createElement("td")
-            const key = data.ref[column]
-            if (key == 'state') {
-                const checkbox = document.createElement("input")
-                checkbox.type = "checkbox"
-                checkbox.checked = generator['state'] == 1
-                checkbox.disabled = true;
-                cell.appendChild(checkbox)
-            } else cell.textContent = generator[key]
-            row.appendChild(cell)
-        })
-
-        tableBody.appendChild(row);
-
-        const rowAction = document.createElement("tr");
-        rowAction.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
-        const cell = document.createElement("td")
-        const addButton = document.createElement("button")
-        addButton.textContent = action
-        addButton.addEventListener("click", function () {
-            gId = generator['id']
-            setGenerator(generator['id'], generator['unit'], generator['name'], generator['serialNum'], generator['coeff'], generator['type'], generator['state'], action)
-        });
-        cell.appendChild(addButton)
-        row.appendChild(cell)
-        tableBody.appendChild(row);
-    });
-
-    table.appendChild(tableBody);
-
-    return table;
 }
 
 function mCanisterTracking() {
@@ -992,94 +1128,9 @@ function getCanisters() {
         const tableCanister = document.querySelector("#canister")
         if (tableCanister.children[0]) tableCanister.replaceChild(createCanisterFromJSON(result), tableCanister.children[0])
         else tableCanister.appendChild(createCanisterFromJSON(result))
+        setValidHeightElement("#canister");
     });
 
-}
-
-function createCanisterFromJSON(jsonData) {
-    const data = JSON.parse(jsonData);
-
-    const table = document.createElement("table");
-    table.setAttribute("border", "2");
-    table.setAttribute("cellpadding", "4");
-    table.setAttribute("cellspacing", "0");
-    table.setAttribute("align", "center");
-    table.setAttribute("style", "width: 100%;table-layout: fixed;");
-    table.setAttribute("align", "left");
-    table.setAttribute("scope", "col");
-
-    // Create table header
-    const tableHeader = document.createElement("thead");
-    tableHeader.setAttribute("style", "position: sticky; top: 0;");
-
-    const headerRow = document.createElement("tr");
-    headerRow.setAttribute("style", "color:White;background-color:#006698;font-size:14pt;font-weight:bold;");
-
-    data.columns.forEach(column => {
-        const th = document.createElement("th");
-        th.textContent = column;
-        headerRow.appendChild(th);
-    });
-    const th = document.createElement("th");
-    th.textContent = 'Дії';
-    headerRow.appendChild(th);
-
-    tableHeader.appendChild(headerRow);
-    table.appendChild(tableHeader);
-
-    // Create table body
-    const tableBody = document.createElement("tbody");
-
-    data.canisters.forEach(canister => {
-        const row = document.createElement("tr");
-        row.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
-
-        data.columns.forEach(column => {
-            const cell = document.createElement("td")
-            const key = data.ref[column]
-            if (key == 'state') {
-                const checkbox = document.createElement("input")
-                checkbox.type = "checkbox"
-                checkbox.checked = canister['state'] == 1
-                checkbox.disabled = true;
-                cell.appendChild(checkbox)
-            } else cell.textContent = canister[key]
-            row.appendChild(cell)
-        })
-
-        tableBody.appendChild(row);
-
-        row.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
-
-        const cell = document.createElement("td");
-
-        const buttonContainer = document.createElement("div");
-        buttonContainer.setAttribute("style", "text-align: center;");
-
-        const addButton = document.createElement("button");
-        addButton.textContent = "Повернення";
-        addButton.setAttribute("style", "margin: 5px;");
-        addButton.addEventListener("click", function () {
-            canisteraWritingOff(canister['id'], canister['unit'], canister['canister']);
-        });
-        buttonContainer.appendChild(addButton);
-
-        const addButton2 = document.createElement("button");
-        addButton2.textContent = "Відмінити";
-        addButton2.addEventListener("click", function () {
-            cancelСanister(canister['id']);
-        });
-        buttonContainer.appendChild(addButton2);
-
-        cell.appendChild(buttonContainer);
-
-        row.appendChild(cell);
-        tableBody.appendChild(row);
-    });
-
-    table.appendChild(tableBody);
-
-    return table;
 }
 
 function setCanister() {
@@ -1152,7 +1203,6 @@ function cancelСanister(canisterId) {
         mCanisterTracking()
     });
 }
-
 
 function confirmAction() {
     const prevCanistr = +document.querySelector("#prevCanistrBack").value
@@ -1384,3 +1434,4 @@ function getReportGenerator(event) {
         })
         .catch(console.error)
 };
+//// ------------------------ ||| GENERATOR ||| --------------------------------------- 

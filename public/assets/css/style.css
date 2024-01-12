@@ -746,10 +746,6 @@ h2 {
     color: #ffffff;
 }
 
-* {
-    box-sizing: border-box;
-}
-
 .flex-container {
     display: flex;
     flex-direction: column;
@@ -870,4 +866,31 @@ input[type="datetime-local"] {
 
 .confirm-canister button:hover {
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#countStat table,
+#adminPanel table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#countStat th,
+#adminPanel th,
+#countStat td,
+#adminPanel td {
+    width: 1%;
+    box-sizing: border-box;
+    border: 2px solid black;
+    padding: 4px;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+* thead,
+* thead tr,
+* thead tr th {
+    width: inherit;
 }
