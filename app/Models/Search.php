@@ -554,7 +554,7 @@ class Search extends Model
         return $this->db->query("SELECT 
                                         telegramChatId 
                                 FROM user
-                                JOIN area ON user.unit = area.id 
+                                JOIN area ON user.area = area.id 
                                 WHERE telegramChatId != '' 
                                 AND telegramState != 'pass' 
                                 AND rights = 3 
