@@ -173,8 +173,8 @@ class Meters extends BaseController
                 return $this->generator->getGeneratorsAndCanisters();
             case 'getReportGenerator':
                 return $this->generator->getReportGenerator($this->request);
-            case 'cancelСanister':
-                return $this->generator->cancelСanister($this->request);
+            case 'cancelCanister':
+                return $this->generator->cancelCanister($this->request);
             default:
                 return 404;
         }

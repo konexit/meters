@@ -387,7 +387,7 @@ function createCanisterFromJSON(jsonData) {
         const addButton2 = document.createElement("button");
         addButton2.textContent = "Відмінити";
         addButton2.addEventListener("click", function () {
-            cancelСanister(canister['id']);
+            cancelCanister(canister['id']);
         });
         buttonContainer.appendChild(addButton2);
 

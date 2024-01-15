@@ -227,7 +227,7 @@ class Generator extends Model
         return (new Excel)->createReports("generators", ["groupBy" => $json->groupBy, "meters" => $reports]);
     }
 
-    function cancelСanister($request)
+    function cancelCanister($request)
     {
         $this->db->table('trackingCanister')->update(
             ['status' => 4],
