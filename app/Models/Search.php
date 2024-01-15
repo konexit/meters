@@ -552,30 +552,30 @@ class Search extends Model
         $date_last = $last['year'] . "-" . $last['month'] . "-01";
         $prev_last = $prevLast['year'] . "-" . $prevLast['month'] . "-01";
         return $this->db->query("SELECT 
-                                        telegramChatId 
+                                    telegramChatId 
                                 FROM user
                                 JOIN area ON user.area = area.id 
                                 WHERE telegramChatId != '' 
                                 AND telegramState != 'pass' 
                                 AND rights = 3 
                                 AND area IN (
-                                                SELECT 
-                                                        counter.unit 
-                                                FROM counter 
-                                                JOIN pokaz 
-                                                ON counter.id = pokaz.cId 
-                                                WHERE counter.id NOT IN  (
-                                                                            SELECT 
-                                                                                counter.id 
-                                                                            FROM counter 
-                                                                            JOIN pokaz 
-                                                                            ON counter.id = cId 
-                                                                            WHERE ts = '" . $date_last . "' 
-                                                                            AND counter.state = true 
-                                                                            GROUP BY counter.id
-                                                                        )
-                                                AND pokaz.ts = '" . $prev_last . "' AND counter.state = true AND area.state = true
-                                                GROUP BY counter.unit)")->getResultArray();
+                                    SELECT 
+                                            counter.unit 
+                                    FROM counter 
+                                    JOIN pokaz 
+                                    ON counter.id = pokaz.cId 
+                                    WHERE counter.id NOT IN  (
+                                        SELECT 
+                                            counter.id 
+                                        FROM counter 
+                                        JOIN pokaz 
+                                        ON counter.id = cId 
+                                        WHERE ts = '" . $date_last . "' 
+                                        AND counter.state = true 
+                                        GROUP BY counter.id
+                                    )
+                                    AND pokaz.ts = '" . $prev_last . "' AND counter.state = true AND area.state = true
+                                    GROUP BY counter.unit)")->getResultArray();
     }
 
     public function findCountNotFilledCountersOfUser()
@@ -583,13 +583,27 @@ class Search extends Model
         $user = new User();
         $last = $user->getCounterDate();
         $prevLast = $user->getPrevLastCounterDate();
-        return $this->db->query("SELECT area.unit, area.addr, area.tel, group_concat(counter.counterId SEPARATOR ', ') as counters
-                                        FROM counter 
-                                        JOIN area ON counter.unit = area.id 
-                                        JOIN pokaz ON counter.id = pokaz.cId
-                                          WHERE counter.id NOT IN ( SELECT counter.id FROM counter JOIN pokaz ON counter.id = cId WHERE ts = '" . $last['year'] . "-" . $last['month'] . "-01' AND counter.state = true GROUP BY counter.id )
-                                          AND pokaz.ts = '" . date('Y', $prevLast) . "-" . date('m', $prevLast) . "-01' AND counter.state = true AND area.state = true
-                                          GROUP BY area.unit, area.addr, area.tel")->getResultArray();
+        return $this->db->query("SELECT 
+                                    area.unit, 
+                                    area.addr, 
+                                    area.tel, 
+                                    group_concat(counter.counterId SEPARATOR ', ') as counters
+                                FROM counter 
+                                    JOIN area ON counter.unit = area.id 
+                                    JOIN pokaz ON counter.id = pokaz.cId
+                                WHERE counter.id NOT IN ( 
+                                    SELECT 
+                                        counter.id 
+                                    FROM counter 
+                                    JOIN pokaz ON counter.id = cId 
+                                    WHERE ts = '" . $last['year'] . "-" . $last['month'] . "-01' 
+                                        AND counter.state = true 
+                                    GROUP BY counter.id 
+                                    )
+                                    AND pokaz.ts = '" . date('Y', $prevLast) . "-" . date('m', $prevLast) . "-01' 
+                                    AND counter.state = true 
+                                    AND area.state = true
+                                GROUP BY area.unit, area.addr, area.tel")->getResultArray();
     }
 
     public function getLastPokazByCounter($counterPK)
@@ -633,7 +647,7 @@ class Search extends Model
     {
         return $this->db->query("SELECT * FROM counter WHERE id = " . $counterPK . " ")->getFirstRow();
     }
-    
+
     private function getDataReport($counter, $company, $json)
     {
         return $this->db->query("SELECT 
