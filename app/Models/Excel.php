@@ -142,12 +142,22 @@ class Excel extends Model
         }
 
         $arrayFilenames  = [];
-        foreach ($this->mapSpreadsheets as $dataSpreadsheet) {
-            $temp_file = tempnam(sys_get_temp_dir(), $dataSpreadsheet["fileName"]);
-            $writer = new Xlsx($dataSpreadsheet["spreadsheet"]);
+        if (count($this->mapSpreadsheets) == 0) {
+            $emptyFileName = 'Відсутні дані генераторів.xlsx';
+            $temp_file = tempnam(sys_get_temp_dir(), $emptyFileName);
+            $spreadsheet = new Spreadsheet();
+            $writer = new Xlsx($spreadsheet);
             $writer->save($temp_file);
-            $zip->addFile($temp_file, $dataSpreadsheet["fileName"]);
+            $zip->addFile($temp_file, $emptyFileName);
             array_push($arrayFilenames, $temp_file);
+        } else {
+            foreach ($this->mapSpreadsheets as $dataSpreadsheet) {
+                $temp_file = tempnam(sys_get_temp_dir(), $dataSpreadsheet["fileName"]);
+                $writer = new Xlsx($dataSpreadsheet["spreadsheet"]);
+                $writer->save($temp_file);
+                $zip->addFile($temp_file, $dataSpreadsheet["fileName"]);
+                array_push($arrayFilenames, $temp_file);
+            }
         }
 
         $zip->close();
@@ -185,7 +195,6 @@ class Excel extends Model
             $this->mapSpreadsheets[$report->typeCounter]["spreadsheet"] = $this->spreadsheet;
             $this->mapSpreadsheets[$report->typeCounter]["indexSheet"] = $this->indexSheet;
         }
-
         $zip = new ZipArchive();
         $zip_name = $this->zipFileName;
 
