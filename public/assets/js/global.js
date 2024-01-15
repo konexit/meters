@@ -386,6 +386,7 @@ function createCanisterFromJSON(jsonData) {
 
         const addButton2 = document.createElement("button");
         addButton2.textContent = "Відмінити";
+        debugger
         addButton2.addEventListener("click", function () {
             cancelCanister(canister['id']);
         });
@@ -1186,13 +1187,13 @@ function canisteraWritingOff(canisterId, area, countCanister) {
     document.querySelector('#canisterIdWritingOff').value = canisterId
 }
 
-function cancelСanister(canisterId) {
+function cancelCanister(canisterId) {
     const confirmCanister = confirm("Ви впевненні, що бажаєте відмінити відправку канастри?");
     if (!confirmCanister) {
         return;
     }
     $.post(ajaxURL, {
-        action: "cancelСanister",
+        action: "cancelCanister",
         idCanister: canisterId
     }, function (result) {
         const data = JSON.parse(result)
