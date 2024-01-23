@@ -145,11 +145,26 @@ class Search extends Model
         if ($this->checkPokaz($counterPK, $dPokazY . "-" . $dPokazM . "-1", $pokaz)) {
             $savePokaz = $this->addPokazC($counterPK, $pokaz, $dPokazY, $dPokazM);
             if ($savePokaz) {
-                $this->recalculation($counterPK);
-                $user = new User();
-                $user->addUserLog(session("mLogin"), ['login' => session("mLogin"), 'message' => "Додав показник = " . $pokaz . " лічильнику = " . $request->getVar('counter')]);
+                $this->recalculationANDLog([
+                    "counterPK" => $counterPK,
+                    "pokaz" => $pokaz,
+                    "login" => session("mLogin")
+                ]);
             }
         } else echo "Упс... Показник лічильника не додано";
+    }
+
+    public function recalculationANDLog($counterModel, $isTelegram = false)
+    {
+        $user = new User();
+        $this->recalculation($counterModel["counterPK"]);
+        $user->addUserLog(
+            $counterModel["login"],
+            [
+                'login' => $counterModel["login"],
+                'message' => "Додано показник = " . $counterModel["pokaz"] . ", лічильнику = " . $this->getCounterByCounterPK($counterModel["counterPK"])->counterId . (($isTelegram) ? " (telegram)" : "")
+            ]
+        );
     }
 
     public function getAllUnitDB()
@@ -263,7 +278,10 @@ class Search extends Model
         $cid = $this->editPokazDB($request->getVar('pid'), $pokaz);
         $this->recalculation($cid);
         $user = new User();
-        $user->addUserLog(session("mLogin"), ['login' => session("mLogin"), 'message' => "Змінив показник = " . $pokaz . " лічильнику = " . $request->getVar('counter')]);
+        $user->addUserLog(
+            session("mLogin"),
+            ['login' => session("mLogin"), 'message' => "Змінив показник = " . $pokaz . " , лічильнику = " . $request->getVar('counter')]
+        );
         echo $cid;
     }
 
@@ -387,7 +405,7 @@ class Search extends Model
                         $row['tel'],
                         $row['trade_point_id'],
                         $row["state"] == 1 ? '<input type="checkbox" checked disabled="">' : '<input type="checkbox" disabled="">',
-                        '<button onClick="unitEdit(' . $row['id'] . ',' . "'" . $row['unit'] . "'" . ',' . "'" . rawurlencode($row['addr']) . "'" . ',' . "'" . $row['tel'] . "'" . ', ' . $row['state']  . ' , true, ' . $row['trade_point_id'] . ', ' . $companyTradePoint[$row['id']] . ')">' . "Редагувати" . '</button>'
+                        '<button onClick="unitEdit(' . $row['id'] . ',' . "'" . $row['unit'] . "'" . ',' . "'" . rawurlencode($row['addr']) . "'" . ',' . "'" . $row['tel'] . "'" . ', ' . $row['state']  . ', true, ' . $row['trade_point_id'] . ', ' . $companyTradePoint[$row['id']] . ')">' . "Редагувати" . '</button>'
                     );
                 } else
                     $table->addRow(

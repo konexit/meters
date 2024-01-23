@@ -119,23 +119,14 @@ class Generator extends Model
     function actionsAdminCanister($request)
     {
         if (filter_var($request->getVar('isReturning'), FILTER_VALIDATE_BOOLEAN)) {
-            $totalCountCanisters = $this->getFuelArea(session("usArea"))[0]['sum'];
-            $metaCanistersCount = $request->getVar('countCanistBack');
-
-            header("Content-Type: application/json");
-            if ($totalCountCanisters == 0 || $totalCountCanisters < $metaCanistersCount) {
-                echo json_encode(["response" => 500, "message" => "Перевірте введені дані та оновіть сторінку. Якщо проблема не вирішилась, зверніться в ІТ відділ"], JSON_UNESCAPED_UNICODE);
-            } else {
-                $this->sendCanisterByTrdPointANDLog([
-                    'date' => date('Y-m-d'),
-                    'canister' => $metaCanistersCount,
-                    'fuel' => 0,
-                    'type' => 0,
-                    'unit' => session("usArea"),
-                    'status' => 3
-                ], ["login" => session("mLogin")]);
-                echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
+            $canisterId = $request->getVar('idCanister');
+            $trackCanister = $this->getTrackingCanister($canisterId);
+            if ($trackCanister[0]["status"] == 4) {
+                $this->db->query("INSERT INTO fuelArea (canister) VALUES (canister + " . $trackCanister[0]["canister"] . ") WHERE areaId = " . $trackCanister[0]["unit"] . " LIMIT 1");
             }
+            $this->deleteTrackingCanisterById($canisterId);
+            header("Content-Type: application/json");
+            echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
         } else {
             $idCanister = $request->getVar('idCanister');
 
@@ -176,19 +167,6 @@ class Generator extends Model
         }
     }
 
-    function userReceivingCanisters($request)
-    {
-        $dataTargetCanister = $this->getSpecificCanister('', '', 1, $request->getVar('idCanister'));
-
-        header("Content-Type: application/json");
-        if (!$dataTargetCanister) {
-            echo json_encode(["response" => 500, "message" => "Перевірте введені дані та оновіть сторінку. Якщо проблема не вирішилась, зверніться в ІТ відділ"], JSON_UNESCAPED_UNICODE);
-        } else {
-            $this->saveCanisterByTrdPointANDLog($dataTargetCanister[0], ["login" => session("mLogin")], $request->getVar('idCanister'));
-            echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
-        }
-    }
-
     function getGeneratorsAndCanisters()
     {
         header("Content-Type: application/json");
@@ -199,16 +177,37 @@ class Generator extends Model
         ], JSON_UNESCAPED_UNICODE);
     }
 
-    function cancelCanister($request)
+    function actionsUserCanister($request)
     {
-        $canisterId = $request->getVar('idCanister');
-        $trackCanister = $this->getTrackingCanister($canisterId);
-        if ($trackCanister[0]["status"] == 4) {
-            $this->db->query("INSERT INTO fuelArea (canister) VALUES (canister + " . $trackCanister[0]["canister"] . ") WHERE areaId = " . $trackCanister[0]["unit"] . " LIMIT 1");
+        if (filter_var($request->getVar('isReturning'), FILTER_VALIDATE_BOOLEAN)) {
+            $totalCountCanisters = $this->getFuelArea(session("usArea"))[0]['sum'];
+            $metaCanistersCount = $request->getVar('countCanistBack');
+
+            header("Content-Type: application/json");
+            if ($totalCountCanisters == 0 || $totalCountCanisters < $metaCanistersCount) {
+                echo json_encode(["response" => 500, "message" => "Перевірте введені дані та оновіть сторінку. Якщо проблема не вирішилась, зверніться в ІТ відділ"], JSON_UNESCAPED_UNICODE);
+            } else {
+                $this->sendCanisterByTrdPointANDLog([
+                    'date' => date('Y-m-d'),
+                    'canister' => $metaCanistersCount,
+                    'fuel' => 0,
+                    'type' => 0,
+                    'unit' => session("usArea"),
+                    'status' => 3
+                ], ["login" => session("mLogin")]);
+                echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
+            }
+        } else {
+            $dataTargetCanister = $this->getSpecificCanister('', '', 1, $request->getVar('idCanister'));
+
+            header("Content-Type: application/json");
+            if (!$dataTargetCanister) {
+                echo json_encode(["response" => 500, "message" => "Перевірте введені дані та оновіть сторінку. Якщо проблема не вирішилась, зверніться в ІТ відділ"], JSON_UNESCAPED_UNICODE);
+            } else {
+                $this->saveCanisterByTrdPointANDLog($dataTargetCanister[0], ["login" => session("mLogin")], $request->getVar('idCanister'));
+                echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
+            }
         }
-        $this->deleteTrackingCanisterById($canisterId);
-        header("Content-Type: application/json");
-        echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
     }
 
     function getReportGenerator($request)
@@ -247,7 +246,7 @@ class Generator extends Model
         );
         $user->addUserLog(
             $userModel['login'],
-            ['login' => $userModel['login'], 'message' => "Подано час роботи: " . $pokazModel['workingTime'] . " годин, генератору: " . $genModel['serialNum'] . (($isTelegram) ? " (telegram)" : "")]
+            ['login' => $userModel['login'], 'message' => "Подано час роботи = " . $pokazModel['workingTime'] . " годин, генератору = " . $genModel['serialNum'] . (($isTelegram) ? " (telegram)" : "")]
         );
     }
 
@@ -260,7 +259,7 @@ class Generator extends Model
         } else {
             $this->db->query('INSERT INTO fuelArea(fuel, canister, areaId, type) VALUES (' . $canisterModel['fuel'] . ', ' . $canisterModel['canister']  . ', ' . $canisterModel['areaId'] . ', ' . $canisterModel['typeId'] . ')');
         }
-        $user->addUserLog($userModel["login"], ['login' => $userModel["login"], 'message' => "Отримано каністри кількість: " . $canisterModel['canister'] . ", палива: " . $canisterModel['fuel'] . (($isTelegram) ? " (telegram)" : "")]);
+        $user->addUserLog($userModel["login"], ['login' => $userModel["login"], 'message' => "Отримано каністри кількість = " . $canisterModel['canister'] . ", палива = " . $canisterModel['fuel'] . (($isTelegram) ? " (telegram)" : "")]);
     }
 
     function sendCanisterByTrdPointANDLog($canisterModel,  $userModel, $isTelegram = false)
@@ -268,7 +267,10 @@ class Generator extends Model
         $user = new User();
         $this->db->table('trackingCanister')->insert($canisterModel);
         $this->db->query("CALL update_countCanister(?, ?)", array($canisterModel['canister'], $canisterModel['unit']));
-        $user->addUserLog($userModel['login'], ['login' => $userModel['login'], 'message' => "Відправлено каністри на повернення кількість: " . $canisterModel['canister'] . (($isTelegram) ? " (telegram)" : "")]);
+        $user->addUserLog($userModel['login'], [
+            'login' => $userModel['login'],
+            'message' => "Відправлено каністри на повернення кількість = " . $canisterModel['canister'] . (($isTelegram) ? " (telegram)" : "")
+        ]);
     }
 
     function findActiveGenerators($area = null, $generatorPK = null)

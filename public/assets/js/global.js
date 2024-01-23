@@ -9,8 +9,6 @@ var pMonth = 0;
 var pYear = 0;
 
 
-
-
 //// ------------------------ GENERAL --------------------------------------- 
 function ressetFields(elem) {
     elem.forEach(id => {
@@ -241,7 +239,6 @@ function setPokaz(counterPK, cNom) {
         for (let input of document.querySelectorAll('#pokazEdit input')) {
             input.disabled = inputState
         }
-        alert("Успішно добавлені показники");
     })
     showSet([$("#inputPokaz"), $("#pokazEdit")]);
 }
@@ -383,7 +380,7 @@ function createCanisterFromJSON(jsonData) {
             addButton.textContent = "Отримати";
             addButton.setAttribute("style", "margin: 5px;");
             addButton.addEventListener("click", function () {
-                returnOfCanisters(canister['id'], canister['unit'], canister['canister']);
+                adminReturnOfCanisters(canister['id'], canister['unit'], canister['canister']);
             });
             buttonContainer.appendChild(addButton);
         }
@@ -392,7 +389,7 @@ function createCanisterFromJSON(jsonData) {
             const addButton2 = document.createElement("button");
             addButton2.textContent = "Відмінити";
             addButton2.addEventListener("click", function () {
-                cancelCanister(canister['id']);
+                adminCancelSendingCanisters(canister['id']);
             });
             buttonContainer.appendChild(addButton2);
         }
@@ -1184,7 +1181,7 @@ function addCanister() {
     });
 }
 
-function returnOfCanisters(canisterId) {
+function adminReturnOfCanisters(canisterId) {
     if (!confirm("Ви впевненні, що отримали вказану кількість каністр?")) {
         return;
     }
@@ -1203,56 +1200,13 @@ function returnOfCanisters(canisterId) {
     });
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function cancelSendingCanisters(totalCanisters) {
-    const countCanistBack = document.querySelector('#countCanistrBack').value
-    if (countCanistBack <= 0 || totalCanisters < countCanistBack) {
-        alert("Перевірте вказані дані")
-        return;
-    }
-    if (!confirm("Ви впевненні, що бажаєте повернути саме: " + countCanistBack + " каністр?")) {
+function adminCancelSendingCanisters(canisterId) {
+    if (!confirm("Ви впевненні, що бажаєте відмінити відправку каністри?")) {
         return;
     }
     $.post(ajaxURL, {
         action: "actionsAdminCanister",
         isReturning: true,
-        countCanistBack: countCanistBack
-    }, function (result) {
-        const data = JSON.parse(result)
-        if (data['response'] != 200) {
-            alert(data['message'])
-            return;
-        }
-        alert("Успішно відмінено відправку каністр");
-        mAreaGenerator()
-    });
-}
-
-function cancelCanister(canisterId) {
-    if (!confirm("Ви впевненні, що бажаєте відмінити відправку каністри?")) {
-        return;
-    }
-    $.post(ajaxURL, {
-        action: "cancelCanister",
         idCanister: canisterId
     }, function (result) {
         const data = JSON.parse(result)
@@ -1265,23 +1219,29 @@ function cancelCanister(canisterId) {
     });
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function userCancelCanister(totalCanisters) {
+    const countCanistBack = document.querySelector('#countCanistrBack').value
+    if (countCanistBack <= 0 || totalCanisters < countCanistBack) {
+        alert("Перевірте вказані дані")
+        return;
+    }
+    if (!confirm("Ви впевненні, що бажаєте повернути саме: " + countCanistBack + " каністр?")) {
+        return;
+    }
+    $.post(ajaxURL, {
+        action: "actionsUserCanister",
+        isReturning: true,
+        countCanistBack: countCanistBack
+    }, function (result) {
+        const data = JSON.parse(result)
+        if (data['response'] != 200) {
+            alert(data['message'])
+            return;
+        }
+        alert("Успішно відправленно каністри на повернення");
+        mAreaGenerator()
+    });
+}
 
 function userReceivingCanisters(canId) {
     if (!confirm("Підтвердіть, що ви дійсно отримали вказанну кількість палива та каністр.\n" +
@@ -1289,7 +1249,8 @@ function userReceivingCanisters(canId) {
         return;
     }
     $.post(ajaxURL, {
-        action: "userReceivingCanisters",
+        action: "actionsUserCanister",
+        isReturning: false,
         idCanister: canId
     }, function (result) {
         const data = JSON.parse(result)
@@ -1369,7 +1330,7 @@ function getGeneratorsAndCanisters() {
                 <div class="desc-can" style="width: 65%;"><strong style="text-align: center;">Введіть кількість для повернення: </strong><input type="number" class="positiveNumber" id="countCanistrBack"></div>
             </div>
             <div class="confirm-canister">
-                <button onclick="cancelSendingCanisters(${countCanister})" style="font-size: 20px;">Повернути</button>
+                <button onclick="userCancelCanister(${countCanister})" style="font-size: 20px;">Повернути</button>
             </div>`;
             countCanisterElement.appendChild(canisterCountElement);
 

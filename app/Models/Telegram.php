@@ -237,7 +237,7 @@ class Telegram extends Model
                     ["typeCounter" => $metadata->typeCounter, "counterPK" => $metaCounterPK, "pokaz" => $textMess]
                 );
                 return [$this->createTelegramMessage("<b>Для збереження даних</b>\n" .
-                    "Підтвердіть, що дані вказані правильно", $this->buttonBuilder([]))];
+                    "Підтвердіть, що дані вказані правильно", $this->buttonBuilder([$this->confirmation]))];
             }
             return [$this->createTelegramMessage(
                 "<b>Упс... Показник лічильника не додано</b>\n" .
@@ -382,7 +382,7 @@ class Telegram extends Model
         // Дії звичайного користувача
         if ($tgUser->rights == 3) {
             if ($callbackData == 'backMenu') return $this->menuMess($chatId, $tgUser->area, "<b>" . $tgUser->name . "</b> виберіть тип лічильника");
-            elseif ($userTgState == 'menu') {
+            elseif ($userTgState == "menu") {
                 $respMessage = [];
                 if ($callbackData == 'generators') {
                     $generators = $generator->findActiveGenerators($tgUser->area);
@@ -516,11 +516,11 @@ class Telegram extends Model
                             "<b>" . $tgUser->name . "</b> Виберіть тип лічильника");
                     }
 
-                    $search->recalculation($metaCounterPK);
-                    $userModel->addUserLog(
-                        $tgUser->login,
-                        ['login' => $tgUser->login, 'message' => "Додав показник: " . $metadata->pokaz . " , лічильнику: " . $search->getCounterByCounterPK($metaCounterPK)->counterId . " (telegram)"]
-                    );
+                    $search->recalculationANDLog([
+                        "counterPK" => $metaCounterPK,
+                        "pokaz" => $metadata->pokaz,
+                        "login" => $tgUser->login
+                    ], true);
                     return $this->menuMess($chatId, $tgUser->area, "Показник лічильникa " . $metadata->pokaz . " за " . $last['month'] . "." . $last['year'] . " був <b>успішно доданий 👍 </b>\n" .
                         "<i>Виберіть тип лічильника</i>");
                 }
@@ -574,7 +574,12 @@ class Telegram extends Model
                     if (!$canisterData) {
                         return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>");
                     }
-                    $generator->saveCanisterByTrdPointANDLog($canisterData[0], ["login" => $tgUser->login], $metaCanisterPK, true);
+                    $generator->saveCanisterByTrdPointANDLog(
+                        $canisterData[0],
+                        ["login" => $tgUser->login],
+                        $metaCanisterPK,
+                        true
+                    );
                     return $this->menuMess($chatId, $tgUser->area, "Каністри були <b>успішно отримані 👍</b>");
                 }
             } elseif ($userTgState == 'confirmCountCanisterOUT') {
