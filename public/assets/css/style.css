@@ -819,7 +819,8 @@ input[type="datetime-local"] {
     margin-left: 5px;
 }
 
-#getCanister .flex-container {
+#getCanister .flex-container,
+#countCanister .flex-container {
     display: flex;
     flex-direction: row;
     font-size: 24px;
@@ -827,7 +828,8 @@ input[type="datetime-local"] {
     border: #d8e934 2px solid;
 }
 
-#getCanister .flex-container>div {
+#getCanister .flex-container>div,
+#countCanister .flex-container>div {
     display: flex;
 }
 

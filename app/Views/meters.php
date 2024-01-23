@@ -8,7 +8,7 @@
     <?= "<script> const bUrl='" . base_url() . "';</script>"; ?>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            listenerRemoveAllNonDigit(['#fuelVolume', '#countCanistr', '#countCanistrBack']);
+            listenerRemoveAllNonDigit(['#fuelVolume', '#countCanistr']);
         });
     </script>
     <?php
@@ -429,23 +429,13 @@
                 </div>
                 <div id="setCanister">
                     <p></p>
-                    <button id="addCanisterBtn" onclick="setCanister()">Відправити каністри</button>
+                    <button id="addCanisterBtn" onclick="showSet([$('#addCanister')])">Відправити каністри</button>
                     <p></p>
                 </div>
                 <div id="canister">
                     <p></p>
                 </div>
-                <div class="overlay" id="overlayWritingOff"></div>
-                <div class="modal" id="modalWritingOff">
-                    <div class="modal-content">
-                        <input id="canisterIdWritingOff" style='display: none;'>
-                        <h3>Підрозділ: <input class="positiveNumber" id="areaCanistrBack" style="pointer-events:none;"></h3>
-                        <h3>Баланс каністр: <input class="positiveNumber" id="prevCanistrBack" style="pointer-events:none;"></h3>
-                        <h3>Кількість повернутих каністр: <input type="number" class="positiveNumber" id="countCanistrBack"></h3>
-                        <br>
-                        <button class="cancel" onclick="closeModal()">Відмінити</button>
-                        <button class="confirm" onclick="confirmAction()">Підтвердити</button>
-                    </div>
+                <div id="countCanister">
                 </div>
                 <div id="getCanister">
                 </div>

@@ -8,6 +8,46 @@ class Generator extends Model
 {
     protected $DBGroup = 'meters';
 
+    //// ------------------------ GENERAL ---------------------------------------
+    function getCanisterStatus()
+    {
+        return $this->db->query("SELECT * FROM statusCanister ORDER BY id")->getResultArray();
+    }
+
+    function getGeneratorArea()
+    {
+        return $this->db->query("SELECT a.unit, a.id 
+                                    FROM generator AS g 
+                                    JOIN area AS a ON a.id = g.unit 
+                                    GROUP BY a.unit, a.id 
+                                    ORDER BY a.unit")->getResultArray();
+    }
+
+    function getCanisterArea()
+    {
+        return $this->db->query("SELECT a.unit, a.id 
+                                    FROM trackingCanister AS c 
+                                    JOIN area AS a ON a.id = c.unit 
+                                    GROUP BY a.unit, a.id 
+                                    ORDER BY a.unit")->getResultArray();
+    }
+
+    function getTrackingCanister($idCanister)
+    {
+        return $this->db->query("SELECT c.status, c.canister, c.unit 
+                                    FROM trackingCanister AS c 
+                                    JOIN area AS a ON a.id = c.unit 
+                                    WHERE c.id = " . $idCanister . "
+                                    GROUP BY a.unit, a.id 
+                                    ORDER BY a.unit")->getResultArray();
+    }
+
+    function getTypeGenerator()
+    {
+        return $this->db->query("SELECT * FROM typeGenerator ORDER BY id")->getResultArray();
+    }
+
+
     function modifGenerator($request)
     {
         $generator = [
@@ -42,91 +82,70 @@ class Generator extends Model
         foreach ($tgUsersByTradePoint as $tgUser) {
             array_push($chatIds, $tgUser["telegramChatId"]);
         }
-        $telegram->sendMessage($chatIds, 'meters_konex_bot', "<b>Вам були відправлені каністри. Очікуйте їх прибуття.</b>\n<i>Кількість: </i>" . $request->getVar('countCanistr') . " шт.\n<i>Палива: </i>" . $request->getVar('fuelVolume') . " од.\n<i>Тип: </i>" . $request->getVar('typeFuel'));
+        $telegram->sendMessage($chatIds, 'meters_konex_bot', "<b>Вам були відправлені каністри. Очікуйте їх прибуття.</b>\n" .
+            "<i>Кількість: </i>" . $request->getVar('countCanistr') . "\n" .
+            "<i>Палива: </i>" . $request->getVar('fuelVolume') . "\n" .
+            "<i>Тип: </i>" . $request->getVar('typeFuel'));
     }
+    //// ------------------------ ||| GENERAL ||| ---------------------------------------
 
+    //// ------------------------ ROUT METHODS ---------------------------------------
     function getGenerators($request)
     {
-        $generators = $this->getSpecificGenerator($request->getVar('gUnit'), $request->getVar('gType'));
-        $columns = ["Назва", "Номер", "Підрозділ", "Адреса", "Коеф", "Паливо", "Каністр", "Тип", "Стан"];
-        $ref = [
-            "Назва" => "name", "Номер" => "serialNum", "Підрозділ" => "unit", "Адреса" => "addr", "Коеф" => "coeff",
-            "Паливо" => "fuel", "Каністр" => "canister", "Тип" => "type", "Стан" => "state"
-        ];
         header("Content-Type: application/json");
-        echo json_encode(["columns" => $columns, "generators" => $generators, "ref" => $ref], JSON_UNESCAPED_UNICODE);
-    }
-
-    function getGeneratorArea()
-    {
-        return $this->db->query("SELECT a.unit, a.id 
-                                    FROM generator AS g 
-                                    JOIN area AS a ON a.id = g.unit 
-                                    GROUP BY a.unit, a.id 
-                                    ORDER BY a.unit")->getResultArray();
-    }
-
-    function getTypeGenerator()
-    {
-        return $this->db->query("SELECT * FROM typeGenerator ORDER BY id")->getResultArray();
-    }
-
-    function getCanisterArea()
-    {
-        return $this->db->query("SELECT a.unit, a.id 
-                                    FROM trackingCanister AS c 
-                                    JOIN area AS a ON a.id = c.unit 
-                                    GROUP BY a.unit, a.id 
-                                    ORDER BY a.unit")->getResultArray();
-    }
-
-    function getCanisterStatus()
-    {
-        return $this->db->query("SELECT * FROM statusCanister ORDER BY id")->getResultArray();
+        echo json_encode([
+            "columns" => ["Назва", "Номер", "Підрозділ", "Адреса", "Коеф", "Паливо", "Каністр", "Тип", "Стан"],
+            "generators" => $this->getSpecificGenerator($request->getVar('gUnit'), $request->getVar('gType')),
+            "ref" => [
+                "Назва" => "name", "Номер" => "serialNum", "Підрозділ" => "unit", "Адреса" => "addr", "Коеф" => "coeff",
+                "Паливо" => "fuel", "Каністр" => "canister", "Тип" => "type", "Стан" => "state"
+            ]
+        ], JSON_UNESCAPED_UNICODE);
     }
 
     function getCanisters($request)
     {
-        $canisters = $this->getSpecificCanister($request->getVar('unit'), $request->getVar('type'), $request->getVar('status'), '');
-        $columns = ["Підрозділ", "Адреса", "Паливо", "Каністр", "Літраж", "Статус"];
-        $ref = [
-            "Підрозділ" => "unit", "Адреса" => "addr", "Паливо" => "type",
-            "Літраж" => "fuel", "Каністр" => "canister", "Статус" => "status"
-        ];
         header("Content-Type: application/json");
-        echo json_encode(["columns" => $columns, "canisters" => $canisters, "ref" => $ref], JSON_UNESCAPED_UNICODE);
+        echo json_encode([
+            "columns" => ["Підрозділ", "Адреса", "Паливо", "Каністр", "Літраж", "Статус"],
+            "canisters" => $this->getSpecificCanister($request->getVar('unit'), $request->getVar('type'), $request->getVar('status'), ''),
+            "ref" => [
+                "Підрозділ" => "unit", "Адреса" => "addr", "Паливо" => "type",
+                "Літраж" => "fuel", "Каністр" => "canister", "Статус" => "status"
+            ]
+        ], JSON_UNESCAPED_UNICODE);
     }
 
-    function canisterWritingOff($request)
+    function actionsAdminCanister($request)
     {
-        $idCanister = $request->getVar('idCanister');
-        $backCanistr = $request->getVar('backCanistr');
-        $dataTargetCanister = $this->db->query("SELECT c.canister, c.type, c.unit FROM trackingCanister AS c WHERE c.id = " . $idCanister)->getResultObject();
+        if (filter_var($request->getVar('isReturning'), FILTER_VALIDATE_BOOLEAN)) {
+            $totalCountCanisters = $this->getFuelArea(session("usArea"))[0]['sum'];
+            $metaCanistersCount = $request->getVar('countCanistBack');
 
-        header("Content-Type: application/json");
-        if (!$dataTargetCanister || $dataTargetCanister[0]->canister < $backCanistr) {
-            echo json_encode(["response" => 500, "message" => "Перевірте введені дані та оновіть сторінку. Якщо проблема не вирішилась, зверніться в ІТ відділ"], JSON_UNESCAPED_UNICODE);
-        } else {
-            $remainCanisters = $dataTargetCanister[0]->canister - $backCanistr;
-            if ($dataTargetCanister[0]->canister == $backCanistr) {
-                $this->db->table('trackingCanister')->update(
-                    [
-                        'canister' => $remainCanisters,
-                        'status' => 3
-                    ],
-                    ['id' => $idCanister]
-                );
+            header("Content-Type: application/json");
+            if ($totalCountCanisters == 0 || $totalCountCanisters < $metaCanistersCount) {
+                echo json_encode(["response" => 500, "message" => "Перевірте введені дані та оновіть сторінку. Якщо проблема не вирішилась, зверніться в ІТ відділ"], JSON_UNESCAPED_UNICODE);
             } else {
-                $this->db->table('trackingCanister')->update(
-                    ['canister' => $remainCanisters],
-                    ['id' => $idCanister]
-                );
+                $this->sendCanisterByTrdPointANDLog([
+                    'date' => date('Y-m-d'),
+                    'canister' => $metaCanistersCount,
+                    'fuel' => 0,
+                    'type' => 0,
+                    'unit' => session("usArea"),
+                    'status' => 3
+                ], ["login" => session("mLogin")]);
+                echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
             }
-            $this->db->table('fuelArea')->update(
-                ['canister' => $remainCanisters],
-                ['areaId' => $dataTargetCanister[0]->unit, 'type' => $dataTargetCanister[0]->type]
-            );
-            echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
+        } else {
+            $idCanister = $request->getVar('idCanister');
+
+            header("Content-Type: application/json");
+            if (!$this->getTrackingCanister($idCanister)[0]) {
+                echo json_encode(["response" => 500, "message" => "Перевірте введені дані та оновіть сторінку. Якщо проблема не вирішилась, зверніться в ІТ відділ"], JSON_UNESCAPED_UNICODE);
+            } else {
+                $this->deleteTrackingCanisterById($idCanister);
+                echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
+            }
         }
     }
 
@@ -140,14 +159,7 @@ class Generator extends Model
         if (!$dataTargetGenerator || $dataTargetGenerator[0]['fuel'] < $consumed) {
             echo json_encode(["response" => 500, "message" => "Перевірте введені дані та оновіть сторінку. Якщо проблема не вирішилась, зверніться в ІТ відділ"], JSON_UNESCAPED_UNICODE);
         } else {
-            $userRights = session("usRights");
-            $user = new User();
-            if ($userRights == 3) $user->addUserLog(
-                session("mLogin"),
-                ['login' => session("mLogin"), 'message' => "Подав час роботи = " . $request->getVar('workingTime') . " годин, генератору = " . $dataTargetGenerator[0]['serialNum']]
-            );
-
-            $this->db->table('genaratorPokaz')->insert([
+            $this->saveGeneratorPokazANDLog([
                 'date' => $request->getVar('date'),
                 'year' => $request->getVar('year'),
                 'month' => $request->getVar('month'),
@@ -157,40 +169,22 @@ class Generator extends Model
                 'workingTime' => $request->getVar('workingTime'),
                 'consumed' => $consumed,
                 'genId' => $genId
-            ]);
-            $this->db->table('fuelArea')->update(
-                ['fuel' => $dataTargetGenerator[0]['fuel']  - $consumed],
-                ['areaId' => $dataTargetGenerator[0]['genAreaId'], 'type' => $dataTargetGenerator[0]['genTypeId']]
-            );
+            ], [
+                "login" => session("mLogin")
+            ], $dataTargetGenerator[0]);
             echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
         }
     }
 
-    function confirmCanister($request)
+    function userReceivingCanisters($request)
     {
-        $userModel = new User();
-        $genId = $request->getVar('idCanister');
-        $dataTargetCanister = $this->getSpecificCanister('', '', '', $genId);
+        $dataTargetCanister = $this->getSpecificCanister('', '', 1, $request->getVar('idCanister'));
+
         header("Content-Type: application/json");
         if (!$dataTargetCanister) {
             echo json_encode(["response" => 500, "message" => "Перевірте введені дані та оновіть сторінку. Якщо проблема не вирішилась, зверніться в ІТ відділ"], JSON_UNESCAPED_UNICODE);
         } else {
-            $this->db->query('UPDATE trackingCanister SET status = 2 WHERE id = ' . $genId);
-            $fuelArea = $this->db->query('SELECT * FROM fuelArea WHERE areaId = ' . $dataTargetCanister[0]['areaId'] . ' AND type = ' . $dataTargetCanister[0]['typeId'])->getResultArray();
-            if ($fuelArea) {
-                $this->db->query('UPDATE fuelArea SET fuel = ROUND(fuel + ' . $dataTargetCanister[0]['fuel'] . ', 2), canister = canister + ' . $dataTargetCanister[0]['canister'] . '
-                WHERE type = ' . $dataTargetCanister[0]['typeId'] . ' AND areaId = ' . $dataTargetCanister[0]['areaId']);
-            } else {
-                $this->db->query('INSERT INTO fuelArea(fuel, canister, areaId, type) 
-                VALUES (' . $dataTargetCanister[0]['fuel'] . ', ' . $dataTargetCanister[0]['canister'] . ', ' . $dataTargetCanister[0]['areaId'] . ', ' . $dataTargetCanister[0]['typeId'] . ')');
-            }
-            $userModel->addUserLog(
-                session("mLogin"),
-                [
-                    'login' => session("mLogin"),
-                    'message' => "Отриманно каністри №" . $dataTargetCanister[0]['id'] . ", палива = " . $dataTargetCanister[0]['fuel'] . ", каністр = " . $dataTargetCanister[0]['canister']
-                ]
-            );
+            $this->saveCanisterByTrdPointANDLog($dataTargetCanister[0], ["login" => session("mLogin")], $request->getVar('idCanister'));
             echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
         }
     }
@@ -200,8 +194,21 @@ class Generator extends Model
         header("Content-Type: application/json");
         echo json_encode([
             "generators" =>  $this->getSpecificGenerator(session()->get('usArea')),
-            "canisters" => $this->getSpecificCanister(session()->get('usArea'), '', 1, '')
+            "canisters" => $this->getSpecificCanister(session()->get('usArea'), '', 1, ''),
+            "fuelArea" =>  $this->getFuelArea(session()->get('usArea'))[0]['sum']
         ], JSON_UNESCAPED_UNICODE);
+    }
+
+    function cancelCanister($request)
+    {
+        $canisterId = $request->getVar('idCanister');
+        $trackCanister = $this->getTrackingCanister($canisterId);
+        if ($trackCanister[0]["status"] == 4) {
+            $this->db->query("INSERT INTO fuelArea (canister) VALUES (canister + " . $trackCanister[0]["canister"] . ") WHERE areaId = " . $trackCanister[0]["unit"] . " LIMIT 1");
+        }
+        $this->deleteTrackingCanisterById($canisterId);
+        header("Content-Type: application/json");
+        echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
     }
 
     function getReportGenerator($request)
@@ -227,16 +234,42 @@ class Generator extends Model
         return (new Excel)->createReports("generators", ["groupBy" => $json->groupBy, "meters" => $reports]);
     }
 
-    function cancelCanister($request)
+    //// ------------------------ ||| ROUT METHODS ||| ---------------------------------------
+
+    //// ------------------------ GENERAL ACTIONS ---------------------------------------
+    function saveGeneratorPokazANDLog($pokazModel, $userModel, $genModel, $isTelegram = false)
     {
-        $this->db->table('trackingCanister')->update(
-            ['status' => 4],
-            ['id' => $request->getVar('idCanister')]
+        $user = new User();
+        $this->db->table('genaratorPokaz')->insert($pokazModel);
+        $this->db->table('fuelArea')->update(
+            ['fuel' => $genModel['fuel']  - $pokazModel['consumed']],
+            ['areaId' => $genModel['genAreaId'], 'type' => $genModel['genTypeId']]
         );
-        header("Content-Type: application/json");
-        echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
+        $user->addUserLog(
+            $userModel['login'],
+            ['login' => $userModel['login'], 'message' => "Подано час роботи: " . $pokazModel['workingTime'] . " годин, генератору: " . $genModel['serialNum'] . (($isTelegram) ? " (telegram)" : "")]
+        );
     }
 
+    function saveCanisterByTrdPointANDLog($canisterModel, $userModel, $trackingCanisterId, $isTelegram = false)
+    {
+        $user = new User();
+        $this->deleteTrackingCanisterById($trackingCanisterId);
+        if ($this->getFuelArea($canisterModel['areaId'], $canisterModel['typeId'])[0]['sum']) {
+            $this->db->query('UPDATE fuelArea SET fuel = ROUND(fuel + ' . $canisterModel['fuel'] . ', 2), canister = canister + ' . $canisterModel['canister'] . ' WHERE type = ' . $canisterModel['typeId'] . ' AND areaId = ' . $canisterModel['areaId']);
+        } else {
+            $this->db->query('INSERT INTO fuelArea(fuel, canister, areaId, type) VALUES (' . $canisterModel['fuel'] . ', ' . $canisterModel['canister']  . ', ' . $canisterModel['areaId'] . ', ' . $canisterModel['typeId'] . ')');
+        }
+        $user->addUserLog($userModel["login"], ['login' => $userModel["login"], 'message' => "Отримано каністри кількість: " . $canisterModel['canister'] . ", палива: " . $canisterModel['fuel'] . (($isTelegram) ? " (telegram)" : "")]);
+    }
+
+    function sendCanisterByTrdPointANDLog($canisterModel,  $userModel, $isTelegram = false)
+    {
+        $user = new User();
+        $this->db->table('trackingCanister')->insert($canisterModel);
+        $this->db->query("CALL update_countCanister(?, ?)", array($canisterModel['canister'], $canisterModel['unit']));
+        $user->addUserLog($userModel['login'], ['login' => $userModel['login'], 'message' => "Відправлено каністри на повернення кількість: " . $canisterModel['canister'] . (($isTelegram) ? " (telegram)" : "")]);
+    }
 
     function findActiveGenerators($area = null, $generatorPK = null)
     {
@@ -293,7 +326,7 @@ class Generator extends Model
         if ($canisterId) $condition = ($condition != "") ? $condition . " AND c.id = " . $canisterId : " c.id = " . $canisterId;
         if ($condition) $condition = " WHERE " . $condition;
         return $this->db->query("SELECT 
-                                    c.id, tg.type, a.addr, a.unit, sc.name AS status, c.date, a.id as areaId, c.type AS typeId,
+                                    c.id, tg.type, a.addr, a.unit, sc.name AS status, c.date, a.id as areaId, c.type AS typeId, sc.id AS statusId,
                                     (
                                         CASE WHEN c.fuel IS NULL THEN 0 ELSE ROUND(c.fuel, 2)
                                             END
@@ -310,6 +343,20 @@ class Generator extends Model
                                     " . $condition . " 
                                 ORDER BY 
                                     sc.id, c.date")->getResultArray();
+    }
+
+    function getFuelArea($unit = "", $typeId = "")
+    {
+        $condition = "";
+        if ($unit) $condition =  " areaId = " . $unit;
+        if ($typeId) $condition = ($condition != "") ? $condition . " AND type = " . $typeId : " type = " . $typeId;
+        if ($condition) $condition = " WHERE " . $condition;
+        return $this->db->query("SELECT SUM(canister) AS sum FROM fuelArea " . $condition)->getResultArray();
+    }
+
+    private function deleteTrackingCanisterById($id)
+    {
+        $this->db->query('DELETE FROM trackingCanister WHERE id = ' . $id);
     }
 
     private function getRemnants($company)
@@ -568,4 +615,5 @@ class Generator extends Model
         $report["data"] = $data;
         return $report;
     }
+    //// ------------------------ ||| GENERAL ACTIONS ||| ---------------------------------------
 }

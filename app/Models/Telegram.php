@@ -6,8 +6,24 @@ use CodeIgniter\Model;
 
 class Telegram extends Model
 {
-
     protected $DBGroup = 'meters';
+
+    public $confirmation = [
+        ["Підтверджую", "confirm"],
+        ["Допущена помилка", "denied"]
+    ];
+
+    public $backToMenu = [
+        ["Повернутися до меню", "backMenu"]
+    ];
+
+    public $backToAdminMenu = [
+        ["Повернутися до списку", "adminMenu"]
+    ];
+
+    public $backLogin =  [
+        ["Повернутися назад на стадію введення логіна", "backLogin"]
+    ];
 
     public function telegram($json)
     {
@@ -71,8 +87,10 @@ class Telegram extends Model
             foreach ($units as $unit) {
                 array_push(
                     $message,
-                    $this->createTelegramMessage("<i>Підрозділ:</i> <b>" . $unit['unit'] . "</b>\n<i>Лічильники:</i> <u>" . str_replace(' ', '</u> <u>', $unit['counters']) . "</u>\n" .
-                        "<i>Адрес:</i> <b>" . $unit['addr'] . "</b>\n<i>Телефон:</i> <b>" . $unit['tel'] . "</b>")
+                    $this->createTelegramMessage("<i>Підрозділ:</i> <b>" . $unit['unit'] . "</b>\n" .
+                        "<i>Лічильники:</i> <u>" . str_replace(' ', '</u> <u>', $unit['counters']) . "</u>\n" .
+                        "<i>Адрес:</i> <b>" . $unit['addr'] . "</b>\n" .
+                        "<i>Телефон:</i> <b>" . $unit['tel'] . "</b>")
                 );
             }
             return [
@@ -111,11 +129,20 @@ class Telegram extends Model
                 [
                     "text" => $message,
                     "parse_mode" => "HTML",
+
                     "reply_markup" => [
-                        "inline_keyboard" => []
+                        "inline_keyboard" =>  [
+                            [
+                                [
+                                    "text" => "Повернутися до списка",
+                                    "callback_data" => "adminMenu"
+                                ]
+                            ]
+                        ]
                     ]
                 ]
             ]
+
         )));
         curl_setopt($req_sendMess, CURLOPT_RETURNTRANSFER, true);
 
@@ -152,14 +179,7 @@ class Telegram extends Model
             $userModel->insertTelegramDataByLogin($user->login, $chatId, 'pass');
             return [$this->createTelegramMessage(
                 "Введіть пароль для логіна <b>" . $textMess . "</b>",
-                $this->buttonBuilder([
-                    [
-                        [
-                            "Повернутися назад",
-                            "backLogin"
-                        ]
-                    ]
-                ])
+                $this->buttonBuilder([$this->backLogin])
             )];
         }
 
@@ -168,7 +188,8 @@ class Telegram extends Model
             if ($userModel->findUserByChatId($chatId) != null) {
                 $userModel->removeTelegramDataByChatId($chatId, "");
             }
-            return [$this->createTelegramMessage("Ви успішно вийшли із облікового запису\nВведіть новий <b>логін</b>")];
+            return [$this->createTelegramMessage("Ви успішно вийшли із облікового запису.\n" .
+                "Введіть новий <b>логін</b>")];
         }
 
         $tgUserState = $tgUser->telegramState;
@@ -176,59 +197,33 @@ class Telegram extends Model
             // Валідація пароля
             if (mb_strlen($textMess) > 20) return [$this->createTelegramMessage(
                 "Пароль не повинен перевищувати <u>20</u> <b>символів</b>",
-                $this->buttonBuilder([
-                    [
-                        [
-                            "Повернутися назад",
-                            "backLogin"
-                        ]
-                    ]
-                ])
+                $this->buttonBuilder([$this->backLogin])
             )];
 
             if ($textMess == $tgUser->pass) {
                 $userRights = $tgUser->rights;
-                if ($userRights == 3) return $this->menuMess($chatId, $tgUser->area, "<b>" . $tgUser->name . " ви успішно увішли</b>\n<i>Виберіть тип лічильника</i>", true);
+                if ($userRights == 3) return $this->menuMess($chatId, $tgUser->area, "<b>" . $tgUser->name . " ви успішно увійшли</b>\n" .
+                    "<i>Виберіть тип лічильника</i>", true);
                 elseif ($userRights == 1 || $userRights == 2 || $userRights == 5) {
                     $userModel->insertTelegramDataByChatId($chatId, "adminMenu");
                     return $this->menuAdminMess(true);
                 } else return [$this->createTelegramMessage(
                     "<b>Увага!!!</b> <i>Цей сервіс лише для співробітників</i>",
-                    $this->buttonBuilder([
-                        [
-                            [
-                                "Повернутися назад",
-                                "backLogin"
-                            ]
-                        ]
-                    ])
+                    $this->buttonBuilder([$this->backLogin])
                 )];
             }
             return [$this->createTelegramMessage(
                 "<b>Увага!!!</b> <i>Ви ввели некоректний логін або пароль</i>",
-                $this->buttonBuilder([
-                    [
-                        [
-                            "Повернутися назад",
-                            "backLogin"
-                        ]
-                    ]
-                ])
+                $this->buttonBuilder([$this->backLogin])
             )];
         } elseif ($tgUserState == "addPokaz" && $tgUser->rights == 3) {
 
             // Валідація введеного показнника лічильники
             if (str_contains($textMess, ' ') || !is_numeric($textMess) || mb_strlen($textMess) > 9) {
                 return [$this->createTelegramMessage(
-                    "<b>Були введені некоректні дані лічильники</b>\nПеревірте вказані показники та спробуйте ще раз",
-                    $this->buttonBuilder([
-                        [
-                            [
-                                "Повернутися до меню",
-                                "backMenu"
-                            ]
-                        ]
-                    ])
+                    "<b>Були введені некоректні дані лічильники</b>\n" .
+                        "Перевірте вказані дані та спробуйте ще раз",
+                    $this->buttonBuilder([$this->backToMenu])
                 )];
             }
             $last = $userModel->getCounterDate();
@@ -241,35 +236,21 @@ class Telegram extends Model
                     "confirm",
                     ["typeCounter" => $metadata->typeCounter, "counterPK" => $metaCounterPK, "pokaz" => $textMess]
                 );
-                return [$this->createTelegramMessage("<b>Для збереження даних</b>\nПідтвердіть чи вказанні привильно данні", $this->buttonBuilder([[
-                    ["Підтвержую", "confirm"],
-                    ["Допущенна помилка", "denied"]
-                ]]))];
+                return [$this->createTelegramMessage("<b>Для збереження даних</b>\n" .
+                    "Підтвердіть, що дані вказані правильно", $this->buttonBuilder([]))];
             }
             return [$this->createTelegramMessage(
-                "<b>Упс... Показник лічильника не додано</b>\nПеревірте вказані показники та спробуйте ще раз",
-                $this->buttonBuilder([
-                    [
-                        [
-                            "Повернутися до меню",
-                            "backMenu"
-                        ]
-                    ]
-                ])
+                "<b>Упс... Показник лічильника не додано</b>\n" .
+                    "Перевірте вказані дані та спробуйте ще раз",
+                $this->buttonBuilder([$this->backToMenu])
             )];
         } elseif ($tgUserState == "addPokazGen" && $tgUser->rights == 3) {
             try {
                 if (preg_match('/[а-яА-Яa-zA-Z]/u', $textMess)) {
                     return [$this->createTelegramMessage(
-                        "<b>Були введені некоректні дані генератора</b>\nПеревірте вказані показники та спробуйте ще раз",
-                        $this->buttonBuilder([
-                            [
-                                [
-                                    "Повернутися до меню",
-                                    "backMenu"
-                                ]
-                            ]
-                        ])
+                        "<b>Були введені некоректні дані генератора</b>\n" .
+                            "Перевірте вказані дані та спробуйте ще раз",
+                        $this->buttonBuilder([$this->backToMenu])
                     )];
                 }
                 $parts = explode('_', $textMess);
@@ -282,15 +263,9 @@ class Telegram extends Model
 
                 if ($startTime >= $endTime) {
                     return [$this->createTelegramMessage(
-                        "<b>Були введені некоректні дані генератора</b>\nПеревірте вказані показники та спробуйте ще раз",
-                        $this->buttonBuilder([
-                            [
-                                [
-                                    "Повернутися до меню",
-                                    "backMenu"
-                                ]
-                            ]
-                        ])
+                        "<b>Були введені некоректні дані генератора</b>\n" .
+                            "Перевірте вказані дані та спробуйте ще раз",
+                        $this->buttonBuilder([$this->backToMenu])
                     )];
                 }
 
@@ -302,15 +277,9 @@ class Telegram extends Model
 
                 if (!$genData || $genData[0]["fuel"] - floatval($workingTime * $genData[0]["coeff"]) < 0) {
                     return [$this->createTelegramMessage(
-                        "<b>Були введені некоректні дані генератора</b>\nПеревірте вказані показники та спробуйте ще раз",
-                        $this->buttonBuilder([
-                            [
-                                [
-                                    "Повернутися до меню",
-                                    "backMenu"
-                                ]
-                            ]
-                        ])
+                        "<b>Були введені некоректні дані генератора</b>\n" .
+                            "Перевірте вказані дані та спробуйте ще раз",
+                        $this->buttonBuilder([$this->backToMenu])
                     )];
                 }
 
@@ -320,23 +289,48 @@ class Telegram extends Model
                     ["generatorPK" => $metaGeneratorPK, "pokaz" => $textMess]
                 );
                 return [$this->createTelegramMessage(
-                    "<b>Для збереження даних</b>\nПідтвердіть чи вказанні привильно данні\n<b>Генератор працював:</b> " . $workingTime . " годин?",
-                    $this->buttonBuilder([[
-                        ["Підтвержую", "confirm"],
-                        ["Допущенна помилка", "denied"]
-                    ]])
+                    "<b>Для збереження даних</b>\n" .
+                        "Підтвердіть, що дані вказані правильно\n" .
+                        "<b>Генератор працював:</b> " . $workingTime . " годин?",
+                    $this->buttonBuilder([$this->confirmation])
                 )];
             } catch (Exception $e) {
                 return [$this->createTelegramMessage(
-                    "<b>Упс... Показник генератора не додано</b>\nПеревірте вказані показники та спробуйте ще раз",
-                    $this->buttonBuilder([
-                        [
-                            [
-                                "Повернутися до меню",
-                                "backMenu"
-                            ]
-                        ]
-                    ])
+                    "<b>Упс... Показник генератора не додано</b>\n" .
+                        "Перевірте вказані дані та спробуйте ще раз",
+                    $this->buttonBuilder([$this->backToMenu])
+                )];
+            }
+        } elseif ($tgUserState == "countCanisterOUT" && $tgUser->rights == 3) {
+            try {
+                $countCanister = $generator->getFuelArea($tgUser->area)[0]['sum'];
+                // Валідація введенної кількості каністр
+                if (str_contains($textMess, ' ') || !is_numeric($textMess) || mb_strlen($textMess) > 9 || $countCanister  == 0 || $textMess < 1 || $textMess > $countCanister) {
+                    return [$this->createTelegramMessage(
+                        "<b>Були введені некоректна кількість каністр</b>\n" .
+                            "Перевірте кількість вказаних каністр та спробуйте ще раз",
+                        $this->buttonBuilder([$this->backToMenu])
+                    )];
+                }
+
+                $userModel->insertTelegramDataByChatId(
+                    $chatId,
+                    "confirmCountCanisterOUT",
+                    ["count" => $textMess]
+                );
+
+
+                return [$this->createTelegramMessage(
+                    "<b>Для збереження даних</b>\n" .
+                        "Підтвердіть, що дані вказані правильно\n" .
+                        "<b>Повертаєте каністр:</b> " . $textMess . " ?",
+                    $this->buttonBuilder([$this->confirmation])
+                )];
+            } catch (Exception $e) {
+                return [$this->createTelegramMessage(
+                    "<b>Упс... Каністри не відправлені для повернення</b>\n" .
+                        "Перевірте кількість каністр та спробуйте ще раз",
+                    $this->buttonBuilder([$this->backToMenu])
                 )];
             }
         }
@@ -344,21 +338,7 @@ class Telegram extends Model
         // Помилка користувачу по конкретній ролі
         return [$this->createTelegramMessage(
             "<b>Упс... Ви не маєте права на дану дію 🤔</b>",
-            ($tgUser->rights == 3) ? $this->buttonBuilder([
-                [
-                    [
-                        "Повернутися до меню",
-                        "backMenu"
-                    ]
-                ]
-            ]) : $this->buttonBuilder([
-                [
-                    [
-                        "Повернутися до списка",
-                        "adminMenu"
-                    ]
-                ]
-            ])
+            ($tgUser->rights == 3) ? $this->buttonBuilder([$this->backToMenu]) : $this->buttonBuilder([$this->backToAdminMenu])
         )];
     }
 
@@ -371,7 +351,8 @@ class Telegram extends Model
         $callbackData = $json->callback_query->data;
 
         // Користувач відсутній у системі
-        if ($tgUser == null) return [$this->createTelegramMessage("<b>Упс... Ви не маєте права на дану дію 🤔</b>\nСпробуйте авторизуватися")];
+        if ($tgUser == null) return [$this->createTelegramMessage("<b>Упс... Ви не маєте права на дану дію 🤔</b>\n" .
+            "Спробуйте авторизуватися")];
 
         $userTgState = $tgUser->telegramState;
 
@@ -383,15 +364,9 @@ class Telegram extends Model
                 return [$this->createTelegramMessage("Введіть власний <b>логін</b>")];
             }
             return [$this->createTelegramMessage(
-                "<b>Упс... Ви не маєте права на дану дію 🤔</b>\nВи повинні ввести свій пароль до користувача <b>" . $tgUser->login . "</b>",
-                $this->buttonBuilder([
-                    [
-                        [
-                            "Повернутися назад на стадію введеня логіна",
-                            "backLogin"
-                        ]
-                    ]
-                ])
+                "<b>Упс... Ви не маєте права на дану дію 🤔</b>\n" .
+                    "Ви повинні ввести свій пароль до користувача <b>" . $tgUser->login . "</b>",
+                $this->buttonBuilder([$this->backLogin])
             )];
         }
 
@@ -400,14 +375,7 @@ class Telegram extends Model
             if ($userTgState == 'adminMenu' && $callbackData == 'adminMenu') return $this->menuAdminMess();
             else return [$this->createTelegramMessage(
                 "<b>Упс... Ви не маєте права на дану дію 🤔</b>",
-                $this->buttonBuilder([
-                    [
-                        [
-                            "Повернутися до списка",
-                            "adminMenu"
-                        ]
-                    ]
-                ])
+                $this->buttonBuilder([$this->backToAdminMenu])
             )];
         }
 
@@ -427,9 +395,10 @@ class Telegram extends Model
                         array_push(
                             $respMessage,
                             $this->createTelegramMessage(
-                                "<b>Щоб вибрати генератор №</b> <u>" . $generator['serialNum'] . "</u>\nнатисніть на відповідну кнопку\n" .
+                                "<b>Щоб вибрати генератор №</b> <u>" . $generator['serialNum'] . "</u>\n" .
+                                    "натисніть на відповідну кнопку\n" .
                                     "<b>Назва:</b> <i>" . $generator['name'] . "</i>\n" .
-                                    "<b>Тип:</b> <i>" . $generator['type'] . "</i>\n",
+                                    "<b>Тип:</b> <i>" . $generator['type'] . "</i>",
                                 $this->buttonBuilder([
                                     [
                                         [
@@ -441,28 +410,29 @@ class Telegram extends Model
                             )
                         );
                     }
-                } elseif ($callbackData == 'canisters') {
+                } elseif ($callbackData == 'canisters_in') {
                     $specificCanister = $generator->getSpecificCanister($tgUser->area, '', 1, '');
 
                     if (count($specificCanister) == 0) {
                         return [$this->createTelegramMessage("Відсутні каністри для отримання 😎")];
                     }
 
-                    $userModel->insertTelegramDataByChatId($chatId, 'chooseCanister');
+                    $userModel->insertTelegramDataByChatId($chatId, 'chooseCanisterIN');
                     array_push($respMessage, $this->createTelegramMessage("<b>Список каністр</b>"));
 
                     foreach ($specificCanister as $canister) {
                         array_push(
                             $respMessage,
                             $this->createTelegramMessage(
-                                "<b>Щоб вибрати каністри №</b> <u>" . $canister['id'] . "</u>\nнатисніть на відповідну кнопку\n" .
+                                "<b>Щоб отримати каністри</b>\n" .
+                                    "натисніть кнопку 'Отримати'\n" .
                                     "<b>Палива:</b> <i>" . $canister['fuel'] . "</i>\n" .
                                     "<b>Кількість:</b> <i>" . $canister['canister'] . "</i>\n" .
-                                    "<b>Тип:</b> <i>" . $canister['type'] . "</i>\n",
+                                    "<b>Тип:</b> <i>" . $canister['type'] . "</i>",
                                 $this->buttonBuilder([
                                     [
                                         [
-                                            "№ " . $canister['id'],
+                                            "Отримати",
                                             $canister['id']
                                         ]
                                     ]
@@ -470,10 +440,24 @@ class Telegram extends Model
                             )
                         );
                     }
+                } elseif ($callbackData == 'canisters_out') {
+                    $countCanister = $generator->getFuelArea($tgUser->area)[0]['sum'];
+                    if ($countCanister == 0) {
+                        return [$this->createTelegramMessage("Відсутні каністри для повернення 😎")];
+                    }
+                    $userModel->insertTelegramDataByChatId($chatId, 'countCanisterOUT');
+
+                    array_push(
+                        $respMessage,
+                        $this->createTelegramMessage("<b>Введіть кількість каністр для повернення</b>\n" .
+                            "Всього на аптеці: " . $countCanister),
+                        $this->buttonBuilder([$this->backToMenu])
+                    );
                 } elseif (is_numeric($callbackData)) {
                     $counters = $search->findCountersNotFilled($tgUser->area, $callbackData, null);
 
-                    if (empty($counters)) return [$this->createTelegramMessage("Показники усім лічильникам були вказані\n<b>Ви молодці😎</b>")];
+                    if (empty($counters)) return [$this->createTelegramMessage("Показники усім лічильникам були вказані\n" .
+                        "<b>Ви молодці😎</b>")];
 
                     $userModel->insertTelegramDataByChatId(
                         $chatId,
@@ -485,7 +469,9 @@ class Telegram extends Model
                         array_push(
                             $respMessage,
                             $this->createTelegramMessage(
-                                "<b>Щоб вибрати лічильниик №</b> <u>" . $counter['counterId'] . "</u>\nнатисніть на відповідну кнопку\n<b>Коментар:</b> <i>" . $counter['counterName'] . "</i>",
+                                "<b>Щоб вибрати лічильниик №</b> <u>" . $counter['counterId'] . "</u>\n" .
+                                    "натисніть на відповідну кнопку\n" .
+                                    "<b>Коментар:</b> <i>" . $counter['counterName'] . "</i>",
                                 $this->buttonBuilder([
                                     [
                                         [
@@ -503,8 +489,10 @@ class Telegram extends Model
                 return $this->chooseCounter($tgUser, $chatId, $callbackData);
             } elseif ($userTgState == 'chooseGenerator' && is_numeric($callbackData)) {
                 return $this->chooseGenerator($tgUser, $chatId, $callbackData);
-            } elseif ($userTgState == 'chooseCanister' && is_numeric($callbackData)) {
-                return $this->chooseCanister($tgUser, $chatId, $callbackData);
+            } elseif ($userTgState == 'chooseCanisterIN' && is_numeric($callbackData)) {
+                return $this->chooseCanisterIN($tgUser, $chatId, $callbackData);
+            } elseif ($userTgState == 'chooseCanisterOUT' && is_numeric($callbackData)) {
+                return $this->chooseCanisterOUT($tgUser, $chatId, $callbackData);
             } elseif ($userTgState == 'confirm') {
                 $last = $userModel->getCounterDate();
                 $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
@@ -516,22 +504,25 @@ class Telegram extends Model
 
                     // Перевірка перед збереженням даних
                     if (!$search->checkPokaz($metaCounterPK, $last['year'] . "-" . $last['month'] . "-01", $metadata->pokaz)) {
-                        return [$this->createTelegramMessage("<b>Упс... Показник лічильника не додано</b>\nПеревірте вказані показники та спробуйте ще раз")];
+                        return [$this->createTelegramMessage("<b>Упс... Показник лічильника не додано</b>\n" .
+                            "Перевірте вказані дані та спробуйте ще раз")];
                     }
 
                     $savePokaz = $search->addPokazC($metaCounterPK, $metadata->pokaz, $last['year'], $last['month'], true);
 
                     // Перевірка після збереженням
                     if (!$savePokaz) {
-                        return $this->menuMess($chatId, $tgUser->area, "Показник лічильникa за <b>" . $last['year'] . "-" . $last['month'] . "-01</b> був <b>доданий раніше</b>\n<b>" . $tgUser->name . "</b> Виберіть тип лічильника");
+                        return $this->menuMess($chatId, $tgUser->area, "Показник лічильникa за <b>" . $last['year'] . "-" . $last['month'] . "-01</b> був <b>доданий раніше</b>\n" .
+                            "<b>" . $tgUser->name . "</b> Виберіть тип лічильника");
                     }
 
                     $search->recalculation($metaCounterPK);
                     $userModel->addUserLog(
                         $tgUser->login,
-                        ['login' => $tgUser->login, 'message' => "Додав показник = " . $metadata->pokaz . " лічильнику = " . $search->getCounterByCounterPK($metaCounterPK)->counterId . " (telegram)"]
+                        ['login' => $tgUser->login, 'message' => "Додав показник: " . $metadata->pokaz . " , лічильнику: " . $search->getCounterByCounterPK($metaCounterPK)->counterId . " (telegram)"]
                     );
-                    return $this->menuMess($chatId, $tgUser->area, "Показник лічильникa " . $metadata->pokaz . " за " . $last['month'] . "." . $last['year'] . " був <b>успішно додані 👍 </b>\n<i>Виберіть тип лічильника</i>");
+                    return $this->menuMess($chatId, $tgUser->area, "Показник лічильникa " . $metadata->pokaz . " за " . $last['month'] . "." . $last['year'] . " був <b>успішно доданий 👍 </b>\n" .
+                        "<i>Виберіть тип лічильника</i>");
                 }
             } elseif ($userTgState == 'confirmGen') {
                 $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
@@ -552,20 +543,11 @@ class Telegram extends Model
                     $consumedFuel = floatval(number_format($workingTime * $genData[0]["coeff"], 1, '.', ''));
 
                     if (!$genData || $genData[0]["fuel"] - $consumedFuel < 0) {
-                        return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть генератор");
+                        return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>");
                     }
 
                     $dataTargetGenerator = $generator->getSpecificGenerator('', '', $metaGeneratorPK);
-                    $consumed = $dataTargetGenerator[0]['fuel'] - $consumedFuel;
-
-                    $userModel->addUserLog(
-                        $tgUser->login,
-                        [
-                            'login' => $tgUser->login,
-                            'message' => "Подав час роботи = " . $workingTime . " годин, генератору = " . $dataTargetGenerator[0]['serialNum'] . " (telegram)"
-                        ]
-                    );
-                    $this->db->table('genaratorPokaz')->insert([
+                    $generator->saveGeneratorPokazANDLog([
                         'date' => date('Y-m-d', $startTime),
                         'year' => date('Y', $startTime),
                         'month' => date('m', $startTime),
@@ -575,51 +557,51 @@ class Telegram extends Model
                         'workingTime' => $workingTime,
                         'consumed' => $consumedFuel,
                         'genId' => $metaGeneratorPK
-                    ]);
-                    $this->db->table('fuelArea')->update(
-                        ['fuel' => $consumed],
-                        ['areaId' => $dataTargetGenerator[0]['genAreaId'], 'type' => $dataTargetGenerator[0]['genTypeId']]
-                    );
-                    return $this->menuMess($chatId, $tgUser->area, "Показник генератора <code>" . $metadata->pokaz . "</code> був <b>успішно додані 👍 </b>\n<i>Виберіть тип лічильника</i>");
+                    ], [
+                        "login" => $tgUser->login
+                    ], $dataTargetGenerator[0], true);
+
+                    return $this->menuMess($chatId, $tgUser->area, "Показник генератора <code>" . $metadata->pokaz . "</code> був <b>успішно доданий 👍 </b>\n" .
+                        "<i>Виберіть тип лічильника</i>");
                 }
-            } elseif ($userTgState == 'confirmCountCanister') {
+            } elseif ($userTgState == 'confirmCountCanisterIN') {
                 $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
 
-                if ($callbackData == 'denied') return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть каністри");
+                if ($callbackData == 'denied') return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>");
                 elseif ($callbackData == 'confirm') {
                     $metaCanisterPK = $metadata->canisterPK;
-                    $canisterData = $generator->getSpecificCanister('', '', '', $metaCanisterPK);
-                    if (!$canisterData || $canisterData == 0) {
-                        return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть каністри");
+                    $canisterData = $generator->getSpecificCanister('', '', 1, $metaCanisterPK);
+                    if (!$canisterData) {
+                        return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>");
                     }
-                    $this->db->query('UPDATE trackingCanister SET status = 2 WHERE id = ' . $metaCanisterPK);
-                    $fuelArea = $this->db->query('SELECT * FROM fuelArea WHERE areaId = ' . $canisterData[0]['areaId'] . ' AND type = ' . $canisterData[0]['typeId'])->getResultArray();
-                    if ($fuelArea) {
-                        $this->db->query('UPDATE fuelArea SET fuel = ROUND(fuel + ' . $canisterData[0]['fuel'] . ', 2), canister = canister + ' . $canisterData[0]['canister'] . '
-                                            WHERE type = ' . $canisterData[0]['typeId'] . ' AND areaId = ' . $canisterData[0]['areaId']);
-                    } else {
-                        $this->db->query('INSERT INTO fuelArea(fuel, canister, areaId, type) 
-                                            VALUES (' . $canisterData[0]['fuel'] . ', ' . $canisterData[0]['canister'] . ', ' . $canisterData[0]['areaId'] . ', ' . $canisterData[0]['typeId'] . ')');
+                    $generator->saveCanisterByTrdPointANDLog($canisterData[0], ["login" => $tgUser->login], $metaCanisterPK, true);
+                    return $this->menuMess($chatId, $tgUser->area, "Каністри були <b>успішно отримані 👍</b>");
+                }
+            } elseif ($userTgState == 'confirmCountCanisterOUT') {
+                $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
+
+                if ($callbackData == 'denied') return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>");
+                elseif ($callbackData == 'confirm') {
+                    $countCanister = $generator->getFuelArea($tgUser->area)[0]['sum'];
+                    $metaCanisterCount = $metadata->count;
+
+                    if ($countCanister == 0 || $countCanister < $metaCanisterCount) {
+                        return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>");
                     }
-                    $userModel->addUserLog(
-                        $tgUser->login,
-                        [
-                            'login' => $tgUser->login,
-                            'message' => "Отриманно каністри №" . $metaCanisterPK . ", палива = " . $canisterData[0]['fuel'] . ", каністр = " . $canisterData[0]['canister'] . " (telegram)"
-                        ]
-                    );
-                    return $this->menuMess($chatId, $tgUser->area, "Каністри №<code>" . $metaCanisterPK . "</code> були <b>успішно отримані 👍 </b>\n<i>Виберіть тип лічильника</i>");
+
+                    $generator->sendCanisterByTrdPointANDLog([
+                        'date' => date('Y-m-d'),
+                        'canister' => $metaCanisterCount,
+                        'fuel' => 0,
+                        'type' => 0,
+                        'unit' => $tgUser->area,
+                        'status' => 3
+                    ], ["login" => $tgUser->login], true);
+                    return $this->menuMess($chatId, $tgUser->area, "Каністри <code>" . $metaCanisterCount  . "</code> були <b>успішно відправленні на повернення 👍</b>");
                 }
             } else return [$this->createTelegramMessage(
                 "<b>Упс... Ви не маєте права на дану дію 🤔</b>",
-                $this->buttonBuilder([
-                    [
-                        [
-                            "Повернутися до меню",
-                            "backMenu"
-                        ]
-                    ]
-                ])
+                $this->buttonBuilder([$this->backToMenu])
             )];
         }
     }
@@ -651,7 +633,7 @@ class Telegram extends Model
         $metadata = json_decode($tgUser->telegramMetadata);
         if ($counterPK != null) {
             if (!$search->findCountersNotFilled($tgUser->area, $metadata->typeCounter, $counterPK)) {
-                return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть тип лічильника");
+                return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>");
             }
             return $this->addPokazMess($chatId, $metadata, $counterPK);
         }
@@ -664,24 +646,37 @@ class Telegram extends Model
         $metadata = json_decode($tgUser->telegramMetadata);
         if ($generatorPK != null) {
             if (!$generator->findActiveGenerators($tgUser->area, $generatorPK)) {
-                return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть генератор");
+                return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>");
             }
             return $this->addPokazGenMess($chatId, $tgUser, $generatorPK);
         }
         return $this->addPokazGenMess($chatId, $tgUser, $metadata->generatorPK);
     }
 
-    private function chooseCanister($tgUser, $chatId, $canisterPK = null)
+    private function chooseCanisterIN($tgUser, $chatId, $canisterPK = null)
     {
         $generator = new Generator();
         $metadata = json_decode($tgUser->telegramMetadata);
         if ($canisterPK != null) {
             if ($generator->getSpecificCanister($tgUser->area, '', 1, '') == 0) {
-                return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>\n<i>" . $tgUser->name . "</i> виберіть каністри");
+                return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>");
             }
-            return $this->addCountСanisterMess($chatId, $tgUser, $canisterPK);
+            return $this->addCountCanisterMessIN($chatId, $tgUser, $canisterPK);
         }
-        return $this->addCountСanisterMess($chatId, $tgUser, $metadata->canisterPK);
+        return $this->addCountCanisterMessIN($chatId, $tgUser, $metadata->canisterPK);
+    }
+
+    private function chooseCanisterOUT($tgUser, $chatId, $canisterPK = null)
+    {
+        $generator = new Generator();
+        $metadata = json_decode($tgUser->telegramMetadata);
+        if ($canisterPK != null) {
+            if ($generator->getSpecificCanister($tgUser->area, '', 2, '') == 0) {
+                return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>");
+            }
+            return $this->addCountCanisterMessOUT($chatId, $tgUser, $canisterPK);
+        }
+        return $this->addCountCanisterMessOUT($chatId, $tgUser, $metadata->canisterPK);
     }
 
     private function addPokazMess($chatId, $metadata, $counterPK)
@@ -697,15 +692,9 @@ class Telegram extends Model
         $counter = $search->getCounterByCounterPK($counterPK);
         $lastPokaz = ($pokaz) ? $pokaz->index : $counter->spokaz;
         return [$this->createTelegramMessage(
-            "<b>Введіть показники лічильнику №</b> <u>" . $counter->counterId . "</u>\n<b>Крайній показник лічильника становить</b> <code>" . $lastPokaz . "</code>",
-            $this->buttonBuilder([
-                [
-                    [
-                        "Повернутися до меню",
-                        "backMenu"
-                    ]
-                ]
-            ])
+            "<b>Введіть показники лічильнику №</b> <u>" . $counter->counterId . "</u>\n" .
+                "<b>Крайній показник лічильника становить</b> <code>" . $lastPokaz . "</code>",
+            $this->buttonBuilder([$this->backToMenu])
         )];
     }
 
@@ -728,48 +717,54 @@ class Telegram extends Model
                 "<b>Тип:</b> <i>" . $dataGen[0]["type"] . "</i>\n" .
                 "<b>Палива:</b> <i>" . $dataGen[0]["fuel"] . " л.</i>\n" .
                 "<b>Каністр:</b> <i>" . $dataGen[0]["canister"] . " од.</i>\n" .
-                "<b>Прогнозований час роботи генератора: ≈ </b> <i>" . number_format($dataGen[0]["fuel"] / $dataGen[0]["coeff"], 1, '.', '') . " годин</i>\n" .
-                "<b>ПРИКЛАД:</b> <code>" . $twoHoursAgo . '_' . $currentDateTime . "</code>\n",
-            $this->buttonBuilder([
-                [
-                    [
-                        "Повернутися до меню",
-                        "backMenu"
-                    ]
-                ]
-            ])
+                "<b>Прогнозований час роботи генератора: ≈</b> <i>" . number_format($dataGen[0]["fuel"] / $dataGen[0]["coeff"], 1, '.', '') . " годин</i>\n" .
+                "<b>ПРИКЛАД:</b> <code>" . $twoHoursAgo . '_' . $currentDateTime . "</code>",
+            $this->buttonBuilder([$this->backToMenu])
         )];
     }
 
-    private function addCountСanisterMess($chatId, $tgUser, $canisterPK)
+    private function addCountCanisterMessIN($chatId, $tgUser, $canisterPK)
     {
         $userModel = new User();
         $generator = new Generator();
         $canister = $generator->getSpecificCanister($tgUser->area, '', 1, $canisterPK);
         $userModel->insertTelegramDataByChatId(
             $chatId,
-            'confirmCountCanister',
+            'confirmCountCanisterIN',
             ["canisterPK" => $canisterPK]
         );
 
         return [$this->createTelegramMessage(
-            "<b>Отримані каністри №</b> <u>" . $canister[0]["id"] . "</u>\nПідтвердіть чи вказанні привильно данні\n" .
+            "<b>Отримані каністри</b>\n" .
+                "Підтвердіть, що дані вказані правильно\n" .
                 "<b>Дата відправки:</b> <i>" . $canister[0]['date'] . "</i>\n" .
                 "<b>Палива:</b> <i>" . $canister[0]['fuel'] . "</i>\n" .
                 "<b>Кількість:</b> <i>" . $canister[0]['canister'] . "</i>\n" .
-                "<b>Тип:</b> <i>" . $canister[0]['type'] . "</i>\n",
-            $this->buttonBuilder([[
-                ["Підтвержую", "confirm"],
-                ["Допущенна помилка", "denied"]
-            ]])
+                "<b>Тип:</b> <i>" . $canister[0]['type'] . "</i>",
+            $this->buttonBuilder([$this->confirmation])
         )];
     }
+    private function addCountCanisterMessOUT($chatId, $tgUser, $canisterPK)
+    {
+        $userModel = new User();
+        $generator = new Generator();
+        $canister = $generator->getSpecificCanister($tgUser->area, '', 2, $canisterPK);
+        $userModel->insertTelegramDataByChatId(
+            $chatId,
+            'countCanisterOUT',
+            ["canisterPK" => $canisterPK]
+        );
 
+        return [$this->createTelegramMessage(
+            "<b>Введіть кількість каністр для повернення №</b> <u>" . $canister[0]["id"] . "</u>\n" .
+                "<b>Загальна кількість:</b> <i>" . $canister[0]['canister'] . "</i>",
+            $this->buttonBuilder([$this->backToMenu])
+        )];
+    }
 
     private function menuMess($chatId, $areaId, $title, $justLoggined = false)
     {
         $generator = new Generator();
-        $specificCanister = $generator->getSpecificCanister($areaId, '', 1, '');
         $activeGenerators = $generator->findActiveGenerators($areaId);
         $userModel = new User();
         $userModel->insertTelegramDataByChatId($chatId, "menu");
@@ -784,10 +779,18 @@ class Telegram extends Model
                 "generators"
             ]);
         }
-        if (count($specificCanister) > 0) {
+        if (count($generator->getSpecificCanister($areaId, '', 1, '')) > 0) {
             array_push($genMenu, [
-                "Каністри",
-                "canisters"
+                "Отр. каністр",
+                "canisters_in"
+            ]);
+        }
+
+
+        if ($generator->getFuelArea($areaId)[0]['sum'] != 0) {
+            array_push($genMenu, [
+                "Пов. каністр",
+                "canisters_out"
             ]);
         }
 
@@ -816,20 +819,13 @@ class Telegram extends Model
         $respMessage = [];
 
         if ($justLoggined) array_push($respMessage, $this->createTelegramMessage("Щоб вийти із облікового запису напишіть <code>/logout</code>"));
-
         if (empty($counters)) {
             array_push(
                 $respMessage,
                 $this->createTelegramMessage(
-                    "Показники усім лічильникам були вказані\n<b>Чудово😎</b>",
-                    $this->buttonBuilder([
-                        [
-                            [
-                                "Оновити",
-                                "adminMenu"
-                            ]
-                        ]
-                    ])
+                    "Показники усім лічильникам були вказані\n" .
+                        "<b>Чудово😎</b>",
+                    $this->buttonBuilder([$this->backToAdminMenu])
                 )
             );
             return $respMessage;
@@ -838,20 +834,16 @@ class Telegram extends Model
         array_push($respMessage, $this->createTelegramMessage("<b>Список не вказаних показників лічильників</b>"));
 
         foreach ($counters as $counter) {
-            array_push($respMessage, $this->createTelegramMessage("Лічильник № <u>" . $counter['counterId'] . "</u>\nРозташування: <b>" . $counter['unit'] . "</b>\nАдреса: <b>" . $counter['addr'] . "</b>"));
+            array_push($respMessage, $this->createTelegramMessage("Лічильник №<u>" . $counter['counterId'] . "</u>\n" .
+                "Розташування: <b>" . $counter['unit'] . "</b>\n" .
+                "Адреса: <b>" . $counter['addr'] . "</b>"));
         }
         array_push(
             $respMessage,
             $this->createTelegramMessage(
-                "<b>Оновити список не вказних показників лічильників</b>\n<b>Всього налічується</b> <code>" . count($counters) . "</code> <b>лічильників</b>",
-                $this->buttonBuilder([
-                    [
-                        [
-                            "Оновити",
-                            "adminMenu"
-                        ]
-                    ]
-                ])
+                "<b>Оновити список не вказаних показників лічильників</b>\n" .
+                    "На даний момент в системі налічується <code>" . count($counters) . "</code> <b>лічильників</b>",
+                $this->buttonBuilder([$this->backToAdminMenu])
             )
         );
 
