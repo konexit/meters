@@ -114,7 +114,7 @@ class Meters extends BaseController
             'generatorArea' => $this->generator->getGeneratorArea(),
             'canisterArea' => $this->generator->getCanisterArea(),
             'typeGenerator' => $this->generator->getTypeGenerator(),
-            'canisterStatus' => $this->generator->getCanisterStatus()
+            'canisterStatus' => $this->generator->getCanisterStatus(),
         ], $this->user->getCounterDate()));
     }
 
@@ -173,6 +173,8 @@ class Meters extends BaseController
                 return $this->generator->getReportGenerator($this->request);
             case 'actionsUserCanister':
                 return $this->generator->actionsUserCanister($this->request);
+            case 'getGeneratorsRemnant':
+                return $this->generator->getGeneratorsRemnant($this->request);
             default:
                 return 404;
         }

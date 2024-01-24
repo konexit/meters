@@ -55,6 +55,7 @@ function setBackground(meIt) {
         $("#aArea"),
         $("#report"),
         $("#mGeneratorManage"),
+        $("#mGeneratorRemnant"),
         $("#mAreaGenerator"),
         $("#mCanisterTracking"),
         $("#mGeneratorReport"),
@@ -79,6 +80,8 @@ function showSet(mShow) {
         $("#counter"),
         $("#generator"),
         $("#canister"),
+        $("#generatorRemnant"),
+        $("#generatorAreaRemnantList"),
         $("#log"),
         $("#allUnit"),
         $("#cPass"),
@@ -243,7 +246,7 @@ function setPokaz(counterPK, cNom) {
     showSet([$("#inputPokaz"), $("#pokazEdit")]);
 }
 
-function createGeneratorFromJSON(jsonData, action) {
+function createGeneratorFromJSON(jsonData, action, withoutActions = false) {
     const data = JSON.parse(jsonData);
 
     const table = document.createElement("table");
@@ -267,9 +270,13 @@ function createGeneratorFromJSON(jsonData, action) {
         th.textContent = column;
         headerRow.appendChild(th);
     });
-    const th = document.createElement("th");
-    th.textContent = 'Дія';
-    headerRow.appendChild(th);
+
+    if (withoutActions) {
+        const th = document.createElement("th");
+        th.textContent = 'Дія';
+        headerRow.appendChild(th);
+    }
+
 
     tableHeader.appendChild(headerRow);
     table.appendChild(tableHeader);
@@ -296,18 +303,21 @@ function createGeneratorFromJSON(jsonData, action) {
 
         tableBody.appendChild(row);
 
-        const rowAction = document.createElement("tr");
-        rowAction.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
-        const cell = document.createElement("td")
-        const addButton = document.createElement("button")
-        addButton.textContent = action
-        addButton.addEventListener("click", function () {
-            gId = generator['id']
-            setGenerator(generator['id'], generator['unit'], generator['name'], generator['serialNum'], generator['coeff'], generator['type'], generator['state'], action)
-        });
-        cell.appendChild(addButton)
-        row.appendChild(cell)
-        tableBody.appendChild(row);
+        if (withoutActions) {
+            const rowAction = document.createElement("tr");
+            rowAction.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
+            const cell = document.createElement("td")
+            const addButton = document.createElement("button")
+            addButton.textContent = action
+            addButton.addEventListener("click", function () {
+                gId = generator['id']
+                setGenerator(generator['id'], generator['unit'], generator['name'], generator['serialNum'], generator['coeff'], generator['type'], generator['state'], action)
+            });
+            cell.appendChild(addButton)
+            row.appendChild(cell)
+            tableBody.appendChild(row);
+        }
+
     });
 
     table.appendChild(tableBody);
@@ -1097,6 +1107,12 @@ function mGeneratorManage() {
     getGenerators();
 }
 
+function mGeneratorRemnant() {
+    showSet([$("#generatorAreaRemnantList"), $("#generatorRemnant")]);
+    setBackground($("#mGeneratorRemnant"));
+    getGeneratorsRemnant();
+}
+
 function getGenerators() {
     const unit = getDataFromDatalist('#gUnit', '#inputGUnit')
     const type = getDataFromDatalist('#gType', '#inputGType')
@@ -1111,6 +1127,22 @@ function getGenerators() {
         if (tableGenerator.children[0]) tableGenerator.replaceChild(createGeneratorFromJSON(result, action), tableGenerator.children[0])
         else tableGenerator.appendChild(createGeneratorFromJSON(result, action))
         setValidHeightElement("#generator", true);
+    });
+}
+
+function getGeneratorsRemnant() {
+    const unit = getDataFromDatalist('#gUnitRemnant', '#inputGUnitRemnant')
+    const type = getDataFromDatalist('#gTypeRemnant', '#inputGTypeRemnant')
+    if (unit == undefined || type == undefined) return
+    $.post(ajaxURL, {
+        action: "getGeneratorsRemnant",
+        gUnit: unit,
+        gType: type
+    }, function (result) {
+        const tableGenerator = document.querySelector("#generatorRemnant")
+        if (tableGenerator.children[0]) tableGenerator.replaceChild(createGeneratorFromJSON(result), tableGenerator.children[0])
+        else tableGenerator.appendChild(createGeneratorFromJSON(result))
+        setValidHeightElement("#generatorRemnant", true);
     });
 }
 

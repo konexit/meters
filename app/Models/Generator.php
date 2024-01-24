@@ -103,6 +103,19 @@ class Generator extends Model
         ], JSON_UNESCAPED_UNICODE);
     }
 
+    function getGeneratorsRemnant($request)
+    {
+        header("Content-Type: application/json");
+        echo json_encode([
+            "columns" => ["Підрозділ", "Адреса", "Назва генератора", "К-сть каністр", "Тип палива", "Палива"],
+            "generators" => $this->findGeneratorsRemnant($request->getVar('gUnit'), $request->getVar('gType')),
+            "ref" => [
+                "Підрозділ" => "unit", "Адреса" => "addr", "Назва генератора" => "name", 
+                "К-сть каністр" => "canister", "Тип палива" => "type", "Палива" => "fuel"
+            ]
+        ], JSON_UNESCAPED_UNICODE);
+    }
+
     function getCanisters($request)
     {
         header("Content-Type: application/json");
@@ -255,9 +268,12 @@ class Generator extends Model
         $user = new User();
         $this->deleteTrackingCanisterById($trackingCanisterId);
         if ($this->getFuelArea($canisterModel['areaId'], $canisterModel['typeId'])[0]['sum']) {
-            $this->db->query('UPDATE fuelArea SET fuel = ROUND(fuel + ' . $canisterModel['fuel'] . ', 2), canister = canister + ' . $canisterModel['canister'] . ' WHERE type = ' . $canisterModel['typeId'] . ' AND areaId = ' . $canisterModel['areaId']);
+            $this->db->query('UPDATE fuelArea 
+                                SET fuel = ROUND(fuel + ' . $canisterModel['fuel'] . ', 2), canister = canister + ' . $canisterModel['canister'] . ' 
+                                WHERE type = ' . $canisterModel['typeId'] . ' AND areaId = ' . $canisterModel['areaId']);
         } else {
-            $this->db->query('INSERT INTO fuelArea(fuel, canister, areaId, type) VALUES (' . $canisterModel['fuel'] . ', ' . $canisterModel['canister']  . ', ' . $canisterModel['areaId'] . ', ' . $canisterModel['typeId'] . ')');
+            $this->db->query('INSERT INTO fuelArea(fuel, canister, areaId, type) 
+                                VALUES (' . $canisterModel['fuel'] . ', ' . $canisterModel['canister']  . ', ' . $canisterModel['areaId'] . ', ' . $canisterModel['typeId'] . ')');
         }
         $user->addUserLog($userModel["login"], ['login' => $userModel["login"], 'message' => "Отримано каністри кількість = " . $canisterModel['canister'] . ", палива = " . $canisterModel['fuel'] . (($isTelegram) ? " (telegram)" : "")]);
     }
@@ -317,6 +333,22 @@ class Generator extends Model
                                     " . $condition . " 
                                 ORDER BY 
                                     g.state DESC, a.unit")->getResultArray();
+    }
+
+    function findGeneratorsRemnant($gUnit = "", $gType = "")
+    {
+        $condition = "";
+        if ($gType) $condition = $condition . " AND g.type = " . $gType;
+        if ($gUnit) $condition =  $condition . " AND g.unit = " . $gUnit;
+        return $this->db->query("SELECT 
+                                    a.unit, a.addr, g.name, fa.canister, tg.type, fa.fuel 
+                                FROM generator AS g
+                                    JOIN fuelArea AS fa ON g.unit = fa.areaId AND g.type = fa.type 
+                                    JOIN typeGenerator AS tg ON g.type = tg.id
+                                    JOIN area AS a ON g.unit = a.id
+                                WHERE g.state = 1 AND a.state = 1 
+                                " . $condition . " 
+                                ORDER BY a.unit")->getResultArray();
     }
 
     function getSpecificCanister($unit, $type = "", $status = "", $canisterId = "")

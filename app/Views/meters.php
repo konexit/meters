@@ -110,7 +110,8 @@
                             echo "<li><a class='menItem' id='mGenerator' onclick=''>Генератори</a>
                                             <ul>                
                                                 <li><a  class='menItem' id='mGeneratorManage' onclick='mGeneratorManage()'>Управління</a></li>                          
-                                                <li><a  class='menItem' id='mCanisterTracking' onclick='mCanisterTracking()'>Відстежування</a></li>       
+                                                <li><a  class='menItem' id='mCanisterTracking' onclick='mCanisterTracking()'>Відстежування</a></li>   
+                                                <li><a  class='menItem' id='mGeneratorRemnant' onclick='mGeneratorRemnant()'>Залишок</a></li>                          
                                                 <li><a  class='menItem' id='mGeneratorReport' onclick='mGeneratorReport()'>Звіт</a></li>                               
                                             </ul>
                                         </li>                                
@@ -141,7 +142,7 @@
                             <p style="margin-bottom: 25px;font-size: 20px;">Стан підрозділу: <input type="checkbox" name="areaState" id="areaState" checked="checked"></p>
                             <p style="margin-bottom: 25px;font-size: 20px;">Добавити аптеку: <input id="isTradePoint" type="checkbox" onclick="tradePointFormStatus(this.checked)" /></p>
                             <div id="tradePointForm" style="display: none">
-                                <p>ID аптеки: <input id="tradePointId" type="number" /></p>
+                                <p>ID(1с код) аптеки: <input id="tradePointId" type="number" /></p>
                                 <p>Власник аптеки: <select id="companyId" style="width: 100%;">
                                         <?
                                         foreach ($companies as $company) {
@@ -333,6 +334,24 @@
                             <input id="btnReportCounter" name="btnReportCounter" type="submit" class="btn-report-counter" value="Отримати звіти" />
                         </div>
                     </form>
+                </div>
+                <div id="generatorAreaRemnantList" align="center">
+                    <a class="bcType">Підрозділ: <input id="inputGUnitRemnant" list="gUnitRemnant" onchange="getGeneratorsRemnant()" placeholder="Усі">
+                        <datalist name="gUnitRemnant" class="gUnit" id="gUnitRemnant">
+                            <?
+                            echo '<option data-value="0" data-text="Усі">Усі</option>';
+                            foreach ($generatorArea as $arr) {
+                                echo '<option data-value="' . $arr['id'] . '" data-text="' . trim($arr['unit']) . '">' . trim($arr['unit']) . '</option>';
+                            }
+                            ?></datalist></a>
+                    <a class="bcType">Тип генератора: <input id="inputGTypeRemnant" list="gTypeRemnant" onchange="getGeneratorsRemnant()" placeholder="Усі">
+                        <datalist name="gTypeRemnant" class="unit" id="gTypeRemnant">
+                            <?
+                            echo $typeG;
+                            ?></datalist></a>
+                </div>
+                <div id="generatorRemnant">
+                    <p></p>
                 </div>
                 <div id="generatorList" align="center">
                     <a class="bcType">Місце розташування генератора: <input id="inputGUnit" list="gUnit" onchange="getGenerators()" placeholder="Усі">
