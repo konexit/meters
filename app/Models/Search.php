@@ -338,12 +338,13 @@ class Search extends Model
             echo json_encode(['error' => 'Торгова точка із номером №' . $tradePointId . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
             return;
         }
-        $this->addUnit([
+        $this->db->table('area')->insert([
             'addr' => $request->getVar('addr'),
             'tel' => $request->getVar('tel'),
             'unit' => $unit,
             'trade_point_id' => $tradePointId,
-            'state' => filter_var($request->getVar('areaState'), FILTER_VALIDATE_BOOLEAN)
+            'state' => filter_var($request->getVar('areaState'), FILTER_VALIDATE_BOOLEAN),
+            'refill' => filter_var($request->getVar('refill'), FILTER_VALIDATE_BOOLEAN),
         ]);
 
         if (filter_var($request->getVar('isTradePoint'), FILTER_VALIDATE_BOOLEAN)) {
@@ -388,7 +389,7 @@ class Search extends Model
         $table = new Table();
         $table->setTemplate($this->tablShablone());
         echo "<p></p>";
-        $table->setHeading("Підрозділ", "Адрес", "Телефон", "ID", "Стан", "Дії");
+        $table->setHeading("Підрозділ", "Адрес", "Телефон", "ID", "Стан", "Паливна карта", "Дії");
         $query = $this->getAllUnitDB();
         $allCompaniesAreas = $this->db->query("SELECT * FROM companiesAreas")->getResultArray();
         $companyTradePoint = [];
@@ -405,7 +406,8 @@ class Search extends Model
                         $row['tel'],
                         $row['trade_point_id'],
                         $row["state"] == 1 ? '<input type="checkbox" checked disabled="">' : '<input type="checkbox" disabled="">',
-                        '<button onClick="unitEdit(' . $row['id'] . ',' . "'" . $row['unit'] . "'" . ',' . "'" . rawurlencode($row['addr']) . "'" . ',' . "'" . $row['tel'] . "'" . ', ' . $row['state']  . ', true, ' . $row['trade_point_id'] . ', ' . $companyTradePoint[$row['id']] . ')">' . "Редагувати" . '</button>'
+                        $row["refill"] == 1 ? '<input type="checkbox" checked disabled="">' : '<input type="checkbox" disabled="">',
+                        '<button onClick="unitEdit(' . $row['id'] . ',' . "'" . $row['unit'] . "'" . ',' . "'" . rawurlencode($row['addr']) . "'" . ',' . "'" . $row['tel'] . "'" . ', ' . $row['state']  . ', ' . $row['refill'] . ', true, ' . $row['trade_point_id'] . ', ' . $companyTradePoint[$row['id']] . ')">' . "Редагувати" . '</button>'
                     );
                 } else
                     $table->addRow(
@@ -414,7 +416,8 @@ class Search extends Model
                         $row['tel'],
                         $row['trade_point_id'],
                         $row["state"] == 1 ? '<input type="checkbox" checked disabled="">' : '<input type="checkbox" disabled="">',
-                        '<button onClick="unitEdit(' . $row['id'] . ',' . "'" . $row['unit'] . "'" . ',' . "'" . rawurlencode($row['addr']) . "'" . ',' . "'" . $row['tel'] . "'" . ', ' . $row['state']  . ' )">' . "Редагувати" . '</button>'
+                        $row["refill"] == 1 ? '<input type="checkbox" checked disabled="">' : '<input type="checkbox" disabled="">',
+                        '<button onClick="unitEdit(' . $row['id'] . ',' . "'" . $row['unit'] . "'" . ',' . "'" . rawurlencode($row['addr']) . "'" . ',' . "'" . $row['tel'] . "'" . ', ' . $row['state']  . ', ' . $row['refill'] .  ' )">' . "Редагувати" . '</button>'
                     );
             }
             echo $table->generate();
@@ -488,7 +491,8 @@ class Search extends Model
             'tel' => $request->getVar('tel'),
             'unit' => $this->trimSpace($request->getVar('unit')),
             'trade_point_id' => $tradePointId,
-            'state' => filter_var($request->getVar('areaState'), FILTER_VALIDATE_BOOLEAN)
+            'state' => filter_var($request->getVar('areaState'), FILTER_VALIDATE_BOOLEAN),
+            'refill' => filter_var($request->getVar('refill'), FILTER_VALIDATE_BOOLEAN),
         ], ['id' => $unitId]);
         $this->db->transComplete();
     }
@@ -823,11 +827,6 @@ class Search extends Model
     private function checkUnTradePointDB($tradePoint)
     {
         return count($this->db->query("SELECT * FROM area WHERE trade_point_id = " . $tradePoint)->getResultArray()) ? false : true;
-    }
-
-    private function addUnit($area)
-    {
-        $this->db->table('area')->insert($area);
     }
 
     private function checkUserDB($user)

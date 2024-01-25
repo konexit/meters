@@ -600,7 +600,7 @@ class Telegram extends Model
                         'fuel' => 0,
                         'type' => 0,
                         'unit' => $tgUser->area,
-                        'status' => 3
+                        'status' => 2
                     ], ["login" => $tgUser->login], true);
                     return $this->menuMess($chatId, $tgUser->area, "Каністри <code>" . $metaCanisterCount  . "</code> були <b>успішно відправленні на повернення 👍</b>");
                 }

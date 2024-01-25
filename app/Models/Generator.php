@@ -34,7 +34,7 @@ class Generator extends Model
 
     function getTrackingCanister($idCanister)
     {
-        return $this->db->query("SELECT c.status, c.canister, c.unit 
+        return $this->db->query("SELECT c.status, c.canister, c.unit, c.fuel, c.type
                                     FROM trackingCanister AS c 
                                     JOIN area AS a ON a.id = c.unit 
                                     WHERE c.id = " . $idCanister . "
@@ -110,7 +110,7 @@ class Generator extends Model
             "columns" => ["Підрозділ", "Адреса", "Назва генератора", "К-сть каністр", "Тип палива", "Палива"],
             "generators" => $this->findGeneratorsRemnant($request->getVar('gUnit'), $request->getVar('gType')),
             "ref" => [
-                "Підрозділ" => "unit", "Адреса" => "addr", "Назва генератора" => "name", 
+                "Підрозділ" => "unit", "Адреса" => "addr", "Назва генератора" => "name",
                 "К-сть каністр" => "canister", "Тип палива" => "type", "Палива" => "fuel"
             ]
         ], JSON_UNESCAPED_UNICODE);
@@ -134,9 +134,7 @@ class Generator extends Model
         if (filter_var($request->getVar('isReturning'), FILTER_VALIDATE_BOOLEAN)) {
             $canisterId = $request->getVar('idCanister');
             $trackCanister = $this->getTrackingCanister($canisterId);
-            if ($trackCanister[0]["status"] == 4) {
-                $this->db->query("INSERT INTO fuelArea (canister) VALUES (canister + " . $trackCanister[0]["canister"] . ") WHERE areaId = " . $trackCanister[0]["unit"] . " LIMIT 1");
-            }
+            $this->db->query("INSERT INTO fuelArea (canister) VALUES (canister + " . $trackCanister[0]["canister"] . ") WHERE areaId = " . $trackCanister[0]["unit"] . " LIMIT 1");
             $this->deleteTrackingCanisterById($canisterId);
             header("Content-Type: application/json");
             echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
@@ -151,6 +149,16 @@ class Generator extends Model
                 echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
             }
         }
+    }
+
+    function actionsConfRefillFuel($request)
+    {
+        $canisterId = $request->getVar('idCanister');
+        $trackCanister = $this->getTrackingCanister($canisterId);
+        $this->db->query('UPDATE fuelArea SET fuel = ROUND(fuel + ' . $trackCanister[0]['fuel'] . ', 2) WHERE areaId = ' . $trackCanister[0]['unit'] . ' AND type = ' . $trackCanister[0]['type'] . '  LIMIT 1');
+        $this->deleteTrackingCanisterById($canisterId);
+        header("Content-Type: application/json");
+        echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
     }
 
     function addGeneratorPokaz($request)
@@ -186,7 +194,8 @@ class Generator extends Model
         echo json_encode([
             "generators" =>  $this->getSpecificGenerator(session()->get('usArea')),
             "canisters" => $this->getSpecificCanister(session()->get('usArea'), '', 1, ''),
-            "fuelArea" =>  $this->getFuelArea(session()->get('usArea'))[0]['sum']
+            "fuelArea" =>  $this->getFuelArea(session()->get('usArea'))[0]['sum'],
+            "refill" => $this->db->query("SELECT refill FROM area WHERE id = " . session()->get('usArea'))->getResultArray()[0]['refill']
         ], JSON_UNESCAPED_UNICODE);
     }
 
@@ -206,7 +215,7 @@ class Generator extends Model
                     'fuel' => 0,
                     'type' => 0,
                     'unit' => session("usArea"),
-                    'status' => 3
+                    'status' => 2
                 ], ["login" => session("mLogin")]);
                 echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
             }
@@ -221,6 +230,25 @@ class Generator extends Model
                 echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
             }
         }
+    }
+
+    function refillFuel($request)
+    {
+        $user = new User();
+        $this->db->table('trackingCanister')->insert([
+            'date' => date('Y-m-d'),
+            'canister' => 0,
+            'fuel' => $request->getVar('fuelRefill'),
+            'type' =>  $request->getVar('refillType'),
+            'unit' => session("usArea"),
+            'status' => 3
+        ]);
+        $user->addUserLog(session("mLogin"), [
+            'login' => session("mLogin"),
+            'message' => "Відправленно запит на купівлю палива = " . $request->getVar('fuelRefill')
+        ]);
+        header("Content-Type: application/json");
+        echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
     }
 
     function getReportGenerator($request)
@@ -238,6 +266,12 @@ class Generator extends Model
             case "month": {
                     foreach ($json->companies as $company) {
                         array_push($reports, $this->createValidJSONForReportMonth($json, $company, $this->getDataReport($company, $json), $this->getRemnants($company)));
+                    }
+                    break;
+                }
+            case "total": {
+                    foreach ($json->companies as $company) {
+                        array_push($reports, $this->createValidJSONForReportTotal($json, $company, $this->getDataReport($company, $json), $this->getRemnants($company)));
                     }
                     break;
                 }

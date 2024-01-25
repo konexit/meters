@@ -79,6 +79,7 @@ function showSet(mShow) {
         $("#addCounters"),
         $("#counter"),
         $("#generator"),
+        $("#refillGeneratorElement"),
         $("#canister"),
         $("#generatorRemnant"),
         $("#generatorAreaRemnantList"),
@@ -271,7 +272,7 @@ function createGeneratorFromJSON(jsonData, action, withoutActions = false) {
         headerRow.appendChild(th);
     });
 
-    if (withoutActions) {
+    if (!withoutActions) {
         const th = document.createElement("th");
         th.textContent = 'Дія';
         headerRow.appendChild(th);
@@ -303,7 +304,7 @@ function createGeneratorFromJSON(jsonData, action, withoutActions = false) {
 
         tableBody.appendChild(row);
 
-        if (withoutActions) {
+        if (!withoutActions) {
             const rowAction = document.createElement("tr");
             rowAction.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
             const cell = document.createElement("td")
@@ -387,10 +388,20 @@ function createCanisterFromJSON(jsonData) {
 
         if (canister['statusId'] == 3) {
             const addButton = document.createElement("button");
+            addButton.textContent = "Підтвердити поповнення";
+            addButton.setAttribute("style", "margin: 5px;");
+            addButton.addEventListener("click", function () {
+                adminConfirmRefill(canister['id']);
+            });
+            buttonContainer.appendChild(addButton);
+        }
+
+        if (canister['statusId'] == 2) {
+            const addButton = document.createElement("button");
             addButton.textContent = "Отримати";
             addButton.setAttribute("style", "margin: 5px;");
             addButton.addEventListener("click", function () {
-                adminReturnOfCanisters(canister['id'], canister['unit'], canister['canister']);
+                adminReturnOfCanisters(canister['id']);
             });
             buttonContainer.appendChild(addButton);
         }
@@ -618,7 +629,8 @@ function unADD() {
         areaState: document.querySelector('#areaState').checked,
         isTradePoint: isTradePoint,
         tradePointId: tradePointId,
-        companyId: +document.querySelector('#companyId').value
+        companyId: +document.querySelector('#companyId').value,
+        refill: document.querySelector('#tradePointRefill').checked
     }, function (result) {
         res = JSON.parse(result);
         if (res.error) {
@@ -667,6 +679,7 @@ function confirmUnitEdit(id) {
         tel: $("#tel").val().trim(),
         unit: $("#unit").val().trim(),
         areaState: document.querySelector('#areaState').checked,
+        refill: document.querySelector('#tradePointRefill').checked,
         isTradePoint: isTradePoint,
         tradePointId: tradePointId,
         companyId: +document.querySelector('#companyId').value
@@ -717,12 +730,13 @@ function tradePointFormStatus(status) {
     else document.querySelector('#tradePointForm').style.display = 'none';
 };
 
-function unitEdit(uId, unit, addr, tel, areaState = true, isTradePoint = false, tradePointId = 0, companyId = 0) {
+function unitEdit(uId, unit, addr, tel, areaState = true, refill = false, isTradePoint = false, tradePointId = 0, companyId = 0) {
     $("#unit").val(unit);
     $("#unADDR").val(decodeURIComponent(addr));
     $("#tel").val(tel);
     document.querySelector('#isTradePoint').checked = isTradePoint
     document.querySelector('#areaState').checked = areaState
+    document.querySelector('#tradePointRefill').checked = refill
     tradePointFormStatus(isTradePoint)
     document.querySelector('#tradePointId').value = tradePointId
     document.querySelector('#companyId').value = companyId
@@ -1140,8 +1154,8 @@ function getGeneratorsRemnant() {
         gType: type
     }, function (result) {
         const tableGenerator = document.querySelector("#generatorRemnant")
-        if (tableGenerator.children[0]) tableGenerator.replaceChild(createGeneratorFromJSON(result), tableGenerator.children[0])
-        else tableGenerator.appendChild(createGeneratorFromJSON(result))
+        if (tableGenerator.children[0]) tableGenerator.replaceChild(createGeneratorFromJSON(result, "", true), tableGenerator.children[0])
+        else tableGenerator.appendChild(createGeneratorFromJSON(result, "", true))
         setValidHeightElement("#generatorRemnant", true);
     });
 }
@@ -1214,7 +1228,7 @@ function addCanister() {
 }
 
 function adminReturnOfCanisters(canisterId) {
-    if (!confirm("Ви впевненні, що отримали вказану кількість каністр?")) {
+    if (!confirm("Ви впевнені, що отримали вказану кількість каністр?")) {
         return;
     }
     $.post(ajaxURL, {
@@ -1232,8 +1246,26 @@ function adminReturnOfCanisters(canisterId) {
     });
 }
 
+function adminConfirmRefill(canisterId) {
+    if (!confirm("Ви впевнені, що аптека самостійно придбала саме вказану кількість палива?")) {
+        return;
+    }
+    $.post(ajaxURL, {
+        action: "actionsConfRefillFuel",
+        idCanister: canisterId
+    }, function (result) {
+        const data = JSON.parse(result)
+        if (data['response'] != 200) {
+            alert(data['message'])
+            return;
+        }
+        alert("Успішно підзаправлено аптеку");
+        mCanisterTracking()
+    });
+}
+
 function adminCancelSendingCanisters(canisterId) {
-    if (!confirm("Ви впевненні, що бажаєте відмінити відправку каністри?")) {
+    if (!confirm("Ви впевнені, що бажаєте відмінити відправку каністри?")) {
         return;
     }
     $.post(ajaxURL, {
@@ -1296,7 +1328,7 @@ function userReceivingCanisters(canId) {
 }
 
 function mAreaGenerator() {
-    showSet([$("#areaGenerator"), $("#getCanister"), $("#countCanister")])
+    showSet([$("#areaGenerator"), $("#getCanister"), $("#countCanister"), $("#refillGeneratorElement")])
     setBackground($("#mAreaGenerator"));
     getGeneratorsAndCanisters()
 }
@@ -1367,6 +1399,11 @@ function getGeneratorsAndCanisters() {
             countCanisterElement.appendChild(canisterCountElement);
 
             listenerRemoveAllNonDigit(['#countCanistrBack']);
+        }
+
+        listenerRemoveAllNonDigit(['#fuelRefill']);
+        if (data.refill == '0') {
+            document.querySelector("#refillGeneratorElement").style.display = 'none'
         }
 
         data.canisters.forEach(function (areaCanister) {
@@ -1494,4 +1531,28 @@ function getReportGenerator(event) {
         })
         .catch(console.error)
 };
+
+function refillFuel() {
+    const fuelRefill = document.querySelector('#fuelRefill').value
+    const refillType = getDataFromDatalist('#fuelRefillData', '#inputFuelRefill')
+    if (fuelRefill <= 0 || refillType == '' || refillType == undefined) {
+        alert("Перевірте вказані дані")
+        return;
+    }
+    $.post(ajaxURL, {
+        action: "refillFuel",
+        fuelRefill,
+        refillType
+    }, function (result) {
+        const data = JSON.parse(result)
+        if (data['response'] != 200) {
+            alert(data['message'])
+            return;
+        }
+        ressetFields(['fuelRefill', 'inputFuelRefill'])
+        alert("Успішно відправлено запит на поповнення.\n" +
+            "Після підтвердження менеджера, паливо буде нараховано на аптеку.");
+        mAreaGenerator()
+    });
+}
 //// ------------------------ ||| GENERATOR ||| --------------------------------------- 

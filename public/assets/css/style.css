@@ -565,6 +565,7 @@ h2 {
 .positiveNumber,
 #inputCanisterUnit,
 #inputCanisterType,
+#inputFuelRefill,
 #inputAddCanisterType,
 #inputCanisterStatus,
 #inputGType,
@@ -592,6 +593,7 @@ h2 {
 .positiveNumber,
 #inputCanisterUnit,
 #inputCanisterType,
+#inputFuelRefill,
 #inputAddCanisterType,
 #inputCanisterStatus {
     font-size: 14px;
@@ -616,6 +618,7 @@ h2 {
 .canisterUnit option,
 .addCanisterUnit option,
 .canisterType option,
+.fuelRefill option,
 .canisterStatus option {
     font-size: 14px;
 }
@@ -826,6 +829,7 @@ input[type="datetime-local"] {
 }
 
 #getCanister .flex-container,
+#refillGeneratorElement .flex-container,
 #countCanister .flex-container {
     display: flex;
     flex-direction: row;
@@ -835,6 +839,7 @@ input[type="datetime-local"] {
 }
 
 #getCanister .flex-container>div,
+#refillGeneratorElement .flex-container>div,
 #countCanister .flex-container>div {
     display: flex;
 }

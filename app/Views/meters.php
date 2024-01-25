@@ -151,6 +151,7 @@
                                         ?>
                                     </select>
                                 </p>
+                                <p>Аптека має карту для палива: <input id="tradePointRefill" type="checkbox" /></p>
                             </div>
                             <button style="font-size: 14pt;" id="confirmUn" onclick="">Додати</button>
                         </h3>
@@ -456,6 +457,26 @@
                 </div>
                 <div id="countCanister">
                 </div>
+                <div id="refillGeneratorElement">
+                    <div class="flex-container">
+                        <div class="canister-desc">
+                            <div class="desc-can" style="width: 50%;"><strong>К-сть палива: </strong>
+                                <input type="number" class="positiveNumber" id="fuelRefill">
+                            </div>
+                            <div class="desc-can" style="width: 50%;"><strong style="text-align: center;">Тип палива: </strong>
+                                <input id="inputFuelRefill" list="fuelRefillData" placeholder="Усі">
+                                <datalist name="fuelRefillData" class="fuelRefillData" id="fuelRefillData">
+                                    <?
+                                    echo $typeG;
+                                    ?>
+                                </datalist>
+                            </div>
+                        </div>
+                        <div class="confirm-canister">
+                            <button onclick="refillFuel()" style="font-size: 20px;">Заправити</button>
+                        </div>
+                    </div>
+                </div>
                 <div id="getCanister">
                 </div>
                 <div id="areaGenerator">
@@ -476,6 +497,7 @@
                             <?
                             echo "<option value='day'>Дням</option>";
                             echo "<option value='month'>Місяцям</option>";
+                            echo "<option value='total'>Загальним даним</option>";
                             ?>
                         </select>
 
