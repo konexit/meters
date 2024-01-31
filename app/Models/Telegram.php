@@ -352,7 +352,7 @@ class Telegram extends Model
 
         // Користувач відсутній у системі
         if ($tgUser == null) return [$this->createTelegramMessage("<b>Упс... Ви не маєте права на дану дію 🤔</b>\n" .
-            "Спробуйте авторизуватися повторно\n" . 
+            "Спробуйте авторизуватися повторно\n" .
             "Введіть власний <b>логін</b>")];
 
         $userTgState = $tgUser->telegramState;
@@ -785,6 +785,7 @@ class Telegram extends Model
     private function menuMess($chatId, $areaId, $title, $justLoggined = false)
     {
         $generator = new Generator();
+        $search = new Search();
         $activeGenerators = $generator->findActiveGenerators($areaId);
         $userModel = new User();
         $userModel->insertTelegramDataByChatId($chatId, "menu");
@@ -814,19 +815,46 @@ class Telegram extends Model
             ]);
         }
 
+        $counters = $search->getCounterByAreaId($areaId);
+        $counterMenu = [];
+        foreach ($counters as $counterType) {
+            switch ($counterType['typeC']) {
+                case 5: {
+                        array_push($counterMenu, [
+                            "Холодна вода",
+                            5
+                        ]);
+                        break;
+                    }
+                case 6: {
+                        array_push($counterMenu, [
+                            "Гаряча вода",
+                            6
+                        ]);
+                        break;
+                    }
+                case 7: {
+                        array_push($counterMenu, [
+                            "Газ",
+                            7
+                        ]);
+                        break;
+                    }
+                case 8: {
+                        array_push($counterMenu, [
+                            "Електрика",
+                            8
+                        ]);
+                        break;
+                    }
+            }
+        }
+
         array_push(
             $respMessage,
             $this->createTelegramMessage(
                 $title,
-                $this->buttonBuilder([
-                    $genMenu,
-                    [
-                        ["Електрика", "8"],
-                        ["Газ", "7"],
-                        ["Гаряча вода", "6"],
-                        ["Холодна вода", "5"]
-                    ]
-                ])
+                $this->buttonBuilder([$genMenu, $counterMenu])
             )
         );
         return $respMessage;

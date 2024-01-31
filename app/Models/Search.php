@@ -667,7 +667,12 @@ class Search extends Model
 
     public function getCounterByCounterPK($counterPK)
     {
-        return $this->db->query("SELECT * FROM counter WHERE id = " . $counterPK . " ")->getFirstRow();
+        return $this->db->query("SELECT * FROM counter WHERE id = " . $counterPK)->getFirstRow();
+    }
+
+    public function getCounterByAreaId($areaId)
+    {
+        return $this->db->query("SELECT DISTINCT typeC FROM counter WHERE unit = " . $areaId)->getResultArray();
     }
 
     private function getDataReport($counter, $company, $json)
