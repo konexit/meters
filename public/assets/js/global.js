@@ -134,7 +134,7 @@ function createTableFromJSON(jsonData) {
     table.setAttribute("cellpadding", "4")
     table.setAttribute("cellspacing", "0")
     table.setAttribute("align", "center")
-    table.setAttribute("style", "width: 1000px; display: block; overflow-y: auto;")
+    table.setAttribute("style", "width: 1000px; display: " + (usRights == 1 ? 'inline-table' : 'block') + "; overflow-y: auto;")
     table.setAttribute("align", "left");
     table.setAttribute("scope", "col");
 
@@ -255,7 +255,7 @@ function createGeneratorFromJSON(jsonData, action, withoutActions = false) {
     table.setAttribute("cellpadding", "4");
     table.setAttribute("cellspacing", "0");
     table.setAttribute("align", "center");
-    table.setAttribute("style", "width: 1000px; display: block; overflow-y: auto;");
+    table.setAttribute("style", "width: 1000px; display: " + (usRights == 1 ? 'table-cell' : 'block') + "; overflow-y: auto;");
     table.setAttribute("align", "left");
     table.setAttribute("scope", "col");
 
@@ -334,7 +334,7 @@ function createCanisterFromJSON(jsonData) {
     table.setAttribute("cellpadding", "4");
     table.setAttribute("cellspacing", "0");
     table.setAttribute("align", "center");
-    table.setAttribute("style", "width: 1000px; display: block; overflow-y: auto;");
+    table.setAttribute("style", "width: 1000px; display: " + (usRights == 1 ? 'table-cell' : 'block') + "; overflow-y: auto;");
     table.setAttribute("align", "left");
     table.setAttribute("scope", "col");
 
