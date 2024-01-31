@@ -131,21 +131,21 @@ class Generator extends Model
 
     function actionsAdminCanister($request)
     {
+        $canisterId = $request->getVar('idCanister');
+        $trackCanister = $this->getTrackingCanister($canisterId);
+
         if (filter_var($request->getVar('isReturning'), FILTER_VALIDATE_BOOLEAN)) {
-            $canisterId = $request->getVar('idCanister');
-            $trackCanister = $this->getTrackingCanister($canisterId);
             $this->db->query("INSERT INTO fuelArea (canister) VALUES (canister + " . $trackCanister[0]["canister"] . ") WHERE areaId = " . $trackCanister[0]["unit"] . " LIMIT 1");
             $this->deleteTrackingCanisterById($canisterId);
             header("Content-Type: application/json");
             echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
         } else {
-            $idCanister = $request->getVar('idCanister');
-
             header("Content-Type: application/json");
-            if (!$this->getTrackingCanister($idCanister)[0]) {
+            if (!$this->getTrackingCanister($canisterId)[0]) {
                 echo json_encode(["response" => 500, "message" => "Перевірте введені дані та оновіть сторінку. Якщо проблема не вирішилась, зверніться в ІТ відділ"], JSON_UNESCAPED_UNICODE);
             } else {
-                $this->deleteTrackingCanisterById($idCanister);
+                $this->deleteTrackingCanisterById($canisterId);
+                $this->saveActionGenerator(3, $trackCanister[0]);
                 echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
             }
         }
@@ -184,6 +184,20 @@ class Generator extends Model
             ], [
                 "login" => session("mLogin")
             ], $dataTargetGenerator[0]);
+            $this->saveActionGenerator(
+                2,
+                [
+                    "consumed" => $consumed,
+                    "typeId" => $dataTargetGenerator[0]['genTypeId'],
+                    "areaId" => $dataTargetGenerator[0]['genAreaId'],
+                ],
+                [
+                    'date' => $request->getVar('date'),
+                    'year' => $request->getVar('year'),
+                    'month' => $request->getVar('month'),
+                    'day' => $request->getVar('day')
+                ]
+            );
             echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
         }
     }
@@ -227,6 +241,7 @@ class Generator extends Model
                 echo json_encode(["response" => 500, "message" => "Перевірте введені дані та оновіть сторінку. Якщо проблема не вирішилась, зверніться в ІТ відділ"], JSON_UNESCAPED_UNICODE);
             } else {
                 $this->saveCanisterByTrdPointANDLog($dataTargetCanister[0], ["login" => session("mLogin")], $request->getVar('idCanister'));
+                $this->saveActionGenerator(1, $dataTargetCanister[0]);
                 echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
             }
         }
@@ -270,10 +285,8 @@ class Generator extends Model
                     break;
                 }
             case "total": {
-                    foreach ($json->companies as $company) {
-                        array_push($reports, $this->createValidJSONForReportTotal($json, $company, $this->getDataReport($company, $json), $this->getRemnants($company)));
-                    }
-                    break;
+                    array_push($reports, $this->createValidJSONForReportTotal($json, $json->companies));
+                    return (new Excel)->createReports("totalGenerators", ["groupBy" => $json->groupBy, "meters" => $reports]);
                 }
         }
 
@@ -283,6 +296,32 @@ class Generator extends Model
     //// ------------------------ ||| ROUT METHODS ||| ---------------------------------------
 
     //// ------------------------ GENERAL ACTIONS ---------------------------------------
+    function saveActionGenerator($type, $targetData, $date = [])
+    {
+        if (!$date) {
+            $date = [
+                "date" => date('Y-m-d'),
+                "year" => date('Y'),
+                "month" => date('m'),
+                "day" => date('d')
+            ];
+        }
+        switch ($type) {
+            case 1: {
+                    $this->db->query("INSERT INTO generatorHistory(canister, fuel, type, areaId, typeGenId,  date, year, month, day) VALUES (" . $targetData['canister'] . ", " . $targetData['fuel'] . ", " . $type . ", " . $targetData['areaId'] . ", " . $targetData['typeId'] . ", '" . $date['date'] . "', " . $date['year'] . ", " . $date['month'] . ", " . $date['day'] . ")");
+                    break;
+                }
+            case 2: {
+                    $this->db->query("INSERT INTO generatorHistory(consumed, type, areaId,  typeGenId, date, year, month, day) VALUES (" . $targetData['consumed'] . ", " . $type . ", " . $targetData['areaId'] . ",  " . $targetData['typeId'] . ", '" . $date['date'] . "', " . $date['year'] . ", " . $date['month'] . ", " . $date['day'] . ")");
+                    break;
+                }
+            case 3: {
+                    $this->db->query("INSERT INTO generatorHistory(canister, type, areaId, date, year, month, day) VALUES (" . $targetData['canister'] . ", " . $type . ", " . $targetData['unit'] . ", '" . $date['date'] . "', " . $date['year'] . ", " . $date['month'] . ", " . $date['day'] . ")");
+                    break;
+                }
+        }
+    }
+
     function saveGeneratorPokazANDLog($pokazModel, $userModel, $genModel, $isTelegram = false)
     {
         $user = new User();
@@ -385,6 +424,11 @@ class Generator extends Model
                                 ORDER BY a.unit")->getResultArray();
     }
 
+    function getTypeGenerators()
+    {
+        return $this->db->query("SELECT * FROM typeGenerator")->getResultArray();
+    }
+
     function getSpecificCanister($unit, $type = "", $status = "", $canisterId = "")
     {
         $condition = "";
@@ -466,7 +510,7 @@ class Generator extends Model
                                 WHERE 
                                     a.state = 1 AND g.state = 1  
                                     AND ca.company_1s_code = " . $company->companyId . "  
-                                    AND gp.date BETWEEN '" . $json->reportStartDate . "' AND '" . $json->reportEndDate . "'      
+                                    AND gp.date BETWEEN '" . $json->reportStartDate . "' AND '" . $json->reportEndDate . "'
                                 ORDER BY 
                                     a.id, g.id, g.type, gp.date, gp.startTime")->getResultArray();
     }
@@ -682,6 +726,128 @@ class Generator extends Model
 
         $report["data"] = $data;
         return $report;
+    }
+
+    private function createValidJSONForReportTotal($json, $companies)
+    {
+        $companiesId = [];
+        foreach ($companies as $company) {
+            array_push($companiesId, $company->companyId);
+        }
+
+        $resData = [];
+        $report = [
+            "startDate" => $json->reportStartDate,
+            "endDate" => $json->reportEndDate,
+            "headers" => [
+                "generator" => [
+                    "company" => [
+                        "key" => 0,
+                        "name" => "юр. особи"
+                    ],
+                    "pharmacy" => [
+                        "key" => 1,
+                        "name" => "Торгова точка"
+                    ],
+                    "in_fuel" => [
+                        "key" => 2,
+                        "name" => "к-сть бензину"
+                    ],
+                    "in_canister" => [
+                        "key" => 3,
+                        "name" => "к-сть каністр"
+                    ],
+                    "consumed" => [
+                        "key" => 4,
+                        "name" => "к-сть бензину"
+                    ],
+                    "out_canister" => [
+                        "key" => 5,
+                        "name" => "к-сть каністр"
+                    ],
+                    "restFuel" => [
+                        "key" => 6,
+                        "name" => "к-сть бензину"
+                    ],
+                    "restCanister" => [
+                        "key" => 7,
+                        "name" => "к-сть каністр"
+                    ]
+                ]
+            ]
+        ];
+
+        $dataReport = $this->db->query("SELECT 
+                                            a.unit, gh.canister, gh.type, gh.typeGenId, gh.fuel, gh.consumed, gh.year, gh.month, c.company_name, fa.fuel AS restFuel, fa.canister AS restCanister, a.id AS areaId
+                                        FROM generatorHistory as gh
+                                            JOIN area AS a ON gh.areaId = a.id
+                                            JOIN companiesAreas AS ca ON a.id = ca.area_id
+                                            JOIN fuelArea AS fa ON a.id = fa.areaId AND gh.typeGenId = fa.type
+                                            JOIN companies AS c ON ca.company_1s_code = c.company_1s_code
+                                        WHERE gh.date BETWEEN '" . $json->reportStartDate . "' AND '" . $json->reportEndDate . "'
+                                        AND c.company_1s_code IN (" . implode(',', $companiesId) . ")
+                                        ORDER BY gh.date, a.unit")->getResultArray();
+
+        foreach ($dataReport as $data) {
+            if (array_key_exists($data['typeGenId'], $resData)) {
+                if (array_key_exists($data['year'], $resData[$data['typeGenId']])) {
+                    if (array_key_exists($data['month'], $resData[$data['typeGenId']][$data['year']])) {
+                        if (array_key_exists($data['areaId'], $resData[$data['typeGenId']][$data['year']][$data['month']])) {
+                            $resData[$data['typeGenId']][$data['year']][$data['month']][$data['areaId']] = $this->createValidObjectTotalReportByType($data["type"], $data, $resData[$data['typeGenId']][$data['year']][$data['month']][$data['areaId']]);
+                        } else {
+                            $resData[$data['typeGenId']][$data['year']][$data['month']][$data['areaId']] = $this->createValidObjectTotalReportByType($data["type"], $data, []);
+                        }
+                    } else {
+                        $resData[$data['typeGenId']][$data['year']][$data['month']] = [
+                            $data['areaId'] => $this->createValidObjectTotalReportByType($data["type"], $data, []),
+                        ];
+                    }
+                } else {
+                    $resData[$data['typeGenId']][$data['year']] = [
+                        $data['month'] => [
+                            $data['areaId'] => $this->createValidObjectTotalReportByType($data["type"], $data, []),
+                        ],
+                    ];
+                }
+            } else {
+                $resData[$data['typeGenId']] = [
+                    $data['year'] => [
+                        $data['month'] => [
+                            $data['areaId'] => $this->createValidObjectTotalReportByType($data["type"], $data, []),
+                        ],
+                    ],
+                ];
+            }
+        }
+        $report["data"] = $resData;
+        return $report;
+    }
+
+    private function createValidObjectTotalReportByType($type, $currentObj, $oldObj)
+    {
+        if (empty($oldObj)) {
+            return [
+                "company" => $currentObj["company_name"],
+                "pharmacy" => $currentObj["unit"],
+                "in_fuel" => $type == 1 ? $currentObj["fuel"] : 0,
+                "in_canister" => $type == 1 ? $currentObj["canister"] : 0,
+                "consumed" => $type == 2 ? $currentObj["consumed"] : 0,
+                "out_canister" => $type == 3 ? $currentObj["canister"] : 0,
+                "restFuel" => $currentObj["restFuel"],
+                "restCanister" => $currentObj["restCanister"]
+            ];
+        } else {
+            return [
+                "company" => $currentObj["company_name"],
+                "pharmacy" => $currentObj["unit"],
+                "in_fuel" =>  $type == 1 ? $currentObj["fuel"] + $oldObj["in_fuel"] : $oldObj["in_fuel"],
+                "in_canister" => $type == 1 ? $currentObj["canister"] + $oldObj["in_canister"] :  $oldObj["in_canister"],
+                "consumed" => $type == 2 ? $currentObj["consumed"] + $oldObj["consumed"] : $oldObj["consumed"],
+                "out_canister" => $type == 3 ? $currentObj["canister"] + $oldObj["out_canister"] : $oldObj["out_canister"],
+                "restFuel" => $currentObj["restFuel"],
+                "restCanister" => $currentObj["restCanister"]
+            ];
+        }
     }
     //// ------------------------ ||| GENERAL ACTIONS ||| ---------------------------------------
 }

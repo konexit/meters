@@ -135,7 +135,7 @@ class Telegram extends Model
                             [
                                 [
                                     "text" => "Повернутися до списка",
-                                    "callback_data" => "adminMenu"
+                                    "callback_data" => "backMenu"
                                 ]
                             ]
                         ]
@@ -560,7 +560,20 @@ class Telegram extends Model
                     ], [
                         "login" => $tgUser->login
                     ], $dataTargetGenerator[0], true);
-
+                    $generator->saveActionGenerator(
+                        2,
+                        [
+                            "consumed" => $consumedFuel,
+                            "typeId" => $dataTargetGenerator[0]['genTypeId'],
+                            "areaId" => $dataTargetGenerator[0]['genAreaId'],
+                        ],
+                        [
+                            'date' => date('Y-m-d', $startTime),
+                            'year' => date('Y', $startTime),
+                            'month' => date('m', $startTime),
+                            'day' => date('d', $startTime),
+                        ]
+                    );
                     return $this->menuMess($chatId, $tgUser->area, "Показник генератора <code>" . $metadata->pokaz . "</code> був <b>успішно доданий 👍 </b>\n" .
                         "<i>Виберіть тип лічильника</i>");
                 }
@@ -580,6 +593,7 @@ class Telegram extends Model
                         $metaCanisterPK,
                         true
                     );
+                    $generator->saveActionGenerator(1, $canisterData[0]);
                     return $this->menuMess($chatId, $tgUser->area, "Каністри були <b>успішно отримані 👍</b>");
                 }
             } elseif ($userTgState == 'confirmCountCanisterOUT') {

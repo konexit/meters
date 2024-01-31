@@ -21,6 +21,9 @@ class Excel extends Model
 
     private $startRowGeneDay = 10;
 
+    private $startRowTotalGen = 3;
+    private $startColumnTotalGen = 2;
+
     private $countColumsTable = 0;
 
     private $countMonth = 0;
@@ -100,6 +103,10 @@ class Excel extends Model
                         $this->createZipFileReportsGenerator(json_decode(json_encode($dataJson)));
                         break;
                     }
+                case "totalGenerators": {
+                        $this->createZipFileReportsTotalGenerator(json_decode(json_encode($dataJson)));
+                        break;
+                    }
             }
         } catch (Exception $e) {
             $data = [
@@ -109,6 +116,76 @@ class Excel extends Model
             header('Content-Type: application/json; charset=utf-8');
             echo json_encode($data);
         }
+    }
+
+    private function createZipFileReportsTotalGenerator($dataJson)
+    {
+        $generator = new Generator();
+        $mapTypeGen = [];
+        foreach ($generator->getTypeGenerators() as $type) {
+            $mapTypeGen[$type['id']] = $type['type'];
+        }
+
+        foreach ($dataJson->meters as $report) {
+            foreach ($report->data as $type => $years) {
+                if (!array_key_exists($type, $this->mapSpreadsheets)) {
+                    $this->spreadsheet = new Spreadsheet();
+                    $this->indexSheet = 0;
+                    $this->mapSpreadsheets[$type] = [
+                        "fileName" => "Загальний звіт по генераторам із типом палива: " . $mapTypeGen[$type] . " за період (" . $report->startDate . " - " . $report->endDate . ").xlsx"
+                    ];
+                } else {
+                    $this->indexSheet = $this->mapSpreadsheets[$type]["indexSheet"] + 1;
+                    $this->spreadsheet = $this->mapSpreadsheets[$type]["spreadsheet"];
+                    $this->spreadsheet->createSheet();
+                    $this->spreadsheet->setActiveSheetIndex($this->indexSheet);
+                }
+                $this->sheet = $this->spreadsheet->getActiveSheet()->setTitle(mb_strlen("test",  'UTF-8') < 31 ? $mapTypeGen[$type] : mb_substr($mapTypeGen[$type], 0, 28, 'UTF-8') . "...");
+                $this->createReportTotalGenerator($this->sheet, $report, $years);
+                $this->mapSpreadsheets[$type]["spreadsheet"] = $this->spreadsheet;
+                $this->mapSpreadsheets[$type]["indexSheet"] = $this->indexSheet;
+            }
+        }
+
+        $zip = new ZipArchive();
+        $zip_name = $this->zipFileName;
+
+        if ($zip->open($zip_name, ZipArchive::CREATE) !== true) {
+            exit('not created');
+        }
+
+        $arrayFilenames  = [];
+        if (count($this->mapSpreadsheets) == 0) {
+            $emptyFileName = 'Відсутні дані генераторів.xlsx';
+            $temp_file = tempnam(sys_get_temp_dir(), $emptyFileName);
+            $spreadsheet = new Spreadsheet();
+            $writer = new Xlsx($spreadsheet);
+            $writer->save($temp_file);
+            $zip->addFile($temp_file, $emptyFileName);
+            array_push($arrayFilenames, $temp_file);
+        } else {
+            foreach ($this->mapSpreadsheets as $dataSpreadsheet) {
+                $temp_file = tempnam(sys_get_temp_dir(), $dataSpreadsheet["fileName"]);
+                $writer = new Xlsx($dataSpreadsheet["spreadsheet"]);
+                $writer->save($temp_file);
+                $zip->addFile($temp_file, $dataSpreadsheet["fileName"]);
+                array_push($arrayFilenames, $temp_file);
+            }
+        }
+
+        $zip->close();
+
+        header('Content-Type: application/zip');
+        header('Content-Disposition: attachment; filename="' . $zip_name . '"');
+        header('Content-Length: ' . filesize($zip_name));
+
+        readfile($zip_name);
+
+        foreach ($arrayFilenames as $filename) {
+            unlink($filename);
+        }
+
+        unlink($zip_name);
     }
 
     private function createZipFileReportsGenerator($dataJson)
@@ -234,6 +311,80 @@ class Excel extends Model
         $this->setMonthAndCounter($sheet, $dataJson);
         $this->setDataByRow($sheet, $dataJson);
         $this->setStyle($sheet, $dataJson);
+    }
+
+    private function createReportTotalGenerator($sheet, $dataJson, $years)
+    {
+        $this->setTitleTotalTableGen($sheet, $dataJson);
+        $this->setTotalDateAndPokazGen($sheet, $dataJson, $years);
+    }
+
+    private function setTitleTotalTableGen($sheet, $dataJson)
+    {
+        $sheet->setCellValue([$this->startColumnTotalGen + 2, $this->startRowTotalGen - 2], "Отримано")->mergeCells([
+            $this->startColumnTotalGen + 2, $this->startRowTotalGen - 2,
+            $this->startColumnTotalGen + 3, $this->startRowTotalGen - 2,
+        ]);
+        $sheet->setCellValue([$this->startColumnTotalGen + 4, $this->startRowTotalGen - 2], "Використано");
+        $sheet->setCellValue([$this->startColumnTotalGen + 5, $this->startRowTotalGen - 2], "Повернено");
+        $sheet->setCellValue([$this->startColumnTotalGen + 6, $this->startRowTotalGen - 2], "Залишок")->mergeCells([
+            $this->startColumnTotalGen + 6, $this->startRowTotalGen - 2,
+            $this->startColumnTotalGen + 7, $this->startRowTotalGen - 2
+        ]);
+
+
+        $sheet->getStyle([$this->startColumnTotalGen + 2, $this->startRowTotalGen - 2, $this->startColumnTotalGen + 7, $this->startRowTotalGen - 2])
+            ->applyFromArray($this->styleCell["alignment"]);
+
+
+        foreach ($dataJson->headers->generator as $keyField => $optionsField) {
+            $sheet->setCellValue([$this->startColumnTotalGen + $optionsField->key, $this->startRowTotalGen - 1], $optionsField->name);
+        }
+
+        $sheet->getStyle([$this->startColumnTotalGen, $this->startRowTotalGen - 1, $this->startColumnTotalGen + 7, $this->startRowTotalGen - 1])
+            ->applyFromArray($this->styleCell["allBordersTHIN"])->applyFromArray($this->styleCell["alignment"])->getFont()->setBold(true);
+    }
+
+    private function setTotalDateAndPokazGen($sheet, $dataJson, $years)
+    {
+        $dateFormatter = new IntlDateFormatter('uk_UA', IntlDateFormatter::NONE, IntlDateFormatter::NONE, null, null, 'LLLL');
+        $indexFieldGenerator = $dataJson->headers->generator;
+
+        $currentRowIndex = $this->startRowTotalGen;
+        $countRowsTrdPnt = 0;
+
+        foreach ($years as $year => $months) {
+            $sheet->setCellValue([$this->startColumnTotalGen, $currentRowIndex], $year)->mergeCells([$this->startColumnTotalGen, $currentRowIndex, $this->startColumnTotalGen + 7, $currentRowIndex])
+                ->getStyle([$this->startColumnTotalGen, $currentRowIndex])
+                ->applyFromArray($this->styleCell["alignment"])->getFont()->setBold(true);
+            $currentRowIndex++;
+
+            foreach ($months as $month => $areaIds) {
+                $sheet->setCellValue([$this->startColumnTotalGen, $currentRowIndex], $this->uppercaseFirstLetter($dateFormatter->format(mktime(0, 0, 0, $month, 1))))
+                    ->mergeCells([$this->startColumnTotalGen, $currentRowIndex, $this->startColumnTotalGen + 7, $currentRowIndex])
+                    ->getStyle([$this->startColumnTotalGen, $currentRowIndex])
+                    ->applyFromArray($this->styleCell["alignment"])->getFont()->setBold(true);
+                $currentRowIndex++;
+
+                foreach ($areaIds as $areaId => $data) {
+
+                    foreach ($dataJson->headers->generator as $keyField => $optionsField) {
+                        $sheet->setCellValue([$this->startColumnTotalGen + $optionsField->key, $currentRowIndex], $data->$keyField)
+                        ->getStyle([$this->startColumnTotalGen + $optionsField->key, $currentRowIndex])
+                        ->applyFromArray($this->styleCell["alignmentLeft"]);
+                    }
+                    $sheet->setCellValue([$this->startColumnTotalGen - 1, $currentRowIndex], ++$countRowsTrdPnt);
+                    $currentRowIndex++;
+                }
+            }
+        }
+
+        $sheet->getStyle([$this->startColumnTotalGen - 1, $this->startRowTotalGen, $this->startColumnTotalGen - 1, $currentRowIndex - 1])
+            ->applyFromArray($this->styleCell["alignmentRight"]);
+        $sheet->getStyle([$this->startColumnTotalGen + 2, $this->startRowTotalGen, $this->startColumnTotalGen + 7, $currentRowIndex - 1])
+            ->applyFromArray($this->styleCell["alignment"])->getFont()->setBold(true);
+        $sheet->getStyle([$this->startColumnTotalGen, $this->startRowTotalGen, $this->startColumnTotalGen + 7, $currentRowIndex - 1])
+            ->applyFromArray($this->styleCell["allBordersTHIN"]);
     }
 
     private function createReportGenerator($sheet, $dataJson, $pharmacy, $type)
