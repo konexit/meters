@@ -1515,11 +1515,6 @@ function getReportGenerator(event) {
     })
         .then(result => result.blob())
         .then(result => {
-        // .then(result => result.json()) // Use result.json() to parse JSON response
-        // .then(jsonResult => {
-        //     debugger
-        //     console.log(jsonResult);
-        //     debugger
             const fileName = 'meters_report_generators.zip'
             if (false || !!document.documentMode) {
                 window.navigator.msSaveBlob(blob, fileName);

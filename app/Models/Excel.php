@@ -128,22 +128,23 @@ class Excel extends Model
 
         foreach ($dataJson->meters as $report) {
             foreach ($report->data as $type => $years) {
-                if (!array_key_exists($type, $this->mapSpreadsheets)) {
+                if (!array_key_exists("total", $this->mapSpreadsheets)) {
                     $this->spreadsheet = new Spreadsheet();
                     $this->indexSheet = 0;
-                    $this->mapSpreadsheets[$type] = [
-                        "fileName" => "Загальний звіт по генераторам із типом палива: " . $mapTypeGen[$type] . " за період (" . $report->startDate . " - " . $report->endDate . ").xlsx"
+                    $this->mapSpreadsheets["total"] = [
+                        "fileName" => "Загальний звіт по генераторам по типам палива за період (" . $report->startDate . " - " . $report->endDate . ").xlsx"
                     ];
                 } else {
-                    $this->indexSheet = $this->mapSpreadsheets[$type]["indexSheet"] + 1;
-                    $this->spreadsheet = $this->mapSpreadsheets[$type]["spreadsheet"];
+                    $this->indexSheet = $this->mapSpreadsheets["total"]["indexSheet"] + 1;
+                    $this->spreadsheet = $this->mapSpreadsheets["total"]["spreadsheet"];
                     $this->spreadsheet->createSheet();
                     $this->spreadsheet->setActiveSheetIndex($this->indexSheet);
                 }
+
                 $this->sheet = $this->spreadsheet->getActiveSheet()->setTitle(mb_strlen("test",  'UTF-8') < 31 ? $mapTypeGen[$type] : mb_substr($mapTypeGen[$type], 0, 28, 'UTF-8') . "...");
                 $this->createReportTotalGenerator($this->sheet, $report, $years);
-                $this->mapSpreadsheets[$type]["spreadsheet"] = $this->spreadsheet;
-                $this->mapSpreadsheets[$type]["indexSheet"] = $this->indexSheet;
+                $this->mapSpreadsheets["total"]["spreadsheet"] = $this->spreadsheet;
+                $this->mapSpreadsheets["total"]["indexSheet"] = $this->indexSheet;
             }
         }
 
@@ -370,8 +371,8 @@ class Excel extends Model
 
                     foreach ($dataJson->headers->generator as $keyField => $optionsField) {
                         $sheet->setCellValue([$this->startColumnTotalGen + $optionsField->key, $currentRowIndex], $data->$keyField)
-                        ->getStyle([$this->startColumnTotalGen + $optionsField->key, $currentRowIndex])
-                        ->applyFromArray($this->styleCell["alignmentLeft"]);
+                            ->getStyle([$this->startColumnTotalGen + $optionsField->key, $currentRowIndex])
+                            ->applyFromArray($this->styleCell["alignmentLeft"]);
                     }
                     $sheet->setCellValue([$this->startColumnTotalGen - 1, $currentRowIndex], ++$countRowsTrdPnt);
                     $currentRowIndex++;
