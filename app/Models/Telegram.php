@@ -333,6 +333,42 @@ class Telegram extends Model
                     $this->buttonBuilder([$this->backToMenu])
                 )];
             }
+        } elseif ($tgUserState == "countFuelRefill" && $tgUser->rights == 3) {
+            try {
+                if (str_contains($textMess, ' ') || !is_numeric($textMess) || mb_strlen($textMess) > 9) {
+                    return [$this->createTelegramMessage(
+                        "<b>Були введені некоректна кількість палива</b>\n" .
+                            "Перевірте кількість вказаного палива та спробуйте ще раз",
+                        $this->buttonBuilder([$this->backToMenu])
+                    )];
+                }
+
+                $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
+                $metaTypeGen = $metadata->typeGen;
+
+                $userModel->insertTelegramDataByChatId(
+                    $chatId,
+                    "confirmCountFuelRefill",
+                    [
+                        "fuel" => $textMess,
+                        "typeGen" => $metaTypeGen
+                    ]
+                );
+
+
+                return [$this->createTelegramMessage(
+                    "<b>Для збереження даних</b>\n" .
+                        "Підтвердіть, що дані вказані правильно\n" .
+                        "<b>Запраляєте палива на:</b> " . $textMess . " ?",
+                    $this->buttonBuilder([$this->confirmation])
+                )];
+            } catch (Exception $e) {
+                return [$this->createTelegramMessage(
+                    "<b>Упс... Не вдалось заправити генератор</b>\n" .
+                        "Перевірте кількість палива та спробуйте ще раз",
+                    $this->buttonBuilder([$this->backToMenu])
+                )];
+            }
         }
 
         // Помилка користувачу по конкретній ролі
@@ -454,6 +490,29 @@ class Telegram extends Model
                             "Всього на аптеці: " . $countCanister),
                         $this->buttonBuilder([$this->backToMenu])
                     );
+                } elseif ($callbackData == 'refill') {
+                    if ($generator->getAreaById($tgUser->area)[0]['refill'] != 1) {
+                        return [$this->createTelegramMessage(
+                            "<b>Упс... Ви не маєте права на дану дію 🤔</b>",
+                            $this->buttonBuilder([$this->backToMenu])
+                        )];
+                    }
+
+                    $userModel->insertTelegramDataByChatId($chatId, 'chooseTypeGenRefill');
+                    $typesMenu = [];
+                    foreach ($generator->getTypeGenerator() as $type) {
+                        array_unshift($typesMenu, [[
+                            $type['type'],
+                            $type['id']
+                        ]]);
+                    }
+                    array_push(
+                        $respMessage,
+                        $this->createTelegramMessage(
+                            "Виберіть тип генератора",
+                            $this->buttonBuilder($typesMenu)
+                        )
+                    );
                 } elseif (is_numeric($callbackData)) {
                     $counters = $search->findCountersNotFilled($tgUser->area, $callbackData, null);
 
@@ -494,6 +553,8 @@ class Telegram extends Model
                 return $this->chooseCanisterIN($tgUser, $chatId, $callbackData);
             } elseif ($userTgState == 'chooseCanisterOUT' && is_numeric($callbackData)) {
                 return $this->chooseCanisterOUT($tgUser, $chatId, $callbackData);
+            } elseif ($userTgState == 'chooseTypeGenRefill' && is_numeric($callbackData)) {
+                return $this->chooseTypeGenRefill($tgUser, $chatId, $callbackData);
             } elseif ($userTgState == 'confirm') {
                 $last = $userModel->getCounterDate();
                 $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
@@ -565,6 +626,7 @@ class Telegram extends Model
                         2,
                         [
                             "consumed" => $consumedFuel,
+                            "workingTime" => $workingTime,
                             "typeId" => $dataTargetGenerator[0]['genTypeId'],
                             "areaId" => $dataTargetGenerator[0]['genAreaId'],
                         ],
@@ -618,6 +680,19 @@ class Telegram extends Model
                         'status' => 2
                     ], ["login" => $tgUser->login], true);
                     return $this->menuMess($chatId, $tgUser->area, "Каністри <code>" . $metaCanisterCount  . "</code> були <b>успішно відправленні на повернення 👍</b>");
+                }
+            } elseif ($userTgState == 'confirmCountFuelRefill') {
+                $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
+
+                if ($callbackData == 'denied') return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>");
+                elseif ($callbackData == 'confirm') {
+                    $generator->saveRefillByTrdPointANDLog(
+                        ['login' => $tgUser->login, "areaId" => $tgUser->area],
+                        ["fuelRefill" => $metadata->fuel, "refillType" => $metadata->typeGen],
+                        true
+                    );
+                    return $this->menuMess($chatId, $tgUser->area, "<b>Успішно відправлено запит на поповнення</b> " .  $metadata->fuel . " 👍\n" .
+                        "Після підтвердження менеджера, паливо буде нараховано на аптеку.\n");
                 }
             } else return [$this->createTelegramMessage(
                 "<b>Упс... Ви не маєте права на дану дію 🤔</b>",
@@ -697,6 +772,19 @@ class Telegram extends Model
             return $this->addCountCanisterMessOUT($chatId, $tgUser, $canisterPK);
         }
         return $this->addCountCanisterMessOUT($chatId, $tgUser, $metadata->canisterPK);
+    }
+
+    private function chooseTypeGenRefill($tgUser, $chatId, $typeGen = null)
+    {
+        $generator = new Generator();
+        $metadata = json_decode($tgUser->telegramMetadata);
+        if ($typeGen != null) {
+            if (count($generator->getTypeGenerator($typeGen)) == 0) {
+                return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>");
+            }
+            return $this->addRefillFuel($chatId, $tgUser, $typeGen);
+        }
+        return $this->addRefillFuel($chatId, $tgUser, $metadata->typeGen);
     }
 
     private function addPokazMess($chatId, $metadata, $counterPK)
@@ -782,6 +870,21 @@ class Telegram extends Model
         )];
     }
 
+    private function addRefillFuel($chatId, $tgUser, $typeGen)
+    {
+        $userModel = new User();
+        $userModel->insertTelegramDataByChatId(
+            $chatId,
+            'countFuelRefill',
+            ["typeGen" => $typeGen]
+        );
+
+        return [$this->createTelegramMessage(
+            "<b>Введіть кількість палива для заправлення</b>",
+            $this->buttonBuilder([$this->backToMenu])
+        )];
+    }
+
     private function menuMess($chatId, $areaId, $title, $justLoggined = false)
     {
         $generator = new Generator();
@@ -815,6 +918,13 @@ class Telegram extends Model
             ]);
         }
 
+        $refillMenu = [];
+        if ($generator->getAreaById($areaId)[0]['refill'] == 1) {
+            array_push($refillMenu, [
+                "Заправити",
+                "refill"
+            ]);
+        }
         $counters = $search->getCounterByAreaId($areaId);
         $counterMenu = [];
         foreach ($counters as $counterType) {
@@ -854,7 +964,7 @@ class Telegram extends Model
             $respMessage,
             $this->createTelegramMessage(
                 $title,
-                $this->buttonBuilder([$genMenu, $counterMenu])
+                $this->buttonBuilder([$refillMenu, $genMenu, $counterMenu])
             )
         );
         return $respMessage;

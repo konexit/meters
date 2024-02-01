@@ -326,15 +326,18 @@ class Excel extends Model
             $this->startColumnTotalGen + 2, $this->startRowTotalGen - 2,
             $this->startColumnTotalGen + 3, $this->startRowTotalGen - 2,
         ]);
-        $sheet->setCellValue([$this->startColumnTotalGen + 4, $this->startRowTotalGen - 2], "Використано");
-        $sheet->setCellValue([$this->startColumnTotalGen + 5, $this->startRowTotalGen - 2], "Повернено");
-        $sheet->setCellValue([$this->startColumnTotalGen + 6, $this->startRowTotalGen - 2], "Залишок")->mergeCells([
-            $this->startColumnTotalGen + 6, $this->startRowTotalGen - 2,
-            $this->startColumnTotalGen + 7, $this->startRowTotalGen - 2
+        $sheet->setCellValue([$this->startColumnTotalGen + 4, $this->startRowTotalGen - 2], "Використано")->mergeCells([
+            $this->startColumnTotalGen + 4, $this->startRowTotalGen - 2,
+            $this->startColumnTotalGen + 5, $this->startRowTotalGen - 2,
+        ]);
+        $sheet->setCellValue([$this->startColumnTotalGen + 6, $this->startRowTotalGen - 2], "Повернено");
+        $sheet->setCellValue([$this->startColumnTotalGen + 7, $this->startRowTotalGen - 2], "Залишок")->mergeCells([
+            $this->startColumnTotalGen + 7, $this->startRowTotalGen - 2,
+            $this->startColumnTotalGen + 8, $this->startRowTotalGen - 2
         ]);
 
 
-        $sheet->getStyle([$this->startColumnTotalGen + 2, $this->startRowTotalGen - 2, $this->startColumnTotalGen + 7, $this->startRowTotalGen - 2])
+        $sheet->getStyle([$this->startColumnTotalGen + 2, $this->startRowTotalGen - 2, $this->startColumnTotalGen + 8, $this->startRowTotalGen - 2])
             ->applyFromArray($this->styleCell["alignment"]);
 
 
@@ -342,7 +345,7 @@ class Excel extends Model
             $sheet->setCellValue([$this->startColumnTotalGen + $optionsField->key, $this->startRowTotalGen - 1], $optionsField->name);
         }
 
-        $sheet->getStyle([$this->startColumnTotalGen, $this->startRowTotalGen - 1, $this->startColumnTotalGen + 7, $this->startRowTotalGen - 1])
+        $sheet->getStyle([$this->startColumnTotalGen, $this->startRowTotalGen - 1, $this->startColumnTotalGen + 8, $this->startRowTotalGen - 1])
             ->applyFromArray($this->styleCell["allBordersTHIN"])->applyFromArray($this->styleCell["alignment"])->getFont()->setBold(true);
     }
 
@@ -355,14 +358,14 @@ class Excel extends Model
         $countRowsTrdPnt = 0;
 
         foreach ($years as $year => $months) {
-            $sheet->setCellValue([$this->startColumnTotalGen, $currentRowIndex], $year)->mergeCells([$this->startColumnTotalGen, $currentRowIndex, $this->startColumnTotalGen + 7, $currentRowIndex])
+            $sheet->setCellValue([$this->startColumnTotalGen, $currentRowIndex], $year)->mergeCells([$this->startColumnTotalGen, $currentRowIndex, $this->startColumnTotalGen + 8, $currentRowIndex])
                 ->getStyle([$this->startColumnTotalGen, $currentRowIndex])
                 ->applyFromArray($this->styleCell["alignment"])->getFont()->setBold(true);
             $currentRowIndex++;
 
             foreach ($months as $month => $areaIds) {
                 $sheet->setCellValue([$this->startColumnTotalGen, $currentRowIndex], $this->uppercaseFirstLetter($dateFormatter->format(mktime(0, 0, 0, $month, 1))))
-                    ->mergeCells([$this->startColumnTotalGen, $currentRowIndex, $this->startColumnTotalGen + 7, $currentRowIndex])
+                    ->mergeCells([$this->startColumnTotalGen, $currentRowIndex, $this->startColumnTotalGen + 8, $currentRowIndex])
                     ->getStyle([$this->startColumnTotalGen, $currentRowIndex])
                     ->applyFromArray($this->styleCell["alignment"])->getFont()->setBold(true);
                 $currentRowIndex++;
@@ -382,9 +385,9 @@ class Excel extends Model
 
         $sheet->getStyle([$this->startColumnTotalGen - 1, $this->startRowTotalGen, $this->startColumnTotalGen - 1, $currentRowIndex - 1])
             ->applyFromArray($this->styleCell["alignmentRight"]);
-        $sheet->getStyle([$this->startColumnTotalGen + 2, $this->startRowTotalGen, $this->startColumnTotalGen + 7, $currentRowIndex - 1])
+        $sheet->getStyle([$this->startColumnTotalGen + 2, $this->startRowTotalGen, $this->startColumnTotalGen + 8, $currentRowIndex - 1])
             ->applyFromArray($this->styleCell["alignment"])->getFont()->setBold(true);
-        $sheet->getStyle([$this->startColumnTotalGen, $this->startRowTotalGen, $this->startColumnTotalGen + 7, $currentRowIndex - 1])
+        $sheet->getStyle([$this->startColumnTotalGen, $this->startRowTotalGen, $this->startColumnTotalGen + 8, $currentRowIndex - 1])
             ->applyFromArray($this->styleCell["allBordersTHIN"]);
     }
 

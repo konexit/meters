@@ -42,9 +42,13 @@ class Generator extends Model
                                     ORDER BY a.unit")->getResultArray();
     }
 
-    function getTypeGenerator()
+    function getTypeGenerator($typeId = '')
     {
-        return $this->db->query("SELECT * FROM typeGenerator ORDER BY id")->getResultArray();
+        $condition = '';
+        if ($typeId != '') {
+            $condition = ' WHERE id = ' . $typeId;
+        }
+        return $this->db->query("SELECT * FROM typeGenerator " . $condition . " ORDER BY id")->getResultArray();
     }
 
 
@@ -188,6 +192,7 @@ class Generator extends Model
                 2,
                 [
                     "consumed" => $consumed,
+                    "workingTime" => $request->getVar('workingTime'),
                     "typeId" => $dataTargetGenerator[0]['genTypeId'],
                     "areaId" => $dataTargetGenerator[0]['genAreaId'],
                 ],
@@ -209,7 +214,7 @@ class Generator extends Model
             "generators" =>  $this->getSpecificGenerator(session()->get('usArea')),
             "canisters" => $this->getSpecificCanister(session()->get('usArea'), '', 1, ''),
             "fuelArea" =>  $this->getFuelArea(session()->get('usArea'))[0]['sum'],
-            "refill" => $this->db->query("SELECT refill FROM area WHERE id = " . session()->get('usArea'))->getResultArray()[0]['refill']
+            "refill" => $this->getAreaById(session()->get('usArea'))[0]['refill']
         ], JSON_UNESCAPED_UNICODE);
     }
 
@@ -249,19 +254,10 @@ class Generator extends Model
 
     function refillFuel($request)
     {
-        $user = new User();
-        $this->db->table('trackingCanister')->insert([
-            'date' => date('Y-m-d'),
-            'canister' => 0,
-            'fuel' => $request->getVar('fuelRefill'),
-            'type' =>  $request->getVar('refillType'),
-            'unit' => session("usArea"),
-            'status' => 3
-        ]);
-        $user->addUserLog(session("mLogin"), [
-            'login' => session("mLogin"),
-            'message' => "Відправленно запит на купівлю палива = " . $request->getVar('fuelRefill')
-        ]);
+        $this->saveRefillByTrdPointANDLog(
+            ['login' => session("mLogin"), "areaId" => session("usArea")],
+            ["fuelRefill" => $request->getVar('fuelRefill'), "refillType" => $request->getVar('refillType')]
+        );
         header("Content-Type: application/json");
         echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
     }
@@ -312,7 +308,7 @@ class Generator extends Model
                     break;
                 }
             case 2: {
-                    $this->db->query("INSERT INTO generatorHistory(consumed, type, areaId,  typeGenId, date, year, month, day) VALUES (" . $targetData['consumed'] . ", " . $type . ", " . $targetData['areaId'] . ",  " . $targetData['typeId'] . ", '" . $date['date'] . "', " . $date['year'] . ", " . $date['month'] . ", " . $date['day'] . ")");
+                    $this->db->query("INSERT INTO generatorHistory(consumed, workingTime, type, areaId,  typeGenId, date, year, month, day) VALUES (" . $targetData['consumed'] . ", " . $targetData['workingTime'] . ", " . $type . ", " . $targetData['areaId'] . ",  " . $targetData['typeId'] . ", '" . $date['date'] . "', " . $date['year'] . ", " . $date['month'] . ", " . $date['day'] . ")");
                     break;
                 }
             case 3: {
@@ -349,6 +345,20 @@ class Generator extends Model
                                 VALUES (' . $canisterModel['fuel'] . ', ' . $canisterModel['canister']  . ', ' . $canisterModel['areaId'] . ', ' . $canisterModel['typeId'] . ')');
         }
         $user->addUserLog($userModel["login"], ['login' => $userModel["login"], 'message' => "Отримано каністри кількість = " . $canisterModel['canister'] . ", палива = " . $canisterModel['fuel'] . (($isTelegram) ? " (telegram)" : "")]);
+    }
+
+    function saveRefillByTrdPointANDLog($userModel, $genModel, $isTelegram = false)
+    {
+        $user = new User();
+        $this->db->table('trackingCanister')->insert([
+            'date' => date('Y-m-d'),
+            'canister' => 0,
+            'fuel' => $genModel['fuelRefill'],
+            'type' =>  $genModel['refillType'],
+            'unit' => $userModel['areaId'],
+            'status' => 3
+        ]);
+        $user->addUserLog($userModel["login"], ['login' => $userModel["login"], 'message' => "Відправленно запит на купівлю палива = " . $genModel['fuelRefill'] . (($isTelegram) ? " (telegram)" : "")]);
     }
 
     function sendCanisterByTrdPointANDLog($canisterModel,  $userModel, $isTelegram = false)
@@ -464,6 +474,11 @@ class Generator extends Model
         if ($typeId) $condition = ($condition != "") ? $condition . " AND type = " . $typeId : " type = " . $typeId;
         if ($condition) $condition = " WHERE " . $condition;
         return $this->db->query("SELECT SUM(canister) AS sum FROM fuelArea " . $condition)->getResultArray();
+    }
+
+    function getAreaById($id)
+    {
+        return $this->db->query('SELECT * FROM area WHERE id = ' . $id)->getResultArray();
     }
 
     private function deleteTrackingCanisterById($id)
@@ -761,16 +776,20 @@ class Generator extends Model
                         "key" => 4,
                         "name" => "к-сть бензину"
                     ],
-                    "out_canister" => [
+                    "workingTime" => [
                         "key" => 5,
+                        "name" => "к-сть годин"
+                    ],
+                    "out_canister" => [
+                        "key" => 6,
                         "name" => "к-сть каністр"
                     ],
                     "restFuel" => [
-                        "key" => 6,
+                        "key" => 7,
                         "name" => "к-сть бензину"
                     ],
                     "restCanister" => [
-                        "key" => 7,
+                        "key" => 8,
                         "name" => "к-сть каністр"
                     ]
                 ]
@@ -778,7 +797,7 @@ class Generator extends Model
         ];
 
         $dataReport = $this->db->query("SELECT 
-                                            a.unit, gh.canister, gh.type, gh.typeGenId, gh.fuel, gh.consumed, gh.year, gh.month, c.company_name, fa.fuel AS restFuel, fa.canister AS restCanister, a.id AS areaId
+                                            a.unit, gh.canister, gh.type, gh.workingTime, gh.typeGenId, gh.fuel, gh.consumed, gh.year, gh.month, c.company_name, fa.fuel AS restFuel, fa.canister AS restCanister, a.id AS areaId
                                         FROM generatorHistory as gh
                                             JOIN area AS a ON gh.areaId = a.id
                                             JOIN companiesAreas AS ca ON a.id = ca.area_id
@@ -832,6 +851,7 @@ class Generator extends Model
                 "in_fuel" => $type == 1 ? $currentObj["fuel"] : 0,
                 "in_canister" => $type == 1 ? $currentObj["canister"] : 0,
                 "consumed" => $type == 2 ? $currentObj["consumed"] : 0,
+                "workingTime" => $type == 2 ? $currentObj["workingTime"] : 0,
                 "out_canister" => $type == 3 ? $currentObj["canister"] : 0,
                 "restFuel" => $currentObj["restFuel"],
                 "restCanister" => $currentObj["restCanister"]
@@ -843,6 +863,7 @@ class Generator extends Model
                 "in_fuel" =>  $type == 1 ? $currentObj["fuel"] + $oldObj["in_fuel"] : $oldObj["in_fuel"],
                 "in_canister" => $type == 1 ? $currentObj["canister"] + $oldObj["in_canister"] :  $oldObj["in_canister"],
                 "consumed" => $type == 2 ? $currentObj["consumed"] + $oldObj["consumed"] : $oldObj["consumed"],
+                "workingTime" => $type == 2 ? $currentObj["workingTime"] + $oldObj["workingTime"] : $oldObj["workingTime"],
                 "out_canister" => $type == 3 ? $currentObj["canister"] + $oldObj["out_canister"] : $oldObj["out_canister"],
                 "restFuel" => $currentObj["restFuel"],
                 "restCanister" => $currentObj["restCanister"]
