@@ -62,9 +62,14 @@ class Generator extends Model
             'type' => $request->getVar('gType'),
             'state' => $request->getVar('gState') === 'true' ? true : false
         ];
+
         if ($request->getVar('gId')) {
             $this->db->table('generator')->update($generator, ['id' => $request->getVar('gId')]);
         } else {
+            if ($this->getFuelArea($request->getVar('gArr'), $request->getVar('gType'))[0]['sum'] == null) {
+                $this->db->query('INSERT INTO fuelArea(fuel, canister, areaId, type) 
+                                    VALUES (' . 0 . ', ' . 0  . ', ' . $request->getVar('gArr') . ', ' . $request->getVar('gType') . ')');
+            }
             $this->db->table('generator')->insert($generator);
         }
     }
@@ -334,14 +339,9 @@ class Generator extends Model
     {
         $user = new User();
         $this->deleteTrackingCanisterById($trackingCanisterId);
-        if ($this->getFuelArea($canisterModel['areaId'], $canisterModel['typeId'])[0]['sum']) {
-            $this->db->query('UPDATE fuelArea 
+        $this->db->query('UPDATE fuelArea 
                                 SET fuel = ROUND(fuel + ' . $canisterModel['fuel'] . ', 2), canister = canister + ' . $canisterModel['canister'] . ' 
                                 WHERE type = ' . $canisterModel['typeId'] . ' AND areaId = ' . $canisterModel['areaId']);
-        } else {
-            $this->db->query('INSERT INTO fuelArea(fuel, canister, areaId, type) 
-                                VALUES (' . $canisterModel['fuel'] . ', ' . $canisterModel['canister']  . ', ' . $canisterModel['areaId'] . ', ' . $canisterModel['typeId'] . ')');
-        }
         $user->addUserLog(
             $userModel["login"],
             ['login' => $userModel["login"], 'message' => "Отримано каністри кількість = " . $canisterModel['canister'] . ", палива = " . $canisterModel['fuel'] . (($isTelegram) ? " (telegram)" : "")]
