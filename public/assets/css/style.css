@@ -907,3 +907,17 @@ input[type="datetime-local"] {
 * thead tr th {
     width: inherit;
 }
+
+#counter,
+#cStat,
+#allCount,
+#allUser,
+#allUnit,
+#log,
+#generator,
+#canister,
+#generatorRemnant {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}

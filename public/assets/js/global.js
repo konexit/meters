@@ -112,9 +112,9 @@ function showSet(mShow) {
 }
 
 function setValidHeightElement(elem, existTable = false) {
-    const docHeight = $(document).height();
-    const currElem = document.querySelector((existTable) ? elem + " table" : elem).offsetHeight
-    document.querySelector(elem + " table").style.height = window.innerHeight - (docHeight - currElem) - 50 + "px"
+    // const docHeight = $(document).height();
+    // const currElem = document.querySelector((existTable) ? elem + " table" : elem).offsetHeight
+    // document.querySelector(elem + " table").style.height = window.innerHeight - (docHeight - currElem) - 50 + "px"
 }
 
 function getDataValue(datalistSelector, selector) {
@@ -134,7 +134,7 @@ function createTableFromJSON(jsonData) {
     table.setAttribute("cellpadding", "4")
     table.setAttribute("cellspacing", "0")
     table.setAttribute("align", "center")
-    table.setAttribute("style", "width: 1000px; display: " + (usRights == 1 ? 'inline-table' : 'block') + "; overflow-y: auto;")
+    table.setAttribute("style", "width: 1000px; overflow-y: auto;")
     table.setAttribute("align", "left");
     table.setAttribute("scope", "col");
 
@@ -255,7 +255,7 @@ function createGeneratorFromJSON(jsonData, action, withoutActions = false) {
     table.setAttribute("cellpadding", "4");
     table.setAttribute("cellspacing", "0");
     table.setAttribute("align", "center");
-    table.setAttribute("style", "width: 1000px; display: " + (usRights == 1 ? 'table-cell' : 'block') + "; overflow-y: auto;");
+    table.setAttribute("style", "width: 1000px; overflow-y: auto;");
     table.setAttribute("align", "left");
     table.setAttribute("scope", "col");
 
@@ -334,7 +334,7 @@ function createCanisterFromJSON(jsonData) {
     table.setAttribute("cellpadding", "4");
     table.setAttribute("cellspacing", "0");
     table.setAttribute("align", "center");
-    table.setAttribute("style", "width: 1000px; display: " + (usRights == 1 ? 'table-cell' : 'block') + "; overflow-y: auto;");
+    table.setAttribute("style", "width: 1000px; overflow-y: auto;");
     table.setAttribute("align", "left");
     table.setAttribute("scope", "col");
 
@@ -1384,7 +1384,7 @@ function getGeneratorsAndCanisters() {
         areaGeneratorElement.innerHTML = "";
 
         const countCanister = +data.fuelArea
-        if (countCanister > 0) {
+        if (countCanister != 0) {
             var canisterCountElement = document.createElement("div");
             canisterCountElement.className = "flex-container";
 
@@ -1427,53 +1427,51 @@ function getGeneratorsAndCanisters() {
 
         const currentDateTime = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, 16);
         data.generators.forEach(function (areaGenerator) {
-            if (areaGenerator.state === "1") {
-                var generatorElement = document.createElement("div");
-                generatorElement.className = "flex-container";
-                const avWorkingTime = Math.round(areaGenerator.fuel / areaGenerator.coeff * 10) / 10
+            var generatorElement = document.createElement("div");
+            generatorElement.className = "flex-container";
+            const avWorkingTime = Math.round(areaGenerator.fuel / areaGenerator.coeff * 10) / 10
 
-                generatorElement.innerHTML = "<div>" +
-                    "<div class='generator-info'>" +
-                    "<div class='desc-gen'><strong>Назва:</strong><span>" + areaGenerator.name + "</span></div>" +
-                    "<div class='desc-gen'><strong>Тип:</strong><span>" + areaGenerator.type + "</span></div>" +
-                    "<div class='desc-gen'><strong>Серійний номер:</strong><span>" + areaGenerator.serialNum + "</span></div>" +
-                    "</div>" +
-                    "<div class='generator-resources'>" +
-                    "<div class='res-gen'><strong>Каністр:</strong><span>" + areaGenerator.canister + " шт.</span></div>" +
-                    "<div class='res-gen'><strong>Палива:</strong><span>" + areaGenerator.fuel + " л.</span></div>" +
-                    "<div class='res-gen'><strong>Прогнозований час роботи генератора: &#8776;</strong><span id='avWorkingTime_" + areaGenerator.id + "' style='color: #eb0b0b;'>" + avWorkingTime + " годин</span></div>" +
-                    "</div>" +
-                    "</div>" +
-                    "<div class='adding-pokaz'>" +
-                    "<h3>Час роботи</h3>" +
-                    "<div id='genId_" + areaGenerator.id + "'>" +
-                    "<input style='display: none;' class='generator-coeff' value='" + areaGenerator.coeff + "'>" +
-                    "<span>Початок:<input type='datetime-local' class='start-generator' value='" + currentDateTime + "'/></span>" +
-                    "<span>Кінець:<input type='datetime-local' class='end-generator' value='" + currentDateTime + "' /></span>" +
-                    "</div>" +
-                    "<button id='genBTNId_" + areaGenerator.id + "' onclick='addGeneratorPokaz(" + areaGenerator.id + ")' style='font-size: 20px;'>Подати</button>" +
-                    "</div>" +
-                    "</div>";
+            generatorElement.innerHTML = "<div>" +
+                "<div class='generator-info'>" +
+                "<div class='desc-gen'><strong>Назва:</strong><span>" + areaGenerator.name + "</span></div>" +
+                "<div class='desc-gen'><strong>Тип:</strong><span>" + areaGenerator.type + "</span></div>" +
+                "<div class='desc-gen'><strong>Серійний номер:</strong><span>" + areaGenerator.serialNum + "</span></div>" +
+                "</div>" +
+                "<div class='generator-resources'>" +
+                "<div class='res-gen'><strong>Каністр:</strong><span>" + areaGenerator.canister + " шт.</span></div>" +
+                "<div class='res-gen'><strong>Палива:</strong><span>" + areaGenerator.fuel + " л.</span></div>" +
+                "<div class='res-gen'><strong>Прогнозований час роботи генератора: &#8776;</strong><span id='avWorkingTime_" + areaGenerator.id + "' style='color: #eb0b0b;'>" + avWorkingTime + " годин</span></div>" +
+                "</div>" +
+                "</div>" +
+                "<div class='adding-pokaz'>" +
+                "<h3>Час роботи</h3>" +
+                "<div id='genId_" + areaGenerator.id + "'>" +
+                "<input style='display: none;' class='generator-coeff' value='" + areaGenerator.coeff + "'>" +
+                "<span>Початок:<input type='datetime-local' class='start-generator' value='" + currentDateTime + "'/></span>" +
+                "<span>Кінець:<input type='datetime-local' class='end-generator' value='" + currentDateTime + "' /></span>" +
+                "</div>" +
+                "<button id='genBTNId_" + areaGenerator.id + "' onclick='addGeneratorPokaz(" + areaGenerator.id + ")' style='font-size: 20px;'>Подати</button>" +
+                "</div>" +
+                "</div>";
 
-                areaGeneratorElement.appendChild(generatorElement);
+            areaGeneratorElement.appendChild(generatorElement);
 
-                const datapicker = document.querySelectorAll('#genId_' + areaGenerator.id + ' input[type=datetime-local]')
-                datapicker.forEach(function (elem) {
-                    elem.addEventListener("change", function () {
-                        const startGenerator = new Date(document.querySelector('#genId_' + areaGenerator.id + ' .start-generator').value);
-                        const endGenerator = new Date(document.querySelector('#genId_' + areaGenerator.id + ' .end-generator').value);
-                        const currentWorkingTime = Math.round(((endGenerator - startGenerator) / (1000 * 60 * 60)) * 10) / 10
-                        let btn = document.querySelector('#genBTNId_' + areaGenerator.id);
-                        if (isNaN(startGenerator) || isNaN(endGenerator) || startGenerator >= endGenerator || currentWorkingTime == 0 || currentWorkingTime > avWorkingTime) {
-                            btn.innerHTML = 'Подати'
-                            btn.style['background-color'] = "#517b53"
-                        } else {
-                            btn.innerHTML = 'Подати ≈ ' + Math.round(((endGenerator - startGenerator) / (1000 * 60 * 60)) * 10) / 10
-                            btn.style['background-color'] = "#4CAF50"
-                        }
-                    });
+            const datapicker = document.querySelectorAll('#genId_' + areaGenerator.id + ' input[type=datetime-local]')
+            datapicker.forEach(function (elem) {
+                elem.addEventListener("change", function () {
+                    const startGenerator = new Date(document.querySelector('#genId_' + areaGenerator.id + ' .start-generator').value);
+                    const endGenerator = new Date(document.querySelector('#genId_' + areaGenerator.id + ' .end-generator').value);
+                    const currentWorkingTime = Math.round(((endGenerator - startGenerator) / (1000 * 60 * 60)) * 10) / 10
+                    let btn = document.querySelector('#genBTNId_' + areaGenerator.id);
+                    if (isNaN(startGenerator) || isNaN(endGenerator) || startGenerator >= endGenerator || currentWorkingTime == 0 || currentWorkingTime > avWorkingTime) {
+                        btn.innerHTML = 'Подати'
+                        btn.style['background-color'] = "#517b53"
+                    } else {
+                        btn.innerHTML = 'Подати ≈ ' + Math.round(((endGenerator - startGenerator) / (1000 * 60 * 60)) * 10) / 10
+                        btn.style['background-color'] = "#4CAF50"
+                    }
                 });
-            }
+            });
         });
     });
 }

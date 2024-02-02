@@ -227,7 +227,7 @@ class Telegram extends Model
                 )];
             }
             $last = $userModel->getCounterDate();
-            $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
+            $metadata = json_decode($search->getUserBySpecificData("", "", $chatId)[0]['telegramMetadata']);
             $metaCounterPK = $metadata->counterPK;
 
             if ($search->checkPokaz($metaCounterPK, $last['year'] . "-" . $last['month'] . "-01", $textMess)) {
@@ -269,10 +269,10 @@ class Telegram extends Model
                     )];
                 }
 
-                $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
+                $metadata = json_decode($search->getUserBySpecificData("", "", $chatId)[0]['telegramMetadata']);
                 $metaGeneratorPK = $metadata->generatorPK;
 
-                $genData = $generator->findActiveGenerators($tgUser->area, $metaGeneratorPK);
+                $genData = $generator->getSpecificGenerator($tgUser->area, '', $metaGeneratorPK, 1);
                 $workingTime = number_format(($endTime - $startTime) / (60 * 60), 1, '.', '');
 
                 if (!$genData || $genData[0]["fuel"] - floatval($workingTime * $genData[0]["coeff"]) < 0) {
@@ -343,7 +343,7 @@ class Telegram extends Model
                     )];
                 }
 
-                $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
+                $metadata = json_decode($search->getUserBySpecificData("", "", $chatId)[0]['telegramMetadata']);
                 $metaTypeGen = $metadata->typeGen;
 
                 $userModel->insertTelegramDataByChatId(
@@ -418,17 +418,18 @@ class Telegram extends Model
 
         // Дії звичайного користувача
         if ($tgUser->rights == 3) {
-            if ($callbackData == 'backMenu') return $this->menuMess($chatId, $tgUser->area, "<b>" . $tgUser->name . "</b> виберіть тип лічильника");
-            elseif ($userTgState == "menu") {
+            if ($callbackData == 'backMenu') {
+                return $this->menuMess($chatId, $tgUser->area, "<b>" . $tgUser->name . "</b> виберіть тип лічильника");
+            } elseif ($userTgState == "menu") {
                 $respMessage = [];
                 if ($callbackData == 'generators') {
-                    $generators = $generator->findActiveGenerators($tgUser->area);
-
-                    if (empty($generators)) return [$this->createTelegramMessage("Відсутні генератори в данному підрозділі 😎")];
-
+                    $activeGenerators = $generator->getSpecificGenerator($tgUser->area, "", "", 1);
+                    if (count($activeGenerators) == 0) {
+                        return [$this->createTelegramMessage("Відсутні генератори в данному підрозділі 😎")];
+                    }
                     $userModel->insertTelegramDataByChatId($chatId, 'chooseGenerator');
                     array_push($respMessage, $this->createTelegramMessage("<b>Список генераторів</b>"));
-                    foreach ($generators as $generator) {
+                    foreach ($activeGenerators as $generator) {
                         array_push(
                             $respMessage,
                             $this->createTelegramMessage(
@@ -556,144 +557,30 @@ class Telegram extends Model
             } elseif ($userTgState == 'chooseTypeGenRefill' && is_numeric($callbackData)) {
                 return $this->chooseTypeGenRefill($tgUser, $chatId, $callbackData);
             } elseif ($userTgState == 'confirm') {
-                $last = $userModel->getCounterDate();
-                $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
-
-                if ($callbackData == 'denied')
-                    return $this->chooseCounter($tgUser, $chatId, null);
-                elseif ($callbackData == 'confirm') {
-                    $metaCounterPK = $metadata->counterPK;
-
-                    // Перевірка перед збереженням даних
-                    if (!$search->checkPokaz($metaCounterPK, $last['year'] . "-" . $last['month'] . "-01", $metadata->pokaz)) {
-                        return [$this->createTelegramMessage("<b>Упс... Показник лічильника не додано</b>\n" .
-                            "Перевірте вказані дані та спробуйте ще раз")];
-                    }
-
-                    $savePokaz = $search->addPokazC($metaCounterPK, $metadata->pokaz, $last['year'], $last['month'], true);
-
-                    // Перевірка після збереженням
-                    if (!$savePokaz) {
-                        return $this->menuMess($chatId, $tgUser->area, "Показник лічильникa за <b>" . $last['year'] . "-" . $last['month'] . "-01</b> був <b>доданий раніше</b>\n" .
-                            "<b>" . $tgUser->name . "</b> Виберіть тип лічильника");
-                    }
-
-                    $search->recalculationANDLog([
-                        "counterPK" => $metaCounterPK,
-                        "pokaz" => $metadata->pokaz,
-                        "login" => $tgUser->login
-                    ], true);
-                    return $this->menuMess($chatId, $tgUser->area, "Показник лічильникa " . $metadata->pokaz . " за " . $last['month'] . "." . $last['year'] . " був <b>успішно доданий 👍 </b>\n" .
-                        "<i>Виберіть тип лічильника</i>");
-                }
+                return $this->checkConfirmActions(
+                    ['type' => 'confirm', 'callbackData' => $callbackData],
+                    ['tgUser' => $tgUser, 'chatId' => $chatId]
+                );
             } elseif ($userTgState == 'confirmGen') {
-                $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
-
-                if ($callbackData == 'denied') return $this->chooseGenerator($tgUser, $chatId, null);
-                elseif ($callbackData == 'confirm') {
-                    $metaGeneratorPK = $metadata->generatorPK;
-                    $parts = explode('_', $metadata->pokaz);
-
-                    list($startDate1, $startTime1) = sscanf($parts[0], "%[^\(](%[^\)])");
-                    $startTime = strtotime($startDate1 . ' ' . $startTime1);
-
-                    list($endDate2, $endTime2) = sscanf($parts[1], "%[^\(](%[^\)])");
-                    $endTime = strtotime($endDate2 . ' ' . $endTime2);
-
-                    $genData = $generator->findActiveGenerators($tgUser->area, $metaGeneratorPK);
-                    $workingTime =  floatval(number_format(($endTime - $startTime) / (60 * 60), 1, '.', ''));
-                    $consumedFuel = floatval(number_format($workingTime * $genData[0]["coeff"], 1, '.', ''));
-
-                    if (!$genData || $genData[0]["fuel"] - $consumedFuel < 0) {
-                        return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>");
-                    }
-
-                    $dataTargetGenerator = $generator->getSpecificGenerator('', '', $metaGeneratorPK);
-                    $generator->saveGeneratorPokazANDLog([
-                        'date' => date('Y-m-d', $startTime),
-                        'year' => date('Y', $startTime),
-                        'month' => date('m', $startTime),
-                        'day' => date('d', $startTime),
-                        'startTime' => date('H:i', $startTime),
-                        'endTime' => date('H:i', $endTime),
-                        'workingTime' => $workingTime,
-                        'consumed' => $consumedFuel,
-                        'genId' => $metaGeneratorPK
-                    ], [
-                        "login" => $tgUser->login
-                    ], $dataTargetGenerator[0], true);
-                    $generator->saveActionGenerator(
-                        2,
-                        [
-                            "consumed" => $consumedFuel,
-                            "workingTime" => $workingTime,
-                            "typeId" => $dataTargetGenerator[0]['genTypeId'],
-                            "areaId" => $dataTargetGenerator[0]['genAreaId'],
-                        ],
-                        [
-                            'date' => date('Y-m-d', $startTime),
-                            'year' => date('Y', $startTime),
-                            'month' => date('m', $startTime),
-                            'day' => date('d', $startTime),
-                        ]
-                    );
-                    return $this->menuMess($chatId, $tgUser->area, "Показник генератора <code>" . $metadata->pokaz . "</code> був <b>успішно доданий 👍 </b>\n" .
-                        "<i>Виберіть тип лічильника</i>");
-                }
+                return $this->checkConfirmActions(
+                    ['type' => 'confirmGen', 'callbackData' => $callbackData],
+                    ['tgUser' => $tgUser, 'chatId' => $chatId]
+                );
             } elseif ($userTgState == 'confirmCountCanisterIN') {
-                $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
-
-                if ($callbackData == 'denied') return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>");
-                elseif ($callbackData == 'confirm') {
-                    $metaCanisterPK = $metadata->canisterPK;
-                    $canisterData = $generator->getSpecificCanister('', '', 1, $metaCanisterPK);
-                    if (!$canisterData) {
-                        return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>");
-                    }
-                    $generator->saveCanisterByTrdPointANDLog(
-                        $canisterData[0],
-                        ["login" => $tgUser->login],
-                        $metaCanisterPK,
-                        true
-                    );
-                    $generator->saveActionGenerator(1, $canisterData[0]);
-                    return $this->menuMess($chatId, $tgUser->area, "Каністри були <b>успішно отримані 👍</b>");
-                }
+                return $this->checkConfirmActions(
+                    ['type' => 'confirmCountCanisterIN', 'callbackData' => $callbackData],
+                    ['tgUser' => $tgUser, 'chatId' => $chatId]
+                );
             } elseif ($userTgState == 'confirmCountCanisterOUT') {
-                $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
-
-                if ($callbackData == 'denied') return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>");
-                elseif ($callbackData == 'confirm') {
-                    $countCanister = $generator->getFuelArea($tgUser->area)[0]['sum'];
-                    $metaCanisterCount = $metadata->count;
-
-                    if ($countCanister == 0 || $countCanister < $metaCanisterCount) {
-                        return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>");
-                    }
-
-                    $generator->sendCanisterByTrdPointANDLog([
-                        'date' => date('Y-m-d'),
-                        'canister' => $metaCanisterCount,
-                        'fuel' => 0,
-                        'type' => 0,
-                        'unit' => $tgUser->area,
-                        'status' => 2
-                    ], ["login" => $tgUser->login], true);
-                    return $this->menuMess($chatId, $tgUser->area, "Каністри <code>" . $metaCanisterCount  . "</code> були <b>успішно відправленні на повернення 👍</b>");
-                }
+                return $this->checkConfirmActions(
+                    ['type' => 'confirmCountCanisterOUT', 'callbackData' => $callbackData],
+                    ['tgUser' => $tgUser, 'chatId' => $chatId]
+                );
             } elseif ($userTgState == 'confirmCountFuelRefill') {
-                $metadata = json_decode($search->getMetadataByChatId($chatId)->telegramMetadata);
-
-                if ($callbackData == 'denied') return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>");
-                elseif ($callbackData == 'confirm') {
-                    $generator->saveRefillByTrdPointANDLog(
-                        ['login' => $tgUser->login, "areaId" => $tgUser->area],
-                        ["fuelRefill" => $metadata->fuel, "refillType" => $metadata->typeGen],
-                        true
-                    );
-                    return $this->menuMess($chatId, $tgUser->area, "<b>Успішно відправлено запит на поповнення</b> " .  $metadata->fuel . " 👍\n" .
-                        "Після підтвердження менеджера, паливо буде нараховано на аптеку.\n");
-                }
+                return $this->checkConfirmActions(
+                    ['type' => 'confirmCountFuelRefill', 'callbackData' => $callbackData],
+                    ['tgUser' => $tgUser, 'chatId' => $chatId]
+                );
             } else return [$this->createTelegramMessage(
                 "<b>Упс... Ви не маєте права на дану дію 🤔</b>",
                 $this->buttonBuilder([$this->backToMenu])
@@ -740,7 +627,7 @@ class Telegram extends Model
         $generator = new Generator();
         $metadata = json_decode($tgUser->telegramMetadata);
         if ($generatorPK != null) {
-            if (!$generator->findActiveGenerators($tgUser->area, $generatorPK)) {
+            if (!$generator->getSpecificGenerator($tgUser->area, '', $generatorPK, 1)) {
                 return $this->menuMess($chatId, $tgUser->area, "<b>Упс... Виникли проблеми 🤔</b>");
             }
             return $this->addPokazGenMess($chatId, $tgUser, $generatorPK);
@@ -815,7 +702,7 @@ class Telegram extends Model
             'addPokazGen',
             ["generatorPK" => $generatorPK]
         );
-        $dataGen = $generator->findActiveGenerators($tgUser->area, $generatorPK);
+        $dataGen = $generator->getSpecificGenerator($tgUser->area, '', $generatorPK, 1);
         date_default_timezone_set('Europe/Kiev');
         $currentDateTime = date('d.m.Y(H:i)');
         $twoHoursAgo = date('d.m.Y(H:i)', strtotime('-2 hours'));
@@ -889,7 +776,7 @@ class Telegram extends Model
     {
         $generator = new Generator();
         $search = new Search();
-        $activeGenerators = $generator->findActiveGenerators($areaId);
+        $activeGenerators = $generator->getSpecificGenerator($areaId, "", "", 1);
         $userModel = new User();
         $userModel->insertTelegramDataByChatId($chatId, "menu");
 
@@ -897,32 +784,30 @@ class Telegram extends Model
         if ($justLoggined) array_push($respMessage, $this->createTelegramMessage("Щоб вийти із облікового запису напишіть <code>/logout</code>"));
 
         $genMenu = [];
-        if (count($activeGenerators) > 0) {
+        if (count($activeGenerators) != 0) {
             array_push($genMenu, [
                 "Генератори",
                 "generators"
             ]);
         }
-        if (count($generator->getSpecificCanister($areaId, '', 1, '')) > 0) {
+        if ($generator->getAreaById($areaId)[0]['refill'] == 1) {
             array_push($genMenu, [
-                "Отр. каністр",
-                "canisters_in"
-            ]);
-        }
-
-
-        if ($generator->getFuelArea($areaId)[0]['sum'] != 0) {
-            array_push($genMenu, [
-                "Пов. каністр",
-                "canisters_out"
+                "Заправити",
+                "refill"
             ]);
         }
 
         $refillMenu = [];
-        if ($generator->getAreaById($areaId)[0]['refill'] == 1) {
+        if (count($generator->getSpecificCanister($areaId, '', 1, '')) > 0) {
             array_push($refillMenu, [
-                "Заправити",
-                "refill"
+                "Отр. каністр",
+                "canisters_in"
+            ]);
+        }
+        if ($generator->getFuelArea($areaId)[0]['sum'] != 0) {
+            array_push($refillMenu, [
+                "Пов. каністр",
+                "canisters_out"
             ]);
         }
         $counters = $search->getCounterByAreaId($areaId);
@@ -1006,5 +891,159 @@ class Telegram extends Model
         );
 
         return $respMessage;
+    }
+
+    private function checkConfirmActions($specialData, $userData)
+    {
+        $generator = new Generator();
+        $search = new Search();
+        $userModel = new User();
+        $metadata = json_decode($search->getUserBySpecificData("", "", $userData['chatId'])[0]['telegramMetadata']);
+
+        switch ($specialData['type']) {
+            case 'confirmCountFuelRefill': {
+                    if ($specialData['callbackData'] == 'denied') {
+                        return $this->menuMess($userData['chatId'], $userData['tgUser']->area, "<b>Упс... Виникли проблеми 🤔</b>");
+                    } elseif ($specialData['callbackData'] == 'confirm') {
+                        $generator->saveRefillByTrdPointANDLog(
+                            ['login' => $userData['tgUser']->login, "areaId" => $userData['tgUser']->area],
+                            ["fuelRefill" => $metadata->fuel, "refillType" => $metadata->typeGen],
+                            true
+                        );
+                        return $this->menuMess($userData['chatId'], $userData['tgUser']->area, "<b>Успішно відправлено запит на поповнення</b> " .  $userData['metadata']->fuel . " 👍\n" .
+                            "Після підтвердження менеджера, паливо буде нараховано на аптеку.\n");
+                    }
+                    break;
+                }
+            case 'confirmCountCanisterOUT': {
+                    if ($specialData['callbackData'] == 'denied') {
+                        return $this->menuMess($userData['chatId'], $userData['tgUser']->area, "<b>Упс... Виникли проблеми 🤔</b>");
+                    } elseif ($specialData['callbackData'] == 'confirm') {
+                        $countCanister = $generator->getFuelArea($userData['tgUser']->area)[0]['sum'];
+                        $metaCanisterCount = $metadata->count;
+
+                        if ($countCanister == 0 || $countCanister < $metaCanisterCount) {
+                            return $this->menuMess($userData['chatId'], $userData['tgUser']->area, "<b>Упс... Виникли проблеми 🤔</b>");
+                        }
+
+                        $generator->sendCanisterByTrdPointANDLog([
+                            'date' => date('Y-m-d'),
+                            'canister' => $metaCanisterCount,
+                            'fuel' => 0,
+                            'type' => 0,
+                            'unit' => $userData['tgUser']->area,
+                            'status' => 2
+                        ], ["login" => $userData['tgUser']->login], true);
+                        return $this->menuMess($userData['chatId'], $userData['tgUser']->area, "Каністри <code>" . $metaCanisterCount  . "</code> були <b>успішно відправленні на повернення 👍</b>");
+                    }
+                    break;
+                }
+            case 'confirmCountCanisterIN': {
+                    if ($specialData['callbackData'] == 'denied') {
+                        return $this->menuMess($userData['chatId'],  $userData['tgUser']->area, "<b>Упс... Виникли проблеми 🤔</b>");
+                    } elseif ($specialData['callbackData'] == 'confirm') {
+                        $metaCanisterPK = $metadata->canisterPK;
+                        $canisterData = $generator->getSpecificCanister('', '', 1, $metaCanisterPK);
+                        if (!$canisterData) {
+                            return $this->menuMess($userData['chatId'],  $userData['tgUser']->area, "<b>Упс... Виникли проблеми 🤔</b>");
+                        }
+                        $generator->saveCanisterByTrdPointANDLog(
+                            $canisterData[0],
+                            ["login" =>  $userData['tgUser']->login],
+                            $metaCanisterPK,
+                            true
+                        );
+                        $generator->saveActionGenerator(1, $canisterData[0]);
+                        return $this->menuMess($userData['chatId'], $userData['tgUser']->area, "Каністри були <b>успішно отримані 👍</b>");
+                    }
+                    break;
+                }
+            case 'confirmGen': {
+                    if ($specialData['callbackData'] == 'denied') {
+                        return $this->chooseGenerator($userData['tgUser'], $userData['chatId'], null);
+                    } elseif ($specialData['callbackData'] == 'confirm') {
+                        $metaGeneratorPK = $metadata->generatorPK;
+                        $parts = explode('_', $metadata->pokaz);
+
+                        list($startDate1, $startTime1) = sscanf($parts[0], "%[^\(](%[^\)])");
+                        $startTime = strtotime($startDate1 . ' ' . $startTime1);
+
+                        list($endDate2, $endTime2) = sscanf($parts[1], "%[^\(](%[^\)])");
+                        $endTime = strtotime($endDate2 . ' ' . $endTime2);
+
+                        $genData = $generator->getSpecificGenerator($userData['tgUser']->area, '', $metaGeneratorPK, 1);
+                        $workingTime =  floatval(number_format(($endTime - $startTime) / (60 * 60), 1, '.', ''));
+                        $consumedFuel = floatval(number_format($workingTime * $genData[0]["coeff"], 1, '.', ''));
+
+                        if (!$genData || $genData[0]["fuel"] - $consumedFuel < 0) {
+                            return $this->menuMess($userData['chatId'], $userData['tgUser']->area, "<b>Упс... Виникли проблеми 🤔</b>");
+                        }
+
+                        $dataTargetGenerator = $generator->getSpecificGenerator('', '', $metaGeneratorPK);
+                        $generator->saveGeneratorPokazANDLog([
+                            'date' => date('Y-m-d', $startTime),
+                            'year' => date('Y', $startTime),
+                            'month' => date('m', $startTime),
+                            'day' => date('d', $startTime),
+                            'startTime' => date('H:i', $startTime),
+                            'endTime' => date('H:i', $endTime),
+                            'workingTime' => $workingTime,
+                            'consumed' => $consumedFuel,
+                            'genId' => $metaGeneratorPK
+                        ], [
+                            "login" => $userData['tgUser']->login
+                        ], $dataTargetGenerator[0], true);
+                        $generator->saveActionGenerator(
+                            2,
+                            [
+                                "consumed" => $consumedFuel,
+                                "workingTime" => $workingTime,
+                                "typeId" => $dataTargetGenerator[0]['genTypeId'],
+                                "areaId" => $dataTargetGenerator[0]['genAreaId'],
+                            ],
+                            [
+                                'date' => date('Y-m-d', $startTime),
+                                'year' => date('Y', $startTime),
+                                'month' => date('m', $startTime),
+                                'day' => date('d', $startTime),
+                            ]
+                        );
+                        return $this->menuMess($userData['chatId'], $userData['tgUser']->area, "Показник генератора <code>" . $metadata->pokaz . "</code> був <b>успішно доданий 👍 </b>\n" .
+                            "<i>Виберіть тип лічильника</i>");
+                    }
+                    break;
+                }
+            case 'confirm': {
+                    if ($specialData['callbackData'] == 'denied') {
+                        return $this->chooseCounter($userData['tgUser'], $userData['chatId'], null);
+                    } elseif ($specialData['callbackData'] == 'confirm') {
+                        $last = $userModel->getCounterDate();
+                        $metaCounterPK = $metadata->counterPK;
+
+                        // Перевірка перед збереженням даних
+                        if (!$search->checkPokaz($metaCounterPK, $last['year'] . "-" . $last['month'] . "-01", $metadata->pokaz)) {
+                            return [$this->createTelegramMessage("<b>Упс... Показник лічильника не додано</b>\n" .
+                                "Перевірте вказані дані та спробуйте ще раз")];
+                        }
+
+                        $savePokaz = $search->addPokazC($metaCounterPK, $metadata->pokaz, $last['year'], $last['month'], true);
+
+                        // Перевірка після збереженням
+                        if (!$savePokaz) {
+                            return $this->menuMess($userData['chatId'], $userData['tgUser']->area, "Показник лічильникa за <b>" . $last['year'] . "-" . $last['month'] . "-01</b> був <b>доданий раніше</b>\n" .
+                                "<b>" . $userData['tgUser']->name . "</b> Виберіть тип лічильника");
+                        }
+
+                        $search->recalculationANDLog([
+                            "counterPK" => $metaCounterPK,
+                            "pokaz" => $metadata->pokaz,
+                            "login" => $userData['tgUser']->login
+                        ], true);
+                        return $this->menuMess($userData['chatId'], $userData['tgUser']->area, "Показник лічильникa " . $metadata->pokaz . " за " . $last['month'] . "." . $last['year'] . " був <b>успішно доданий 👍 </b>\n" .
+                            "<i>Виберіть тип лічильника</i>");
+                    }
+                    break;
+                }
+        }
     }
 }

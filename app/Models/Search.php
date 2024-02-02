@@ -311,7 +311,7 @@ class Search extends Model
         ];
 
         header('Content-Type: application/json; charset=utf-8');
-        if (!$this->checkUserDB($user)) {
+        if (!count($this->getUserBySpecificData("", $user['login'])) ? false : true) {
             echo json_encode(['error' => 'Користувач ' . $request->getVar('login') . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
             return;
         }
@@ -332,7 +332,7 @@ class Search extends Model
         $tradePointId = $request->getVar('tradePointId');
         if (
             filter_var($request->getVar('isTradePoint'), FILTER_VALIDATE_BOOLEAN)
-            && !$this->checkUnTradePointDB($tradePointId)
+            && !count($this->getUserBySpecificData("", "", "", $tradePointId)) ? false : true
         ) {
             header('Content-Type: application/json; charset=utf-8');
             echo json_encode(['error' => 'Торгова точка із номером №' . $tradePointId . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
@@ -365,7 +365,7 @@ class Search extends Model
                 'rights' => 3
             ];
 
-            if (!$this->checkUserDB($newUser)) {
+            if (!count($this->getUserBySpecificData("", $newUser['login'])) ? false : true) {
                 header('Content-Type: application/json; charset=utf-8');
                 echo json_encode(['error' => 'Не вдається створити користувача ' . $tradePointId . '. Перевірте дані та спробуйте ще раз. Якщо проблема не вирішилась, зверніться в ІТ відділ'], JSON_UNESCAPED_UNICODE);
                 return;
@@ -635,9 +635,17 @@ class Search extends Model
         return $this->db->query("SELECT pokaz.index FROM pokaz WHERE cId = " . $counterPK . " AND ts < '" . $last['year'] . "-" . $last['month'] . "-01' ORDER BY ts DESC LIMIT 1")->getFirstRow();
     }
 
-    public function getMetadataByChatId($chatId)
+
+    public function getUserBySpecificData($id = "", $login = "", $tgChatId = "", $unit = "")
     {
-        return $this->db->query("SELECT telegramMetadata FROM user WHERE telegramChatId = " . $chatId)->getFirstRow();
+        $condition = "";
+        if ($id) $condition =  " u.id = '" . $id . "' ";
+        if ($login) $condition = ($condition != "") ? $condition . " AND u.login = " . $login : " u.login = " . $login;
+        if ($tgChatId) $condition = ($condition != "") ? $condition . " AND u.telegramChatId = " . $tgChatId : " u.telegramChatId = " . $tgChatId;
+        if ($unit) $condition = ($condition != "") ? $condition . " AND u.area = " . $unit : " u.area = " . $unit;
+        if ($condition) $condition = " WHERE " . $condition;
+
+        return $this->db->query("SELECT * FROM user AS u " . $condition)->getResultArray();
     }
 
     public function getReportCounter($request)
@@ -829,16 +837,6 @@ class Search extends Model
         return count($this->db->query("SELECT * FROM area WHERE unit='" . $unit . "' AND id != " . $areaId)->getResultArray()) ? false : true;
     }
 
-    private function checkUnTradePointDB($tradePoint)
-    {
-        return count($this->db->query("SELECT * FROM area WHERE trade_point_id = " . $tradePoint)->getResultArray()) ? false : true;
-    }
-
-    private function checkUserDB($user)
-    {
-        return count($this->db->query("SELECT login FROM user WHERE login='" . $user['login'] . "'")->getResultArray()) ? false : true;
-    }
-
     private function getLogConnectionDB()
     {
         return $this->db->query("SELECT date, login, message FROM userlog ORDER BY date DESC")->getResultArray();
@@ -942,7 +940,7 @@ class Search extends Model
     private function tablShablone()
     {
         return array(
-            'table_open'          => '<table border="2" cellpadding="4" cellspacing="0" align="Center" style="width: 1000px; display: ' . (session("usRights") == '1' ? "table-cell" : "block") . '; overflow-y: auto;">',
+            'table_open'          => '<table border="2" cellpadding="4" cellspacing="0" align="Center" style="width: 1000px; overflow-y: auto;">',
             'heading_row_start'   => '<tr style="color:White;background-color:#006698;font-size:14pt;font-weight:bold;">',
             'heading_row_end'     => '</tr>',
             'heading_cell_start'  => '<th align="left" scope="col">',
