@@ -921,3 +921,23 @@ input[type="datetime-local"] {
     justify-content: center;
     display: flex;
 }
+
+#counter,
+#canister,
+#generator,
+#setCanister,
+#setCounters,
+#setGenerator,
+#log,
+#allUser,
+#allUnit,
+#allCount,
+#buttGenerator,
+#buttCounter,
+#inputCanisterStatus,
+#generatorRemnant,
+#pokazEdit,
+#formReportCounter,
+#reportGenerator {
+    margin-top: 10px;
+}

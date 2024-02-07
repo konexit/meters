@@ -1402,7 +1402,8 @@ function getGeneratorsAndCanisters() {
         }
 
         listenerRemoveAllNonDigit(['#fuelRefill']);
-        if (data.refill == '0') {
+
+        if (+data.refill == 0 || data.generators.length == 0) {
             document.querySelector("#refillGeneratorElement").style.display = 'none'
         }
 

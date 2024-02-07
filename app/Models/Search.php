@@ -117,7 +117,6 @@ class Search extends Model
                 }
             }
         }
-        echo "<p></p>";
         echo $table->generate();
     }
 
@@ -267,8 +266,8 @@ class Search extends Model
                     12 => $TabRow[15]
                 ];
             }
-            $mass = array('table' => "<p></p>" . $table->generate(), 'diagram'  =>  $chartArray, "arrayCount" => count($chartArray));
-        } else $mass = array('table' => "<p></p>" . $table->generate(), 'diagram'  =>  [], "arrayCount" => count([]));
+            $mass = array('table' => $table->generate(), 'diagram'  =>  $chartArray, "arrayCount" => count($chartArray));
+        } else $mass = array('table' => $table->generate(), 'diagram'  =>  [], "arrayCount" => count([]));
         echo json_encode($mass);
     }
 
@@ -294,7 +293,6 @@ class Search extends Model
     {
         $table = new Table();
         $table->setTemplate($this->tablShablone());
-        echo "<p></p>";
         $table->setHeading("Дата", "Логин", "Дії");
         echo $table->generate($this->getLogConnectionDB());
     }
@@ -388,7 +386,6 @@ class Search extends Model
     {
         $table = new Table();
         $table->setTemplate($this->tablShablone());
-        echo "<p></p>";
         $table->setHeading("Підрозділ", "Адрес", "Телефон", "ID", "Стан", "Паливна карта", "Дії");
         $query = $this->getAllUnitDB();
         $allCompaniesAreas = $this->db->query("SELECT * FROM companiesAreas")->getResultArray();
@@ -503,7 +500,6 @@ class Search extends Model
         $table->setTemplate($this->tablShablone());
         $table->setHeading("Прізвище", "Ім'я", "Логін", "Права", "Підрозділ", "Телеграм ID", "Дії");
         $query = $this->getAllUserDB();
-        echo "<p></p>";
         if (count($query) > 0) {
             foreach ($query as $row) {
                 $table->addRow($row['surname'], $row['name'], $row['login'], $row['rights'], $row['unit'], $row['telegramChatId'], '<button onClick="userEdit(' . $row['id'] . ',' . "'" . $row['name'] . "'" . ',' . "'" . $row['surname'] . "'" . ',' . "'" . $row['pass'] . "'" . ',' . "'" . $row['login'] . "'" . ',' . "'" . $row['unit'] . "'" . ',' . "'" . $row['rights'] . "'" . ')">Редагувати</button>');

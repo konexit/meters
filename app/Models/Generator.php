@@ -86,6 +86,10 @@ class Generator extends Model
             'status' => 1
         ];
         $this->db->table('trackingCanister')->insert($canister);
+        if ($this->getFuelArea($request->getVar('unit'), $request->getVar('type'))[0]['sum'] == null) {
+            $this->db->query('INSERT INTO fuelArea(fuel, canister, areaId, type) 
+                                VALUES (' . 0 . ', ' . 0  . ', ' . $request->getVar('unit') . ', ' . $request->getVar('type') . ')');
+        }
         $tgUsersByTradePoint = $this->db->query("SELECT telegramChatId FROM user WHERE area = " . $request->getVar('unit') . " AND telegramChatId != ''")->getResultArray();
         $chatIds = [];
         foreach ($tgUsersByTradePoint as $tgUser) {
@@ -116,11 +120,11 @@ class Generator extends Model
     {
         header("Content-Type: application/json");
         echo json_encode([
-            "columns" => ["Підрозділ", "Адреса", "Назва генератора", "К-сть каністр", "Тип палива", "Палива"],
+            "columns" => ["Підрозділ", "Адреса", "Назва генератора", "К-сть каністр", "Палива", "Тип палива"],
             "generators" => $this->findGeneratorsRemnant($request->getVar('gUnit'), $request->getVar('gType')),
             "ref" => [
                 "Підрозділ" => "unit", "Адреса" => "addr", "Назва генератора" => "name",
-                "К-сть каністр" => "canister", "Тип палива" => "type", "Палива" => "fuel"
+                "К-сть каністр" => "canister", "Палива" => "fuel", "Тип палива" => "type"
             ]
         ], JSON_UNESCAPED_UNICODE);
     }
@@ -161,6 +165,10 @@ class Generator extends Model
     {
         $canisterId = $request->getVar('idCanister');
         $trackCanister = $this->getTrackingCanister($canisterId);
+        if ($this->getFuelArea($trackCanister[0]['unit'], $trackCanister[0]['type'])[0]['sum'] == null) {
+            $this->db->query('INSERT INTO fuelArea(fuel, canister, areaId, type) 
+                                VALUES (' . 0 . ', ' . 0  . ', ' . $trackCanister[0]['unit'] . ', ' . $trackCanister[0]['type'] . ')');
+        }
         $this->db->query('UPDATE fuelArea SET fuel = ROUND(fuel + ' . $trackCanister[0]['fuel'] . ', 2) WHERE areaId = ' . $trackCanister[0]['unit'] . ' AND type = ' . $trackCanister[0]['type'] . '  LIMIT 1');
         $this->deleteTrackingCanisterById($canisterId);
         header("Content-Type: application/json");
@@ -738,7 +746,6 @@ class Generator extends Model
             array_push($companiesId, $company->companyId);
         }
 
-        $resData = [];
         $report = [
             "startDate" => $json->reportStartDate,
             "endDate" => $json->reportEndDate,
@@ -792,9 +799,27 @@ class Generator extends Model
                                             JOIN fuelArea AS fa ON a.id = fa.areaId AND gh.typeGenId = fa.type
                                             JOIN companies AS c ON ca.company_1s_code = c.company_1s_code
                                         WHERE gh.date BETWEEN '" . $json->reportStartDate . "' AND '" . $json->reportEndDate . "'
-                                        AND c.company_1s_code IN (" . implode(',', $companiesId) . ")
+                                            AND c.company_1s_code IN (" . implode(',', $companiesId) . ")
+                                            AND gh.type != 3
                                         ORDER BY gh.date, a.unit")->getResultArray();
 
+        $dataReportReturnedCanister = $this->db->query("SELECT 
+                                        a.unit, gh.canister, gh.type, gh.workingTime, fa.type AS typeGenId, gh.fuel, gh.consumed, gh.year, gh.month, c.company_name, fa.fuel AS restFuel, fa.canister AS restCanister, a.id AS areaId
+                                    FROM generatorHistory as gh
+                                        JOIN area AS a ON gh.areaId = a.id
+                                        JOIN companiesAreas AS ca ON a.id = ca.area_id
+                                        JOIN fuelArea AS fa ON a.id = fa.areaId
+                                        JOIN companies AS c ON ca.company_1s_code = c.company_1s_code
+                                    WHERE gh.date BETWEEN '" . $json->reportStartDate . "' AND '" . $json->reportEndDate . "'
+                                        AND c.company_1s_code IN (" . implode(',', $companiesId) . ")
+                                        AND gh.type = 3
+                                    ORDER BY gh.date, a.unit")->getResultArray();
+
+        foreach ($dataReportReturnedCanister as $dataCanister) {
+            array_push($dataReport, $dataCanister);
+        }
+
+        $resData = [];
         foreach ($dataReport as $data) {
             if (array_key_exists($data['typeGenId'], $resData)) {
                 if (array_key_exists($data['year'], $resData[$data['typeGenId']])) {
@@ -826,6 +851,7 @@ class Generator extends Model
                 ];
             }
         }
+        
         $report["data"] = $resData;
         return $report;
     }

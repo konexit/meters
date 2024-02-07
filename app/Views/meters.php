@@ -125,7 +125,6 @@
                         }
                         ?>
                     </ul>
-                    <p></p>
                 </div>
                 <div id="adminPanel">
                     <div id="log">
@@ -221,7 +220,8 @@
                             ?>
                         </select></a>
                 </div>
-                <div id="counter"></div>
+                <div id="counter">
+                </div>
                 <div id="inputPokaz">
                     <p style="font-size: 14pt;"> <?
                                                     echo "<script> var pMonth='" . $month . "'; var pYear='" . $year . "';</script>";
@@ -247,9 +247,7 @@
                     <div id="pokazEdit"></div>
                 </div>
                 <div id="setCounters">
-                    <p></p>
                     <button id="addCounterBtn" onclick="setCounter(0)">Додати лічильник</button>
-                    <p></p>
                     <div id="allCount"></div>
                 </div>
                 <div id="addCounters">
@@ -266,7 +264,6 @@
                     <p>Назва лічильника: <input type="text" id="cName" title="Ліміт 50 символів" maxlength="50"></p>
                     <p>Тип лічильника:
                         <select name="cType" class="cType" id="cType">
-                            <option value="">Усі</option>
                             <?
                             foreach ($counterType as $arr) {
                                 echo "<option value='" . $arr['Name'] . "'>" . $arr['Name'] . "</option>";
@@ -276,7 +273,6 @@
                     </p>
                     <p>Початковий показник: <input type="number" name="sPokaz" class="sPokaz" id="sPokaz"></p>
                     <p>Стан лічильника:<input type="checkbox" name="cState" id="cState"></p>
-                    <p></p>
                     <button id="buttCounter" onclick="addCounter()">Додати</button>
                 </div>
                 <div id="countStat" align="center">
@@ -290,8 +286,6 @@
                     <div id="chart" style="width: 800px; align:center;"></div>
                 </div>
                 <div id="reportCounter">
-                    <p></p>
-
                     <form id="formReportCounter" class="form-report-counter" onsubmit="getReportCounter(event)">
                         <label for="reportStartDate" class="label-report-counter">Початкова дата:</label>
                         <input type="date" id="reportStartDate" name="reportStartDate" class="input-report-counter" required>
@@ -352,7 +346,6 @@
                             ?></datalist></a>
                 </div>
                 <div id="generatorRemnant">
-                    <p></p>
                 </div>
                 <div id="generatorList" align="center">
                     <a class="bcType">Місце розташування генератора: <input id="inputGUnit" list="gUnit" onchange="getGenerators()" placeholder="Усі">
@@ -370,9 +363,7 @@
                             ?></datalist></a>
                 </div>
                 <div id="setGenerator">
-                    <p></p>
                     <button id="addGenetarorBtn" onclick="setGenerator(0)">Додати генератор</button>
-                    <p></p>
                 </div>
                 <div id="addGenerator">
                     <h3>Місце розташування:
@@ -395,11 +386,9 @@
                         </datalist>
                     </h3>
                     <p>Стан:<input type="checkbox" name="gState" id="gState"></p>
-                    <p></p>
                     <button id="buttGenerator" onclick="addGenerator()">Додати</button>
                 </div>
                 <div id="generator">
-                    <p></p>
                 </div>
                 <div id="canisterList" align="center">
                     <a class="bcType">Місце розташування генератора: <input id="inputCanisterUnit" list="canisterUnit" onchange="getCanisters()" placeholder="Усі">
@@ -416,7 +405,6 @@
                             echo $typeG;
                             ?>
                         </datalist></a>
-                    <p></p>
                     <a class="bcType">Статуc каністр: <input id="inputCanisterStatus" list="canisterStatus" onchange="getCanisters()" placeholder="Усі">
                         <datalist name="canisterStatus" class="canisterStatus" id="canisterStatus">
                             <?
@@ -448,12 +436,9 @@
                     <h3><button id="buttCanister" onclick="addCanister()">Відправити</button></h3>
                 </div>
                 <div id="setCanister">
-                    <p></p>
                     <button id="addCanisterBtn" onclick="showSet([$('#addCanister')])">Відправити каністри</button>
-                    <p></p>
                 </div>
                 <div id="canister">
-                    <p></p>
                 </div>
                 <div id="countCanister">
                 </div>
@@ -482,8 +467,6 @@
                 <div id="areaGenerator">
                 </div>
                 <div id="reportGenerator">
-                    <p></p>
-
                     <form id="formReportGenerator" class="form-report-generator" onsubmit="getReportGenerator(event)">
                         <label for="reportGenStartDate" class="label-report-generator">Початкова дата:</label>
                         <input type="date" id="reportGenStartDate" name="reportGenStartDate" class="input-report-generator" required>

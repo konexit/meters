@@ -790,7 +790,7 @@ class Telegram extends Model
                 "generators"
             ]);
         }
-        if ($generator->getAreaById($areaId)[0]['refill'] == 1) {
+        if ($generator->getAreaById($areaId)[0]['refill'] == 1 && count($activeGenerators) != 0) {
             array_push($genMenu, [
                 "Заправити",
                 "refill"
