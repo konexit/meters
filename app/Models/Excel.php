@@ -478,7 +478,7 @@ class Excel extends Model
         $currentRowIndex = $this->setMainGenData($sheet, $dataJson, $indexFieldGenerator, $countFieldGen, $pharmacy, $type);
 
         $sheet->getStyle([1,  10, $countFieldGen + 1, $currentRowIndex - 1])->applyFromArray($this->styleCell["alignment"]);
-        $totalData = [["Всього", $pharmacy->sum], ["Залишок каністр", $pharmacy->balanceCanister . " одиниць"], ["Залишок палива", $pharmacy->balanceFuel . " літрів"]];
+        $totalData = [["Всього", $pharmacy->sum], ["Залишок каністр", $pharmacy->balanceCanister], ["Залишок палива", $pharmacy->balanceFuel]];
         foreach ($totalData as $data) {
             $sheet->setCellValue([1, $currentRowIndex], $data[0])->mergeCells([1, $currentRowIndex, $countFieldGen, $currentRowIndex])
                 ->getStyle([1, $currentRowIndex, $countFieldGen, $currentRowIndex])->applyFromArray($this->styleCell["alignmentRight"])->getFont()->setBold(true);

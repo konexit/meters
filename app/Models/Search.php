@@ -328,10 +328,7 @@ class Search extends Model
         }
 
         $tradePointId = $request->getVar('tradePointId');
-        if (
-            filter_var($request->getVar('isTradePoint'), FILTER_VALIDATE_BOOLEAN)
-            && !count($this->getUserBySpecificData("", "", "", $tradePointId)) ? false : true
-        ) {
+        if (filter_var($request->getVar('isTradePoint'), FILTER_VALIDATE_BOOLEAN) && count($this->getUserBySpecificData("", "", "", $tradePointId)) != 0) {
             header('Content-Type: application/json; charset=utf-8');
             echo json_encode(['error' => 'Торгова точка із номером №' . $tradePointId . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
             return;
