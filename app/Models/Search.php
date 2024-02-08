@@ -65,56 +65,39 @@ class Search extends Model
     public function getCounters($request)
     {
         $table = new Table();
+        $user = new User();
         $query = $this->getCounter($request->getVar('cUnit'), $request->getVar('cType'));
         $table->setTemplate($this->tablShablone());
         $userRights = session("usRights");
+        $dataHead = ["Тип", "Номер", "Назва", "Підрозділ", "Адреса", "Вид лічильника", "ID"];
         if ($request->getVar('state') == 1) {
-            $columns = ["Тип", "Номер", "Назва", "Підрозділ", "Адреса", "Вид лічильника", "ID"];
             $additionalColumns = [];
-            if ($userRights != 3) $additionalColumns[] = "Стан";
-            $editColumn = ($request->getVar('state') == 1) ? "Добавити" : "Редагувати";
-            $finalColumns = array_merge($columns, $additionalColumns, [$editColumn]);
+            if ($userRights != 3) array_push($additionalColumns, "Стан");
+            $finalColumns = array_merge($dataHead, $additionalColumns, [$request->getVar('state') == 1 ? "Добавити" : "Редагувати"]);
             $ids = [];
             foreach ($query as $row) {
                 array_push($ids, intval($row['id']));
             }
-            $filledConters = $this->getFilledCounter($ids);
+            $last = $user->getCounterDate();
+            $filledConters = $this->db->query("SELECT cId FROM pokaz WHERE ts = '" . $last['year'] . "-" . $last['month'] . "-01' AND cId IN (" . implode(", ", $ids) . ")")->getResultArray();
             header("Content-Type: application/json");
             echo json_encode(["columns" => $finalColumns, "counters" => $query, "filledCointerIds" => $filledConters], JSON_UNESCAPED_UNICODE);
             exit();
         }
-        if ($userRights == 3) $table->setHeading("Тип", "Номер", "Назва", "Підрозділ", "Адреса", "Вид лічильника", "ID", ($request->getVar('state') == 1) ? "" : "Редагувати");
-        else $table->setHeading("Тип", "Номер", "Назва", "Підрозділ", "Адреса", "Вид лічильника", "ID", "Стан", ($request->getVar('state') == 1) ? "" : "Редагувати");
+
+        if ($userRights != 3) array_push($dataHead, "Стан");
+        array_push($dataHead, ($request->getVar('state') == 1) ? "" : "Редагувати");
+        $table->setHeading($dataHead);
+
         if (count($query)) {
             foreach ($query as $row) {
-                if ($userRights == 3) {
-                    $table->addRow(
-                        $row['ctype'],
-                        $row['ci'],
-                        $row['cn'],
-                        $row['unit'],
-                        $row['addr'],
-                        $row['Name'],
-                        $row['trade_point_id'],
-                        '<button onClick="setCounter(' . $row['id'] . ",'" . $row['unit'] . "'," . "'" . $row['Name'] . "',
-                                                     " . "'" . $row['cn'] . "'," . "'" . $row['ci'] . "','" . $row['ctype'] . "',
-                                                     '" . $row['spokaz'] . "'" . ', ' . $row['state'] . ')">Редагувати</button>'
-                    );
-                } else {
-                    $table->addRow(
-                        $row['ctype'],
-                        $row['ci'],
-                        $row['cn'],
-                        $row['unit'],
-                        $row['addr'],
-                        $row['Name'],
-                        $row['trade_point_id'],
-                        $this->createInput($row['state']),
-                        '<button onClick="setCounter(' . $row['id'] . ",'" . $row['unit'] . "'," . "'" . $row['Name'] . "',
-                                                     " . "'" . $row['cn'] . "'," . "'" . $row['ci'] . "','" . $row['ctype'] . "',
-                                                     '" . $row['spokaz'] . "'" . ', ' . $row['state'] . ')">Редагувати</button>'
-                    );
-                }
+                $dataRow = [
+                    $row['ctype'], $row['ci'], $row['cn'], $row['unit'], $row['addr'], $row['Name'], $row['trade_point_id'],
+                    $userRights == 3 ? '<button onClick="setCounter(' . $row['id'] . ",'" . $row['unit'] . "'," . "'" . $row['Name'] . "', " . "'" . $row['cn'] . "'," . "'" . $row['ci'] . "','" . $row['ctype'] . "', '" . $row['spokaz'] . "'" . ', ' . $row['state'] . ')">Редагувати</button>'
+                        : '<input type="checkbox" ' . ($row['state'] == 1 ? 'checked="checked"' : '') . 'onclick="return false;">'
+                ];
+                if ($userRights != 3) array_push($dataRow, '<button onClick="setCounter(' . $row['id'] . ",'" . $row['unit'] . "'," . "'" . $row['Name'] . "', " . "'" . $row['cn'] . "'," . "'" . $row['ci'] . "','" . $row['ctype'] . "', '" . $row['spokaz'] . "'" . ', ' . $row['state'] . ')">Редагувати</button>');
+                $table->addRow($dataRow);
             }
         }
         echo $table->generate();
@@ -123,12 +106,16 @@ class Search extends Model
     public function getLastPokaz($request)
     {
         $table = new Table();
-        $query = $this->getLastPokazDB($request->getVar('counterPK'));
+        $query = $this->db->query("SELECT 
+                                    p.ts, p.index, p.consumed, p.id, c.counterId 
+                                 FROM pokaz AS p 
+                                    JOIN counter AS c ON p.cId = c.id 
+                                 WHERE cId = " . $request->getVar('counterPK') . " 
+                                ORDER BY ts DESC")->getResultArray();
         $table->setTemplate($this->tablShablone());
         $table->setHeading("Дата", "Показник", "Споживання");
         if (count($query)) {
             foreach ($query as $row) {
-                $nDat = Time::parse($row['ts']);
                 $table->addRow($row['ts'], '<input type="text" id="editP' . $row['id'] . '" onkeyup="isEnter(event,' . $row['id'] . ', \'' . $row["counterId"] . '\')" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="' . $row['index'] . '" onchange="editPokaz(' . $row['id'] . ', \'' . $row["counterId"] . '\')"/>', '<a id="p' . $row['id'] . '">' . $row['consumed'] . '</a>');
             }
         }
@@ -180,13 +167,13 @@ class Search extends Model
             'counterName' => $request->getVar('cName'),
             'unit' => $request->getVar('cArr'),
             'typeC' => $this->getCounterTypeIdByType($request->getVar('cType')),
-            'state' => $request->getVar('cState') === 'true' ? true : false
+            'state' => $request->getVar('cState')
         ];
         if ($request->getVar('edit')) {
-            $this->updateCountersById($request->getVar('edit'), $counter);
+            $this->db->table('counter')->update($counter, ['id' => $request->getVar('edit')]);
             $this->recalculation($request->getVar('edit'));
         } else {
-            $this->addCounterDB($counter);
+            $this->db->table('counter')->insert($counter);
         }
     }
 
@@ -294,7 +281,7 @@ class Search extends Model
         $table = new Table();
         $table->setTemplate($this->tablShablone());
         $table->setHeading("Дата", "Логин", "Дії");
-        echo $table->generate($this->getLogConnectionDB());
+        echo $table->generate($this->db->query("SELECT date, login, message FROM userlog ORDER BY date DESC")->getResultArray());
     }
 
     public function usADD($request)
@@ -309,7 +296,7 @@ class Search extends Model
         ];
 
         header('Content-Type: application/json; charset=utf-8');
-        if (!count($this->getUserBySpecificData("", $user['login'])) ? false : true) {
+        if (count($this->getUserBySpecificData("", $user['login'])) != 0) {
             echo json_encode(['error' => 'Користувач ' . $request->getVar('login') . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
             return;
         }
@@ -360,7 +347,7 @@ class Search extends Model
                 'rights' => 3
             ];
 
-            if (!count($this->getUserBySpecificData("", $newUser['login'])) ? false : true) {
+            if (count($this->getUserBySpecificData("", $newUser['login'])) != 0) {
                 header('Content-Type: application/json; charset=utf-8');
                 echo json_encode(['error' => 'Не вдається створити користувача ' . $tradePointId . '. Перевірте дані та спробуйте ще раз. Якщо проблема не вирішилась, зверніться в ІТ відділ'], JSON_UNESCAPED_UNICODE);
                 return;
@@ -374,9 +361,9 @@ class Search extends Model
         if ($this->db->transStatus() === false) {
             header('Content-Type: application/json; charset=utf-8');
             return json_encode(['error' => 'Не вдалось створити підрозділ. Перевірте дані та спробуйте ще раз. Якщо проблема не вирішилась, зверніться в ІТ відділ'], JSON_UNESCAPED_UNICODE);
-        } else {
-            return json_encode($this->getDepartmentByUnit($unit));
         }
+
+        return json_encode($this->db->query("SELECT unit, id FROM area WHERE unit = '" . $unit . "' ORDER BY id DESC")->getFirstRow());
     }
 
     public function getAllUnit()
@@ -393,26 +380,16 @@ class Search extends Model
 
         if (count($query)) {
             foreach ($query as $row) {
-                if (isset($companyTradePoint[$row['id']])) {
-                    $table->addRow(
-                        $row['unit'],
-                        $row['addr'],
-                        $row['tel'],
-                        $row['trade_point_id'],
-                        $row["state"] == 1 ? '<input type="checkbox" checked disabled="">' : '<input type="checkbox" disabled="">',
-                        $row["refill"] == 1 ? '<input type="checkbox" checked disabled="">' : '<input type="checkbox" disabled="">',
-                        '<button onClick="unitEdit(' . $row['id'] . ',' . "'" . $row['unit'] . "'" . ',' . "'" . rawurlencode($row['addr']) . "'" . ',' . "'" . $row['tel'] . "'" . ', ' . $row['state']  . ', ' . $row['refill'] . ', true, ' . $row['trade_point_id'] . ', ' . $companyTradePoint[$row['id']] . ')">' . "Редагувати" . '</button>'
-                    );
-                } else
-                    $table->addRow(
-                        $row['unit'],
-                        $row['addr'],
-                        $row['tel'],
-                        $row['trade_point_id'],
-                        $row["state"] == 1 ? '<input type="checkbox" checked disabled="">' : '<input type="checkbox" disabled="">',
-                        $row["refill"] == 1 ? '<input type="checkbox" checked disabled="">' : '<input type="checkbox" disabled="">',
-                        '<button onClick="unitEdit(' . $row['id'] . ',' . "'" . $row['unit'] . "'" . ',' . "'" . rawurlencode($row['addr']) . "'" . ',' . "'" . $row['tel'] . "'" . ', ' . $row['state']  . ', ' . $row['refill'] .  ' )">' . "Редагувати" . '</button>'
-                    );
+                $table->addRow([
+                    $row['unit'],
+                    $row['addr'],
+                    $row['tel'],
+                    $row['trade_point_id'],
+                    $row["state"] == 1 ? '<input type="checkbox" checked disabled="">' : '<input type="checkbox" disabled="">',
+                    $row["refill"] == 1 ? '<input type="checkbox" checked disabled="">' : '<input type="checkbox" disabled="">',
+                    isset($companyTradePoint[$row['id']]) ? '<button onClick="unitEdit(' . $row['id'] . ',' . "'" . $row['unit'] . "'" . ',' . "'" . rawurlencode($row['addr']) . "'" . ',' . "'" . $row['tel'] . "'" . ', ' . $row['state']  . ', ' . $row['refill'] . ', true, ' . $row['trade_point_id'] . ', ' . $companyTradePoint[$row['id']] . ')">' . "Редагувати" . '</button>'
+                        : '<button onClick="unitEdit(' . $row['id'] . ',' . "'" . $row['unit'] . "'" . ',' . "'" . rawurlencode($row['addr']) . "'" . ',' . "'" . $row['tel'] . "'" . ', ' . $row['state']  . ', ' . $row['refill'] .  ' )">' . "Редагувати" . '</button>'
+                ]);
             }
             echo $table->generate();
         }
@@ -496,10 +473,18 @@ class Search extends Model
         $table = new Table();
         $table->setTemplate($this->tablShablone());
         $table->setHeading("Прізвище", "Ім'я", "Логін", "Права", "Підрозділ", "Телеграм ID", "Дії");
-        $query = $this->getAllUserDB();
+        $query = $this->db->query("SELECT 
+                                        us.id, us.name, us.surname, us.position, us.pass, us.login, rgt.rights, ar.unit, us.telegramChatId 
+                                    FROM user AS us
+                                        JOIN rights rgt ON rgt.id = us.rights
+                                        JOIN area ar ON ar.id = us.area
+                                    ORDER BY us.surname")->getResultArray();
         if (count($query) > 0) {
             foreach ($query as $row) {
-                $table->addRow($row['surname'], $row['name'], $row['login'], $row['rights'], $row['unit'], $row['telegramChatId'], '<button onClick="userEdit(' . $row['id'] . ',' . "'" . $row['name'] . "'" . ',' . "'" . $row['surname'] . "'" . ',' . "'" . $row['pass'] . "'" . ',' . "'" . $row['login'] . "'" . ',' . "'" . $row['unit'] . "'" . ',' . "'" . $row['rights'] . "'" . ')">Редагувати</button>');
+                $table->addRow([
+                    $row['surname'], $row['name'], $row['login'], $row['rights'], $row['unit'], $row['telegramChatId'],
+                    '<button onClick="userEdit(' . $row['id'] . ',' . "'" . $row['name'] . "'" . ',' . "'" . $row['surname'] . "'" . ',' . "'" . $row['pass'] . "'" . ',' . "'" . $row['login'] . "'" . ',' . "'" . $row['unit'] . "'" . ',' . "'" . $row['rights'] . "'" . ')">Редагувати</button>'
+                ]);
             }
             echo $table->generate();
         }
@@ -806,20 +791,6 @@ class Search extends Model
         return $report;
     }
 
-    private function getAllUserDB()
-    {
-        return $this->db->query("SELECT us.id, us.name, us.surname, us.position, us.pass, us.login, rgt.rights, ar.unit, us.telegramChatId FROM user AS us
-                JOIN rights rgt ON rgt.id = us.rights
-                JOIN area ar ON ar.id = us.area
-                ORDER BY us.surname")->getResultArray();
-    }
-
-    private function createInput($state)
-    {
-        $check = ($state == 1) ? 'checked="checked"' : '';
-        return '<input type="checkbox" ' . $check . 'onclick="return false;">';
-    }
-
     private function trimSpace($str)
     {
         return preg_replace('/[ ]{2,}/', ' ', $str);
@@ -827,12 +798,7 @@ class Search extends Model
 
     private function checkUnDB($unit, $areaId = 0)
     {
-        return count($this->db->query("SELECT * FROM area WHERE unit='" . $unit . "' AND id != " . $areaId)->getResultArray()) ? false : true;
-    }
-
-    private function getLogConnectionDB()
-    {
-        return $this->db->query("SELECT date, login, message FROM userlog ORDER BY date DESC")->getResultArray();
+        return count($this->db->query("SELECT * FROM area WHERE unit='" . $unit . "' AND id != " . $areaId)->getResultArray()) != 0;
     }
 
     private function getPokazByIdAndCounterDB($cid)
@@ -872,34 +838,11 @@ class Search extends Model
         else return 0;
     }
 
-    private function updateCountersById($counterPK, $counter)
-    {
-        $this->db->table('counter')->update($counter, ['id' => $counterPK]);
-    }
-
-    private function addCounterDB($counter)
-    {
-        $this->db->table('counter')->insert($counter);
-    }
-
-    private function getDepartmentByUnit($unit)
-    {
-        return $this->db->query("SELECT unit, id FROM area WHERE unit = '" . $unit . "' ORDER BY id DESC")->getFirstRow();
-    }
-
     private function getConsumed($counterPK)
     {
         $query = $this->db->query("SELECT ts, p.index FROM pokaz As p WHERE cid=" . $counterPK . " ORDER BY ts DESC");
         if ($query->getNumRows()) return $query->getFirstRow()->index;
         return $this->db->query("SELECT spokaz FROM counter WHERE id=" . $counterPK)->getFirstRow()->spokaz;
-    }
-
-    private function getLastPokazDB($counterPK)
-    {
-        return $this->db->query("SELECT p.ts, p.index, p.consumed, p.id, c.counterId 
-                                 FROM pokaz AS p 
-                                 JOIN counter AS c ON p.cId = c.id 
-                                 WHERE cId=" . $counterPK . " ORDER BY ts DESC")->getResultArray();
     }
 
     private function getCounter($cUnit, $cType)
@@ -921,13 +864,6 @@ class Search extends Model
                                     JOIN conterType AS ct ON ct.id = c.typeC " . $condition . " 
                                 ORDER BY 
                                     c.state DESC, a.unit")->getResultArray();
-    }
-
-    private function getFilledCounter($countersId)
-    {
-        $user = new User();
-        $last = $user->getCounterDate();
-        return $this->db->query("SELECT cId FROM pokaz WHERE ts = '" . $last['year'] . "-" . $last['month'] . "-01' AND cId IN (" . implode(", ", $countersId) . ")")->getResultArray();
     }
 
     private function tablShablone()

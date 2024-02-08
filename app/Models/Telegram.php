@@ -202,9 +202,11 @@ class Telegram extends Model
 
             if ($textMess == $tgUser->pass) {
                 $userRights = $tgUser->rights;
-                if ($userRights == 3) return $this->menuMess($chatId, $tgUser->area, "<b>" . $tgUser->name . " ви успішно увійшли</b>\n" .
-                    "<i>Виберіть тип лічильника</i>", true);
-                elseif ($userRights == 1 || $userRights == 2 || $userRights == 5) {
+                if ($userRights == 3) {
+                    $userModel->addUserLog($tgUser->login, ['login' => $tgUser->login, 'message' => "Увійшов в систему (telegram)"]);
+                    return $this->menuMess($chatId, $tgUser->area, "<b>" . $tgUser->name . " ви успішно увійшли</b>\n" .
+                        "<i>Виберіть тип лічильника</i>", true);
+                } elseif ($userRights == 1 || $userRights == 2 || $userRights == 5) {
                     $userModel->insertTelegramDataByChatId($chatId, "adminMenu");
                     return $this->menuAdminMess(true);
                 } else return [$this->createTelegramMessage(
@@ -766,10 +768,7 @@ class Telegram extends Model
             ["typeGen" => $typeGen]
         );
 
-        return [$this->createTelegramMessage(
-            "<b>Введіть кількість палива для заправлення</b>",
-            $this->buttonBuilder([$this->backToMenu])
-        )];
+        return [$this->createTelegramMessage("<b>Введіть кількість палива для заправлення</b>")];
     }
 
     private function menuMess($chatId, $areaId, $title, $justLoggined = false)
