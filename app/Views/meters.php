@@ -138,7 +138,7 @@
                             <p>Назва: <input type="text" id="unit" title="Ліміт 30 символів" maxlength="30" /> </p>
                             <p>Адреса: <input type="text" id="unADDR" title="Ліміт 80 символів" maxlength="80" /> </p>
                             <p>Телефон: <input type="text" id="tel" title="Ліміт 100 символів" maxlength="100" /> </p>
-                            <p style="margin-bottom: 25px;font-size: 20px;">Стан підрозділу: <input type="checkbox" name="areaState" id="areaState" checked="checked"></p>
+                            <p style="margin-bottom: 25px;font-size: 20px;">Стан підрозділу: <input type="checkbox" name="areaState" id="areaState"></p>
                             <p style="margin-bottom: 25px;font-size: 20px;">Добавити аптеку: <input id="isTradePoint" type="checkbox" onclick="tradePointFormStatus(this.checked)" /></p>
                             <div id="tradePointForm" style="display: none">
                                 <p>ID(1с код) аптеки: <input id="tradePointId" type="number" /></p>

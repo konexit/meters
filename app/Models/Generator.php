@@ -484,13 +484,17 @@ class Generator extends Model
 
     private function getRemnants($company)
     {
-        return $this->db->query("SELECT a.id AS areaID, g.id AS genID, g.type, fa.fuel, fa.canister FROM companies AS c
+        return $this->db->query("SELECT 
+                                    a.id AS areaID, g.id AS genID, g.type, fa.fuel, fa.canister 
+                                FROM companies AS c
                                     JOIN companiesAreas AS cs ON c.company_1s_code = cs.company_1s_code
                                     JOIN area AS a ON cs.area_id = a.id
                                     JOIN generator AS g ON a.id = g.unit
                                     JOIN fuelArea as fa ON g.unit = fa.areaId AND g.type = fa.type
-                                    WHERE c.company_1s_code = " . $company->companyId . "  
-                                    ORDER BY a.id, g.id, g.type")->getResultArray();
+                                WHERE 
+                                    c.company_1s_code = " . $company->companyId . "  
+                                ORDER BY 
+                                    a.id, g.id, g.type")->getResultArray();
     }
 
     private function getDataReport($company, $json)
@@ -519,8 +523,7 @@ class Generator extends Model
                                     JOIN companiesAreas AS ca ON a.id = ca.area_id 
                                     JOIN typeGenerator AS tg ON g.type = tg.id
                                 WHERE 
-                                    a.state = 1 AND g.state = 1  
-                                    AND ca.company_1s_code = " . $company->companyId . "  
+                                    ca.company_1s_code = " . $company->companyId . "  
                                     AND gp.date BETWEEN '" . $json->reportStartDate . "' AND '" . $json->reportEndDate . "'
                                 ORDER BY 
                                     a.id, g.id, g.type, gp.date, gp.startTime")->getResultArray();
