@@ -308,18 +308,20 @@ class Search extends Model
     {
         $this->db->transStart();
         $unit = $this->trimSpace($request->getVar('unit'));
-        if (!$this->checkUnDB($unit)) {
+        if ($this->checkUnDB($unit)) {
             header('Content-Type: application/json; charset=utf-8');
             echo json_encode(['error' => 'Підрозділ ' . $unit . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
             return;
         }
 
         $tradePointId = $request->getVar('tradePointId');
+        var_dump(filter_var($request->getVar('isTradePoint'), FILTER_VALIDATE_BOOLEAN) && count($this->getUserBySpecificData("", "", "", $tradePointId)) != 0);
         if (filter_var($request->getVar('isTradePoint'), FILTER_VALIDATE_BOOLEAN) && count($this->getUserBySpecificData("", "", "", $tradePointId)) != 0) {
             header('Content-Type: application/json; charset=utf-8');
             echo json_encode(['error' => 'Торгова точка із номером №' . $tradePointId . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
             return;
         }
+        return;
         $this->db->table('area')->insert([
             'addr' => $request->getVar('addr'),
             'tel' => $request->getVar('tel'),
@@ -433,7 +435,7 @@ class Search extends Model
         $this->db->transStart();
         $unitId = $request->getVar('unitID');
         $unit = $this->trimSpace($request->getVar('unit'));
-        if (!$this->checkUnDB($unit, $unitId)) {
+        if ($this->checkUnDB($unit, $unitId)) {
             header('Content-Type: application/json; charset=utf-8');
             echo json_encode(['error' => 'Підрозділ ' . $unit . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
             return;
@@ -454,7 +456,8 @@ class Search extends Model
                     header('Content-Type: application/json; charset=utf-8');
                     echo json_encode(['error' => 'Торгова точка із номером №' . $tradePointId . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
                     return;
-                } else $this->db->table('companiesAreas')->update(['company_1s_code' => $companyId], ['area_id' => $unitId]);
+                }
+                $this->db->table('companiesAreas')->update(['company_1s_code' => $companyId], ['area_id' => $unitId]);
             }
         }
         echo $this->db->table('area')->update([
@@ -798,7 +801,7 @@ class Search extends Model
 
     private function checkUnDB($unit, $areaId = 0)
     {
-        return count($this->db->query("SELECT * FROM area WHERE unit='" . $unit . "' AND id != " . $areaId)->getResultArray()) != 0;
+        return count($this->db->query("SELECT * FROM area WHERE unit = '" . $unit . "' AND id != " . $areaId)->getResultArray()) != 0;
     }
 
     private function getPokazByIdAndCounterDB($cid)

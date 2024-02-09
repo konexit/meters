@@ -600,9 +600,10 @@ function maddUnit(edMode) {
 }
 
 function unADD() {
-    const isTradePoint = document.querySelector('#isTradePoint').checked;
+    const isTradePoint = document.querySelector('#isTradePoint').checked
     const tradePointId = +document.querySelector('#tradePointId').value
     const companyId = +document.querySelector('#companyId').value
+    let refill = document.querySelector('#tradePointRefill').checked
 
     if (isTradePoint) {
         if (tradePointId < 1) {
@@ -614,6 +615,8 @@ function unADD() {
             alert("Виберіть обовязково компанію")
             return
         }
+    } else {
+        refill = false
     }
 
     if (!($("#unADDR").val() || $("#tel").val() || $("#unit").val())) {
@@ -630,7 +633,7 @@ function unADD() {
         isTradePoint: isTradePoint,
         tradePointId: tradePointId,
         companyId: +document.querySelector('#companyId').value,
-        refill: document.querySelector('#tradePointRefill').checked
+        refill: refill
     }, function (result) {
         res = JSON.parse(result);
         if (res.error) {
@@ -651,9 +654,10 @@ function tradePointInput(state = false) {
 }
 
 function confirmUnitEdit(id) {
-    const isTradePoint = document.querySelector('#isTradePoint').checked;
+    const isTradePoint = document.querySelector('#isTradePoint').checked
     const tradePointId = +document.querySelector('#tradePointId').value
     const companyId = +document.querySelector('#companyId').value
+    let refill = document.querySelector('#tradePointRefill').checked
 
     if (isTradePoint) {
         if (tradePointId < 1) {
@@ -665,6 +669,8 @@ function confirmUnitEdit(id) {
             alert("Виберіть обовязково компанію")
             return
         }
+    } else {
+        refill = false;
     }
 
     if (!($("#unADDR").val() && $("#tel").val() && $("#unit").val())) {
@@ -679,7 +685,7 @@ function confirmUnitEdit(id) {
         tel: $("#tel").val().trim(),
         unit: $("#unit").val().trim(),
         areaState: document.querySelector('#areaState').checked,
-        refill: document.querySelector('#tradePointRefill').checked,
+        refill: refill,
         isTradePoint: isTradePoint,
         tradePointId: tradePointId,
         companyId: +document.querySelector('#companyId').value

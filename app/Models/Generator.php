@@ -45,9 +45,8 @@ class Generator extends Model
     function getTypeGenerator($typeId = '')
     {
         $condition = '';
-        if ($typeId != '') {
-            $condition = ' WHERE id = ' . $typeId;
-        }
+        if ($typeId != '') $condition = ' WHERE id = ' . $typeId;
+
         return $this->db->query("SELECT * FROM typeGenerator " . $condition . " ORDER BY id")->getResultArray();
     }
 
@@ -303,7 +302,7 @@ class Generator extends Model
     //// ------------------------ ||| ROUT METHODS ||| ---------------------------------------
 
     //// ------------------------ GENERAL ACTIONS ---------------------------------------
-    function saveActionGenerator($type, $targetData, $date = [])
+    public function saveActionGenerator($type, $targetData, $date = [])
     {
         if (!$date) {
             $date = [
@@ -329,7 +328,7 @@ class Generator extends Model
         }
     }
 
-    function saveGeneratorPokazANDLog($pokazModel, $userModel, $genModel, $isTelegram = false)
+    public function saveGeneratorPokazANDLog($pokazModel, $userModel, $genModel, $isTelegram = false)
     {
         $user = new User();
         $this->db->table('genaratorPokaz')->insert($pokazModel);
@@ -343,7 +342,7 @@ class Generator extends Model
         );
     }
 
-    function saveCanisterByTrdPointANDLog($canisterModel, $userModel, $trackingCanisterId, $isTelegram = false)
+    public function saveCanisterByTrdPointANDLog($canisterModel, $userModel, $trackingCanisterId, $isTelegram = false)
     {
         $user = new User();
         $this->deleteTrackingCanisterById($trackingCanisterId);
@@ -356,7 +355,7 @@ class Generator extends Model
         );
     }
 
-    function saveRefillByTrdPointANDLog($userModel, $genModel, $isTelegram = false)
+    public function saveRefillByTrdPointANDLog($userModel, $genModel, $isTelegram = false)
     {
         $user = new User();
         $this->db->table('trackingCanister')->insert([
@@ -370,7 +369,7 @@ class Generator extends Model
         $user->addUserLog($userModel["login"], ['login' => $userModel["login"], 'message' => "Відправленно запит на купівлю палива = " . $genModel['fuelRefill'] . (($isTelegram) ? " (telegram)" : "")]);
     }
 
-    function sendCanisterByTrdPointANDLog($canisterModel,  $userModel, $isTelegram = false)
+    public function sendCanisterByTrdPointANDLog($canisterModel,  $userModel, $isTelegram = false)
     {
         $user = new User();
         $this->db->table('trackingCanister')->insert($canisterModel);
@@ -381,7 +380,7 @@ class Generator extends Model
         ]);
     }
 
-    function getSpecificGenerator($gUnit, $gType = "", $genId = "", $state = "")
+    public function getSpecificGenerator($gUnit, $gType = "", $genId = "", $state = "")
     {
         $condition = "";
         if ($gUnit) $condition =  " g.unit = '" . $gUnit . "' ";
@@ -414,7 +413,7 @@ class Generator extends Model
                                     g.state DESC, a.unit")->getResultArray();
     }
 
-    function findGeneratorsRemnant($gUnit = "", $gType = "")
+    public function findGeneratorsRemnant($gUnit = "", $gType = "")
     {
         $condition = "";
         if ($gType) $condition = $condition . " AND g.type = " . $gType;
@@ -430,12 +429,12 @@ class Generator extends Model
                                 ORDER BY a.unit")->getResultArray();
     }
 
-    function getTypeGenerators()
+    public function getTypeGenerators()
     {
         return $this->db->query("SELECT * FROM typeGenerator")->getResultArray();
     }
 
-    function getSpecificCanister($unit, $type = "", $status = "", $canisterId = "")
+    public function getSpecificCanister($unit, $type = "", $status = "", $canisterId = "")
     {
         $condition = "";
         if ($unit) $condition =  " c.unit = " . $unit;
@@ -463,7 +462,7 @@ class Generator extends Model
                                     sc.id, c.date")->getResultArray();
     }
 
-    function getFuelArea($unit = "", $typeId = "")
+    public function getFuelArea($unit = "", $typeId = "")
     {
         $condition = "";
         if ($unit) $condition =  " areaId = " . $unit;
@@ -472,7 +471,7 @@ class Generator extends Model
         return $this->db->query("SELECT SUM(canister) AS sum FROM fuelArea " . $condition)->getResultArray();
     }
 
-    function getAreaById($id)
+    public function getAreaById($id)
     {
         return $this->db->query('SELECT * FROM area WHERE id = ' . $id)->getResultArray();
     }
@@ -854,7 +853,7 @@ class Generator extends Model
                 ];
             }
         }
-        
+
         $report["data"] = $resData;
         return $report;
     }

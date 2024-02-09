@@ -12,8 +12,8 @@ class User extends Model
     {
 
         if (isset($_COOKIE['k_meters_login']) && isset($_COOKIE['k_meters_pw'])) {
-            $res = $this->checkAuth($_COOKIE['k_meters_login'], $_COOKIE['k_meters_pw']);
-
+            $res = $this->db->query("SELECT * FROM user WHERE (login = '" . $_COOKIE['k_meters_login'] . "') AND (pass = '" . $_COOKIE['k_meters_pw'] . "')")->getResultObject();
+            
             if (empty($res)) return false;
 
             session()->set([
@@ -87,11 +87,6 @@ class User extends Model
                 setcookie($key, '', time() - 3600, $domain);
             }
         }
-    }
-
-    private function checkAuth($login, $password)
-    {
-        return $this->db->query("SELECT * FROM user WHERE (login = '" . $login . "') AND (pass = '" . $password . "')")->getResultObject();
     }
 
     function checkPass($user, $pass)
