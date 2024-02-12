@@ -104,7 +104,7 @@ class Generator extends Model
     //// ------------------------ ROUT METHODS ---------------------------------------
     function getGenerators($request)
     {
-        header("Content-Type: application/json");
+        header("Content-Type: application/json; charset=utf-8");
         echo json_encode([
             "columns" => ["Назва", "Номер", "Підрозділ", "Адреса", "Коеф", "Паливо", "Каністр", "Тип", "Стан"],
             "generators" => $this->getSpecificGenerator($request->getVar('gUnit'), $request->getVar('gType')),
@@ -117,7 +117,7 @@ class Generator extends Model
 
     function getGeneratorsRemnant($request)
     {
-        header("Content-Type: application/json");
+        header("Content-Type: application/json; charset=utf-8");
         echo json_encode([
             "columns" => ["Підрозділ", "Адреса", "Назва генератора", "К-сть каністр", "Палива", "Тип палива"],
             "generators" => $this->findGeneratorsRemnant($request->getVar('gUnit'), $request->getVar('gType')),
@@ -130,7 +130,7 @@ class Generator extends Model
 
     function getCanisters($request)
     {
-        header("Content-Type: application/json");
+        header("Content-Type: application/json; charset=utf-8");
         echo json_encode([
             "columns" => ["Підрозділ", "Адреса", "Паливо", "Каністр", "Літраж", "Статус"],
             "canisters" => $this->getSpecificCanister($request->getVar('unit'), $request->getVar('type'), $request->getVar('status'), ''),
@@ -146,7 +146,7 @@ class Generator extends Model
         $canisterId = $request->getVar('idCanister');
         $trackCanister = $this->getTrackingCanister($canisterId);
 
-        header("Content-Type: application/json");
+        header("Content-Type: application/json; charset=utf-8");
         if (filter_var($request->getVar('isReturning'), FILTER_VALIDATE_BOOLEAN)) {
             $this->db->query("INSERT INTO fuelArea (canister) VALUES (canister + " . $trackCanister[0]["canister"] . ") WHERE areaId = " . $trackCanister[0]["unit"] . " LIMIT 1");
         } else {
@@ -170,7 +170,7 @@ class Generator extends Model
         }
         $this->db->query('UPDATE fuelArea SET fuel = ROUND(fuel + ' . $trackCanister[0]['fuel'] . ', 2) WHERE areaId = ' . $trackCanister[0]['unit'] . ' AND type = ' . $trackCanister[0]['type'] . '  LIMIT 1');
         $this->deleteTrackingCanisterById($canisterId);
-        header("Content-Type: application/json");
+        header("Content-Type: application/json; charset=utf-8");
         echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
     }
 
@@ -180,7 +180,7 @@ class Generator extends Model
         $genId = $request->getVar('genId');
         $dataTargetGenerator = $this->getSpecificGenerator('', '', $genId);
 
-        header("Content-Type: application/json");
+        header("Content-Type: application/json; charset=utf-8");
         if (!$dataTargetGenerator || $dataTargetGenerator[0]['fuel'] < $consumed) {
             echo json_encode([
                 "response" => 500,
@@ -221,7 +221,7 @@ class Generator extends Model
 
     function getGeneratorsAndCanisters()
     {
-        header("Content-Type: application/json");
+        header("Content-Type: application/json; charset=utf-8");
         echo json_encode([
             "generators" =>  $this->getSpecificGenerator(session()->get('usArea'), "", "", 1),
             "canisters" => $this->getSpecificCanister(session()->get('usArea'), '', 1, ''),
@@ -236,7 +236,7 @@ class Generator extends Model
             $totalCountCanisters = $this->getFuelArea(session("usArea"))[0]['sum'];
             $metaCanistersCount = $request->getVar('countCanistBack');
 
-            header("Content-Type: application/json");
+            header("Content-Type: application/json; charset=utf-8");
             if ($totalCountCanisters == 0 || $totalCountCanisters < $metaCanistersCount) {
                 echo json_encode(["response" => 500, "message" => "Перевірте введені дані та оновіть сторінку. Якщо проблема не вирішилась, зверніться в ІТ відділ"], JSON_UNESCAPED_UNICODE);
                 return;
@@ -268,7 +268,7 @@ class Generator extends Model
             ['login' => session("mLogin"), "areaId" => session("usArea")],
             ["fuelRefill" => $request->getVar('fuelRefill'), "refillType" => $request->getVar('refillType')]
         );
-        header("Content-Type: application/json");
+        header("Content-Type: application/json; charset=utf-8");
         echo json_encode(["response" => 200], JSON_UNESCAPED_UNICODE);
     }
 

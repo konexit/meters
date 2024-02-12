@@ -164,39 +164,17 @@ function createTableFromJSON(jsonData) {
     // Create table body
     const tableBody = document.createElement("tbody");
 
-    data.counters.forEach(counter => {
+    data.counters.forEach((counter, index) => {
         const row = document.createElement("tr")
-        row.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;")
+        chooseStyleOfRow(index, row)
 
-        let cell = document.createElement("td")
-
-        cell.setAttribute("align", "left")
-        cell.textContent = counter['ctype']
-        row.appendChild(cell)
-
-        cell = document.createElement("td")
-        cell.textContent = counter['ci']
-        row.appendChild(cell)
-
-        cell = document.createElement("td")
-        cell.textContent = counter['cn']
-        row.appendChild(cell)
-
-        cell = document.createElement("td")
-        cell.textContent = counter['unit']
-        row.appendChild(cell)
-
-        cell = document.createElement("td")
-        cell.textContent = counter['addr']
-        row.appendChild(cell)
-
-        cell = document.createElement("td")
-        cell.textContent = counter['Name']
-        row.appendChild(cell)
-
-        cell = document.createElement("td")
-        cell.textContent = counter['trade_point_id']
-        row.appendChild(cell)
+        let cell;
+        const keysData = ['ctype', 'ci', 'cn', 'unit', 'addr', 'Name', 'trade_point_id'];
+        keysData.forEach(keyData => {
+            cell = document.createElement("td")
+            cell.textContent = counter[keyData]
+            row.appendChild(cell)
+        })
 
         if (usRights != 3) {
             cell = document.createElement("td")
@@ -217,7 +195,6 @@ function createTableFromJSON(jsonData) {
         cell.appendChild(addButton)
         row.appendChild(cell)
 
-        row.style.cssText = "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;"
         if (data.filledCointerIds.find(item => item.cId === counter.id)) row.style.backgroundColor = "#01f92842"
         else row.style.backgroundColor = "#ffff1c75"
 
@@ -285,9 +262,10 @@ function createGeneratorFromJSON(jsonData, action, withoutActions = false) {
     // Create table body
     const tableBody = document.createElement("tbody");
 
-    data.generators.forEach(generator => {
+
+    data.generators.forEach((generator, index) => {
         const row = document.createElement("tr");
-        row.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
+        chooseStyleOfRow(index, row)
 
         data.columns.forEach(column => {
             const cell = document.createElement("td")
@@ -306,7 +284,7 @@ function createGeneratorFromJSON(jsonData, action, withoutActions = false) {
 
         if (!withoutActions) {
             const rowAction = document.createElement("tr");
-            rowAction.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
+            chooseStyleOfRow(index, rowAction)
             const cell = document.createElement("td")
             const addButton = document.createElement("button")
             addButton.textContent = action
@@ -360,9 +338,9 @@ function createCanisterFromJSON(jsonData) {
     // Create table body
     const tableBody = document.createElement("tbody");
 
-    data.canisters.forEach(canister => {
+    data.canisters.forEach((canister, index) => {
         const row = document.createElement("tr");
-        row.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
+        chooseStyleOfRow(index, row)
 
         data.columns.forEach(column => {
             const cell = document.createElement("td")
@@ -378,8 +356,6 @@ function createCanisterFromJSON(jsonData) {
         })
 
         tableBody.appendChild(row);
-
-        row.setAttribute("style", "border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
 
         const cell = document.createElement("td");
 
@@ -428,6 +404,11 @@ function createCanisterFromJSON(jsonData) {
 
 function editPokaz(cId, counter) {
     editPokazAjax(cId, counter)
+}
+
+function chooseStyleOfRow(index, row) {
+    if (index % 2 === 0) row.setAttribute("style", "background-color:White;font-size:12pt;");
+    else row.setAttribute("style", "background-color:#EFF3FC;border-color:#EFF3FB;border-width:2px;border-style:None;font-size:12pt;");
 }
 //// ------------------------ ||| RENDER TABLE ||| ---------------------------------------
 
@@ -895,7 +876,7 @@ function getReportCounter(event) {
 
     fetch(ajaxURL, {
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json; charset=utf-8",
         },
         method: "POST",
         body: JSON.stringify({
@@ -1505,9 +1486,15 @@ function getReportGenerator(event) {
         return
     }
 
+    companies.forEach(function (item, index, object) {
+        if (isNaN(item.companyId)) {
+            object.splice(index, 1);
+        }
+    });
+
     fetch(ajaxURL, {
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json; charset=utf-8",
         },
         method: "POST",
         body: JSON.stringify({
@@ -1558,6 +1545,14 @@ function refillFuel() {
         alert("Успішно відправлено запит на поповнення.\n" +
             "Після підтвердження менеджера, паливо буде нараховано на аптеку.");
         mAreaGenerator()
+    });
+}
+
+function selectAllCompanies(event) {
+    const checkBoxs = document.querySelectorAll('#reportGenerator table td input')
+    const stateChacked = event.currentTarget.checked
+    checkBoxs.forEach(checkBox => {
+        checkBox.checked = stateChacked
     });
 }
 //// ------------------------ ||| GENERATOR ||| --------------------------------------- 

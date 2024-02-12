@@ -385,10 +385,6 @@ h2 {
     cursor: pointer;
 }
 
-#addUnit button#confirmUn:hover {
-    background-color: #0056b3;
-}
-
 #addUser {
     padding: 20px;
     border: 1px solid #ccc;
@@ -432,10 +428,6 @@ h2 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-#addUser button#confirmUs:hover {
-    background-color: #0056b3;
 }
 
 #addCounters,
@@ -524,7 +516,10 @@ h2 {
 
 #buttCounter:hover,
 #buttCanister:hover,
-#buttGenerator:hover {
+#buttGenerator:hover,
+#addUser button#confirmUs:hover,
+#addUnit button#confirmUn:hover,
+#cPass button#changePass:hover {
     background-color: #0056b3;
 }
 
@@ -695,10 +690,6 @@ h2 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-#cPass button#changePass:hover {
-    background-color: #0056b3;
 }
 
 #overlayWritingOff {

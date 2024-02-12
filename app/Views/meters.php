@@ -490,6 +490,12 @@
                                     <th>Компанії</th>
                                 </tr>
                                 <?
+                                echo "<tr class='company-color'>
+                                            <td style='background: #f1fff1;'>
+                                                <input type='checkbox' onclick='selectAllCompanies(event)'>
+                                                <label>Обрати всі</label>
+                                            </td>
+                                        </tr>";
                                 foreach ($companies as $company) {
                                     echo "<tr class='company-color' data-companyid=" . $company['company_1s_code'] . ">
                                             <td>

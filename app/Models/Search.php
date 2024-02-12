@@ -70,10 +70,9 @@ class Search extends Model
         $table->setTemplate($this->tablShablone());
         $userRights = session("usRights");
         $dataHead = ["Тип", "Номер", "Назва", "Підрозділ", "Адреса", "Вид лічильника", "ID"];
+        if ($userRights != 3) array_push($dataHead, "Стан");
         if ($request->getVar('state') == 1) {
-            $additionalColumns = [];
-            if ($userRights != 3) array_push($additionalColumns, "Стан");
-            $finalColumns = array_merge($dataHead, $additionalColumns, [$request->getVar('state') == 1 ? "Добавити" : "Редагувати"]);
+            array_push($dataHead, "Добавити");
             $ids = [];
             foreach ($query as $row) {
                 array_push($ids, intval($row['id']));
@@ -81,12 +80,11 @@ class Search extends Model
             $last = $user->getCounterDate();
             $filledConters = $this->db->query("SELECT cId FROM pokaz WHERE ts = '" . $last['year'] . "-" . $last['month'] . "-01' AND cId IN (" . implode(", ", $ids) . ")")->getResultArray();
             header("Content-Type: application/json");
-            echo json_encode(["columns" => $finalColumns, "counters" => $query, "filledCointerIds" => $filledConters], JSON_UNESCAPED_UNICODE);
+            echo json_encode(["columns" => $dataHead, "counters" => $query, "filledCointerIds" => $filledConters], JSON_UNESCAPED_UNICODE);
             exit();
         }
 
-        if ($userRights != 3) array_push($dataHead, "Стан");
-        array_push($dataHead, ($request->getVar('state') == 1) ? "" : "Редагувати");
+        array_push($dataHead, "Редагувати");
         $table->setHeading($dataHead);
 
         if (count($query)) {

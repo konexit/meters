@@ -361,7 +361,7 @@ class Telegram extends Model
                 return [$this->createTelegramMessage(
                     "<b>Для збереження даних</b>\n" .
                         "Підтвердіть, що дані вказані правильно\n" .
-                        "<b>Запраляєте палива на:</b> " . $textMess . " ?",
+                        "<b>Заправляєте палива на:</b> " . $textMess . " ?",
                     $this->buttonBuilder([$this->confirmation])
                 )];
             } catch (Exception $e) {
@@ -439,14 +439,10 @@ class Telegram extends Model
                                     "натисніть на відповідну кнопку\n" .
                                     "<b>Назва:</b> <i>" . $generator['name'] . "</i>\n" .
                                     "<b>Тип:</b> <i>" . $generator['type'] . "</i>",
-                                $this->buttonBuilder([
-                                    [
-                                        [
-                                            "№ " . $generator['serialNum'],
-                                            $generator['id']
-                                        ]
-                                    ]
-                                ])
+                                $this->buttonBuilder([[[
+                                    "№ " . $generator['serialNum'],
+                                    $generator['id']
+                                ]]])
                             )
                         );
                     }
@@ -469,14 +465,10 @@ class Telegram extends Model
                                     "<b>Палива:</b> <i>" . $canister['fuel'] . "</i>\n" .
                                     "<b>Кількість:</b> <i>" . $canister['canister'] . "</i>\n" .
                                     "<b>Тип:</b> <i>" . $canister['type'] . "</i>",
-                                $this->buttonBuilder([
-                                    [
-                                        [
-                                            "Отримати",
-                                            $canister['id']
-                                        ]
-                                    ]
-                                ])
+                                $this->buttonBuilder([[[
+                                    "Отримати",
+                                    $canister['id']
+                                ]]])
                             )
                         );
                     }
