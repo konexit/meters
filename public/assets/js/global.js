@@ -1479,7 +1479,7 @@ function getReportGenerator(event) {
         alert("Перевірте введені діапазон звіта")
         return
     }
-
+    
     const companies = getCompaniesAndColors('generators', '#formReportGenerator .company-color');
     if (companies.length == 0) {
         alert("Виберіть компанії")

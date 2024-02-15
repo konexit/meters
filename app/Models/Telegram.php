@@ -527,14 +527,10 @@ class Telegram extends Model
                                 "<b>Щоб вибрати лічильниик №</b> <u>" . $counter['counterId'] . "</u>\n" .
                                     "натисніть на відповідну кнопку\n" .
                                     "<b>Коментар:</b> <i>" . $counter['counterName'] . "</i>",
-                                $this->buttonBuilder([
-                                    [
-                                        [
-                                            "№ " . $counter['counterId'],
-                                            $counter['id']
-                                        ]
-                                    ]
-                                ])
+                                $this->buttonBuilder([[[
+                                    "№ " . $counter['counterId'],
+                                    $counter['id']
+                                ]]])
                             )
                         );
                     }

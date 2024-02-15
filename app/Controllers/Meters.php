@@ -9,9 +9,12 @@ use App\Models\Telegram;
 use App\Models\Update;
 use App\Models\User;
 use Config\Services;
+use App\ThirdParty\LogTrait;
 
 class Meters extends BaseController
 {
+    use LogTrait;
+
     private $user;
     private $update;
     private $search;
@@ -41,6 +44,8 @@ class Meters extends BaseController
         if (session('isLoggedIn') || $this->user->auth()) {
             return redirect()->to('meters');
         }
+
+        $this->deleteOldLog(14);
 
         return view('login');
     }
