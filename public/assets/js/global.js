@@ -569,12 +569,10 @@ function maddUnit(edMode) {
     if (edMode) {
         $("#confirmUn").text("Редагувати");
         $("#confirmUn").attr("onClick", "confirmUnitEdit(" + edMode + ")");
-        tradePointInput(true)
     } else {
         $("#confirmUn").text("Додати підрозділ");
         $("#confirmUn").attr("onClick", "unADD()");
         $("#addUnit input").val("")
-        tradePointInput(false)
         setBackground($("#aArea"));
     }
     showSet([$("#adminPanel"), $("#addUnit")]);
@@ -628,16 +626,10 @@ function unADD() {
     });
 }
 
-function tradePointInput(state = false) {
-    document.querySelector('#isTradePoint').disabled = state
-    document.querySelector('#tradePointId').disabled = state
-    document.querySelector('#companyId').disabled = state
-}
-
 function confirmUnitEdit(id) {
-    const isTradePoint = document.querySelector('#isTradePoint').checked
-    const tradePointId = +document.querySelector('#tradePointId').value
-    const companyId = +document.querySelector('#companyId').value
+    let isTradePoint = document.querySelector('#isTradePoint').checked
+    let tradePointId = +document.querySelector('#tradePointId').value
+    let companyId = +document.querySelector('#companyId').value
     let refill = document.querySelector('#tradePointRefill').checked
 
     if (isTradePoint) {
@@ -651,7 +643,9 @@ function confirmUnitEdit(id) {
             return
         }
     } else {
-        refill = false;
+        tradePointId = 0
+        companyId = 0
+        refill = false
     }
 
     if (!($("#unADDR").val() && $("#tel").val() && $("#unit").val())) {
@@ -669,7 +663,7 @@ function confirmUnitEdit(id) {
         refill: refill,
         isTradePoint: isTradePoint,
         tradePointId: tradePointId,
-        companyId: +document.querySelector('#companyId').value
+        companyId: companyId
     }, function (result) {
         res = JSON.parse(result);
         if (res.error) {
@@ -723,8 +717,8 @@ function unitEdit(uId, unit, addr, tel, areaState = true, refill = false, isTrad
     $("#tel").val(tel);
     document.querySelector('#isTradePoint').checked = isTradePoint
     document.querySelector('#areaState').checked = areaState
-    document.querySelector('#tradePointRefill').checked = refill
     tradePointFormStatus(isTradePoint)
+    document.querySelector('#tradePointRefill').checked = refill
     document.querySelector('#tradePointId').value = tradePointId
     document.querySelector('#companyId').value = companyId
     maddUnit(uId);
@@ -1479,7 +1473,7 @@ function getReportGenerator(event) {
         alert("Перевірте введені діапазон звіта")
         return
     }
-    
+
     const companies = getCompaniesAndColors('generators', '#formReportGenerator .company-color');
     if (companies.length == 0) {
         alert("Виберіть компанії")

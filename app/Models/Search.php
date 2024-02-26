@@ -304,22 +304,20 @@ class Search extends Model
 
     public function unADD($request)
     {
+        header('Content-Type: application/json; charset=utf-8');
         $this->db->transStart();
         $unit = $this->trimSpace($request->getVar('unit'));
         if ($this->checkUnDB($unit)) {
-            header('Content-Type: application/json; charset=utf-8');
             echo json_encode(['error' => 'Підрозділ ' . $unit . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
             return;
         }
 
         $tradePointId = $request->getVar('tradePointId');
-        var_dump(filter_var($request->getVar('isTradePoint'), FILTER_VALIDATE_BOOLEAN) && count($this->getUserBySpecificData("", "", "", $tradePointId)) != 0);
         if (filter_var($request->getVar('isTradePoint'), FILTER_VALIDATE_BOOLEAN) && count($this->getUserBySpecificData("", "", "", $tradePointId)) != 0) {
-            header('Content-Type: application/json; charset=utf-8');
             echo json_encode(['error' => 'Торгова точка із номером №' . $tradePointId . ' уже існує. Перевірте дані та спробуйте ще раз'], JSON_UNESCAPED_UNICODE);
             return;
         }
-        return;
+
         $this->db->table('area')->insert([
             'addr' => $request->getVar('addr'),
             'tel' => $request->getVar('tel'),
@@ -348,7 +346,6 @@ class Search extends Model
             ];
 
             if (count($this->getUserBySpecificData("", $newUser['login'])) != 0) {
-                header('Content-Type: application/json; charset=utf-8');
                 echo json_encode(['error' => 'Не вдається створити користувача ' . $tradePointId . '. Перевірте дані та спробуйте ще раз. Якщо проблема не вирішилась, зверніться в ІТ відділ'], JSON_UNESCAPED_UNICODE);
                 return;
             }
@@ -359,7 +356,6 @@ class Search extends Model
         $this->db->transComplete();
 
         if ($this->db->transStatus() === false) {
-            header('Content-Type: application/json; charset=utf-8');
             return json_encode(['error' => 'Не вдалось створити підрозділ. Перевірте дані та спробуйте ще раз. Якщо проблема не вирішилась, зверніться в ІТ відділ'], JSON_UNESCAPED_UNICODE);
         }
 
